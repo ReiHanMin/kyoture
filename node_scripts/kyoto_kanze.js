@@ -1,5 +1,7 @@
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
 
 puppeteer.use(StealthPlugin());
 
@@ -23,10 +25,12 @@ const scrapeKyotoKanze = async () => {
 
   for (const eventDiv of eventDivs) {
     try {
+      // Check if the event is a free event by looking for "無料公演" comment
       const innerHTML = await page.evaluate(el => el.innerHTML, eventDiv);
       const isFreeEvent = innerHTML.includes('<!-- 無料公演 -->');
 
       if (isFreeEvent) {
+        // Free event - get details directly from the main page
         const title = await eventDiv.$eval('.midashi', el => el.innerText.trim()).catch(() => 'No title');
         const dateAndTime = await eventDiv.$eval('.bl_title', el => el.innerText.trim()).catch(() => 'No date/time');
 
@@ -49,11 +53,13 @@ const scrapeKyotoKanze = async () => {
         console.log('Extracted free event data:', title);
 
       } else {
+        // Paid event - click on the event link to access the detailed page
         const eventLink = await eventDiv.$eval('a', el => el.href);
         const detailPage = await browser.newPage();
         await detailPage.goto(eventLink, { waitUntil: 'domcontentloaded', timeout: 60000 });
         console.log(`Opened detail page: ${eventLink}`);
 
+        // Extract detailed information from the paid event page
         const title = await detailPage.$eval('#content h2', el => el.innerText.trim()).catch(() => 'No title');
         const dateAndTime = await detailPage.$eval('.blank01', el => el.innerText.trim()).catch(() => 'No date and time');
         const host = await detailPage.$eval('.blank02', el => el.innerText.includes('主催') ? el.innerText.replace('主催：', '').trim() : 'No host').catch(() => 'No host');
@@ -85,6 +91,7 @@ const scrapeKyotoKanze = async () => {
 
   await browser.close();
 
+  // Filter out events with default values before saving and returning
   const filteredEvents = eventData.filter(event => {
     return (
       event.title !== "No title" &&
@@ -95,7 +102,16 @@ const scrapeKyotoKanze = async () => {
     );
   });
 
-  return filteredEvents; // Return the filtered events
+  fs.writeFileSync('kyoto_kanze_data.json', JSON.stringify(filteredEvents, null, 2));
+  console.log('Data saved to kyoto_kanze_data.json');
+  return filteredEvents;
 };
 
 export default scrapeKyotoKanze;
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  (async () => {
+    const data = await scrapeKyotoKanze();
+    console.log('Scraped Data:', data);
+  })();
+}

@@ -24,6 +24,7 @@ class CreateEventsTable extends Migration
             $table->time('time_end')->nullable();
             $table->foreignId('venue_id')->nullable()->constrained()->onDelete('set null');
             $table->string('address')->nullable();
+            $table->string('external_id')->unique()->nullable();
             $table->timestamps(); // Adds created_at and updated_at columns
         });
     }

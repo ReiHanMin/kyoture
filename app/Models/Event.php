@@ -20,6 +20,7 @@ class Event extends Model
         'time_end',
         'venue_id',
         'address',
+        'external_id',
     ];
 
     /**

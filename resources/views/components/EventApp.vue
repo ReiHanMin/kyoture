@@ -47,6 +47,8 @@
       </div>
     </section>
 
+    <Spinner v-if="loadingMore" />
+
     <!-- Modal -->
     <div
       v-if="showModal"
@@ -98,7 +100,7 @@
 
         <!-- Link to ticket purchase page -->
         <a
-          :href="selectedEvent?.event_link"
+          :href="selectedEvent?.organization === 'Kyoto Concert Hall' ? 'https://www.kyotoconcerthall.org/en/ticket/' : selectedEvent?.event_link"
           target="_blank"
           class="text-white bg-blue-500 py-2 px-4 rounded"
         >
@@ -114,6 +116,7 @@
 
 <script>
 import axios from 'axios';
+import Spinner from './Spinner.vue'; // Import Spinner component
 
 export default {
   data() {
@@ -121,13 +124,20 @@ export default {
       events: [],
       showModal: false,
       selectedEvent: null, // Track the selected event for modal
+      loadingMore: false, // Track loading state for additional events
+      page: 1, // Track current page for infinite loading
     };
   },
   methods: {
     fetchEvents() {
       axios.get('/api/events')
         .then(response => {
-          this.events = response.data;
+          // Sort events by date_start (closest date to today first)
+          this.events = response.data.sort((a, b) => {
+            const dateA = new Date(a.date_start);
+            const dateB = new Date(b.date_start);
+            return dateA - dateB;
+          });
         })
         .catch(error => console.error('Error fetching events:', error));
     },
@@ -139,7 +149,6 @@ export default {
       this.showModal = false;
     },
     getCardClass(index) {
-      // Calculate the row based on custom pattern
       const row = Math.floor(index / 5);
       const position = index % 5;
       if (row % 2 === 0 && position < 2) {

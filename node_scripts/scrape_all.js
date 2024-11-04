@@ -1,7 +1,11 @@
 import axios from 'axios';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import scrapeRohmTheatre from './rohm_theatre.js';
+import fs from 'fs';
+import scrapeKyotoConcertHall from './kyoto_concert_hall.js';
+import scrapeRohmTheatre from './rohm_theatre.js'; // Import the Rohm Theatre scraper
+import scrapeKyotoKanze from './kyoto_kanze.js';
+
 
 // Handle __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -29,11 +33,25 @@ const scrapeAll = async () => {
     console.log('Running real scraping...');
 
     try {
+      // Run the Kyoto Concert Hall scraper and combine its results
+      const kyotoConcertHallData = await scrapeKyotoConcertHall();
+      if (kyotoConcertHallData.length > 0) {
+        combinedData.push(...kyotoConcertHallData);
+        sitesScraped.push('kyoto_concert_hall');
+      }
+
       // Run the Rohm Theatre scraper and combine its results
       const rohmTheatreData = await scrapeRohmTheatre();
       if (rohmTheatreData.length > 0) {
         combinedData.push(...rohmTheatreData);
         sitesScraped.push('rohm_theatre');
+      }
+
+      // Run the Kyoto Kanze scraper and combine its results
+      const kyotoKanzeData = await scrapeKyotoKanze();
+      if (kyotoKanzeData.length > 0) {
+        combinedData.push(...kyotoKanzeData);
+        sitesScraped.push('kyoto_kanze');
       }
 
       console.log('Combined data:', combinedData);
@@ -46,7 +64,7 @@ const scrapeAll = async () => {
 
   // Construct the payload with the list of sites scraped
   const payload = {
-    site: sitesScraped.join(','), // e.g., 'rohm_theatre'
+    site: sitesScraped.join(','), // e.g., 'kyoto_concert_hall,rohm_theatre'
     events: combinedData,
   };
 
