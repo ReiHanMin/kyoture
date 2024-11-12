@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\DataTransformers\DataTransformerFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Services\DataTransformers\DataTransformerFactory;
 
 class ScrapeController extends Controller
 {
@@ -23,6 +23,7 @@ class ScrapeController extends Controller
         return response()->json(['error' => 'Validation failed', 'details' => $e->errors()], 400);
     }
 
+    // Split the site string into an array
     $sites = explode(',', $request->input('site')); // Split the site names
     $events = $request->input('events');
 
@@ -42,8 +43,15 @@ class ScrapeController extends Controller
             continue; // Skip unsupported sites
         }
 
+        // Filter events for the current site
+        $siteSpecificEvents = array_filter($events, function ($event) use ($site) {
+            return isset($event['site']) && $event['site'] === $site;
+        });
+
+        Log::info('Number of events for site', ['site' => $site, 'count' => count($siteSpecificEvents)]);
+
         // Process each event with the transformer
-        foreach ($events as $eventData) {
+        foreach ($siteSpecificEvents as $eventData) {
             try {
                 Log::info('Processing event for site', ['site' => $site, 'title' => $eventData['title'] ?? 'Unnamed Event']);
                 $transformer->transform($eventData);

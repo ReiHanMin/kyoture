@@ -22,7 +22,7 @@
 </head>
 <body class="bg-white">
     <!-- Include the Navigation -->
-    @include('layouts.navigation')
+   
 
     <!-- Main Content -->
     <main class="p-5">

@@ -15,6 +15,9 @@ class DataTransformerFactory
         return match ($site) {
             'rohm_theatre' => new RohmTheatreDataTransformer(),
             'kyoto_concert_hall' => new KyotoConcertHallDataTransformer(),
+            'kyoto_kanze' => new KyotoKanzeDataTransformer(),
+            'waondo' => new WaondoDataTransformer(),
+            'kyoto_gattaca' => new KyotoGattacaDataTransformer(),
             // Add other site-specific transformers as you create them
             default => null,
         };

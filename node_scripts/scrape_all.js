@@ -5,6 +5,8 @@ import fs from 'fs';
 import scrapeKyotoConcertHall from './kyoto_concert_hall.js';
 import scrapeRohmTheatre from './rohm_theatre.js'; // Import the Rohm Theatre scraper
 import scrapeKyotoKanze from './kyoto_kanze.js';
+import scrapeWaondo from './waondo.js';
+import scrapeKyotoGattaca from './kyoto_gattaca.js';
 
 
 // Handle __dirname for ES modules
@@ -32,7 +34,7 @@ const scrapeAll = async () => {
   } else {
     console.log('Running real scraping...');
 
-    try {
+     try {
       // Run the Kyoto Concert Hall scraper and combine its results
       const kyotoConcertHallData = await scrapeKyotoConcertHall();
       if (kyotoConcertHallData.length > 0) {
@@ -52,6 +54,20 @@ const scrapeAll = async () => {
       if (kyotoKanzeData.length > 0) {
         combinedData.push(...kyotoKanzeData);
         sitesScraped.push('kyoto_kanze');
+      }
+
+      // Run the Waondo scraper and combine its results
+      const waondoData = await scrapeWaondo();
+      if (waondoData.length > 0) {
+        combinedData.push(...waondoData);
+        sitesScraped.push('waondo');
+      }
+
+      // Run the KyotoGattaca scraper and combine its results
+      const kyotoGattacaData = await scrapeKyotoGattaca();
+      if (kyotoGattacaData.length > 0) {
+        combinedData.push(...kyotoGattacaData);
+        sitesScraped.push('kyoto_gattaca');
       }
 
       console.log('Combined data:', combinedData);

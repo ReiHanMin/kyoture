@@ -1,110 +1,143 @@
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { fileURLToPath } from 'url';
-import fs from 'fs';
 
 puppeteer.use(StealthPlugin());
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const scrapeKyotoKanze = async () => {
-  const browser = await puppeteer.launch({
-    headless: true,
-    slowMo: 250,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+    const browser = await puppeteer.launch({
+      headless: true,
+      slowMo: 250,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+  
+    const page = await browser.newPage();
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)');
+    await page.goto('http://kyoto-kanze.jp/show_info/', { waitUntil: 'networkidle0', timeout: 60000 });
+  
+    console.log('Main page loaded.');
+  
+    const eventData = [];
+    const visitedLinks = new Set();
 
-  const page = await browser.newPage();
-  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)');
-  await page.goto('http://kyoto-kanze.jp/show_info/', { waitUntil: 'networkidle0', timeout: 60000 });
+    // Select all 'jump_m50' sections (each representing a month and year)
+    const jumpSections = await page.$$('.jump_m50');
 
-  console.log('Main page loaded.');
+    for (const section of jumpSections) {
+        // Extract the year and month from the 'kouen_month' class inside the 'title' div
+        const yearMonthText = await section.$eval('.title .kouen_month', el => el.textContent.trim()).catch(() => '');
+        
+        let year = '';
+        let month = '';
+        const match = yearMonthText.match(/(\d{4})年(\d{1,2})月/);
+        if (match) {
+            year = match[1];
+            month = match[2].padStart(2, '0'); // Ensure two digits
+        } else {
+            console.warn('Year and month not found in text:', yearMonthText);
+            continue; // Skip this section if we can't get the year and month
+        }
 
-  const eventData = [];
-  const eventDivs = await page.$$('.link'); // Select all event containers
+        // Now, within this section, get all the events
+        const eventDivs = await section.$$('.link');
 
-  for (const eventDiv of eventDivs) {
-    try {
-      // Check if the event is a free event by looking for "無料公演" comment
-      const innerHTML = await page.evaluate(el => el.innerHTML, eventDiv);
-      const isFreeEvent = innerHTML.includes('<!-- 無料公演 -->');
+        for (const eventDiv of eventDivs) {
+            try {
+                const innerHTML = await eventDiv.evaluate(el => el.innerHTML);
+                const isFreeEvent = innerHTML.includes('<!-- 無料公演 -->');
 
-      if (isFreeEvent) {
-        // Free event - get details directly from the main page
-        const title = await eventDiv.$eval('.midashi', el => el.innerText.trim()).catch(() => 'No title');
-        const dateAndTime = await eventDiv.$eval('.bl_title', el => el.innerText.trim()).catch(() => 'No date/time');
+                if (isFreeEvent) {
+                    const title = await eventDiv.$eval('.midashi', el => el.textContent.trim()).catch(() => 'Unnamed Event');
+                    const dateAndTime = await eventDiv.$eval('.bl_title', el => el.textContent.trim()).catch(() => '');
+                    const date_and_time = `${year}年${dateAndTime}`; // Prepend the year to 'dateAndTime'
+                    const host = await eventDiv.$eval('.box p:not(.midashi):nth-of-type(1)', el => el.textContent.trim()).catch(() => '');
+                    const price = await eventDiv.$eval('.box:last-of-type p', el => el.textContent.trim()).catch(() => '');
 
-        const mainText = await eventDiv.$$eval('.box p', els => els.map(el => el.innerText.trim()));
-        const host = mainText.find(text => text.includes('主催：'))?.replace('主催：', '').trim() || 'No host';
-        const price = mainText.find(text => text.includes('無料')) || '無料';
+                    // Build event data entry
+                    const eventDataEntry = {
+                        title,
+                        date_and_time,
+                        host,
+                        price,
+                        ticket_link: 'No ticket link available',
+                        event_link: 'http://kyoto-kanze.jp/show_info/',
+                        images: [],
+                        ended: false,
+                        free: true,
+                        venue: 'Kyoto Kanze',
+                        description: 'No description available',
+                        site: 'kyoto_kanze',
+                    };
 
-        eventData.push({
-          title,
-          date_and_time: dateAndTime,
-          host,
-          price,
-          ticket_link: 'No ticket link available',
-          images: [],
-          ended: false,
-          free: true,
-          venue: "Kyoto Kanze",
-        });
+                    eventData.push(eventDataEntry);
+                    console.log('Extracted free event data:', eventDataEntry);
 
-        console.log('Extracted free event data:', title);
+                } else {
+                    // Process paid events as before
+                    const eventLinks = await eventDiv.$$eval('a', els => els.map(el => el.href));
 
-      } else {
-        // Paid event - click on the event link to access the detailed page
-        const eventLink = await eventDiv.$eval('a', el => el.href);
-        const detailPage = await browser.newPage();
-        await detailPage.goto(eventLink, { waitUntil: 'domcontentloaded', timeout: 60000 });
-        console.log(`Opened detail page: ${eventLink}`);
+                    // Filter the event links
+                    const validEventLinks = eventLinks.filter(link => {
+                        if (!link) return false;
+                        const url = new URL(link);
+                        return url.hostname === 'kyoto-kanze.jp' && url.pathname.startsWith('/show_info/');
+                    });
 
-        // Extract detailed information from the paid event page
-        const title = await detailPage.$eval('#content h2', el => el.innerText.trim()).catch(() => 'No title');
-        const dateAndTime = await detailPage.$eval('.blank01', el => el.innerText.trim()).catch(() => 'No date and time');
-        const host = await detailPage.$eval('.blank02', el => el.innerText.includes('主催') ? el.innerText.replace('主催：', '').trim() : 'No host').catch(() => 'No host');
-        const price = await detailPage.$eval('.blank02:nth-of-type(3)', el => el.innerText.trim()).catch(() => 'No price');
-        const ticketLink = await detailPage.$eval('.blank02:nth-of-type(3) a', el => el.href).catch(() => 'No ticket link');
+                    const eventLink = validEventLinks.length > 0 ? validEventLinks[0] : null;
 
-        const images = await detailPage.$$eval('.left .link a', links => links.map(link => link.href)).catch(() => []);
+                    if (!eventLink) {
+                        console.warn('No valid event link found for this event.');
+                        continue;
+                    }
 
-        eventData.push({
-          title,
-          date_and_time: dateAndTime,
-          host,
-          price,
-          ticket_link: ticketLink,
-          images,
-          ended: false,
-          free: false,
-          venue: "Kyoto Kanze",
-        });
+                    if (visitedLinks.has(eventLink)) {
+                        console.log(`Skipping already visited detail page: ${eventLink}`);
+                        continue;
+                    }
 
-        console.log('Extracted paid event data:', title);
+                    visitedLinks.add(eventLink);
+                    console.log(`Opening detail page for paid event: ${eventLink}`);
 
-        await detailPage.close();
-      }
-    } catch (error) {
-      console.error('Error processing event:', error);
+                    const detailPage = await browser.newPage();
+                    await detailPage.goto(eventLink, { waitUntil: 'domcontentloaded', timeout: 60000 });
+
+                    try {
+                        const contentBaseHTML = await detailPage.$eval('#content', el => el.innerHTML).catch(() => {
+                            console.warn(`#content not found at ${eventLink}`);
+                            return '';
+                        });
+
+                        if (!contentBaseHTML) {
+                            console.error(`Content not found for event: ${eventLink}`);
+                            await detailPage.close();
+                            continue;
+                        }
+
+                        console.log('Extracted contentBase HTML:', contentBaseHTML);
+
+                        eventData.push({
+                            event_link: eventLink,
+                            content_base_html: contentBaseHTML,
+                            free: false,
+                            site: 'kyoto_kanze',
+                        });
+                    } catch (error) {
+                        console.error(`Error extracting content from ${eventLink}:`, error);
+                    } finally {
+                        await detailPage.close();
+                        console.log(`Closed detail page for paid event: ${eventLink}`);
+                    }
+                }
+            } catch (error) {
+                console.error('Error processing event:', error);
+            }
+        }
     }
-  }
 
-  await browser.close();
-
-  // Filter out events with default values before saving and returning
-  const filteredEvents = eventData.filter(event => {
-    return (
-      event.title !== "No title" &&
-      event.date_and_time !== "No date and time" &&
-      event.host !== "No host" &&
-      event.price !== "No price" &&
-      event.ticket_link !== "No ticket link"
-    );
-  });
-
-  fs.writeFileSync('kyoto_kanze_data.json', JSON.stringify(filteredEvents, null, 2));
-  console.log('Data saved to kyoto_kanze_data.json');
-  return filteredEvents;
+    await browser.close();
+    return eventData.map(event => ({ ...event, site: 'kyoto_kanze' }));
 };
 
 export default scrapeKyotoKanze;

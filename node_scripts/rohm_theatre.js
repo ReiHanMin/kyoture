@@ -157,6 +157,7 @@ const scrapeRohmTheatre = async () => {
             image_url: imageUrl || 'No image available',
             event_link: eventLink || 'No link available',
             raw_price_text: rawPriceText,
+            site: 'rohm_theatre' // Add site field
           };
 
           eventData.push(eventInfo);
@@ -175,7 +176,7 @@ const scrapeRohmTheatre = async () => {
     console.log('Final cleaned event data:', eventData);
     await browser.close();
     console.log('Browser closed.');
-    return eventData;
+    return eventData.map(event => ({ ...event, site: 'rohm_theatre' }));
   } catch (error) {
     console.error('Error during scraping:', error);
     await browser.close();

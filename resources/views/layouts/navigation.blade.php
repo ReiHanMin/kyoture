@@ -109,10 +109,7 @@
                         Remove Filter
                     </button>
         
-                    <!-- Past Events -->
-                    <button class="text-black hover:text-gray-700 px-4 py-2 rounded-lg focus:outline-none">
-                        Past Events
-                    </button>
+                    
                 </div>
             </div>      
     </div>

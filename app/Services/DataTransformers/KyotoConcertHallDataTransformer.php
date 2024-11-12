@@ -180,7 +180,7 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                         "title": "Event Title",
                         "date_start": "YYYY-MM-DD",
                         "date_end": "YYYY-MM-DD",
-                        "organization": "Organization name"
+                        "organization": "Organization name",
                         "venue": "Venue Name",
                         "event_link": "Event URL",
                         "image_url": "Image URL",
@@ -357,20 +357,25 @@ private function callOpenAI(string $prompt): ?array
     private function saveSchedules(int $eventId, array $schedules)
     {
         foreach ($schedules as $scheduleData) {
-            Schedule::updateOrCreate([
-                'event_id' => $eventId,
-                'date' => $scheduleData['date'],
-                'time_start' => $this->nullIfEmpty($scheduleData['time_start']),
-                'time_end' => $this->nullIfEmpty($scheduleData['time_end']),
-                'special_notes' => $this->nullIfEmpty($scheduleData['special_notes']),
-            ]);
+            Schedule::updateOrCreate(
+                [
+                    'event_id' => $eventId,
+                    'date' => $scheduleData['date'],
+                ],
+                [
+                    'time_start' => $this->nullIfEmpty($scheduleData['time_start']),
+                    'time_end' => $this->nullIfEmpty($scheduleData['time_end']),
+                    'special_notes' => $this->nullIfEmpty($scheduleData['special_notes']),
+                ]
+            );            
         }
     }
 
     private function nullIfEmpty($value)
     {
-        return !empty($value) ? $value : null;
+    return isset($value) && $value !== '' ? $value : null;
     }
+
 
     private function saveImages(Event $event, ?string $primaryImageUrl, array $images = []): void
     {
@@ -410,13 +415,17 @@ private function callOpenAI(string $prompt): ?array
     private function savePrices(int $eventId, array $prices)
     {
         foreach ($prices as $priceData) {
-            Price::updateOrCreate([
-                'event_id' => $eventId,
-                'price_tier' => $priceData['price_tier'],
-                'amount' => $priceData['amount'],
-                'currency' => $priceData['currency'],
-                'discount_info' => $priceData['discount_info'],
-            ]);
+            Price::updateOrCreate(
+                [
+                    'event_id' => $eventId,
+                    'price_tier' => $priceData['price_tier'],
+                ],
+                [
+                    'amount' => $this->nullIfEmpty($priceData['amount']),
+                    'currency' => $priceData['currency'] ?? 'JPY',
+                    'discount_info' => $this->nullIfEmpty($priceData['discount_info']),
+                ]
+            );            
         }
     }
 

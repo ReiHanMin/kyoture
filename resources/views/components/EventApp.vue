@@ -1,9 +1,15 @@
 <template>
   <div class="container mx-auto px-4 py-8">
-    <!-- Events Section -->
-    <section v-if="events.length" id="event-list" class="custom-grid">
+    <!-- Include Navbar -->
+    <Navbar @set-selections="setCategories" :isPastEventsPage="false" />
+
+    <!-- Render Past Events Component -->
+    <past-events v-if="showPastEvents" :events="events" />
+
+    <!-- Events Section for Current/Upcoming Events -->
+    <section v-else-if="filteredEvents.length" id="event-list" class="custom-grid">
       <div
-        v-for="(event, index) in events"
+        v-for="(event, index) in filteredEvents"
         :key="event.id"
         :class="getCardClass(index)"
         class="bg-white overflow-hidden relative"
@@ -46,6 +52,11 @@
         </a>
       </div>
     </section>
+
+    <!-- No events message -->
+    <div v-else-if="!filteredEvents.length && !loadingMore" class="text-center text-gray-500">
+      No events found!
+    </div>
 
     <Spinner v-if="loadingMore" />
 
@@ -108,38 +119,149 @@
         </a>
       </div>
     </div>
-    
-
-    <div v-else class="text-center">Loading events...</div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import Spinner from './Spinner.vue'; // Import Spinner component
+import Navbar from './Navbar.vue';
+import PastEvents from './PastEvents.vue'; // Import PastEvents component
 
 export default {
+  components: {
+    Navbar,
+    Spinner,
+    PastEvents, // Register PastEvents component
+  },
   data() {
     return {
       events: [],
+      showPastEvents: false, // Toggle for showing past events
       showModal: false,
-      selectedEvent: null, // Track the selected event for modal
-      loadingMore: false, // Track loading state for additional events
-      page: 1, // Track current page for infinite loading
+      selectedEvent: null,
+      loadingMore: false,
+      page: 1,
+      selectedFilters: {
+        type: [],
+        price: [],
+        date: [],
+        location: [],
+        customDateRange: { start: null, end: null },
+      },
     };
   },
+  computed: {
+    filteredEvents() {
+      const currentDate = this.getCurrentDate(); // Get the current date
+      const currentDateObj = new Date(currentDate);
+
+      return this.events.filter(event => {
+        const eventStartDate = new Date(event.date_start);
+        const eventEndDate = new Date(event.date_end);
+
+        // Type Filtering
+        const matchesType = this.selectedFilters.type.length
+          ? event.categories.some(category => this.selectedFilters.type.includes(category.name))
+          : true;
+
+        // Price Filtering
+        const matchesPrice = Array.isArray(this.selectedFilters.price) && this.selectedFilters.price.length
+      ? this.selectedFilters.price.some(selectedPrice => {
+          if (selectedPrice === 'Free') {
+            // Check if all price tiers are zero or there is only a free ticket available
+            return event.prices.every(price => parseFloat(price.amount) === 0);
+          } else if (selectedPrice === 'Under 1000 Yen') {
+            return event.prices.some(price => parseFloat(price.amount) < 1000);
+          } else if (selectedPrice === '1000 - 3000 Yen') {
+            return event.prices.some(price => parseFloat(price.amount) >= 1000 && parseFloat(price.amount) <= 3000);
+          } else if (selectedPrice === '3000 - 5000 Yen') {
+            return event.prices.some(price => parseFloat(price.amount) > 3000 && parseFloat(price.amount) <= 5000);
+          } else if (selectedPrice === '5000+ Yen') {
+            return event.prices.some(price => parseFloat(price.amount) >= 5000);
+          }
+          return false;
+        })
+      : true;
+
+        // Date Filtering (includes multiple selections and 'This Weekend')
+        const matchesDate = (this.selectedFilters.customDateRange?.start && this.selectedFilters.customDateRange?.end)
+          ? eventStartDate >= new Date(this.selectedFilters.customDateRange.start) &&
+            eventEndDate <= new Date(this.selectedFilters.customDateRange.end)
+          : (!this.selectedFilters.date.length || this.selectedFilters.date.some(selectedDate => {
+              if (selectedDate === 'Today') {
+                return eventStartDate.toDateString() === currentDateObj.toDateString();
+              } else if (selectedDate === 'Tomorrow') {
+                const tomorrow = new Date(currentDateObj.getTime() + (24 * 60 * 60 * 1000));
+                return eventStartDate.toDateString() === tomorrow.toDateString();
+              } else if (selectedDate === 'This Week') {
+                const weekEnd = new Date(currentDateObj);
+                weekEnd.setDate(currentDateObj.getDate() + (7 - currentDateObj.getDay()));
+                return eventStartDate >= currentDateObj && eventStartDate <= weekEnd;
+              } else if (selectedDate === 'This Weekend') {
+                const saturday = new Date(currentDateObj);
+                saturday.setDate(currentDateObj.getDate() + (6 - currentDateObj.getDay()));
+                const sunday = new Date(saturday);
+                sunday.setDate(saturday.getDate() + 1);
+                return eventStartDate >= saturday && eventStartDate <= sunday;
+              } else if (selectedDate === 'Next Week') {
+                const nextWeekStart = new Date(currentDateObj);
+                nextWeekStart.setDate(currentDateObj.getDate() + (7 - currentDateObj.getDay()) + 1);
+                const nextWeekEnd = new Date(nextWeekStart);
+                nextWeekEnd.setDate(nextWeekStart.getDate() + 6);
+                return eventStartDate >= nextWeekStart && eventStartDate <= nextWeekEnd;
+              }
+              return false;
+            }));
+
+        // Location Filtering
+        const matchesLocation = this.selectedFilters.location.length
+          ? this.selectedFilters.location.includes(event.venue?.name)
+          : true;
+
+        return matchesType && matchesPrice && matchesDate && matchesLocation;
+      });
+    },
+  },
   methods: {
+    togglePastEvents() {
+      this.showPastEvents = !this.showPastEvents;
+    },
+    getCurrentDate() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    },
     fetchEvents() {
+      this.loadingMore = true;
       axios.get('/api/events')
         .then(response => {
-          // Sort events by date_start (closest date to today first)
-          this.events = response.data.sort((a, b) => {
-            const dateA = new Date(a.date_start);
-            const dateB = new Date(b.date_start);
-            return dateA - dateB;
-          });
+          const currentDate = new Date(this.getCurrentDate());
+          
+          // Filter out past events for current events list
+          this.events = response.data
+            .filter(event => {
+              const eventStartDate = new Date(event.date_start);
+              return eventStartDate >= currentDate;
+            })
+            .sort((a, b) => {
+              const dateA = new Date(a.date_start);
+              const dateB = new Date(b.date_start);
+              return dateA - dateB;
+            });
+          
+          this.loadingMore = false;
         })
-        .catch(error => console.error('Error fetching events:', error));
+        .catch(error => {
+          console.error('Error fetching events:', error);
+          this.loadingMore = false;
+        });
+    },
+    setCategories(filters) {
+      console.log(`setCategories method called with: `, filters);
+      this.selectedFilters = filters;
     },
     openModal(event) {
       this.selectedEvent = event;
@@ -162,9 +284,45 @@ export default {
       }
       return 'col-span-1 h-96';
     },
-    formatDateRange(start, end) {
-      return start && end ? `${start} - ${end}` : start || end || 'Date TBA';
-    },
+  formatDateRange(start, end) {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+
+  if (startDate.getTime() === endDate.getTime()) {
+    // Single-day event
+    return startDate.toLocaleDateString('en-GB', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }); // e.g., "15 November 2024"
+  } else {
+    // Multi-day event
+    const options = { day: 'numeric' };
+
+    // Check if start and end dates are in the same month/year
+    if (
+      startDate.getFullYear() === endDate.getFullYear() &&
+      startDate.getMonth() === endDate.getMonth()
+    ) {
+      return `${startDate.getDate()} - ${endDate.toLocaleDateString('en-GB', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      })}`; // e.g., "15 - 16 November, 2024"
+    } else {
+      return `${startDate.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long'
+      })} - ${endDate.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      })}`; // e.g., "30 November - 3 December, 2024"
+    }
+  }
+}
+
+
   },
   mounted() {
     this.fetchEvents();
@@ -180,20 +338,18 @@ export default {
 }
 .col-span-1 { 
   grid-column: span 1; 
-  }
-
+}
 .col-span-2 {
-   grid-column: span 2; 
-   }
-
+  grid-column: span 2; 
+}
 .h-96 { 
   height: 24rem; 
-  }
-
+}
 img { 
-  width: 100%; height: 100%; object-fit: cover; 
-  }
-
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
 .caption-container {
   position: absolute;
   bottom: 0;
@@ -203,32 +359,39 @@ img {
   background-color: rgba(255, 255, 255, 1);
   margin: 10px;
 }
-
 .caption-type { 
-  background-color: black; color: white; padding: 2px 6px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 5px; 
-  }
-
+  background-color: black; 
+  color: white; 
+  padding: 2px 6px; 
+  font-size: 0.8rem; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  display: inline-block; 
+  margin-bottom: 5px; 
+}
 .caption-title { 
-  font-size: 1.2rem; font-weight: bold; margin: 0; 
-  }
-
+  font-size: 1.2rem; 
+  font-weight: bold; 
+  margin: 0; 
+}
 .caption-date { 
-  font-size: 1rem; color: #666; margin-top: 0.5rem; 
-  }
-
+  font-size: 1rem; 
+  color: #666; 
+  margin-top: 0.5rem; 
+}
 .fixed {
-   position: fixed; 
-   }
-
+  position: fixed; 
+}
 .inset-0 { 
-  top: 0; right: 0; bottom: 0; left: 0; 
-  }
-
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0; 
+}
 .z-50 {
-   z-index: 50; 
-   }
-
+  z-index: 50; 
+}
 .bg-opacity-50 { 
   background-color: rgba(0, 0, 0, 0.5); 
-  }
+}
 </style>
