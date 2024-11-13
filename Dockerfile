@@ -32,6 +32,9 @@ RUN composer install --no-dev --optimize-autoloader
 # Build the assets
 RUN npm run build
 
+# Set permissions
+RUN chown -R www-data:www-data /app/storage /app/public/build
+
 # Expose the application on port 8080
 EXPOSE 8080
 
