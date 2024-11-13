@@ -15,4 +15,9 @@ export default defineConfig({
             'vue': 'vue/dist/vue.esm-bundler.js',
         },
     },
+    // Add this base property to ensure asset URLs use HTTPS
+    base: '/',
+    server: {
+        https: true, // Ensures that the local server uses HTTPS (optional for local development)
+    }
 });
