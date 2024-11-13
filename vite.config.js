@@ -2,22 +2,33 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
 
-export default defineConfig({
-    plugins: [
-        laravel({
-            input: 'resources/js/app.js',
-            refresh: true,
-        }),
-        vue(),
-    ],
-    resolve: {
-        alias: {
-            'vue': 'vue/dist/vue.esm-bundler.js',
+export default defineConfig(({ command, mode }) => {
+    return {
+        plugins: [
+            laravel({
+                input:  'resources/js/app.js',
+                refresh: true,
+            }),
+            vue(),
+        ],
+        resolve: {
+            alias: {
+                'vue': 'vue/dist/vue.esm-bundler.js',
+            },
         },
-    },
-    // Add this base property to ensure asset URLs use HTTPS
-    base: '/',
-    server: {
-        https: true, // Ensures that the local server uses HTTPS (optional for local development)
-    }
+        base: mode === 'production' ? 'https://kyoture-production.up.railway.app/' : '/',
+        server: {
+            https: true, // Use HTTPS for local development (optional)
+        },
+        build: {
+            manifest: true,
+            rollupOptions: {
+                output: {
+                    entryFileNames: 'assets/[name]-[hash].js',
+                    chunkFileNames: 'assets/[name]-[hash].js',
+                    assetFileNames: 'assets/[name]-[hash][extname]',
+                },
+            },
+        },
+    };
 });
