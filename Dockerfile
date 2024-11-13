@@ -1,5 +1,6 @@
 # Use the official PHP image with the desired version
-FROM php:8.2-cli
+FROM php:8.2-fpm
+
 
 # Set the working directory
 WORKDIR /app
