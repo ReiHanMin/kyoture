@@ -3,6 +3,7 @@ import EventApp from '../views/components/EventApp.vue';
 import PastEvents from '../views/components/PastEvents.vue';
 import Navbar from '../views/components/Navbar.vue';
 import axios from 'axios';
+import '../css/app.css';
 
 const app = createApp({
     data() {
