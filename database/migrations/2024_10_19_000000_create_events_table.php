@@ -4,30 +4,47 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
-    {
-        Schema::create('venues', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique(); // Applying the unique constraint from the start
+    public function up()
+    {   
+        Schema::create('events', function (Blueprint $table) {
+            $table->bigIncrements('id'); // Primary Key
+
+            $table->string('title')->unique(); // Unique and not nullable
+
+            $table->string('organization')->nullable();
+            $table->text('description')->nullable();
+
+            $table->date('date_start')->nullable();
+            $table->date('date_end')->nullable();
+
+            $table->time('time_start')->nullable();
+            $table->time('time_end')->nullable();
+
+            // Foreign Key to 'venues' table, nullable
+            $table->unsignedBigInteger('venue_id')->nullable();
+            $table->foreign('venue_id')->references('id')->on('venues')->onDelete('set null');
+
             $table->string('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('postal_code')->nullable();
-            $table->string('country')->nullable();
-            $table->string('new_column')->nullable(); // Adding the new column
-            $table->timestamps();
+            $table->string('external_id')->nullable();
+
+            $table->timestamps(); // created_at and updated_at (nullable by default)
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('venues');
+        Schema::dropIfExists('events');
     }
-};
+}
