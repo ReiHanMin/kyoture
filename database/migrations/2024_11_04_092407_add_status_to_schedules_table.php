@@ -10,11 +10,14 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-        {
-            Schema::table('schedules', function (Blueprint $table) {
-                $table->string('status')->default('upcoming')->after('time_end');
-            });
+{
+    Schema::table('schedules', function (Blueprint $table) {
+        if (!Schema::hasColumn('schedules', 'status')) {
+            $table->string('status')->default('upcoming')->after('time_end');
         }
+    });
+}
+
 
         public function down()
         {

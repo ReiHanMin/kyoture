@@ -9,21 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
-    {
-        Schema::table('events', function (Blueprint $table) {
-            $table->string('external_id')->unique()->nullable();
-        });
-    }
-    
+    public function up(): void
+{
+    Schema::table('events', function (Blueprint $table) {
+        if (!Schema::hasColumn('events', 'external_id')) {
+            $table->string('external_id')->nullable();
+        }
+    });
+}
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::table('events', function (Blueprint $table) {
-            //
-        });
-    }
+public function down(): void
+{
+    Schema::table('events', function (Blueprint $table) {
+        $table->dropColumn('external_id');
+    });
+}
+
 };
