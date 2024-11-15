@@ -8,6 +8,9 @@ import scrapeKyotoKanze from './kyoto_kanze.js';
 import scrapeWaondo from './waondo.js';
 import scrapeKyotoGattaca from './kyoto_gattaca.js';
 
+// Define the backend URL
+const backendUrl = 'http://192.241.139.60'; // Replace this with the actual URL if needed
+
 // Handle __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,7 +40,7 @@ const scrapeAll = async () => {
       console.log('Payload:', JSON.stringify(payload, null, 2));
 
       // Send mock data to the backend
-      const response = await axios.post('http://localhost:8000/api/scrape', payload, {
+      const response = await axios.post(`${backendUrl}/api/scrape`, payload, {
         headers: { 'Content-Type': 'application/json' },
       });
       console.log('Mock data successfully sent to backend:', response.data);
@@ -61,7 +64,7 @@ const scrapeAll = async () => {
         console.log(`Payload for ${scraper.name}:`, JSON.stringify(payload, null, 2));
 
         // Send the site's data to the backend
-        const response = await axios.post('http://localhost:8000/api/scrape', payload, {
+        const response = await axios.post(`${backendUrl}/api/scrape`, payload, {
           headers: { 'Content-Type': 'application/json' },
         });
         console.log(`Data for ${scraper.name} successfully sent to backend:`, response.data);
@@ -78,10 +81,7 @@ const scrapeAll = async () => {
         console.error(`Failed to scrape or send data for ${scraper.name}:`, error.message);
       }
       // Optionally, decide whether to continue with the next scraper or halt
-      // For example, to continue:
       continue;
-      // Or to halt:
-      // break;
     }
   }
 
