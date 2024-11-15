@@ -20,6 +20,10 @@ class CreateSchedulesTable extends Migration
             $table->time('time_start')->nullable(); // Start time
             $table->time('time_end')->nullable(); // End time
             $table->text('special_notes')->nullable(); // Any special notes
+
+            // Add the 'status' column
+            $table->string('status')->default('upcoming');
+
             $table->timestamps(); // Adds created_at and updated_at columns
         });
     }
