@@ -11,24 +11,27 @@
       <div
         v-for="(event, index) in filteredEvents"
         :key="event.id"
-        :class="getCardClass(index)"
-        class="bg-white overflow-hidden relative"
+        :class="['custom-card', 'event-card', 'bg-white', 'overflow-hidden', 'relative', getCardClass(index)]"
       >
         <!-- Render without <a> tag for Kyoto Concert Hall -->
         <div
           v-if="event.organization === 'Kyoto Concert Hall'"
           @click="openModal(event)"
-          class="block h-full cursor-pointer"
+          class="event-wrapper cursor-pointer"
         >
-          <img
-            :src="event.images?.[0]?.image_url || 'placeholder.jpg'"
-            :alt="event.title"
-            class="w-full h-full object-cover"
-          />
-          <div class="caption-container">
-            <span class="caption-type">{{ event.organization }}</span>
-            <h3 class="caption-title">{{ event.title }}</h3>
-            <p class="caption-date">{{ formatDateRange(event.date_start, event.date_end) }}</p>
+          <div class="event-image">
+            <img
+              :src="event.images?.[0]?.image_url || 'placeholder.jpg'"
+              :alt="event.title"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="event-details">
+            <div class="caption-container">
+              <span class="caption-type">{{ event.organization }}</span>
+              <h3 class="caption-title">{{ event.title }}</h3>
+              <p class="caption-date">{{ formatDateRange(event.date_start, event.date_end) }}</p>
+            </div>
           </div>
         </div>
 
@@ -37,17 +40,21 @@
           v-else
           :href="event.event_links?.[0]?.url || '#'"
           target="_blank"
-          class="block h-full"
+          class="event-wrapper"
         >
-          <img
-            :src="event.images?.[0]?.image_url || 'placeholder.jpg'"
-            :alt="event.title"
-            class="w-full h-full object-cover"
-          />
-          <div class="caption-container">
-            <span class="caption-type">{{ event.organization }}</span>
-            <h3 class="caption-title">{{ event.title }}</h3>
-            <p class="caption-date">{{ formatDateRange(event.date_start, event.date_end) }}</p>
+          <div class="event-image">
+            <img
+              :src="event.images?.[0]?.image_url || 'placeholder.jpg'"
+              :alt="event.title"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="event-details">
+            <div class="caption-container">
+              <span class="caption-type">{{ event.organization }}</span>
+              <h3 class="caption-title">{{ event.title }}</h3>
+              <p class="caption-date">{{ formatDateRange(event.date_start, event.date_end) }}</p>
+            </div>
           </div>
         </a>
       </div>
@@ -58,6 +65,7 @@
       No events found!
     </div>
 
+    <!-- Loading Spinner -->
     <Spinner v-if="loadingMore" />
 
     <!-- Modal -->
@@ -65,10 +73,10 @@
       v-if="showModal"
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
     >
-      <div class="bg-white w-11/12 md:w-3/4 lg:w-1/2 p-6 rounded-lg relative">
+      <div class="bg-white w-11/12 md:w-3/4 lg:w-1/2 p-6 rounded-lg relative overflow-auto max-h-screen">
         <button
           @click="closeModal"
-          class="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+          class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl font-bold"
         >
           &times;
         </button>
@@ -88,7 +96,7 @@
         <!-- Display prices if available -->
         <div class="text-gray-600 mb-4" v-if="selectedEvent?.prices?.length">
           <strong>Prices:</strong>
-          <ul>
+          <ul class="list-disc list-inside">
             <li v-for="price in selectedEvent?.prices" :key="price.id">
               {{ price.price_tier }}: ¥{{ price.amount }}
             </li>
@@ -98,13 +106,13 @@
         <!-- Display additional images if available -->
         <div class="text-gray-600 mb-4" v-if="selectedEvent?.images?.length > 1">
           <strong>Additional Images:</strong>
-          <div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <img
               v-for="image in selectedEvent.images.slice(1)"
               :src="image.image_url"
               :alt="image.alt_text || 'Event Image'"
               :key="image.id"
-              class="w-full h-32 object-cover mt-2"
+              class="w-full h-auto object-cover rounded"
             />
           </div>
         </div>
@@ -113,7 +121,7 @@
         <a
           :href="selectedEvent?.organization === 'Kyoto Concert Hall' ? 'https://www.kyotoconcerthall.org/en/ticket/' : selectedEvent?.event_link"
           target="_blank"
-          class="text-white bg-blue-500 py-2 px-4 rounded"
+          class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
           Buy Tickets
         </a>
@@ -167,22 +175,22 @@ export default {
 
         // Price Filtering
         const matchesPrice = Array.isArray(this.selectedFilters.price) && this.selectedFilters.price.length
-      ? this.selectedFilters.price.some(selectedPrice => {
-          if (selectedPrice === 'Free') {
-            // Check if all price tiers are zero or there is only a free ticket available
-            return event.prices.every(price => parseFloat(price.amount) === 0);
-          } else if (selectedPrice === 'Under 1000 Yen') {
-            return event.prices.some(price => parseFloat(price.amount) < 1000);
-          } else if (selectedPrice === '1000 - 3000 Yen') {
-            return event.prices.some(price => parseFloat(price.amount) >= 1000 && parseFloat(price.amount) <= 3000);
-          } else if (selectedPrice === '3000 - 5000 Yen') {
-            return event.prices.some(price => parseFloat(price.amount) > 3000 && parseFloat(price.amount) <= 5000);
-          } else if (selectedPrice === '5000+ Yen') {
-            return event.prices.some(price => parseFloat(price.amount) >= 5000);
-          }
-          return false;
-        })
-      : true;
+          ? this.selectedFilters.price.some(selectedPrice => {
+              if (selectedPrice === 'Free') {
+                // Check if all price tiers are zero or there is only a free ticket available
+                return event.prices.every(price => parseFloat(price.amount) === 0);
+              } else if (selectedPrice === 'Under 1000 Yen') {
+                return event.prices.some(price => parseFloat(price.amount) < 1000);
+              } else if (selectedPrice === '1000 - 3000 Yen') {
+                return event.prices.some(price => parseFloat(price.amount) >= 1000 && parseFloat(price.amount) <= 3000);
+              } else if (selectedPrice === '3000 - 5000 Yen') {
+                return event.prices.some(price => parseFloat(price.amount) > 3000 && parseFloat(price.amount) <= 5000);
+              } else if (selectedPrice === '5000+ Yen') {
+                return event.prices.some(price => parseFloat(price.amount) >= 5000);
+              }
+              return false;
+            })
+          : true;
 
         // Date Filtering (includes multiple selections and 'This Weekend')
         const matchesDate = (this.selectedFilters.customDateRange?.start && this.selectedFilters.customDateRange?.end)
@@ -239,7 +247,7 @@ export default {
       axios.get('/api/events')
         .then(response => {
           const currentDate = new Date(this.getCurrentDate());
-          
+
           // Filter out past events for current events list
           this.events = response.data
             .filter(event => {
@@ -251,7 +259,7 @@ export default {
               const dateB = new Date(b.date_start);
               return dateA - dateB;
             });
-          
+
           this.loadingMore = false;
         })
         .catch(error => {
@@ -284,45 +292,43 @@ export default {
       }
       return 'col-span-1 h-96';
     },
-  formatDateRange(start, end) {
-  const startDate = new Date(start);
-  const endDate = new Date(end);
+    formatDateRange(start, end) {
+      const startDate = new Date(start);
+      const endDate = new Date(end);
 
-  if (startDate.getTime() === endDate.getTime()) {
-    // Single-day event
-    return startDate.toLocaleDateString('en-GB', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }); // e.g., "15 November 2024"
-  } else {
-    // Multi-day event
-    const options = { day: 'numeric' };
+      if (startDate.getTime() === endDate.getTime()) {
+        // Single-day event
+        return startDate.toLocaleDateString('en-GB', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }); // e.g., "15 November 2024"
+      } else {
+        // Multi-day event
+        const options = { day: 'numeric' };
 
-    // Check if start and end dates are in the same month/year
-    if (
-      startDate.getFullYear() === endDate.getFullYear() &&
-      startDate.getMonth() === endDate.getMonth()
-    ) {
-      return `${startDate.getDate()} - ${endDate.toLocaleDateString('en-GB', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric'
-      })}`; // e.g., "15 - 16 November, 2024"
-    } else {
-      return `${startDate.toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long'
-      })} - ${endDate.toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      })}`; // e.g., "30 November - 3 December, 2024"
+        // Check if start and end dates are in the same month/year
+        if (
+          startDate.getFullYear() === endDate.getFullYear() &&
+          startDate.getMonth() === endDate.getMonth()
+        ) {
+          return `${startDate.getDate()} - ${endDate.toLocaleDateString('en-GB', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+          })}`; // e.g., "15 - 16 November, 2024"
+        } else {
+          return `${startDate.toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long'
+          })} - ${endDate.toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          })}`; // e.g., "30 November - 3 December, 2024"
+        }
+      }
     }
-  }
-}
-
-
   },
   mounted() {
     this.fetchEvents();
@@ -355,9 +361,9 @@ img {
   bottom: 0;
   left: 0;
   padding: 3px;
-  width: auto;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.9);
   margin: 10px;
+  width: calc(100% - 20px); /* Adjust width considering margin */
 }
 .caption-type { 
   background-color: black; 
@@ -393,5 +399,87 @@ img {
 }
 .bg-opacity-50 { 
   background-color: rgba(0, 0, 0, 0.5); 
+}
+
+@media (max-width: 480px) {
+  .custom-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .event-card {
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: 120px; /* Adjust the height as needed */
+    overflow: hidden;
+  }
+
+  /* Apply flex to both <a> and <div> wrappers inside .event-card */
+  .event-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    text-decoration: none; /* Remove underline for <a> */
+    width: 100%;
+  }
+
+  .event-image {
+    flex: 0 0 33%; /* Ensures the image takes one-third of the width */
+    max-width: 33%; /* Reinforces the width constraint */
+    height: 100%; /* Matches the card's height */
+    border-radius: 0.5rem 0 0 0.5rem; /* Rounded corners on the left */
+    overflow: hidden;
+  }
+
+  .event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .event-details {
+    flex: 1; /* Ensures the text section takes up the remaining space */
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; /* Prevents text overflow */
+    min-width: 0; /* Allows the flex item to shrink properly */
+  }
+
+  .caption-container {
+    position: static; /* Remove absolute positioning */
+    background-color: transparent;
+    margin: 0;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflowing text */
+    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+    padding: 0; /* Remove padding */
+  }
+
+  .caption-type { 
+    background-color: black; 
+    color: white; 
+    padding: 2px 6px; 
+    font-size: 0.8rem; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    display: inline-block; 
+    margin-bottom: 5px; 
+  }
+  .caption-title { 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    margin: 0; 
+    flex-shrink: 1;
+  }
+  .caption-date { 
+    font-size: 1rem; 
+    color: #666; 
+    margin-top: 0.5rem; 
+    flex-shrink: 0;
+  }
 }
 </style>
