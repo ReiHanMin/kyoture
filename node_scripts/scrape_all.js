@@ -28,6 +28,27 @@ const scrapers = [
   // { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
 ];
 
+// Function to send data with retry logic
+async function sendDataWithRetry(url, payload, retries = 3, delay = 1000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await axios.post(url, payload, {
+        headers: { 'Content-Type': 'application/json' },
+        timeout: 10000, // Optional: adjust timeout as needed
+      });
+      return response; // Return the response if successful
+    } catch (error) {
+      if (error.code === 'ECONNRESET' && i < retries - 1) {
+        console.log(`Connection reset. Retrying... Attempt ${i + 1}`);
+        await new Promise(res => setTimeout(res, delay)); // Wait before retrying
+      } else {
+        console.error(`Failed to send data: ${error.message}`);
+        if (i === retries - 1) throw error; // Throw error on the final attempt
+      }
+    }
+  }
+}
+
 const scrapeAll = async () => {
   if (useMockData) {
     console.log('Using mock data...');
@@ -42,9 +63,7 @@ const scrapeAll = async () => {
       console.log('Payload:', JSON.stringify(payload, null, 2));
 
       // Send mock data to the backend
-      const response = await axios.post(`${backendUrl}/api/scrape`, payload, {
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const response = await sendDataWithRetry(`${backendUrl}/api/scrape`, payload);
       console.log('Mock data successfully sent to backend:', response.data);
     } catch (error) {
       console.error('Failed to load or send mock data:', error);
@@ -65,10 +84,8 @@ const scrapeAll = async () => {
         };
         console.log(`Payload for ${scraper.name}:`, JSON.stringify(payload, null, 2));
 
-        // Send the site's data to the backend
-        const response = await axios.post(`${backendUrl}/api/scrape`, payload, {
-          headers: { 'Content-Type': 'application/json' },
-        });
+        // Send the site's data to the backend with retry logic
+        const response = await sendDataWithRetry(`${backendUrl}/api/scrape`, payload);
         console.log(`Data for ${scraper.name} successfully sent to backend:`, response.data);
       } else {
         console.log(`No data scraped for site: ${scraper.name}`);
