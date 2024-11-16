@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "alpinejs": "^3.14.3",
+    "dotenv": "^16.4.5",
     "jsdom": "^25.0.1",
     "moment": "^2.30.1",
     "puppeteer": "^23.6.0",

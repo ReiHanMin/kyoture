@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Services\DataTransformers\DataTransformerFactory;
 
+
+
 class ScrapeController extends Controller
 {
     public function scrape(Request $request)
@@ -37,38 +39,28 @@ class ScrapeController extends Controller
             return response()->json(['error' => 'Unsupported site: ' . $site], 400);
         }
 
-        $processed = false;
-
         // Process each event with the transformer
         foreach ($events as $eventData) {
             try {
-                Log::info('Processing event for site', ['site' => $site, 'title' => $eventData['title'] ?? 'Unnamed Event']);
+                Log::info('Dispatching job for event', ['site' => $site, 'title' => $eventData['title'] ?? 'Unnamed Event']);
                 $transformer->transform($eventData);
-                Log::info('Event processed successfully', ['site' => $site, 'title' => $eventData['title'] ?? 'Unnamed Event']);
-                $processed = true;
             } catch (\Exception $e) {
-                Log::error('Failed to process event', [
+                Log::error('Failed to dispatch job for event', [
                     'site' => $site,
                     'error' => $e->getMessage(),
                     'event_data' => $eventData
                 ]);
-                // Optionally, decide whether to continue processing other events or halt
-                // For example, to continue:
                 continue;
-                // Or to halt:
-                // break;
             }
         }
 
-        if (!$processed) {
-            return response()->json(['error' => 'No events processed. Issues occurred during processing.'], 400);
-        }
-
-        Log::info('All events processed successfully for site', ['site' => $site]);
+        Log::info('All events dispatched for processing for site', ['site' => $site]);
 
         return response()->json([
             'success' => true,
-            'message' => 'Events processed and saved successfully for site: ' . $site,
+            'message' => 'Events have been dispatched for processing for site: ' . $site,
         ]);
     }
 }
+
+

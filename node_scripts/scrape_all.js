@@ -1,15 +1,17 @@
+import 'dotenv/config'; // Load environment variables
 import axios from 'axios';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import 'dotenv/config';
 import scrapeKyotoConcertHall from './kyoto_concert_hall.js';
 import scrapeRohmTheatre from './rohm_theatre.js'; // Import the Rohm Theatre scraper
 import scrapeKyotoKanze from './kyoto_kanze.js';
 import scrapeWaondo from './waondo.js';
 import scrapeKyotoGattaca from './kyoto_gattaca.js';
 
-// Define the backend URL
-const backendUrl = 'http://192.241.139.60'; // Replace this with the actual URL if needed
+// Define the backend URL using APP_URL from .env
+const backendUrl = process.env.APP_URL || 'http://localhost:8000';
 
 // Handle __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -20,10 +22,10 @@ const useMockData = false; // Set to true for mock data testing
 // Array of scraper functions and their identifiers
 const scrapers = [
   { name: 'kyoto_concert_hall', func: scrapeKyotoConcertHall },
-  { name: 'rohm_theatre', func: scrapeRohmTheatre },
-  { name: 'kyoto_kanze', func: scrapeKyotoKanze },
-  { name: 'waondo', func: scrapeWaondo },
-  { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
+  // { name: 'rohm_theatre', func: scrapeRohmTheatre },
+  // { name: 'kyoto_kanze', func: scrapeKyotoKanze },
+  // { name: 'waondo', func: scrapeWaondo },
+  // { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
 ];
 
 const scrapeAll = async () => {

@@ -19,33 +19,44 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
 {
     public function transform(array $eventData): ?array
 {
-    Log::info('Starting transformation process for event data', ['event_data' => $eventData]);
+    Log::info('Dispatching job for event data', ['event_data' => $eventData]);
 
-    // Call OpenAI API to transform data
-    $prompt = $this->constructPrompt($eventData);
-    Log::info('Constructed OpenAI prompt', ['prompt' => $prompt]);
+    // Dispatch the job, passing the transformer class name
+    \App\Jobs\ProcessEventData::dispatch(static::class, $eventData);
 
-    $responseData = $this->callOpenAI($prompt);
-
-    if (!empty($responseData) && isset($responseData['events'])) {
-        Log::info('OpenAI response received', ['response_data' => $responseData]);
-
-        foreach ($responseData['events'] as &$processedEvent) {
-            // Append the original description to each processed event
-            $processedEvent['description'] = $eventData['description'];
-            $this->processAndSaveEvent($processedEvent);
-        }
-
-        return $responseData;
-    }
-
-    Log::warning('API response is empty or malformed.', ['response' => $responseData]);
+    // Return immediately to prevent long processing in the HTTP request
     return null;
 }
 
+    public function processEvent(array $eventData): ?array
+    {
+        Log::info('Starting transformation process for event data', ['event_data' => $eventData]);
+
+        // Call OpenAI API to transform data
+        $prompt = $this->constructPrompt($eventData);
+        Log::info('Constructed OpenAI prompt', ['prompt' => $prompt]);
+
+        $responseData = $this->callOpenAI($prompt);
+
+        if (!empty($responseData) && isset($responseData['events'])) {
+            Log::info('OpenAI response received', ['response_data' => $responseData]);
+
+            foreach ($responseData['events'] as &$processedEvent) {
+                // Append the original description to each processed event
+                $processedEvent['description'] = $eventData['description'] ?? '';
+                $this->processAndSaveEvent($processedEvent);
+            }
+
+            return $responseData;
+        }
+
+        Log::warning('API response is empty or malformed.', ['response' => $responseData]);
+        return null;
+    }
 
 
-    private function processAndSaveEvent(array $eventData): void
+
+    public function processAndSaveEvent(array $eventData): void
     {
         Log::info('Processing event data for saving', ['event_data' => $eventData]);
 
@@ -79,7 +90,7 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         }
     }
 
-    private function updateEvent(int $eventId, array $eventData): ?Event
+    public function updateEvent(int $eventId, array $eventData): ?Event
     {
         try {
             Log::info('Updating existing event', ['event_id' => $eventId]);
@@ -122,7 +133,7 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
     }
 
 
-    private function constructPrompt(array $eventData): string
+    public function constructPrompt(array $eventData): string
     {
         // Ensure eventData is not empty
         if (empty($eventData)) {
@@ -219,66 +230,66 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
 
 
 
-private function callOpenAI(string $prompt): ?array
-{
-    $apiKey = env('OPENAI_API_KEY');
+    public function callOpenAI(string $prompt): ?array
+    {
+        $apiKey = env('OPENAI_API_KEY');
 
-    try {
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $apiKey,
-        ])->post('https://api.openai.com/v1/chat/completions', [
-            'model' => 'gpt-4o-mini',  // Correct model name
-            'messages' => [
-                ['role' => 'user', 'content' => $prompt],
-            ],
-            'max_tokens' => 1000,  // Adjust if needed
-            'temperature' => 0.2,
-        ]);
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $apiKey,
+            ])->post('https://api.openai.com/v1/chat/completions', [
+                'model' => 'gpt-4o-mini',  // Correct model name
+                'messages' => [
+                    ['role' => 'user', 'content' => $prompt],
+                ],
+                'max_tokens' => 1000,  // Adjust if needed
+                'temperature' => 0.2,
+            ]);
 
-        // Handle rate limits or other transient errors
-        if ($response->status() == 429) {
-            Log::warning('Rate limit hit. Retrying after delay.');
-            sleep(5); // Wait before retrying
-            return $this->callOpenAI($prompt); // Recursive retry
-        }
-
-        $responseArray = $response->json();
-
-        if (isset($responseArray['choices'][0]['message']['content'])) {
-            // Get the content
-            $parsedData = $responseArray['choices'][0]['message']['content'];
-            
-            // Use regex to extract JSON between braces
-            if (preg_match('/\{(?:[^{}]|(?R))*\}/s', $parsedData, $matches)) {
-                $jsonContent = $matches[0];  // Extracted JSON string
-                Log::info('Extracted JSON from OpenAI response', ['response' => $jsonContent]);
-
-                // Decode the JSON
-                return json_decode($jsonContent, true);
-            } else {
-                Log::warning('No JSON found in OpenAI response', ['response' => $parsedData]);
+            // Handle rate limits or other transient errors
+            if ($response->status() == 429) {
+                Log::warning('Rate limit hit. Retrying after delay.');
+                sleep(5); // Wait before retrying
+                return $this->callOpenAI($prompt); // Recursive retry
             }
-        } else {
-            Log::warning('No content in OpenAI response', ['response' => $responseArray]);
-        }
-    } catch (\Exception $e) {
-        Log::error('Error calling OpenAI API', ['error' => $e->getMessage()]);
-    }
 
-    return null;
-}
+            $responseArray = $response->json();
+
+            if (isset($responseArray['choices'][0]['message']['content'])) {
+                // Get the content
+                $parsedData = $responseArray['choices'][0]['message']['content'];
+                
+                // Use regex to extract JSON between braces
+                if (preg_match('/\{(?:[^{}]|(?R))*\}/s', $parsedData, $matches)) {
+                    $jsonContent = $matches[0];  // Extracted JSON string
+                    Log::info('Extracted JSON from OpenAI response', ['response' => $jsonContent]);
+
+                    // Decode the JSON
+                    return json_decode($jsonContent, true);
+                } else {
+                    Log::warning('No JSON found in OpenAI response', ['response' => $parsedData]);
+                }
+            } else {
+                Log::warning('No content in OpenAI response', ['response' => $responseArray]);
+            }
+        } catch (\Exception $e) {
+            Log::error('Error calling OpenAI API', ['error' => $e->getMessage()]);
+        }
+
+        return null;
+    }
 
 
 
     // Implement the helper methods
-    private function saveVenue(string $venueName): int
+    public function saveVenue(string $venueName): int
     {
         // Save or retrieve the venue and return its ID
         $venue = Venue::firstOrCreate(['name' => $venueName]);
         return $venue->id;
     }
 
-    private function saveEvent(array $eventData): ?Event
+    public function saveEvent(array $eventData): ?Event
     {
         try {
             Log::info('Creating or updating event', ['event_data' => $eventData]);
@@ -333,7 +344,7 @@ private function callOpenAI(string $prompt): ?array
         return null;
     }
 
-    private function isValidEventData(array $eventData): bool
+    public function isValidEventData(array $eventData): bool
     {
         $validator = Validator::make($eventData, [
             'title' => 'required|string',
@@ -354,7 +365,7 @@ private function callOpenAI(string $prompt): ?array
 
 
 
-    private function saveSchedules(int $eventId, array $schedules)
+    public function saveSchedules(int $eventId, array $schedules)
     {
         foreach ($schedules as $scheduleData) {
             Schedule::updateOrCreate(
@@ -371,13 +382,13 @@ private function callOpenAI(string $prompt): ?array
         }
     }
 
-    private function nullIfEmpty($value)
+    public function nullIfEmpty($value)
     {
     return isset($value) && $value !== '' ? $value : null;
     }
 
 
-    private function saveImages(Event $event, ?string $primaryImageUrl, array $images = []): void
+    public function saveImages(Event $event, ?string $primaryImageUrl, array $images = []): void
     {
         // Save the primary image if available
         if ($primaryImageUrl) {
@@ -412,7 +423,7 @@ private function callOpenAI(string $prompt): ?array
 
 
 
-    private function savePrices(int $eventId, array $prices)
+    public function savePrices(int $eventId, array $prices)
     {
         foreach ($prices as $priceData) {
             Price::updateOrCreate(
@@ -429,7 +440,7 @@ private function callOpenAI(string $prompt): ?array
         }
     }
 
-    private function saveCategories(Event $event, array $categories)
+    public function saveCategories(Event $event, array $categories)
     {
         foreach ($categories as $categoryName) {
             $category = Category::updateOrCreate(['name' => $categoryName]);
@@ -438,7 +449,7 @@ private function callOpenAI(string $prompt): ?array
     }
 
 
-    private function saveTags(Event $event, array $tags)
+    public function saveTags(Event $event, array $tags)
     {
         foreach ($tags as $tagName) {
             $tag = Tag::firstOrCreate(['name' => $tagName]);
@@ -447,7 +458,7 @@ private function callOpenAI(string $prompt): ?array
     }
 
 
-    private function saveEventLink(int $eventId, string $eventLink)
+    public function saveEventLink(int $eventId, string $eventLink)
     {
         EventLink::updateOrCreate(
             [
