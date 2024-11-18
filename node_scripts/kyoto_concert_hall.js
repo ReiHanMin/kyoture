@@ -14,7 +14,7 @@ const parseDateRange = (rawDate) => {
   const dateRegex = /(\w+day,\s\w+\s+\d{1,2}\s+\d{4})(?:\s*–\s*(\w+day,\s\w+\s+\d{1,2}\s+\d{4}))?/;
   const matches = rawDate.match(dateRegex);
   if (matches) {
-    return [matches[1], matches[2] || null];
+    return [matches[1], matches[2] || matches[1]]; // Use start date as end date if end date is not provided
   }
   return [null, null];
 };
@@ -22,6 +22,22 @@ const parseDateRange = (rawDate) => {
 // Helper function to split program data into structured list
 const parseProgram = (programText) => {
   return programText ? programText.split('\n').map(line => line.trim()).filter(line => line) : [];
+};
+
+// Helper function to transform raw price text into structured array
+const parsePrice = (priceText) => {
+  const priceRegex = /([A-Za-z\s()]+)?\s*￥([\d,]+)/g;
+  const prices = [];
+  let match;
+  while ((match = priceRegex.exec(priceText)) !== null) {
+    prices.push({
+      price_tier: match[1]?.trim() || 'General',
+      amount: parseInt(match[2].replace(/,/g, ''), 10),
+      currency: 'JPY',
+      discount_info: null, // Add logic for discount info if needed
+    });
+  }
+  return prices;
 };
 
 // Main scraping function for Kyoto Concert Hall
@@ -68,6 +84,7 @@ const scrapeKyotoConcertHall = async () => {
       // Clean and structure the data
       const [date_start, date_end] = parseDateRange(eventDetails.date);
       const program = parseProgram(eventDetails.program);
+      const prices = parsePrice(eventDetails.price);
 
       const eventInfo = {
         title: eventDetails.title || 'No title available',
@@ -77,8 +94,15 @@ const scrapeKyotoConcertHall = async () => {
         organization: 'Kyoto Concert Hall',
         image_url: imageUrl,
         program,
-        price: eventDetails.price, // Send raw price text to the backend
-        release_date: eventDetails.releaseDate || 'No release date available',
+        prices, // Use parsed price data
+        schedule: [
+          {
+            date: date_start,
+            time_start: eventDetails.time_start || null,
+            time_end: null,
+            special_notes: null,
+          }
+        ],
         description: eventDetails.description || 'No description available',
         site: 'kyoto_concert_hall'
       };
@@ -110,34 +134,45 @@ const parseModalContent = async (modalHTML) => {
     const { JSDOM } = await import('jsdom');
     const dom = new JSDOM(modalHTML);
     const document = dom.window.document;
+
     const title = document.querySelector('.business_detail .title')?.textContent.trim() || 'No title';
-    const date = document.querySelector('.business_detail .date')?.textContent.trim().replace(/^Date：/, '').trim() || 'No date';
+    const dateText = document.querySelector('.business_detail .date')?.textContent.trim().replace(/^Date：/, '').trim() || 'No date';
     const venue = document.querySelector('.business_detail .hall')?.textContent.trim().replace(/^Hall：/, '').trim() || 'Kyoto Concert Hall';
     const program = document.querySelector('.business_detail .program')?.textContent.trim().replace(/^Program：/, '').trim() || 'No program';
     const price = document.querySelector('.business_detail .price')?.textContent.trim().replace(/^Price：/, '').trim() || 'No price';
     const releaseDate = document.querySelector('.business_detail .ticket')?.textContent.trim().replace(/^Release date：/, '').trim() || 'No release date';
     const description = document.querySelector('.business_detail .description')?.textContent.trim() || 'No description available';
 
-    return { title, date, venue, program, price, releaseDate, description };
+    // Extract date and time from dateText
+    const dateMatch = dateText.match(/(\w+day,\s\w+\s+\d{1,2}\s+\d{4})\s*(\d{1,2}[:：]\d{2})?\s*/);
+    const date = dateMatch ? dateMatch[1].trim() : 'No date';
+    const time = dateMatch && dateMatch[2] ? dateMatch[2].replace('：', ':').trim() : null;
+
+    return {
+      title,
+      date,
+      venue,
+      program,
+      price, // Raw price text
+      releaseDate,
+      description,
+      time_start: time, // Add parsed time as time_start
+      time_end: null,
+    };
   } catch (error) {
     console.error('Error parsing modal content:', error);
-    return { title: 'No title', date: 'No date', venue: 'No venue', program: 'No program', price: 'No price', releaseDate: 'No release date', description: 'No description available' };
+    return {
+      title: 'No title',
+      date: 'No date',
+      venue: 'No venue',
+      program: 'No program',
+      price: 'No price', // Ensure price is returned even on error
+      releaseDate: 'No release date',
+      description: 'No description available',
+      time_start: null,
+      time_end: null,
+    };
   }
 };
 
 export default scrapeKyotoConcertHall;
-
-// Use this block only if you need to run the script directly
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-if (process.argv[1] === __filename) {
-  (async () => {
-    try {
-      const data = await scrapeKyotoConcertHall();
-      console.log(JSON.stringify(data, null, 2));
-    } catch (error) {
-      console.error('An error occurred:', error);
-    }
-  })();
-}

@@ -18,6 +18,7 @@ class DataTransformerFactory
             'kyoto_kanze' => new KyotoKanzeDataTransformer(),
             'waondo' => new WaondoDataTransformer(),
             'kyoto_gattaca' => new KyotoGattacaDataTransformer(),
+            'kakubarhythm' => new KakubarhythmDataTransformer(),
             // Add other site-specific transformers as you create them
             default => null,
         };

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Http;
+use App\Jobs\ProcessEventData;
 
 class KyotoGattacaDataTransformer implements DataTransformerInterface
 {
@@ -21,36 +22,14 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
     {
         Log::info('Starting transformation process for Kyoto Gattaca event data', ['event_data' => $eventData]);
 
-        // Remove `event_link` from $eventData before constructing the prompt
-        $originalEventLink = $eventData['event_link'] ?? null;
-        unset($eventData['event_link']);
+        // Dispatch the job for async processing, passing the transformer class and event data
+        ProcessEventData::dispatch(static::class, $eventData);
 
-        // Prepare data transformation using OpenAI or custom parsing logic
-        $prompt = $this->constructPrompt($eventData);
-        Log::info('Constructed OpenAI prompt', ['prompt' => $prompt]);
-
-        $responseData = $this->callOpenAI($prompt);
-
-        if (!empty($responseData) && isset($responseData['events'])) {
-            Log::info('OpenAI response received', ['response_data' => $responseData]);
-
-            foreach ($responseData['events'] as &$processedEvent) {
-                // Append the original `event_link` back to each event
-                $processedEvent['event_link'] = $originalEventLink;
-
-                Log::info('Processed event data before saving', ['processed_event' => $processedEvent]);
-
-                $this->processAndSaveEvent($processedEvent);
-            }
-
-            return $responseData;
-        }
-
-        Log::warning('API response is empty or malformed.', ['response' => $responseData]);
+        // Return immediately to prevent long processing in the HTTP request
         return null;
     }
 
-    private function processAndSaveEvent(array $eventData): void
+    public function processEvent(array $eventData): void
     {
         Log::info('Processing event data for Kyoto Gattaca', ['event_data' => $eventData]);
 
@@ -87,7 +66,7 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         }
     }
 
-    private function isValidEventData(array $eventData): bool
+    public function isValidEventData(array $eventData): bool
     {
         $validator = Validator::make($eventData, [
             'title' => 'required|string',
@@ -105,7 +84,7 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         return true;
     }
 
-    private function saveEvent(array $eventData): ?Event
+    public function saveEvent(array $eventData): ?Event
     {
         try {
             Log::info('Saving new Kyoto Gattaca event', ['event_data' => $eventData]);
@@ -130,7 +109,6 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
             $this->savePrices($event->id, $eventData['prices'] ?? []);
 
             return $event;
-
         } catch (QueryException $qe) {
             Log::error('Database error while saving Kyoto Gattaca event', [
                 'error_message' => $qe->getMessage(),
@@ -148,7 +126,7 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         return null;
     }
 
-    private function updateEvent(int $eventId, array $eventData): ?Event
+    public function updateEvent(int $eventId, array $eventData): ?Event
     {
         try {
             Log::info('Updating existing event for Kyoto Gattaca', ['event_id' => $eventId]);
@@ -188,97 +166,96 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         return null;
     }
 
-    private function constructPrompt(array $eventData): string
+    public function constructPrompt(array $eventData): string
     {
         // Customize the prompt for Kyoto Gattaca events
         $eventJson = json_encode($eventData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
         $prompt = <<<EOT
-Given the following JSON data extracted from Kyoto Gattaca's event page, parse and transform it into the specified JSON format. Return only the extracted data in **valid JSON format**. Do not include any comments, explanations, or additional text outside the JSON structure.
+        Given the following JSON data extracted from Kyoto Gattaca's event page, parse and transform it into the specified JSON format. Return only the extracted data in **valid JSON format**. Do not include any comments, explanations, or additional text outside the JSON structure.
 
-Event Data:
-{$eventJson}
+        Event Data:
+        {$eventJson}
 
-**Extraction Requirements**:
+        **Extraction Requirements**:
 
-1. **Date Parsing**:
-    - Extract 'date_start' and 'date_end' from the event data.
-    - If only a single date is found, set both 'date_start' and 'date_end' to this value.
-    - Format dates as 'YYYY-MM-DD'.
+        1. **Date Parsing**:
+            - Extract 'date_start' and 'date_end' from the event data.
+            - If only a single date is found, set both 'date_start' and 'date_end' to this value.
+            - Format dates as 'YYYY-MM-DD'.
 
-2.  **Schedule Parsing**:
-    - Identify any schedule details, including times if available.
-    - If the time is 'TBA' or not specified, set `time_start` and `time_end` to null.
-    - Construct a 'schedule' array with 'date', 'time_start', 'time_end', and 'special_notes' fields.
+        2.  **Schedule Parsing**:
+            - Identify any schedule details, including times if available.
+            - If the time is 'TBA' or not specified, set `time_start` and `time_end` to null.
+            - Construct a 'schedule' array with 'date', 'time_start', 'time_end', and 'special_notes' fields.
 
+        3. **Category Assignment**:
+            - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
+                ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
+            
+        4. **Tag Assignment**:
+            - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
+                ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
 
-    3. **Category Assignment**:
-    - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
-        ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
-    
-    4. **Tag Assignment**:
-    - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
-        ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
+        5. **Price Parsing**:
+            - Locate any price information and generate an array of price objects.
+            - Each price object should include 'price_tier', 'amount', 'currency' as 'JPY', and 'discount_info' if available.¥
+            - If there is an advanced price and a door price, then separate these into different price tiers.
+            - If price is set to 'TBA', return this as null.
+            - If the event is free, set 'amount' to '0' and 'price_tier' to 'Free'.
 
-5. **Price Parsing**:
-    - Locate any price information and generate an array of price objects.
-    - Each price object should include 'price_tier', 'amount', 'currency' as 'JPY', and 'discount_info' if available.¥
-    - If there is an advanced price and a door price, then separate these into different price tiers.
-    - If price is set to 'TBA', return this as null.
-    - If the event is free, set 'amount' to '0' and 'price_tier' to 'Free'.
-
-6. **Output Format**:
-    - Return the extracted data in this JSON format, with an 'events' array containing one event object:
-    {
-        "events": [
+        6. **Output Format**:
+            - Return the extracted data in this JSON format, with an 'events' array containing one event object:
             {
-                "title": "Event Title",
-                "date_start": "YYYY-MM-DD",
-                "date_end": "YYYY-MM-DD",
-                "venue": "Kyoto Gattaca",
-                "organization": "Kyoto Gattaca",
-                "event_link": "Event link",
-                "image_url": "Image URL if available",
-                "schedule": [
+                "events": [
                     {
-                        "date": "YYYY-MM-DD",
-                        "time_start": "HH:mm",
-                        "time_end": "HH:mm",
-                        "special_notes": "Any available notes"
+                        "title": "Event Title",
+                        "date_start": "YYYY-MM-DD",
+                        "date_end": "YYYY-MM-DD",
+                        "venue": "Kyoto Gattaca",
+                        "organization": "Kyoto Gattaca",
+                        "event_link": "Event link",
+                        "image_url": "Image URL if available",
+                        "schedule": [
+                            {
+                                "date": "YYYY-MM-DD",
+                                "time_start": "HH:mm",
+                                "time_end": "HH:mm",
+                                "special_notes": "Any available notes"
+                            }
+                        ],
+                        "categories": ["Category1", "Category2"],
+                        "tags": ["Tag1", "Tag2"],
+                        "prices": [
+                            {
+                                "price_tier": "Advance",
+                                "amount": "2400",
+                                "currency": "JPY",
+                                "discount_info": "Student discount ¥500 off"
+                            },
+                            {
+                                "price_tier": "Door",
+                                "amount": "2900",
+                                "currency": "JPY",
+                                "discount_info": null
+                            }
+                        ],
+                        "host": "Event organizer's name if available",
+                        "ended": false,
+                        "free": false
                     }
-                ],
-                "categories": ["Category1", "Category2"],
-                "tags": ["Tag1", "Tag2"],
-                "prices": [
-                    {
-                        "price_tier": "Advance",
-                        "amount": "2400",
-                        "currency": "JPY",
-                        "discount_info": "Student discount ¥500 off"
-                    },
-                    {
-                        "price_tier": "Door",
-                        "amount": "2900",
-                        "currency": "JPY",
-                        "discount_info": null
-                    }
-                ],
-                "host": "Event organizer's name if available",
-                "ended": false,
-                "free": false
+                ]
             }
-        ]
-    }
 
-Parse the event data and structure it as instructed.
+        Parse the event data and structure it as instructed.
 
-EOT;
+        EOT;
 
         Log::info('Constructed prompt for Kyoto Gattaca', ['prompt' => $prompt]);
         return $prompt;
     }
 
-    private function callOpenAI(string $prompt): ?array
+    public function callOpenAI(string $prompt): ?array
     {
         $apiKey = env('OPENAI_API_KEY');
         Log::info('Calling OpenAI API', ['prompt' => $prompt]);
@@ -287,7 +264,7 @@ EOT;
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $apiKey,
             ])->post('https://api.openai.com/v1/chat/completions', [
-                'model' => 'gpt-4o-mini',  // Ensure you have access to GPT-4
+                'model' => 'gpt-4o-mini', // Ensure you have access to GPT-4
                 'messages' => [
                     ['role' => 'user', 'content' => $prompt],
                 ],
@@ -315,7 +292,7 @@ EOT;
 
                 // Use regex to extract JSON between braces
                 if (preg_match('/\{(?:[^{}]|(?R))*\}/s', $parsedData, $matches)) {
-                    $jsonContent = $matches[0];  // Extracted JSON string
+                    $jsonContent = $matches[0]; // Extracted JSON string
                     Log::info('Extracted JSON from OpenAI response', ['json_content' => $jsonContent]);
 
                     // Decode the JSON
@@ -338,38 +315,35 @@ EOT;
         return null;
     }
 
-    // Helper methods remain the same as in WaondoDataTransformer
+    public function saveSchedules(int $eventId, array $schedules): void
+    {
+        foreach ($schedules as $scheduleData) {
+            // Convert 'TBA' or empty strings to null
+            $timeStart = $this->nullIfEmpty($scheduleData['time_start']);
+            $timeEnd = $this->nullIfEmpty($scheduleData['time_end']);
 
-    private function saveSchedules(int $eventId, array $schedules): void
-{
-    foreach ($schedules as $scheduleData) {
-        // Convert 'TBA' or empty strings to null
-        $timeStart = $this->nullIfEmpty($scheduleData['time_start']);
-        $timeEnd = $this->nullIfEmpty($scheduleData['time_end']);
+            if (strtoupper($timeStart) === 'TBA') {
+                $timeStart = null;
+            }
+            if (strtoupper($timeEnd) === 'TBA') {
+                $timeEnd = null;
+            }
 
-        if (strtoupper($timeStart) === 'TBA') {
-            $timeStart = null;
+            Schedule::updateOrCreate(
+                [
+                    'event_id' => $eventId,
+                    'date' => $scheduleData['date'],
+                ],
+                [
+                    'time_start' => $timeStart,
+                    'time_end' => $timeEnd,
+                    'special_notes' => $this->nullIfEmpty($scheduleData['special_notes']),
+                ]
+            );
         }
-        if (strtoupper($timeEnd) === 'TBA') {
-            $timeEnd = null;
-        }
-
-        Schedule::updateOrCreate(
-            [
-                'event_id' => $eventId,
-                'date' => $scheduleData['date'],
-            ],
-            [
-                'time_start' => $timeStart,
-                'time_end' => $timeEnd,
-                'special_notes' => $this->nullIfEmpty($scheduleData['special_notes']),
-            ]
-        );
     }
-}
 
-
-    private function saveVenue(string $venueName): ?int
+    public function saveVenue(string $venueName): ?int
     {
         if (empty($venueName)) {
             return null;
@@ -379,7 +353,7 @@ EOT;
         return $venue->id;
     }
 
-    private function saveEventLink(int $eventId, string $eventLink): void
+    public function saveEventLink(int $eventId, string $eventLink): void
     {
         EventLink::updateOrCreate(
             [
@@ -392,7 +366,7 @@ EOT;
         );
     }
 
-    private function saveCategories(Event $event, array $categories): void
+    public function saveCategories(Event $event, array $categories): void
     {
         foreach ($categories as $categoryName) {
             $category = Category::firstOrCreate(['name' => $categoryName]);
@@ -400,7 +374,7 @@ EOT;
         }
     }
 
-    private function saveTags(Event $event, array $tags): void
+    public function saveTags(Event $event, array $tags): void
     {
         foreach ($tags as $tagName) {
             $tag = Tag::firstOrCreate(['name' => $tagName]);
@@ -408,7 +382,7 @@ EOT;
         }
     }
 
-    private function saveImages(Event $event, ?string $primaryImageUrl, array $images = [], ?string $eventLink = null): void
+    public function saveImages(Event $event, ?string $primaryImageUrl, array $images = [], ?string $eventLink = null): void
     {
         // Use a default image URL if no primary image URL is provided or if it's empty
         $defaultImageUrl = 'https://example.com/default-event-image.jpg'; // Replace with an appropriate default image URL
@@ -444,7 +418,7 @@ EOT;
         }
     }
 
-    private function savePrices(int $eventId, array $prices): void
+    public function savePrices(int $eventId, array $prices): void
     {
         foreach ($prices as $priceData) {
             // Ensure discount_info is set to null if it's not provided
@@ -464,11 +438,9 @@ EOT;
         }
     }
 
-    private function nullIfEmpty($value)
-{
-    $value = trim($value);
-    return (isset($value) && $value !== '' && strtoupper($value) !== 'TBA') ? $value : null;
-}
-
-
+    public function nullIfEmpty($value)
+    {
+        $value = trim($value);
+        return (isset($value) && $value !== '' && strtoupper($value) !== 'TBA') ? $value : null;
+    }
 }

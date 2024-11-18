@@ -51,7 +51,7 @@ class WaondoDataTransformer implements DataTransformerInterface
 }
 
 
-private function processAndSaveEvent(array $eventData): void
+public function processAndSaveEvent(array $eventData): void
 {
     Log::info('Processing event data for Waondo', ['event_data' => $eventData]);
 
@@ -89,7 +89,7 @@ private function processAndSaveEvent(array $eventData): void
 }
 
 
-private function isValidEventData(array $eventData): bool
+public function isValidEventData(array $eventData): bool
 {
     $validator = Validator::make($eventData, [
         'title' => 'required|string',
@@ -108,7 +108,7 @@ private function isValidEventData(array $eventData): bool
 }
 
 
-private function saveEvent(array $eventData): ?Event
+public function saveEvent(array $eventData): ?Event
 {
     try {
         Log::info('Saving new Waondo event', ['event_data' => $eventData]);
@@ -154,7 +154,7 @@ private function saveEvent(array $eventData): ?Event
 }
 
 
-    private function updateEvent(int $eventId, array $eventData): ?Event
+    public function updateEvent(int $eventId, array $eventData): ?Event
     {
         try {
             Log::info('Updating existing event for Waondo', ['event_id' => $eventId]);
@@ -194,7 +194,7 @@ private function saveEvent(array $eventData): ?Event
         return null;
     }
 
-    private function constructPrompt(array $eventData): string
+    public function constructPrompt(array $eventData): string
     {
         // Customize the prompt for Waondo events
         $eventJson = json_encode($eventData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
@@ -274,7 +274,7 @@ EOT;
         return $prompt;
     }
 
-    private function callOpenAI(string $prompt): ?array
+    public function callOpenAI(string $prompt): ?array
 {
     $apiKey = env('OPENAI_API_KEY');
     Log::info('Calling OpenAI API', ['prompt' => $prompt]);
@@ -337,7 +337,7 @@ EOT;
 
     // Helper methods remain the same as in KyotoKanzeDataTransformer
 
-    private function saveSchedules(int $eventId, array $schedules): void
+    public function saveSchedules(int $eventId, array $schedules): void
     {
         foreach ($schedules as $scheduleData) {
             Schedule::updateOrCreate(
@@ -354,7 +354,7 @@ EOT;
         }
     }
 
-    private function saveVenue(string $venueName): ?int
+    public function saveVenue(string $venueName): ?int
     {
         if (empty($venueName)) {
             return null;
@@ -364,7 +364,7 @@ EOT;
         return $venue->id;
     }
 
-    private function saveEventLink(int $eventId, string $eventLink): void
+    public function saveEventLink(int $eventId, string $eventLink): void
     {
         EventLink::updateOrCreate(
             [
@@ -377,7 +377,7 @@ EOT;
         );
     }
 
-    private function saveCategories(Event $event, array $categories): void
+    public function saveCategories(Event $event, array $categories): void
     {
         foreach ($categories as $categoryName) {
             $category = Category::firstOrCreate(['name' => $categoryName]);
@@ -385,7 +385,7 @@ EOT;
         }
     }
 
-    private function saveTags(Event $event, array $tags): void
+    public function saveTags(Event $event, array $tags): void
     {
         foreach ($tags as $tagName) {
             $tag = Tag::firstOrCreate(['name' => $tagName]);
@@ -393,7 +393,7 @@ EOT;
         }
     }
 
-    private function saveImages(Event $event, ?string $primaryImageUrl, array $images = [], ?string $eventLink = null): void
+    public function saveImages(Event $event, ?string $primaryImageUrl, array $images = [], ?string $eventLink = null): void
     {
         // Use a default image URL if no primary image URL is provided or if it's empty
         $defaultImageUrl = 'https://static.wixstatic.com/media/21524a_43377076b1cf45f4addfe4e12782b84b~mv2.jpg'; // Replace with an appropriate default image URL
@@ -429,7 +429,7 @@ EOT;
         }
     }
 
-    private function savePrices(int $eventId, array $prices): void
+    public function savePrices(int $eventId, array $prices): void
     {
         foreach ($prices as $priceData) {
             // Ensure discount_info is set to null if it's not provided
@@ -450,7 +450,7 @@ EOT;
     }
 
     // Helper function to handle null values for empty strings
-    private function nullIfEmpty($value)
+    public function nullIfEmpty($value)
 {
     return isset($value) && $value !== '' ? $value : null;
 }

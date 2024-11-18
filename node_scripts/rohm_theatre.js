@@ -8,10 +8,21 @@ puppeteer.use(StealthPlugin());
 // Helper function for delays
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// Function to parse dates in the "YYYY.MM.DD – MM.DD" format
+const parseDateRange = (dateText) => {
+  const match = dateText.match(/^(\d{4}\.\d{1,2}\.\d{1,2}) \([A-Z]+\)(?: – (\d{1,2}\.\d{1,2}) \([A-Z]+\))?$/);
+  if (match) {
+    const startDate = match[1].replace(/\./g, '-');
+    const endDate = match[2] ? `${match[1].slice(0, 5)}${match[2].replace(/\./g, '-')}` : startDate;
+    return [startDate, endDate];
+  }
+  return [null, null];
+};
+
 // Main scraping function for Rohm Theatre
 const scrapeRohmTheatre = async () => {
   const browser = await puppeteer.launch({
-    headless: true, // Set to true for production
+    headless: true,
     slowMo: 250,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
@@ -31,72 +42,32 @@ const scrapeRohmTheatre = async () => {
     });
     console.log('Page loaded.');
 
-    // Handle consent pop-ups if necessary
-    const consentButton = await page.$('.cc-allow');
-    if (consentButton) {
-      await consentButton.click();
-      console.log('Accepted cookie consent.');
-    }
-
-    // Scroll to the bottom of the page to trigger lazy loading
-    await page.evaluate(async () => {
-      await new Promise((resolve) => {
-        let totalHeight = 0;
-        const distance = 100;
-        const timer = setInterval(() => {
-          window.scrollBy(0, distance);
-          totalHeight += distance;
-          if (totalHeight >= document.body.scrollHeight) {
-            clearInterval(timer);
-            resolve();
-          }
-        }, 100);
-      });
-    });
-    console.log('Scrolled to the bottom of the page.');
-
-    // Wait for event items to load
-    await page.waitForSelector('li.projects-item', { visible: true, timeout: 60000 });
-    console.log('Event items are present.');
-
-    // Extract event data
     const eventElements = await page.$$('li.projects-item');
     console.log(`Found ${eventElements.length} event items.`);
     const eventData = [];
 
     for (const eventElement of eventElements) {
-      // Extract the status of the event
       const status = await eventElement.$eval('.status-box .status span', el => el.innerText.trim()).catch(() => null);
-      
-      // Check if the status is "Ended" or "On Now" and skip if true
       if (status && (status.toLowerCase() === 'ended' || status.toLowerCase() === 'on now')) {
         console.log(`Event status is "${status}", skipping...`);
         continue;
       }
 
-      // Extract the date from the .date div
       const eventDate = await eventElement.$eval('.date', el => el.innerText.trim()).catch(() => null);
-
-      // Skip events with missing dates or placeholders
       if (!eventDate || eventDate.toLowerCase().includes("details tba") || eventDate.toLowerCase().includes("year-round")) {
         console.log(`Event date is "${eventDate}", invalid or missing, skipping...`);
         continue;
       }
 
-      // Handle date ranges like "YYYY.MM.DD (DAY) – MM.DD (DAY)" or single dates
-      const dateRangeMatch = eventDate.match(/^(\d{4}\.\d{1,2}\.\d{1,2}) \([A-Z]+\)(?: – (\d{1,2}\.\d{1,2}) \([A-Z]+\))?$/);
-      if (dateRangeMatch) {
-        const startDate = new Date(dateRangeMatch[1]);
-        const endDate = dateRangeMatch[2] ? new Date(`${dateRangeMatch[1].slice(0, 5)}${dateRangeMatch[2]}`) : startDate;
-        
-        // If the end date is before today, skip the event
-        const today = new Date();
-        if (endDate < today) {
-          console.log(`Event date range "${eventDate}" has already ended, skipping...`);
-          continue;
-        }
-      } else {
+      const [date_start, date_end] = parseDateRange(eventDate);
+      if (!date_start) {
         console.log(`Event date "${eventDate}" does not match the expected format, skipping...`);
+        continue;
+      }
+
+      const today = new Date();
+      if (new Date(date_end) < today) {
+        console.log(`Event date range "${eventDate}" has already ended, skipping...`);
         continue;
       }
 
@@ -110,17 +81,8 @@ const scrapeRohmTheatre = async () => {
           await detailPage.goto(eventLink, { waitUntil: 'domcontentloaded', timeout: 60000 });
           console.log(`Navigated to event detail page: ${eventLink}`);
 
-          await delay(3000); // Wait for 3 seconds to ensure complete page loading
+          await delay(3000);
 
-          // Check for the presence of .post-detail-box2
-          const scheduleBox = await detailPage.$('.post-detail-box2');
-          if (!scheduleBox) {
-            console.log('No .post-detail-box2 found. Assuming event has ended, skipping...');
-            await detailPage.close();
-            continue;
-          }
-
-          // Extract raw price text
           const rawPriceText = await detailPage.evaluate(() => {
             const priceHeader = [...document.querySelectorAll('h3')].find(
               el => el.textContent.includes('Ticket Prices')
@@ -130,38 +92,55 @@ const scrapeRohmTheatre = async () => {
 
           console.log('Raw price text:', rawPriceText);
 
-          // Extract description from the detail page
           const description = await detailPage.$eval('.txt', el => el.innerText.trim()).catch(() => null);
-
-          // Extract title, date, venue, and image from the main page
           const title = await eventElement.$eval('.txt h3', el => el.innerText.trim()).catch(() => null);
-          const date = await eventElement.$eval('.txt .date', el => el.innerText.trim()).catch(() => null);
           const imageUrl = await eventElement.$eval('.pic img', el => el.src).catch(() => null);
+          const scheduleText = await detailPage.$eval('.post-detail-box2 p:nth-of-type(2)', el => el.innerHTML.trim()).catch(() => null);
+          const venue = await detailPage.$eval('.post-detail-box2 p:nth-of-type(3)', el => el.innerText.trim()).catch(() => 'Rohm Theatre');
 
-          // Extract schedule data from the detail page
-          const scheduleText = await scheduleBox.$eval('p:nth-of-type(2)', el => el.innerHTML.trim()).catch(() => null);
+          // Parse prices into structured format
+          const prices = [];
+          if (rawPriceText && rawPriceText !== 'No Ticket Prices found') {
+            const priceMatches = rawPriceText.match(/￥?([\d,]+)/g);
+            if (priceMatches) {
+              priceMatches.forEach((price, index) => {
+                prices.push({
+                  price_tier: `Tier ${index + 1}`,
+                  amount: price.replace(/￥|,/g, ''),
+                  currency: 'JPY'
+                });
+              });
+            }
+          }
 
-          console.log('Raw schedule text:', scheduleText);
-
-          // Extract venue information
-          const venue = await scheduleBox.$eval('p:nth-of-type(3)', el => el.innerText.trim()).catch(() => null);
-
-          // Push the raw event data to the array
           const eventInfo = {
             title,
-            raw_date: date,
-            raw_schedule: scheduleText,
-            venue: venue || 'Rohm Theatre',
+            date_start,
+            date_end,
+            venue,
             organization: 'Rohm Theatre',
-            description: description || null,
             image_url: imageUrl || 'No image available',
-            event_link: eventLink || 'No link available',
+            schedule: [
+              {
+                date: date_start,
+                time_start: null,
+                time_end: null,
+                special_notes: scheduleText
+              }
+            ],
+            prices,
+            description: description || null,
+            event_link: eventLink,
             raw_price_text: rawPriceText,
-            site: 'rohm_theatre' // Add site field
+            categories: [], // Add logic for category assignment if needed
+            tags: [], // Add logic for tag assignment if needed
+            ended: false,
+            free: prices.length === 0, // Mark as free if no price data is found
+            site: 'rohm_theatre'
           };
 
           eventData.push(eventInfo);
-          console.log('Extracted raw event data:', eventInfo);
+          console.log('Extracted structured event data:', eventInfo);
 
           await detailPage.close();
           console.log('Detail page closed.');

@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\QueryException;
 
-class KyotoConcertHallDataTransformer implements DataTransformerInterface
+class KakubarhythmDataTransformer implements DataTransformerInterface
 {
     public function transform(array $eventData): ?array
     {
-        Log::info('Dispatching job for event data', ['event_data' => $eventData]);
+        Log::info('Dispatching job for Kakubarhythm event data', ['event_data' => $eventData]);
 
         // Dispatch the job, passing the transformer class name
         \App\Jobs\ProcessEventData::dispatch(static::class, $eventData);
@@ -30,7 +30,7 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
 
     public function processEvent(array $eventData): ?array
     {
-        Log::info('Starting transformation process for event data', ['event_data' => $eventData]);
+        Log::info('Starting transformation process for Kakubarhythm event data', ['event_data' => $eventData]);
     
         // Generate external_id using title, date_start, and venue
         $title = strtolower(trim($eventData['title']));
@@ -42,7 +42,7 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
     
         // Log a warning if event_link is missing
         if (empty($eventData['event_link'])) {
-            Log::warning('event_link is missing from event data.', ['event_data' => $eventData]);
+            Log::warning('event_link is missing from Kakubarhythm event data.', ['event_data' => $eventData]);
         }
     
         // Determine if the event is free based on prices
@@ -85,33 +85,25 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         Log::warning('API response is empty or malformed.', ['response' => $responseData]);
         return null;
     }
-    
-
 
     public function processAndSaveEvent(array $eventData): void
     {
-        Log::info('Processing event data for saving', ['event_data' => $eventData]);
-
-        Log::info('Generated external_id', ['external_id' => $eventData['external_id']]);
+        Log::info('Processing Kakubarhythm event data for saving', ['event_data' => $eventData]);
 
         $eventData['venue_id'] = $this->saveVenue($eventData['venue']) ?? null;
         Log::info('Venue ID assigned', ['venue_id' => $eventData['venue_id']]);
 
         if ($this->isValidEventData($eventData)) {
-            // Check if the event already exists using external_id
             $existingEvent = Event::where('external_id', $eventData['external_id'])->first();
 
             if ($existingEvent) {
-                // Update the existing event
                 $event = $this->updateEvent($existingEvent->id, $eventData);
                 Log::info('Existing event updated', ['event_id' => $event->id]);
             } else {
-                // Create a new event
                 $event = $this->saveEvent($eventData);
                 Log::info('New event created', ['event_id' => $event->id]);
             }
 
-            // Save the event link if it exists
             if (!empty($eventData['event_link'])) {
                 $this->saveEventLink($event->id, $eventData['event_link']);
                 Log::info('Event link saved', ['event_id' => $event->id, 'event_link' => $eventData['event_link']]);
@@ -126,7 +118,7 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
     public function updateEvent(int $eventId, array $eventData): ?Event
     {
         try {
-            Log::info('Updating existing event', ['event_id' => $eventId]);
+            Log::info('Updating existing Kakubarhythm event', ['event_id' => $eventId]);
 
             $event = Event::find($eventId);
 
@@ -142,7 +134,6 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                     'sold_out' => $eventData['sold_out'] ?? false,
                 ]);
 
-                // Update related data
                 $this->saveSchedules($event->id, $eventData['schedule'] ?? []);
                 $this->saveCategories($event, $eventData['categories'] ?? []);
                 $this->saveTags($event, $eventData['tags'] ?? []);
@@ -188,43 +179,23 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         2. **Schedule Parsing**:
            - Create a 'schedule' array with entries that include 'date', 'time_start', 'time_end', and 'special_notes'.
         
-           3. **Category Assignment**:
+        3. **Category Assignment**:
            - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
                ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
            
-           4. **Tag Assignment**:
+        4. **Tag Assignment**:
            - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
-               ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
+               ['Concert', 'Live Performance', 'Indie', 'Band', 'Tour', 'Festival', 'Art', 'Community'].
 
-        
         5. **Price Parsing**:
            - Parse information from the 'prices' array.
            - Each price should include:
-             - 'price_tier': the description or category of the price (e.g., "Adults").
-             - 'amount': the numerical amount, formatted as a string (e.g., "7000").
+             - 'price_tier': the description or category of the price.
+             - 'amount': the numerical amount, formatted as a string.
              - 'currency': use "JPY" for Japanese Yen.
-             - 'discount_info': include any available discount details. If no discount information is provided, set 'discount_info' to null.
-             
-             for example  "All Reserved Seats. Adults ￥5,000(JPY: including Tax)  Under 22 years Old ￥2,500 Club Members ￥4,500" should be parsed as
-             {
-                "price_tier": "Adults",
-                "amount": "5000",
-                "currency": "JPY",
-                "discount_info": "None"
-              }{
-                "price_tier": "Under 22 years old",
-                "amount": "2500",
-                "currency": "JPY",
-                "discount_info": "None"
-              }{
-                "price_tier": "Club Members",
-                "amount": "4500",
-                "currency": "JPY",
-                "discount_info": "None"
-              }
-
+             - 'discount_info': include any available discount details or set to null.
         
-        5. **Output Format**:
+        6. **Output Format**:
            - Ensure the output strictly follows the JSON format:
              {
                "events": [
@@ -233,8 +204,8 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                    "date_start": "YYYY-MM-DD",
                    "date_end": "YYYY-MM-DD",
                    "venue": "Venue Name",
-                   "organization": "Organization Name",
-                   "event_link": null, // Or omitted if not available
+                   "organization": "Kakubarhythm",
+                   "event_link": "URL",
                    "image_url": "Image URL",
                    "schedule": [
                      {
@@ -248,10 +219,10 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                    "tags": ["Tag1", "Tag2"],
                    "prices": [
                      {
-                       "price_tier": "Adults",
+                       "price_tier": "General",
                        "amount": "1000",
                        "currency": "JPY",
-                       "discount_info": "Discount Info"
+                       "discount_info": null
                      }
                    ],
                    "free": false
@@ -261,7 +232,6 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         
         EVENT DATA TO BE PARSED: {$jsonEventData}
         EOT;
-        
 
         Log::info('Constructed prompt:', ['prompt' => $prompt]);
 
@@ -321,24 +291,16 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
     public function saveEvent(array $eventData): ?Event
     {
         try {
-            Log::info('Creating or updating event', ['event_data' => $eventData]);
+            Log::info('Creating or updating Kakubarhythm event', ['event_data' => $eventData]);
 
-            // Ensure 'external_id' is present
             if (!isset($eventData['external_id'])) {
                 Log::warning('External ID missing for event', ['event_data' => $eventData]);
                 return null;
             }
 
-            Log::info('Saving event in updateOrCreate with external_id:', ['external_id' => $eventData['external_id']]);
-            Log::info('Preparing to save event with organization and description', [
-                'organization' => $eventData['organization'] ?? 'Not set',
-                'description' => $eventData['description'] ?? 'Not set'
-            ]);
-            
-            // Use 'external_id' to find and update the event, or create a new one
             $event = Event::updateOrCreate(
-                ['external_id' => $eventData['external_id']], // Matching Attributes
-                [ // Values to Update/Create
+                ['external_id' => $eventData['external_id']],
+                [
                     'title' => $eventData['title'],
                     'organization' => $eventData['organization'] ?? null,
                     'description' => $eventData['description'] ?? null,
@@ -347,13 +309,11 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                     'venue_id' => $eventData['venue_id'],
                     'program' => $eventData['program'] ?? null,
                     'sold_out' => $eventData['sold_out'] ?? false,
-
                 ]
             );
 
             Log::info('Event saved successfully', ['event_id' => $event->id]);
 
-            // Save related data
             $this->saveSchedules($event->id, $eventData['schedule'] ?? []);
             $this->saveCategories($event, $eventData['categories'] ?? []);
             $this->saveTags($event, $eventData['tags'] ?? []);
@@ -373,33 +333,29 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         return null;
     }
 
+    public function isValidEventData(array $eventData): bool
+    {
+        Log::info('Checking type of $eventData', ['type' => gettype($eventData)]);
 
+        if (!is_array($eventData)) {
+            Log::error('Expected $eventData to be an array, but it is not.', ['event_data' => $eventData]);
+            return false;
+        }
 
-public function isValidEventData(array $eventData): bool
-{
-    Log::info('Checking type of $eventData', ['type' => gettype($eventData)]);
+        $validator = Validator::make($eventData, [
+            'title' => 'required|string',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date',
+            'external_id' => 'required|string',
+        ]);
 
-    // Check if $eventData is indeed an array
-    if (!is_array($eventData)) {
-        Log::error('Expected $eventData to be an array, but it is not.', ['event_data' => $eventData]);
-        return false;
+        if ($validator->fails()) {
+            Log::error('Validation failed:', $validator->errors()->all());
+            return false;
+        }
+
+        return true;
     }
-
-    $validator = Validator::make($eventData, [
-        'title' => 'required|string',
-        'date_start' => 'required|date',
-        'date_end' => 'required|date',
-        'external_id' => 'required|string',
-    ]);
-
-    if ($validator->fails()) {
-        Log::error('Validation failed:', $validator->errors()->all());
-        return false;
-    }
-
-    return true;
-}
-
 
     public function saveSchedules(int $eventId, array $schedules)
     {
@@ -455,25 +411,23 @@ public function isValidEventData(array $eventData): bool
     }
 
     public function savePrices(int $eventId, array $prices)
-{
-    // Log the incoming prices data for debugging
-    Log::info('Saving prices for event', ['event_id' => $eventId, 'prices' => $prices]);
+    {
+        Log::info('Saving prices for event', ['event_id' => $eventId, 'prices' => $prices]);
 
-    foreach ($prices as $priceData) {
-        Price::updateOrCreate(
-            [
-                'event_id' => $eventId,
-                'price_tier' => $priceData['price_tier'],
-            ],
-            [
-                'amount' => $this->nullIfEmpty($priceData['amount']),
-                'currency' => $priceData['currency'] ?? 'JPY',
-                'discount_info' => $this->nullIfEmpty($priceData['discount_info']),
-            ]
-        );
+        foreach ($prices as $priceData) {
+            Price::updateOrCreate(
+                [
+                    'event_id' => $eventId,
+                    'price_tier' => $priceData['price_tier'],
+                ],
+                [
+                    'amount' => $this->nullIfEmpty($priceData['amount']),
+                    'currency' => $priceData['currency'] ?? 'JPY',
+                    'discount_info' => $this->nullIfEmpty($priceData['discount_info']),
+                ]
+            );
+        }
     }
-}
-
 
     public function saveCategories(Event $event, array $categories)
     {

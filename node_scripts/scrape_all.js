@@ -3,12 +3,15 @@ import axios from 'axios';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
-import 'dotenv/config';
 import scrapeKyotoConcertHall from './kyoto_concert_hall.js';
 import scrapeRohmTheatre from './rohm_theatre.js'; // Import the Rohm Theatre scraper
 import scrapeKyotoKanze from './kyoto_kanze.js';
 import scrapeWaondo from './waondo.js';
 import scrapeKyotoGattaca from './kyoto_gattaca.js';
+import scrapeKakubarhythm from './kakubarhythm.js';
+
+// Log the value of process.env.APP_URL
+console.log('process.env.APP_URL:', process.env.APP_URL);
 
 // Define the backend URL using APP_URL from .env
 const backendUrl = process.env.APP_URL || 'http://localhost:8000';
@@ -21,33 +24,13 @@ const useMockData = false; // Set to true for mock data testing
 
 // Array of scraper functions and their identifiers
 const scrapers = [
-  { name: 'kyoto_concert_hall', func: scrapeKyotoConcertHall },
-  // { name: 'rohm_theatre', func: scrapeRohmTheatre },
-  // { name: 'kyoto_kanze', func: scrapeKyotoKanze },
-  // { name: 'waondo', func: scrapeWaondo },
-  // { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
+  //  { name: 'kyoto_concert_hall', func: scrapeKyotoConcertHall },
+  //  { name: 'rohm_theatre', func: scrapeRohmTheatre },
+  //  { name: 'kyoto_kanze', func: scrapeKyotoKanze },
+  //  { name: 'waondo', func: scrapeWaondo },
+  //  { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
+   { name: 'kakubarhythm', func: scrapeKakubarhythm},
 ];
-
-// Function to send data with retry logic
-async function sendDataWithRetry(url, payload, retries = 3, delay = 1000) {
-  for (let i = 0; i < retries; i++) {
-    try {
-      const response = await axios.post(url, payload, {
-        headers: { 'Content-Type': 'application/json' },
-        timeout: 10000, // Optional: adjust timeout as needed
-      });
-      return response; // Return the response if successful
-    } catch (error) {
-      if (error.code === 'ECONNRESET' && i < retries - 1) {
-        console.log(`Connection reset. Retrying... Attempt ${i + 1}`);
-        await new Promise(res => setTimeout(res, delay)); // Wait before retrying
-      } else {
-        console.error(`Failed to send data: ${error.message}`);
-        if (i === retries - 1) throw error; // Throw error on the final attempt
-      }
-    }
-  }
-}
 
 const scrapeAll = async () => {
   if (useMockData) {
@@ -63,7 +46,9 @@ const scrapeAll = async () => {
       console.log('Payload:', JSON.stringify(payload, null, 2));
 
       // Send mock data to the backend
-      const response = await sendDataWithRetry(`${backendUrl}/api/scrape`, payload);
+      const response = await axios.post(`${backendUrl}/api/scrape`, payload, {
+        headers: { 'Content-Type': 'application/json' },
+      });
       console.log('Mock data successfully sent to backend:', response.data);
     } catch (error) {
       console.error('Failed to load or send mock data:', error);
@@ -84,8 +69,10 @@ const scrapeAll = async () => {
         };
         console.log(`Payload for ${scraper.name}:`, JSON.stringify(payload, null, 2));
 
-        // Send the site's data to the backend with retry logic
-        const response = await sendDataWithRetry(`${backendUrl}/api/scrape`, payload);
+        // Send the site's data to the backend
+        const response = await axios.post(`${backendUrl}/api/scrape`, payload, {
+          headers: { 'Content-Type': 'application/json' },
+        });
         console.log(`Data for ${scraper.name} successfully sent to backend:`, response.data);
       } else {
         console.log(`No data scraped for site: ${scraper.name}`);
@@ -99,8 +86,7 @@ const scrapeAll = async () => {
       } else {
         console.error(`Failed to scrape or send data for ${scraper.name}:`, error.message);
       }
-      // Optionally, decide whether to continue with the next scraper or halt
-      continue;
+      continue; // Continue to the next scraper
     }
   }
 

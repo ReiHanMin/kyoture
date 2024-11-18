@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id'); // Primary Key
 
-            $table->string('title')->unique(); // Unique and not nullable
+            $table->string('title'); // not nullable
 
             $table->string('organization')->nullable();
             $table->text('description')->nullable();
@@ -32,7 +32,7 @@ class CreateEventsTable extends Migration
             $table->foreign('venue_id')->references('id')->on('venues')->onDelete('set null');
 
             $table->string('address')->nullable();
-            $table->string('external_id')->nullable();
+            $table->string('external_id')->unique();
 
             $table->timestamps(); // created_at and updated_at (nullable by default)
         });

@@ -19,36 +19,65 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
 {
     public function transform(array $eventData): ?array
     {
-        Log::info('Starting transformation process for event data', ['event_data' => $eventData]);
-    
-        // Call OpenAI API to transform data
+        Log::info('Dispatching job for Rohm Theatre event data', ['event_data' => $eventData]);
+
+        // Generate external_id based on event_link
+        if (isset($eventData['event_link'])) {
+            $eventData['external_id'] = md5($eventData['event_link']);
+        } else {
+            Log::warning('event_link missing in event data', ['event_data' => $eventData]);
+            // Handle missing event_link appropriately
+            $eventData['external_id'] = md5(uniqid('', true)); // Generate a unique ID
+        }
+
+        // Dispatch the job, passing the transformer class name and event data
+        \App\Jobs\ProcessEventData::dispatch(static::class, $eventData);
+
+        // Return immediately to prevent long processing in the HTTP request
+        return null;
+    }
+
+    public function processEvent(array $eventData): ?array
+    {
+        Log::info('Starting transformation process for Rohm Theatre event data', ['event_data' => $eventData]);
+
+        // Store original values
+        $originalEventLink = $eventData['event_link'] ?? null;
+        $originalExternalId = $eventData['external_id'] ?? null;
+
+        // Remove `event_link` and `external_id` from $eventData before constructing the prompt
+        unset($eventData['event_link'], $eventData['external_id']);
+
+        // Prepare data transformation using OpenAI or custom parsing logic
         $prompt = $this->constructPrompt($eventData);
         Log::info('Constructed OpenAI prompt', ['prompt' => $prompt]);
-    
+
         $responseData = $this->callOpenAI($prompt);
-    
+
         if (!empty($responseData) && isset($responseData['events'])) {
             Log::info('OpenAI response received', ['response_data' => $responseData]);
-    
+
             foreach ($responseData['events'] as &$processedEvent) {
+                // Reattach the original `event_link` and `external_id`
+                $processedEvent['event_link'] = $originalEventLink;
+                $processedEvent['external_id'] = $originalExternalId;
+
                 // Add description and other fields from $eventData if they don't already exist
                 $processedEvent['description'] = $eventData['description'] ?? null;
                 $processedEvent['organization'] = $eventData['organization'] ?? null;
-            }
-            unset($processedEvent); // Break the reference to avoid potential issues
-    
-            foreach ($responseData['events'] as $processedEvent) {
+
                 $this->processAndSaveEvent($processedEvent);
             }
+            unset($processedEvent); // Break the reference
+
             return $responseData;
         }
-    
+
         Log::warning('API response is empty or malformed.', ['response' => $responseData]);
         return null;
     }
-    
 
-    private function constructPrompt(array $eventData): string
+    public function constructPrompt(array $eventData): string
     {
         // Constructing a detailed and precise prompt
         $prompt = "
@@ -140,194 +169,188 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
     }
 
 
-    private function callOpenAI(string $prompt): ?array
-{
-    $apiKey = env('OPENAI_API_KEY');
+    public function callOpenAI(string $prompt): ?array
+    {
+        $apiKey = env('OPENAI_API_KEY');
 
-    try {
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $apiKey,
-        ])->post('https://api.openai.com/v1/chat/completions', [
-            'model' => 'gpt-4o-mini',
-            'messages' => [
-                ['role' => 'user', 'content' => $prompt],
-            ],
-            'max_tokens' => 750,  // Adjust if needed
-            'temperature' => 0.2,
-        ]);
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $apiKey,
+            ])->post('https://api.openai.com/v1/chat/completions', [
+                'model' => 'gpt-4o-mini',  // Ensure you have access to GPT-4
+                'messages' => [
+                    ['role' => 'user', 'content' => $prompt],
+                ],
+                'max_tokens' => 2000,  // Adjust if needed
+                'temperature' => 0.2,
+            ]);
 
-        $responseArray = $response->json();
+            $responseArray = $response->json();
 
-        if (isset($responseArray['choices'][0]['message']['content'])) {
-            // Get the content
-            $parsedData = $responseArray['choices'][0]['message']['content'];
-            
-            // Use regex to extract JSON between braces
-            if (preg_match('/\{(?:[^{}]|(?R))*\}/', $parsedData, $matches)) {
-                $jsonContent = $matches[0];  // Extracted JSON string
-                Log::info('Extracted JSON from OpenAI response', ['response' => $jsonContent]);
+            if (isset($responseArray['choices'][0]['message']['content'])) {
+                // Get the content
+                $parsedData = $responseArray['choices'][0]['message']['content'];
 
-                // Decode the JSON
-                return json_decode($jsonContent, true);
+                // Use regex to extract JSON between braces
+                if (preg_match('/\{(?:[^{}]|(?R))*\}/s', $parsedData, $matches)) {
+                    $jsonContent = $matches[0];  // Extracted JSON string
+                    Log::info('Extracted JSON from OpenAI response', ['response' => $jsonContent]);
+
+                    // Decode the JSON
+                    return json_decode($jsonContent, true);
+                } else {
+                    Log::warning('No JSON found in OpenAI response', ['response' => $parsedData]);
+                }
+            } else {
+                Log::warning('No content in OpenAI response', ['response' => $responseArray]);
             }
+        } catch (\Exception $e) {
+            Log::error('Error calling OpenAI API', ['error' => $e->getMessage()]);
         }
-    } catch (\Exception $e) {
-        Log::error('Error calling OpenAI API', ['error' => $e->getMessage()]);
+
+        return null;
     }
 
-    return null;
-}
+    public function processAndSaveEvent(array $eventData): void
+    {
+        Log::info('Processing event data for saving', ['event_data' => $eventData]);
 
-    
+        // We no longer generate external_id here
+        // $eventData['external_id'] = md5("{$eventData['title']}_{$eventData['date_start']}_{$eventData['venue']}");
 
-private function processAndSaveEvent(array $eventData): void
-{
-    Log::info('Processing event data for saving', ['event_data' => $eventData]);
+        $eventData['venue_id'] = $this->saveVenue($eventData) ?? null;
+        Log::info('Venue ID assigned', ['venue_id' => $eventData['venue_id']]);
 
-    // Generate external_id
-    $eventData['external_id'] = md5("{$eventData['title']}_{$eventData['date_start']}_{$eventData['venue']}");
-    Log::info('Generated external_id', ['external_id' => $eventData['external_id']]);
+        if ($this->isValidEventData($eventData)) {
+            // Check if the event already exists based on external_id
+            $existingEvent = Event::where('external_id', $eventData['external_id'])->first();
 
-    $eventData['venue_id'] = $this->saveVenue($eventData) ?? null;
-    Log::info('Venue ID assigned', ['venue_id' => $eventData['venue_id']]);
+            if ($existingEvent) {
+                // Update the existing event
+                $event = $this->updateEvent($existingEvent->id, $eventData);
+                Log::info('Existing event updated', ['event_id' => $event->id]);
+            } else {
+                // Create a new event
+                $event = $this->saveEvent($eventData);
+                Log::info('New event created', ['event_id' => $event->id]);
+            }
 
-    if ($this->isValidEventData($eventData)) {
-        // Check if the event already exists based on external_id
-        $existingEvent = Event::where('external_id', $eventData['external_id'])->first();
-
-        if ($existingEvent) {
-            // Update the existing event
-            $event = $this->updateEvent($existingEvent->id, $eventData);
-            Log::info('Existing event updated', ['event_id' => $event->id]);
+            if ($event) {
+                $this->saveEventLink($event->id, $eventData['event_link']);
+                Log::info('Event link saved', ['event_id' => $event->id, 'event_link' => $eventData['event_link']]);
+            }
         } else {
-            // Create a new event
-            $event = $this->saveEvent($eventData);
-            Log::info('New event created', ['event_id' => $event->id]);
+            Log::warning('Invalid event data', ['event_data' => $eventData]);
         }
-
-        if ($event) {
-            $this->saveEventLink($event->id, $eventData['event_link']);
-            Log::info('Event link saved', ['event_id' => $event->id, 'event_link' => $eventData['event_link']]);
-        }
-    } else {
-        Log::warning('Invalid event data', ['event_data' => $eventData]);
     }
-}
 
+    public function updateEvent(int $eventId, array $eventData): ?Event
+    {
+        try {
+            Log::info('Updating existing event', ['event_id' => $eventId]);
 
-private function updateEvent(int $eventId, array $eventData): ?Event
-{
-    try {
-        Log::info('Updating existing event', ['event_id' => $eventId]);
+            $event = Event::find($eventId);
 
-        $event = Event::find($eventId);
+            if ($event) {
+                $event->update([
+                    'title' => $eventData['title'],
+                    'organization' => $eventData['organization'] ?? null,
+                    'description' => $eventData['description'] ?? null,
+                    'date_start' => $eventData['date_start'],
+                    'date_end' => $eventData['date_end'],
+                    'venue_id' => $eventData['venue_id'],
+                    // 'external_id' remains unchanged
+                ]);
 
-        if ($event) {
-            $event->update([
+                // Update related data
+                $this->saveSchedules($event, $eventData['schedule'] ?? []);
+                $this->saveCategoriesAndTags($event, $eventData);
+                $this->saveImages($event, $eventData['image_url'] ?? null, []);
+                $this->savePrices($event, $eventData['prices'] ?? []);
+
+                return $event;
+            } else {
+                Log::warning('Event not found for updating', ['event_id' => $eventId]);
+            }
+        } catch (QueryException $qe) {
+            Log::error('Database error while updating event', [
+                'error_message' => $qe->getMessage(),
+                'sql' => $qe->getSql(),
+                'bindings' => $qe->getBindings(),
+                'event_data' => $eventData,
+            ]);
+        }
+
+        return null;
+    }
+
+    public function saveVenue(array $eventData): ?int
+    {
+        if (!empty($eventData['venue'])) {
+            // Clean the venue name
+            $cleanedVenueName = trim($eventData['venue']);
+
+            if (!empty($cleanedVenueName)) {
+                Log::info('Saving or retrieving venue', ['venue_name' => $cleanedVenueName]);
+
+                $venue = Venue::firstOrCreate(
+                    ['name' => $cleanedVenueName],
+                    [
+                        'address' => $eventData['address'] ?? null,
+                        'city' => $eventData['city'] ?? null,
+                        'postal_code' => $eventData['postal_code'] ?? null,
+                        'country' => $eventData['country'] ?? null,
+                    ]
+                );
+
+                Log::info('Venue saved or retrieved', ['venue_id' => $venue->id]);
+                return $venue->id;
+            } else {
+                Log::warning('Venue name is empty after cleaning; venue data was not saved.', ['eventData' => $eventData]);
+            }
+        } else {
+            Log::warning('Venue name is missing; venue data was not saved.', ['eventData' => $eventData]);
+        }
+        return null;
+    }
+
+    public function saveEvent(array $eventData): ?Event
+    {
+        try {
+            Log::info('Creating new event', ['event_data' => $eventData]);
+
+            $event = Event::create([
                 'title' => $eventData['title'],
                 'organization' => $eventData['organization'] ?? null,
                 'description' => $eventData['description'] ?? null,
                 'date_start' => $eventData['date_start'],
                 'date_end' => $eventData['date_end'],
                 'venue_id' => $eventData['venue_id'],
-                // 'external_id' remains unchanged
+                'external_id' => $eventData['external_id'], // Include external_id
             ]);
 
-            // Update related data
+            Log::info('Event saved successfully', ['event_id' => $event->id]);
+
+            // Save related data
             $this->saveSchedules($event, $eventData['schedule'] ?? []);
             $this->saveCategoriesAndTags($event, $eventData);
             $this->saveImages($event, $eventData['image_url'] ?? null, []);
             $this->savePrices($event, $eventData['prices'] ?? []);
 
             return $event;
-        } else {
-            Log::warning('Event not found for updating', ['event_id' => $eventId]);
+        } catch (QueryException $qe) {
+            Log::error('Database error while saving event', [
+                'error_message' => $qe->getMessage(),
+                'sql' => $qe->getSql(),
+                'bindings' => $qe->getBindings(),
+                'event_data' => $eventData,
+            ]);
         }
-    } catch (QueryException $qe) {
-        Log::error('Database error while updating event', [
-            'error_message' => $qe->getMessage(),
-            'sql' => $qe->getSql(),
-            'bindings' => $qe->getBindings(),
-            'event_data' => $eventData,
-        ]);
+
+        return null;
     }
 
-    return null;
-}
-
-
-
-private function saveVenue(array $eventData): ?int
-{
-    if (!empty($eventData['venue'])) {
-        // Remove any variation of 'Venue:', case-insensitive, with optional spaces
-        $cleanedVenueName = preg_replace('/^Venue\s*:\s*/i', '', $eventData['venue']);
-        $cleanedVenueName = trim($cleanedVenueName);
-
-        if (!empty($cleanedVenueName)) {
-            Log::info('Saving or retrieving venue', ['venue_name' => $cleanedVenueName]);
-
-            $venue = Venue::firstOrCreate(
-                ['name' => $cleanedVenueName],
-                [
-                    'address' => $eventData['address'] ?? null,
-                    'city' => $eventData['city'] ?? null,
-                    'postal_code' => $eventData['postal_code'] ?? null,
-                    'country' => $eventData['country'] ?? null,
-                ]
-            );
-
-            Log::info('Venue saved or retrieved', ['venue_id' => $venue->id]);
-            return $venue->id;
-        } else {
-            Log::warning('Venue name is empty after cleaning; venue data was not saved.', ['eventData' => $eventData]);
-        }
-    } else {
-        Log::warning('Venue name is missing; venue data was not saved.', ['eventData' => $eventData]);
-    }
-    return null;
-}
-
-
-private function saveEvent(array $eventData): ?Event
-{
-    try {
-        Log::info('Creating new event', ['event_data' => $eventData]);
-
-        $event = Event::create([
-            'title' => $eventData['title'],
-            'organization' => $eventData['organization'] ?? null,
-            'description' => $eventData['description'] ?? null,
-            'date_start' => $eventData['date_start'],
-            'date_end' => $eventData['date_end'],
-            'venue_id' => $eventData['venue_id'],
-            'external_id' => $eventData['external_id'], // Include external_id
-        ]);
-
-        Log::info('Event saved successfully', ['event_id' => $event->id]);
-
-        // Save related data
-        $this->saveSchedules($event, $eventData['schedule'] ?? []);
-        $this->saveCategoriesAndTags($event, $eventData);
-        $this->saveImages($event, $eventData['image_url'] ?? null, []);
-        $this->savePrices($event, $eventData['prices'] ?? []);
-
-        return $event;
-    } catch (QueryException $qe) {
-        Log::error('Database error while saving event', [
-            'error_message' => $qe->getMessage(),
-            'sql' => $qe->getSql(),
-            'bindings' => $qe->getBindings(),
-            'event_data' => $eventData,
-        ]);
-    }
-
-    return null;
-}
-
-
-
-    private function saveEventLink(int $eventId, string $eventLink): void
+    public function saveEventLink(int $eventId, string $eventLink): void
     {
         EventLink::updateOrCreate(
             ['event_id' => $eventId, 'url' => $eventLink],
@@ -335,46 +358,45 @@ private function saveEvent(array $eventData): ?Event
         );
     }
 
-    private function isValidEventData(array $eventData): bool
-{
-    $validator = Validator::make($eventData, [
-        'title' => 'required|string',
-        'date_start' => 'required|date',
-        'date_end' => 'required|date',
-        'external_id' => 'required|string|unique:events,external_id',
-    ]);
+    public function isValidEventData(array $eventData): bool
+    {
+        $validator = Validator::make($eventData, [
+            'title' => 'required|string',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date',
+            'external_id' => 'required|string',
+            'event_link' => 'required|string',
+        ]);
 
-    if ($validator->fails()) {
-        Log::error('Validation failed:', $validator->errors()->all());
-        return false;
+        if ($validator->fails()) {
+            Log::error('Validation failed:', $validator->errors()->all());
+            return false;
+        }
+
+        return true;
     }
 
-    return true;
-}
+    public function saveSchedules(Event $event, array $schedules): void
+    {
+        foreach ($schedules as $schedule) {
+            $time_start = !empty($schedule['time_start']) ? $schedule['time_start'] : null;
+            $time_end = !empty($schedule['time_end']) ? $schedule['time_end'] : null;
 
-
-    private function saveSchedules(Event $event, array $schedules): void
-{
-    foreach ($schedules as $schedule) {
-        $time_start = !empty($schedule['time_start']) ? $schedule['time_start'] : null;
-        $time_end = !empty($schedule['time_end']) ? $schedule['time_end'] : null;
-
-        Schedule::updateOrCreate(
-            [
-                'event_id' => $event->id,
-                'date' => $schedule['date'],
-            ],
-            [
-                'time_start' => $time_start,
-                'time_end' => $time_end,
-                'special_notes' => $schedule['special_notes'] ?? null,
-            ]
-        );
+            Schedule::updateOrCreate(
+                [
+                    'event_id' => $event->id,
+                    'date' => $schedule['date'],
+                ],
+                [
+                    'time_start' => $time_start,
+                    'time_end' => $time_end,
+                    'special_notes' => $schedule['special_notes'] ?? null,
+                ]
+            );
+        }
     }
-}
 
-
-    private function saveCategoriesAndTags(Event $event, array $eventData): void
+    public function saveCategoriesAndTags(Event $event, array $eventData): void
     {
         $categoryIds = [];
         foreach ($eventData['categories'] ?? [] as $categoryName) {
@@ -391,7 +413,7 @@ private function saveEvent(array $eventData): ?Event
         $event->tags()->sync($tagIds);
     }
 
-    private function saveImages(Event $event, ?string $primaryImageUrl, array $images): void
+    public function saveImages(Event $event, ?string $primaryImageUrl, array $images): void
     {
         if ($primaryImageUrl) {
             Image::firstOrCreate(
@@ -422,7 +444,7 @@ private function saveEvent(array $eventData): ?Event
         }
     }
 
-    private function savePrices(Event $event, array $prices): void
+    public function savePrices(Event $event, array $prices): void
     {
         foreach ($prices as $priceData) {
             if (!empty($priceData['amount'])) {
