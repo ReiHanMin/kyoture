@@ -24,11 +24,11 @@ const useMockData = false; // Set to true for mock data testing
 
 // Array of scraper functions and their identifiers
 const scrapers = [
-  //  { name: 'kyoto_concert_hall', func: scrapeKyotoConcertHall },
-  //  { name: 'rohm_theatre', func: scrapeRohmTheatre },
-  //  { name: 'kyoto_kanze', func: scrapeKyotoKanze },
-  //  { name: 'waondo', func: scrapeWaondo },
-  //  { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
+   { name: 'kyoto_concert_hall', func: scrapeKyotoConcertHall },
+   { name: 'rohm_theatre', func: scrapeRohmTheatre },
+   { name: 'kyoto_kanze', func: scrapeKyotoKanze },
+   { name: 'waondo', func: scrapeWaondo },
+   { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
    { name: 'kakubarhythm', func: scrapeKakubarhythm},
 ];
 
