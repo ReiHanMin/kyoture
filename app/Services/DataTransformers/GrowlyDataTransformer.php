@@ -15,83 +15,113 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\QueryException;
 
-class KyotoConcertHallDataTransformer implements DataTransformerInterface
+class GrowlyDataTransformer implements DataTransformerInterface
 {
+    /**
+     * Transform the incoming event data by dispatching a processing job.
+     *
+     * @param array $eventData
+     * @return ?array
+     */
     public function transform(array $eventData): ?array
     {
-        Log::info('Dispatching job for event data', ['event_data' => $eventData]);
+        Log::info('Dispatching job for Growly event data', ['event_data' => $eventData]);
 
-        // Dispatch the job, passing the transformer class name
+        // Dispatch the job, passing the transformer class name and event data
         \App\Jobs\ProcessEventData::dispatch(static::class, $eventData);
 
         // Return immediately to prevent long processing in the HTTP request
         return null;
     }
 
+    /**
+     * Process the event data by transforming and saving it to the database.
+     *
+     * @param array $eventData
+     * @return ?array
+     */
     public function processEvent(array $eventData): ?array
-{
-    Log::info('Starting transformation process for event data', ['event_data' => $eventData]);
+    {
+        Log::info('Starting transformation process for Growly event data', ['event_data' => $eventData]);
     
-    // Generate external_id using the original scraped title, date_start, and venue
-    $title = strtolower(trim($eventData['title']));
-    $dateStart = $eventData['date_start'];
-    $venue = strtolower(trim($eventData['venue'] ?? ''));
+        // Generate external_id using title, date_start, and venue
+        $title = strtolower(trim($eventData['title']));
+        $dateStart = $eventData['date_start'];
+        $venue = strtolower(trim($eventData['venue'] ?? ''));
     
-    $uniqueString = "{$title}|{$dateStart}|{$venue}";
-    $eventData['external_id'] = md5($uniqueString);
+        $uniqueString = "{$title}|{$dateStart}|{$venue}";
+        $eventData['external_id'] = md5($uniqueString);
     
-    // Call OpenAI API to generate tags and categories
-    $prompt = $this->constructPrompt($eventData);
-    Log::info('Constructed OpenAI prompt', ['prompt' => $prompt]);
-    
-    $responseData = $this->callOpenAI($prompt);
-    
-    if (!empty($responseData) && isset($responseData['events'])) {
-        Log::info('OpenAI response received', ['response_data' => $responseData]);
-        
-        foreach ($responseData['events'] as &$processedEvent) {
-            // Use the original title from the scraped data
-            $processedEvent['title'] = $eventData['title'];
-            $processedEvent['description'] = $eventData['description'] ?? '';
-            $processedEvent['external_id'] = $eventData['external_id'];
-
-            $this->processAndSaveEvent($processedEvent);
+        // Log a warning if event_link is missing
+        if (empty($eventData['event_link'])) {
+            Log::warning('event_link is missing from Growly event data.', ['event_data' => $eventData]);
         }
-
-        return $responseData;
+    
+        // Determine if the event is free based on prices
+        $eventData['free'] = false; // Default to false
+    
+        if (!empty($eventData['prices'])) {
+            $allFree = true; // Assume all prices are free unless proven otherwise
+    
+            foreach ($eventData['prices'] as $price) {
+                if (isset($price['amount']) && $price['amount'] > 0) {
+                    $allFree = false; // Found a price above zero, so it's not entirely free
+                    break;
+                }
+            }
+    
+            // If all price tiers have an amount of zero or no price is set, mark as free
+            $eventData['free'] = $allFree;
+        }
+    
+        // Call OpenAI API to transform data
+        $prompt = $this->constructPrompt($eventData);
+        Log::info('Constructed OpenAI prompt', ['prompt' => $prompt]);
+    
+        $responseData = $this->callOpenAI($prompt);
+    
+        if (!empty($responseData) && isset($responseData['events'])) {
+            Log::info('OpenAI response received', ['response_data' => $responseData]);
+    
+            foreach ($responseData['events'] as &$processedEvent) {
+                // Append the original description and external_id to each processed event
+                $processedEvent['description'] = $eventData['description'] ?? '';
+                $processedEvent['external_id'] = $eventData['external_id'];
+    
+                $this->processAndSaveEvent($processedEvent);
+            }
+    
+            return $responseData;
+        }
+    
+        Log::warning('API response is empty or malformed.', ['response' => $responseData]);
+        return null;
     }
 
-    Log::warning('API response is empty or malformed.', ['response' => $responseData]);
-    return null;
-}
-
-    
-
-
+    /**
+     * Process and save individual event data to the database.
+     *
+     * @param array $eventData
+     * @return void
+     */
     public function processAndSaveEvent(array $eventData): void
     {
-        Log::info('Processing event data for saving', ['event_data' => $eventData]);
-
-        Log::info('Generated external_id', ['external_id' => $eventData['external_id']]);
+        Log::info('Processing Growly event data for saving', ['event_data' => $eventData]);
 
         $eventData['venue_id'] = $this->saveVenue($eventData['venue']) ?? null;
         Log::info('Venue ID assigned', ['venue_id' => $eventData['venue_id']]);
 
         if ($this->isValidEventData($eventData)) {
-            // Check if the event already exists using external_id
             $existingEvent = Event::where('external_id', $eventData['external_id'])->first();
 
             if ($existingEvent) {
-                // Update the existing event
                 $event = $this->updateEvent($existingEvent->id, $eventData);
                 Log::info('Existing event updated', ['event_id' => $event->id]);
             } else {
-                // Create a new event
                 $event = $this->saveEvent($eventData);
                 Log::info('New event created', ['event_id' => $event->id]);
             }
 
-            // Save the event link if it exists
             if (!empty($eventData['event_link'])) {
                 $this->saveEventLink($event->id, $eventData['event_link']);
                 Log::info('Event link saved', ['event_id' => $event->id, 'event_link' => $eventData['event_link']]);
@@ -103,10 +133,17 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         }
     }
 
+    /**
+     * Update an existing event in the database.
+     *
+     * @param int $eventId
+     * @param array $eventData
+     * @return ?Event
+     */
     public function updateEvent(int $eventId, array $eventData): ?Event
     {
         try {
-            Log::info('Updating existing event', ['event_id' => $eventId]);
+            Log::info('Updating existing Growly event', ['event_id' => $eventId]);
 
             $event = Event::find($eventId);
 
@@ -122,7 +159,6 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                     'sold_out' => $eventData['sold_out'] ?? false,
                 ]);
 
-                // Update related data
                 $this->saveSchedules($event->id, $eventData['schedule'] ?? []);
                 $this->saveCategories($event, $eventData['categories'] ?? []);
                 $this->saveTags($event, $eventData['tags'] ?? []);
@@ -145,6 +181,12 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         return null;
     }
 
+    /**
+     * Construct a prompt for the OpenAI API to transform the event data.
+     *
+     * @param array $eventData
+     * @return string
+     */
     public function constructPrompt(array $eventData): string
     {
         if (empty($eventData)) {
@@ -159,7 +201,7 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         }
 
         $prompt = <<<EOT
-        Transform the provided event data into the specified JSON format with the following requirements:
+        Transform the provided Growly event data into the specified JSON format with the following requirements:
         
         1. **Date Parsing**:
            - Set 'date_start' and 'date_end':
@@ -168,43 +210,23 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         2. **Schedule Parsing**:
            - Create a 'schedule' array with entries that include 'date', 'time_start', 'time_end', and 'special_notes'.
         
-           3. **Category Assignment**:
+        3. **Category Assignment**:
            - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
                ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
            
-           4. **Tag Assignment**:
+        4. **Tag Assignment**:
            - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
-               ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
+               ['Concert', 'Live Performance', 'Indie', 'Band', 'Tour', 'Festival', 'Art', 'Community'].
 
-        
         5. **Price Parsing**:
            - Parse information from the 'prices' array.
            - Each price should include:
-             - 'price_tier': the description or category of the price (e.g., "Adults").
-             - 'amount': the numerical amount, formatted as a string (e.g., "7000").
+             - 'price_tier': the description or category of the price.
+             - 'amount': the numerical amount, formatted as a string.
              - 'currency': use "JPY" for Japanese Yen.
-             - 'discount_info': include any available discount details. If no discount information is provided, set 'discount_info' to null.
-             
-             for example  "All Reserved Seats. Adults ￥5,000(JPY: including Tax)  Under 22 years Old ￥2,500 Club Members ￥4,500" should be parsed as
-             {
-                "price_tier": "Adults",
-                "amount": "5000",
-                "currency": "JPY",
-                "discount_info": "None"
-              }{
-                "price_tier": "Under 22 years old",
-                "amount": "2500",
-                "currency": "JPY",
-                "discount_info": "None"
-              }{
-                "price_tier": "Club Members",
-                "amount": "4500",
-                "currency": "JPY",
-                "discount_info": "None"
-              }
-
+             - 'discount_info': include any available discount details or set to null.
         
-        5. **Output Format**:
+        6. **Output Format**:
            - Ensure the output strictly follows the JSON format:
              {
                "events": [
@@ -213,8 +235,8 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                    "date_start": "YYYY-MM-DD",
                    "date_end": "YYYY-MM-DD",
                    "venue": "Venue Name",
-                   "organization": "Organization Name",
-                   "event_link": null, // Or omitted if not available
+                   "organization": "Growly",
+                   "event_link": "URL",
                    "image_url": "Image URL",
                    "schedule": [
                      {
@@ -228,10 +250,10 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                    "tags": ["Tag1", "Tag2"],
                    "prices": [
                      {
-                       "price_tier": "Adults",
+                       "price_tier": "General",
                        "amount": "1000",
                        "currency": "JPY",
-                       "discount_info": "Discount Info"
+                       "discount_info": null
                      }
                    ],
                    "free": false
@@ -241,13 +263,18 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         
         EVENT DATA TO BE PARSED: {$jsonEventData}
         EOT;
-        
 
         Log::info('Constructed prompt:', ['prompt' => $prompt]);
 
         return $prompt;
     }
 
+    /**
+     * Call the OpenAI API with the constructed prompt to transform event data.
+     *
+     * @param string $prompt
+     * @return ?array
+     */
     public function callOpenAI(string $prompt): ?array
     {
         $apiKey = env('OPENAI_API_KEY');
@@ -292,33 +319,37 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         return null;
     }
 
+    /**
+     * Save or retrieve the venue in the database.
+     *
+     * @param string $venueName
+     * @return int
+     */
     public function saveVenue(string $venueName): int
     {
         $venue = Venue::firstOrCreate(['name' => $venueName]);
         return $venue->id;
     }
 
+    /**
+     * Save or update an event in the database.
+     *
+     * @param array $eventData
+     * @return ?Event
+     */
     public function saveEvent(array $eventData): ?Event
     {
         try {
-            Log::info('Creating or updating event', ['event_data' => $eventData]);
+            Log::info('Creating or updating Growly event', ['event_data' => $eventData]);
 
-            // Ensure 'external_id' is present
             if (!isset($eventData['external_id'])) {
                 Log::warning('External ID missing for event', ['event_data' => $eventData]);
                 return null;
             }
 
-            Log::info('Saving event in updateOrCreate with external_id:', ['external_id' => $eventData['external_id']]);
-            Log::info('Preparing to save event with organization and description', [
-                'organization' => $eventData['organization'] ?? 'Not set',
-                'description' => $eventData['description'] ?? 'Not set'
-            ]);
-            
-            // Use 'external_id' to find and update the event, or create a new one
             $event = Event::updateOrCreate(
-                ['external_id' => $eventData['external_id']], // Matching Attributes
-                [ // Values to Update/Create
+                ['external_id' => $eventData['external_id']],
+                [
                     'title' => $eventData['title'],
                     'organization' => $eventData['organization'] ?? null,
                     'description' => $eventData['description'] ?? null,
@@ -327,13 +358,11 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                     'venue_id' => $eventData['venue_id'],
                     'program' => $eventData['program'] ?? null,
                     'sold_out' => $eventData['sold_out'] ?? false,
-
                 ]
             );
 
             Log::info('Event saved successfully', ['event_id' => $event->id]);
 
-            // Save related data
             $this->saveSchedules($event->id, $eventData['schedule'] ?? []);
             $this->saveCategories($event, $eventData['categories'] ?? []);
             $this->saveTags($event, $eventData['tags'] ?? []);
@@ -353,34 +382,43 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         return null;
     }
 
+    /**
+     * Validate the event data before saving.
+     *
+     * @param array $eventData
+     * @return bool
+     */
+    public function isValidEventData(array $eventData): bool
+    {
+        Log::info('Checking type of $eventData', ['type' => gettype($eventData)]);
 
+        if (!is_array($eventData)) {
+            Log::error('Expected $eventData to be an array, but it is not.', ['event_data' => $eventData]);
+            return false;
+        }
 
-public function isValidEventData(array $eventData): bool
-{
-    Log::info('Checking type of $eventData', ['type' => gettype($eventData)]);
+        $validator = Validator::make($eventData, [
+            'title' => 'required|string',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date',
+            'external_id' => 'required|string',
+        ]);
 
-    // Check if $eventData is indeed an array
-    if (!is_array($eventData)) {
-        Log::error('Expected $eventData to be an array, but it is not.', ['event_data' => $eventData]);
-        return false;
+        if ($validator->fails()) {
+            Log::error('Validation failed:', $validator->errors()->all());
+            return false;
+        }
+
+        return true;
     }
 
-    $validator = Validator::make($eventData, [
-        'title' => 'required|string',
-        'date_start' => 'required|date',
-        'date_end' => 'required|date',
-        'external_id' => 'required|string',
-    ]);
-
-    if ($validator->fails()) {
-        Log::error('Validation failed:', $validator->errors()->all());
-        return false;
-    }
-
-    return true;
-}
-
-
+    /**
+     * Save or update schedules associated with an event.
+     *
+     * @param int $eventId
+     * @param array $schedules
+     * @return void
+     */
     public function saveSchedules(int $eventId, array $schedules)
     {
         foreach ($schedules as $scheduleData) {
@@ -398,11 +436,25 @@ public function isValidEventData(array $eventData): bool
         }
     }
 
+    /**
+     * Helper method to convert empty strings to null.
+     *
+     * @param mixed $value
+     * @return mixed
+     */
     public function nullIfEmpty($value)
     {
         return isset($value) && $value !== '' ? $value : null;
     }
 
+    /**
+     * Save or update images associated with an event.
+     *
+     * @param Event $event
+     * @param ?string $primaryImageUrl
+     * @param array $images
+     * @return void
+     */
     public function saveImages(Event $event, ?string $primaryImageUrl, array $images = []): void
     {
         if ($primaryImageUrl) {
@@ -434,27 +486,39 @@ public function isValidEventData(array $eventData): bool
         }
     }
 
+    /**
+     * Save or update prices associated with an event.
+     *
+     * @param int $eventId
+     * @param array $prices
+     * @return void
+     */
     public function savePrices(int $eventId, array $prices)
-{
-    // Log the incoming prices data for debugging
-    Log::info('Saving prices for event', ['event_id' => $eventId, 'prices' => $prices]);
+    {
+        Log::info('Saving prices for event', ['event_id' => $eventId, 'prices' => $prices]);
 
-    foreach ($prices as $priceData) {
-        Price::updateOrCreate(
-            [
-                'event_id' => $eventId,
-                'price_tier' => $priceData['price_tier'],
-            ],
-            [
-                'amount' => $this->nullIfEmpty($priceData['amount']),
-                'currency' => $priceData['currency'] ?? 'JPY',
-                'discount_info' => $this->nullIfEmpty($priceData['discount_info']),
-            ]
-        );
+        foreach ($prices as $priceData) {
+            Price::updateOrCreate(
+                [
+                    'event_id' => $eventId,
+                    'price_tier' => $priceData['price_tier'],
+                ],
+                [
+                    'amount' => $this->nullIfEmpty($priceData['amount']),
+                    'currency' => $priceData['currency'] ?? 'JPY',
+                    'discount_info' => $this->nullIfEmpty($priceData['discount_info']),
+                ]
+            );
+        }
     }
-}
 
-
+    /**
+     * Save or update categories associated with an event.
+     *
+     * @param Event $event
+     * @param array $categories
+     * @return void
+     */
     public function saveCategories(Event $event, array $categories)
     {
         foreach ($categories as $categoryName) {
@@ -463,6 +527,13 @@ public function isValidEventData(array $eventData): bool
         }
     }
 
+    /**
+     * Save or update tags associated with an event.
+     *
+     * @param Event $event
+     * @param array $tags
+     * @return void
+     */
     public function saveTags(Event $event, array $tags)
     {
         foreach ($tags as $tagName) {
@@ -471,6 +542,13 @@ public function isValidEventData(array $eventData): bool
         }
     }
 
+    /**
+     * Save or update an event link associated with an event.
+     *
+     * @param int $eventId
+     * @param string $eventLink
+     * @return void
+     */
     public function saveEventLink(int $eventId, string $eventLink)
     {
         EventLink::updateOrCreate(

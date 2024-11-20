@@ -1,0 +1,1072 @@
+2024-11-20 08:15:22 [INFO]: Browser launched.
+2024-11-20 08:15:22 [INFO]: New page opened.
+2024-11-20 08:15:22 [INFO]: Navigating to Kakubarhythm live events page...
+2024-11-20 08:15:24 [INFO]: Page loaded.
+2024-11-20 08:15:24 [INFO]: Found 32 event items.
+2024-11-20 08:15:24 [INFO]: Processing event 1 of 32...
+2024-11-20 08:15:24 [INFO]: Event Title: 『FRIKO JAPAN TOUR 2024』
+2024-11-20 08:15:24 [INFO]: Venue: 大阪府　梅田 CLUB QUATTRO
+2024-11-20 08:15:24 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12882
+2024-11-20 08:15:24 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12882
+2024-11-20 08:15:28 [INFO]: Ticket info: スタンディング 前売り:￥7,500（別途1ドリンク）
+
+イープラス：https://eplus.jp/sf/detail/4152040001?P6=064&P1=0402&P59=1
+チケットぴあ：https://t.pia.jp/pia/artist/artists.do?artistsCd=O3150008
+ローソンチケット：https://l-tike.com/artist/000000000949607/
+2024-11-20 08:15:28 [INFO]: Extracted structured event data: {"title":"『FRIKO JAPAN TOUR 2024』","date_start":"2024-11-19","date_end":"2024-11-19","time_start":"18:30:00","time_end":"19:30:00","venue":"大阪府　梅田 CLUB QUATTRO","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-11-19","time_start":"18:30:00","time_end":"19:30:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n18:30 / 19:30\n\nTICKET\n\nスタンディング 前売り:￥7,500（別途1ドリンク）\n\nイープラス：https://eplus.jp/sf/detail/4152040001?P6=064&P1=0402&P59=1\nチケットぴあ：https://t.pia.jp/pia/artist/artists.do?artistsCd=O3150008\nローソンチケット：https://l-tike.com/artist/000000000949607/\n\n\nLIVE\n\nFriko / Homecomings\n\nINFO\n\nお問い合わせ\nSMASH WEST 06-6535-5569","event_link":"https://kakubarhythm.com/live/post/12882","raw_price_text":"スタンディング 前売り:￥7,500（別途1ドリンク）\n\nイープラス：https://eplus.jp/sf/detail/4152040001?P6=064&P1=0402&P59=1\nチケットぴあ：https://t.pia.jp/pia/artist/artists.do?artistsCd=O3150008\nローソンチケット：https://l-tike.com/artist/000000000949607/","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:15:28 [INFO]: Processing event 2 of 32...
+2024-11-20 08:15:28 [INFO]: Event Title: 『地球市民フェス 2024 produced by 核兵器廃絶地球市民長崎集会』
+2024-11-20 08:15:28 [INFO]: Venue: 長崎県　HAPPINESS ARENA
+2024-11-20 08:15:28 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12830
+2024-11-20 08:15:28 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12830
+2024-11-20 08:15:31 [INFO]: Ticket info: 参加費無料（要申込）
+※ただし無料開催のための応援チケットあり
+
+参加申し込み
+https://fes2024.ngo-nagasaki.com/#ticket
+
+※当フェスは無料開催ですがチケットお申し込みが必要です。
+2024-11-20 08:15:31 [INFO]: Extracted structured event data: {"title":"『地球市民フェス 2024 produced by 核兵器廃絶地球市民長崎集会』","date_start":"2024-11-24","date_end":"2024-11-24","time_start":"詳細は後日発表:00","time_end":null,"venue":"長崎県　HAPPINESS ARENA","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/11/f1cc678bdd1a2b6ec5bbe8bb6829542d-scaled.jpg","schedule":[{"date":"2024-11-24","time_start":"詳細は後日発表:00","time_end":null,"special_notes":null}],"prices":[],"description":"OPEN / START\n\n詳細は後日発表\n\nTICKET\n\n参加費無料（要申込）\n※ただし無料開催のための応援チケットあり\n\n参加申し込み\nhttps://fes2024.ngo-nagasaki.com/#ticket\n\n※当フェスは無料開催ですがチケットお申し込みが必要です。\n\nLIVE\n\n11月22日前夜祭：ピーター・バラカン (前夜祭は人数限定となります。詳しくはオフィシャルサイトをご確認ください)\n11月23日：加藤登紀子 / 七尾旅人 / Kan Sano (Band Set) / The fin.\n11月24日：ZAZEN BOYS / スチャダラパー / 二階堂和美\n\n※二階堂和美の出演は11月24日(日)となります。\n\nINFO\n\n地球市民フェス 2024","event_link":"https://kakubarhythm.com/live/post/12830","raw_price_text":"参加費無料（要申込）\n※ただし無料開催のための応援チケットあり\n\n参加申し込み\nhttps://fes2024.ngo-nagasaki.com/#ticket\n\n※当フェスは無料開催ですがチケットお申し込みが必要です。","categories":[],"tags":[],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 08:15:31 [INFO]: Processing event 3 of 32...
+2024-11-20 08:15:31 [INFO]: Event Title: 『喫茶 片想い』
+2024-11-20 08:15:31 [INFO]: Venue: 東京都　神保町さぼうる
+2024-11-20 08:15:31 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12914
+2024-11-20 08:15:31 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12914
+2024-11-20 08:15:35 [INFO]: Ticket info: 入場料 ¥1,000（＋「さぼうる」のご注文1つ）
+※再入場の際は追加注文をお願いいたします。
+2024-11-20 08:15:35 [INFO]: Extracted structured event data: {"title":"『喫茶 片想い』","date_start":"2024-11-24","date_end":"2024-11-24","time_start":"13:00〜（夕方ごろまでの予定）:00","time_end":null,"venue":"東京都　神保町さぼうる","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-11-24","time_start":"13:00〜（夕方ごろまでの予定）:00","time_end":null,"special_notes":null}],"prices":[],"description":"OPEN / START\n\n13:00〜（夕方ごろまでの予定）\n\nTICKET\n\n入場料 ¥1,000（＋「さぼうる」のご注文1つ）\n※再入場の際は追加注文をお願いいたします。\n\n\n\nLIVE\n\nお楽しみライブ、お楽しみDJあり","event_link":"https://kakubarhythm.com/live/post/12914","raw_price_text":"入場料 ¥1,000（＋「さぼうる」のご注文1つ）\n※再入場の際は追加注文をお願いいたします。","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:15:35 [INFO]: Processing event 4 of 32...
+2024-11-20 08:15:35 [INFO]: Event Title: 『『PARTY PEOPLES vol.1 てめえの中のAを弾け』』
+2024-11-20 08:15:35 [INFO]: Venue: 東京都　下北沢BASEMENTBAR
+2024-11-20 08:15:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12925
+2024-11-20 08:15:35 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12925
+2024-11-20 08:15:39 [INFO]: Ticket info: ¥3,000+1D（学生割¥2,000+1D）
+https://t.livepocket.jp/e/9iptp?fbclid=PAZXh0bgNhZW0CMTEAAaYnnN3g36K61ZP4M8nBjFBjghCxCv8tQci42Mpt9CrICl2rEKrqUX_E7NA_aem_8964GYILiSgMqBaiSSKJcQ
+2024-11-20 08:15:39 [INFO]: Extracted structured event data: {"title":"『『PARTY PEOPLES vol.1 てめえの中のAを弾け』』","date_start":"2024-11-29","date_end":"2024-11-29","time_start":"18:30:00","time_end":"19:30:00","venue":"東京都　下北沢BASEMENTBAR","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-11-29","time_start":"18:30:00","time_end":"19:30:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n18:30 / 19:30\n\nTICKET\n\n¥3,000+1D（学生割¥2,000+1D）\nhttps://t.livepocket.jp/e/9iptp?fbclid=PAZXh0bgNhZW0CMTEAAaYnnN3g36K61ZP4M8nBjFBjghCxCv8tQci42Mpt9CrICl2rEKrqUX_E7NA_aem_8964GYILiSgMqBaiSSKJcQ\n\nLIVE\n\nスカート、 MURABANKU。","event_link":"https://kakubarhythm.com/live/post/12925","raw_price_text":"¥3,000+1D（学生割¥2,000+1D）\nhttps://t.livepocket.jp/e/9iptp?fbclid=PAZXh0bgNhZW0CMTEAAaYnnN3g36K61ZP4M8nBjFBjghCxCv8tQci42Mpt9CrICl2rEKrqUX_E7NA_aem_8964GYILiSgMqBaiSSKJcQ","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:15:39 [INFO]: Processing event 5 of 32...
+2024-11-20 08:15:39 [INFO]: Event Title: 『瀬戸内ファンファーレ2024 "乙女座コンサート"』
+2024-11-20 08:15:39 [INFO]: Venue: 広島県　乙女座
+2024-11-20 08:15:39 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12822
+2024-11-20 08:15:39 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12822
+2024-11-20 08:15:42 [INFO]: Ticket info: 1,500円
+※小学生以下無料
+※定員：120名(先着)
+
+[ご予約]
+cowandmouse489@gmail.com / 080-3136-2673
+※件名に[乙女座コンサート：二階堂和美]と明記の上、　
+お名前(フルネーム)・お電話番号・チケット枚数をご記入いただき、
+上記メールアドレスにお申し込み下さい。
+確認後、ご購入方法などを折り返しご返信致します。
+
+[注意事項]
+※事前予約制です。
+※空席があれば当日参加も可能ですが、満席になる場合もございます。
+2024-11-20 08:15:42 [INFO]: Extracted structured event data: {"title":"『瀬戸内ファンファーレ2024 \"乙女座コンサート\"』","date_start":"2024-11-30","date_end":"2024-11-30","time_start":"14:00:00","time_end":"14:30:00","venue":"広島県　乙女座","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/11/2b658ee04be38f3c5a690dbf4f37114e.jpg","schedule":[{"date":"2024-11-30","time_start":"14:00:00","time_end":"14:30:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n14:00 / 14:30\n\nTICKET\n\n1,500円\n※小学生以下無料\n※定員：120名(先着)\n\n[ご予約]\ncowandmouse489@gmail.com / 080-3136-2673\n※件名に[乙女座コンサート：二階堂和美]と明記の上、　\nお名前(フルネーム)・お電話番号・チケット枚数をご記入いただき、\n上記メールアドレスにお申し込み下さい。\n確認後、ご購入方法などを折り返しご返信致します。\n\n[注意事項]\n※事前予約制です。\n※空席があれば当日参加も可能ですが、満席になる場合もございます。\n\nLIVE\n\n二階堂和美(歌) / 黒瀬みどり(ピアノ)\n\nINFO\n\n会場：乙女座\n住所：広島県呉市豊町御手洗243-1\nお問い合わせ：cowandmouse489@gmail.com / 080-3136-2673（カウアンドマウス）\n\nシャトルバスやその他のイベントなどは特設サイトをご確認ください。\n特設サイト：https://www.cowandmouse.info/setouchi-fanfare-2024","event_link":"https://kakubarhythm.com/live/post/12822","raw_price_text":"1,500円\n※小学生以下無料\n※定員：120名(先着)\n\n[ご予約]\ncowandmouse489@gmail.com / 080-3136-2673\n※件名に[乙女座コンサート：二階堂和美]と明記の上、　\nお名前(フルネーム)・お電話番号・チケット枚数をご記入いただき、\n上記メールアドレスにお申し込み下さい。\n確認後、ご購入方法などを折り返しご返信致します。\n\n[注意事項]\n※事前予約制です。\n※空席があれば当日参加も可能ですが、満席になる場合もございます。","categories":[],"tags":[],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 08:15:42 [INFO]: Processing event 6 of 32...
+2024-11-20 08:15:42 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 名古屋公演』
+2024-11-20 08:15:42 [INFO]: Venue: 愛知県　名古屋クラブクアトロ
+2024-11-20 08:15:42 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12515
+2024-11-20 08:15:42 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12515
+2024-11-20 08:15:46 [INFO]: Ticket info: 前売 ¥5,500（D代別、全自由）
+
+枚数制限：お一人様4枚まで
+発券形態：紙、電子チケット併用
+個人情報取得：購入者のみ取得
+入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット
+※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）
+
+
+プレイガイド
+【一般発売】8/31(土) 10:00～開始
+・イープラス
+・チケットぴあ
+・ローソンチケット
+2024-11-20 08:15:46 [INFO]: Extracted structured event data: {"title":"『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 名古屋公演』","date_start":"2024-12-01","date_end":"2024-12-01","time_start":"16:00:00","time_end":"17:00:00","venue":"愛知県　名古屋クラブクアトロ","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-01","time_start":"16:00:00","time_end":"17:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\n前売 ¥5,500（D代別、全自由）\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット\n\nLIVE\n\nキセル\n\nINFO\n\n名古屋クラブクアトロ: 052-264-8211","event_link":"https://kakubarhythm.com/live/post/12515","raw_price_text":"前売 ¥5,500（D代別、全自由）\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット","categories":[],"tags":[],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 08:15:46 [INFO]: Processing event 7 of 32...
+2024-11-20 08:15:46 [INFO]: Event Title: 『スカートPresents. 「Town Feeling Vol.2」』
+2024-11-20 08:15:46 [INFO]: Venue: 大阪府　十三 246 LIVEHOUSE GABU
+2024-11-20 08:15:46 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12864
+2024-11-20 08:15:46 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12864
+2024-11-20 08:15:50 [INFO]: Ticket info: 一般チケット5,500円 +1Dr
+学割チケット3,000円 +1Dr
+
+オフィシャル1次先行 10/25(金)18:00〜11/4(月祝)23:59
+https://eplus.jp/skirt2024/
+
+※学割チケットをお持ちの方は入場時、学生証をご提示していただきます。不備の場合、2500円追加徴収させていただきます。
+※入場時、別途ドリンク代徴収させていただきます。
+※危険行為・迷惑行為の禁止 ※小学生以下入場不可、中学生以上チケット必要
+2024-11-20 08:15:50 [INFO]: Extracted structured event data: {"title":"『スカートPresents. 「Town Feeling Vol.2」』","date_start":"2024-12-02","date_end":"2024-12-02","time_start":"18:00:00","time_end":"19:00:00","venue":"大阪府　十三 246 LIVEHOUSE GABU","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/TF01-700x990.jpg","schedule":[{"date":"2024-12-02","time_start":"18:00:00","time_end":"19:00:00","special_notes":null}],"prices":[{"price_tier":"一般チケット","amount":"5500","currency":"JPY","discount_info":null},{"price_tier":"学割チケット","amount":"3000","currency":"JPY","discount_info":null},{"price_tier":"一般チケット","amount":"5500","currency":"JPY","discount_info":null},{"price_tier":"学割チケット","amount":"3000","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:00 / 19:00\n\nTICKET\n\n一般チケット5,500円 +1Dr\n学割チケット3,000円 +1Dr\n\nオフィシャル1次先行 10/25(金)18:00〜11/4(月祝)23:59\nhttps://eplus.jp/skirt2024/\n\n※学割チケットをお持ちの方は入場時、学生証をご提示していただきます。不備の場合、2500円追加徴収させていただきます。\n※入場時、別途ドリンク代徴収させていただきます。\n※危険行為・迷惑行為の禁止 ※小学生以下入場不可、中学生以上チケット必要\n\nLIVE\n\nスカート、chelmico\n\nINFO\n\n企画 カクバリズム\n制作 iTONY ENTERTAINMENT\n運営 / 問合せ SMASH WEST　TEL:06-6535-5569","event_link":"https://kakubarhythm.com/live/post/12864","raw_price_text":"一般チケット5,500円 +1Dr\n学割チケット3,000円 +1Dr\n\nオフィシャル1次先行 10/25(金)18:00〜11/4(月祝)23:59\nhttps://eplus.jp/skirt2024/\n\n※学割チケットをお持ちの方は入場時、学生証をご提示していただきます。不備の場合、2500円追加徴収させていただきます。\n※入場時、別途ドリンク代徴収させていただきます。\n※危険行為・迷惑行為の禁止 ※小学生以下入場不可、中学生以上チケット必要","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:15:50 [INFO]: Processing event 8 of 32...
+2024-11-20 08:15:50 [INFO]: Event Title: 『在日ファンク冬公演「年末こわい」』
+2024-11-20 08:15:50 [INFO]: Venue: 東京都　東京キネマ倶楽部
+2024-11-20 08:15:50 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12799
+2024-11-20 08:15:50 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12799
+2024-11-20 08:15:53 [INFO]: Ticket info: 前売り ¥5,000（ドリンク代別、スタンディング、整理番号あり）
+
+11/2(土)10:00〜、一般発売開始
+・チケットぴあ
+・e+
+2024-11-20 08:15:53 [INFO]: Extracted structured event data: {"title":"『在日ファンク冬公演「年末こわい」』","date_start":"2024-12-04","date_end":"2024-12-04","time_start":"18:30:00","time_end":"19:15:00","venue":"東京都　東京キネマ倶楽部","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-04","time_start":"18:30:00","time_end":"19:15:00","special_notes":null}],"prices":[{"price_tier":"前売り","amount":"5000","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:15\n\nTICKET\n\n前売り ¥5,000（ドリンク代別、スタンディング、整理番号あり）\n\n11/2(土)10:00〜、一般発売開始\n・チケットぴあ\n・e+\n\nLIVE\n\n在日ファンク\nGUEST：サイトウジュン（YOUR SONG IS GOOD）\n\nINFO\n\n主催：VINTAGE ROCK std.\n企画制作：カクバリズム／VINTAGE ROCK std.\n\n問い合わせ：VINTAGE ROCK std. 03-5787-5350（平日12:00～17:00）","event_link":"https://kakubarhythm.com/live/post/12799","raw_price_text":"前売り ¥5,000（ドリンク代別、スタンディング、整理番号あり）\n\n11/2(土)10:00〜、一般発売開始\n・チケットぴあ\n・e+","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:15:53 [INFO]: Processing event 9 of 32...
+2024-11-20 08:15:53 [INFO]: Event Title: 『cero presents “ Contemporary Tokyo Cruise”〈DAY1〉』
+2024-11-20 08:15:53 [INFO]: Venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-20 08:15:53 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12813
+2024-11-20 08:15:53 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12813
+2024-11-20 08:15:57 [INFO]: Ticket info: 前売 ¥5,000 (税込/D代別)
+※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)
+※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)
+
+受付URL: https://eplus.jp/cero-ctc/
+
+一般発売: 11/9(土) 10:00~
+2024-11-20 08:15:57 [INFO]: Extracted structured event data: {"title":"『cero presents “ Contemporary Tokyo Cruise”〈DAY1〉』","date_start":"2024-12-07","date_end":"2024-12-07","time_start":"17:00:00","time_end":"18:00:00","venue":"東京都　恵比寿 LIQUIDROOM","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-07","time_start":"17:00:00","time_end":"18:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売 ¥5,000 (税込/D代別)\n※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)\n※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)\n\n受付URL: https://eplus.jp/cero-ctc/\n\n一般発売: 11/9(土) 10:00~\n\nLIVE\n\ncero/ CHO CO PA CO CHO CO QUIN QUIN\n\n\nINFO\n\niTONY ENTERTAINMENT","event_link":"https://kakubarhythm.com/live/post/12813","raw_price_text":"前売 ¥5,000 (税込/D代別)\n※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)\n※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)\n\n受付URL: https://eplus.jp/cero-ctc/\n\n一般発売: 11/9(土) 10:00~","categories":[],"tags":[],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 08:15:57 [INFO]: Processing event 10 of 32...
+2024-11-20 08:15:57 [INFO]: Event Title: 『Homecomings Live in Taipei（台湾公演）』
+2024-11-20 08:15:57 [INFO]: Venue: 台湾 台北市　台北・The Wall Live House （臺北市文山區羅斯福路四段200號B1）
+2024-11-20 08:15:57 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12918
+2024-11-20 08:15:57 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12918
+2024-11-20 08:16:01 [INFO]: Ticket info: 前売：NT. 1000
+当日：NT. 1200
+ペアチケット：NT. 1800
+
+🎫：11月14日（thu）ㅣ台灣時間12:00発売
+https://airheadrecords.kktix.cc/events/homecomings2024taipei
+2024-11-20 08:16:01 [INFO]: Extracted structured event data: {"title":"『Homecomings Live in Taipei（台湾公演）』","date_start":"2024-12-07","date_end":"2024-12-07","time_start":"19:00:00","time_end":"19:30:00","venue":"台湾 台北市　台北・The Wall Live House （臺北市文山區羅斯福路四段200號B1）","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-07","time_start":"19:00:00","time_end":"19:30:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n19:00 / 19:30\n\nTICKET\n\n前売：NT. 1000\n当日：NT. 1200\nペアチケット：NT. 1800\n\n🎫：11月14日（thu）ㅣ台灣時間12:00発売\nhttps://airheadrecords.kktix.cc/events/homecomings2024taipei\n\nLIVE\n\nHomecomings\nGuest: mia(tumo＆ami) / from DSPS,イルカポリス\n\n\nINFO\n\n主催：Airhead Records. 空氣腦唱片\n協力：Choumi 調味映樂祭\n\nFlyer design by ami tseng\nillustration by Sherry","event_link":"https://kakubarhythm.com/live/post/12918","raw_price_text":"前売：NT. 1000\n当日：NT. 1200\nペアチケット：NT. 1800\n\n🎫：11月14日（thu）ㅣ台灣時間12:00発売\nhttps://airheadrecords.kktix.cc/events/homecomings2024taipei","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:01 [INFO]: Processing event 11 of 32...
+2024-11-20 08:16:01 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 京都公演』
+2024-11-20 08:16:01 [INFO]: Venue: 京都府　先斗町歌舞練場
+2024-11-20 08:16:01 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12516
+2024-11-20 08:16:01 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12516
+2024-11-20 08:16:05 [INFO]: Ticket info: 指定席 ¥6,500
+ペア枡席（大人2名分） ¥13,000
+
+枚数制限：お一人様4枚まで
+発券形態：紙、電子チケット併用
+個人情報取得：購入者のみ取得
+入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット
+注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで
+※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）
+
+
+プレイガイド
+【一般発売】8/31(土) 10:00～開始
+・イープラス
+・チケットぴあ
+・ローソンチケット
+2024-11-20 08:16:05 [INFO]: Extracted structured event data: {"title":"『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 京都公演』","date_start":"2024-12-08","date_end":"2024-12-08","time_start":"16:15:00","time_end":"17:00:00","venue":"京都府　先斗町歌舞練場","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-08","time_start":"16:15:00","time_end":"17:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:15 / 17:00\n\nTICKET\n\n指定席 ¥6,500\nペア枡席（大人2名分） ¥13,000\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット\n\nLIVE\n\nキセル\n\nINFO\n\nSMASH WEST: 06-6535-5569","event_link":"https://kakubarhythm.com/live/post/12516","raw_price_text":"指定席 ¥6,500\nペア枡席（大人2名分） ¥13,000\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット","categories":[],"tags":[],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 08:16:05 [INFO]: Processing event 12 of 32...
+2024-11-20 08:16:05 [INFO]: Event Title: 『cero presents “ Contemporary Tokyo Cruise”〈DAY2〉』
+2024-11-20 08:16:05 [INFO]: Venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-20 08:16:05 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12814
+2024-11-20 08:16:05 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12814
+2024-11-20 08:16:09 [INFO]: Ticket info: 前売 ¥5,000 (税込/D代別)
+※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)
+※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)
+
+受付URL: https://eplus.jp/cero-ctc/
+
+一般発売: 11/9(土) 10:00~
+2024-11-20 08:16:09 [INFO]: Extracted structured event data: {"title":"『cero presents “ Contemporary Tokyo Cruise”〈DAY2〉』","date_start":"2024-12-08","date_end":"2024-12-08","time_start":"17:00:00","time_end":"18:00:00","venue":"東京都　恵比寿 LIQUIDROOM","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-08","time_start":"17:00:00","time_end":"18:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売 ¥5,000 (税込/D代別)\n※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)\n※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)\n\n受付URL: https://eplus.jp/cero-ctc/\n\n一般発売: 11/9(土) 10:00~\n\nLIVE\n\ncero\n\nINFO\n\niTONY ENTERTAINMENT","event_link":"https://kakubarhythm.com/live/post/12814","raw_price_text":"前売 ¥5,000 (税込/D代別)\n※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)\n※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)\n\n受付URL: https://eplus.jp/cero-ctc/\n\n一般発売: 11/9(土) 10:00~","categories":[],"tags":[],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 08:16:09 [INFO]: Processing event 13 of 32...
+2024-11-20 08:16:09 [INFO]: Event Title: 『CORNER presents『名前をつけてやる vol.2』』
+2024-11-20 08:16:09 [INFO]: Venue: 神奈川県　CORNER｜alternative pop-up space（神奈川県小田原市栄町3-22-100
+2024-11-20 08:16:09 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12908
+2024-11-20 08:16:09 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12908
+2024-11-20 08:16:12 [INFO]: Ticket info: 早割 ¥3,500（＋1ドリンク） ※11/24まで
+一般 ¥4,000（＋1ドリンク）
+
+■チケットご予約は下記メールアドレスまで「お名前・人数・ご連絡先」をご記入の上お送りください。
+cornerodawara@gmail.com
+2024-11-20 08:16:12 [INFO]: Extracted structured event data: {"title":"『CORNER presents『名前をつけてやる vol.2』』","date_start":"2024-12-08","date_end":"2024-12-08","time_start":"17:00:00","time_end":"18:00:00","venue":"神奈川県　CORNER｜alternative pop-up space（神奈川県小田原市栄町3-22-100","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-08","time_start":"17:00:00","time_end":"18:00:00","special_notes":null}],"prices":[{"price_tier":"一般","amount":"4000","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n早割 ¥3,500（＋1ドリンク） ※11/24まで\n一般 ¥4,000（＋1ドリンク）\n\n■チケットご予約は下記メールアドレスまで「お名前・人数・ご連絡先」をご記入の上お送りください。\ncornerodawara@gmail.com\n\n\nLIVE\n\nÅlborg","event_link":"https://kakubarhythm.com/live/post/12908","raw_price_text":"早割 ¥3,500（＋1ドリンク） ※11/24まで\n一般 ¥4,000（＋1ドリンク）\n\n■チケットご予約は下記メールアドレスまで「お名前・人数・ご連絡先」をご記入の上お送りください。\ncornerodawara@gmail.com","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:12 [INFO]: Processing event 14 of 32...
+2024-11-20 08:16:12 [INFO]: Event Title: 『Eupholks "hua" LP Release Show 』
+2024-11-20 08:16:12 [INFO]: Venue: 東京都　西永福JAM
+2024-11-20 08:16:12 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12867
+2024-11-20 08:16:12 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12867
+2024-11-20 08:16:16 [INFO]: Ticket info: adv: 3,000yen door: 3,500yen
+
+チケット販売URL（eplus）: https://eplus.jp/sf/detail/4210520001-P0030001
+2024-11-20 08:16:16 [INFO]: Extracted structured event data: {"title":"『Eupholks \"hua\" LP Release Show 』","date_start":"2024-12-14","date_end":"2024-12-14","time_start":"18:00:00","time_end":"18:30:00","venue":"東京都　西永福JAM","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-14","time_start":"18:00:00","time_end":"18:30:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n18:00 / 18:30\n\nTICKET\n\nadv: 3,000yen door: 3,500yen\n\nチケット販売URL（eplus）: https://eplus.jp/sf/detail/4210520001-P0030001\n\nLIVE\n\nEupholks\nTHEティバ / The Tiva\nÅlborg","event_link":"https://kakubarhythm.com/live/post/12867","raw_price_text":"adv: 3,000yen door: 3,500yen\n\nチケット販売URL（eplus）: https://eplus.jp/sf/detail/4210520001-P0030001","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:16 [INFO]: Processing event 15 of 32...
+2024-11-20 08:16:16 [INFO]: Event Title: 『CONCERT “Neon God”』
+2024-11-20 08:16:16 [INFO]: Venue: 東京都　渋谷WWW
+2024-11-20 08:16:16 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12846
+2024-11-20 08:16:16 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12846
+2024-11-20 08:16:20 [INFO]: Ticket info: 一般 ¥4,500（税込/ドリンク代別）
+U25 ¥3,000（税込/ドリンク代別）
+※U25チケットは25歳以下のお客様が購入可能なチケットです。
+ご入場時に年齢確認が出来るものをご持参ください。
+
+チケット発売中
+受付URL: https://eplus.jp/videotapemusic1214/
+2024-11-20 08:16:20 [INFO]: Extracted structured event data: {"title":"『CONCERT “Neon God”』","date_start":"2024-12-14","date_end":"2024-12-14","time_start":"17:00:00","time_end":"18:00:00","venue":"東京都　渋谷WWW","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-14","time_start":"17:00:00","time_end":"18:00:00","special_notes":null}],"prices":[{"price_tier":"一般","amount":"4500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n一般 ¥4,500（税込/ドリンク代別）\nU25 ¥3,000（税込/ドリンク代別）\n※U25チケットは25歳以下のお客様が購入可能なチケットです。\nご入場時に年齢確認が出来るものをご持参ください。\n\nチケット発売中\n受付URL: https://eplus.jp/videotapemusic1214/\n\n\nLIVE\n\nVIDEOTAPEMUSIC (bandset)\n\n\nエマーソン北村（Key）\n松井泉（Per）\n潮田雄一（Gt）\nmmm（Flute, Vo）\n橋本kids剛秀（Sax）\n\nDJ\n\n髙城晶平（cero）\n\nINFO\n\n主催 / 企画:カクバリズム\n問合せ: WWW: 03-5458-7685\nhttps://www-shibuya.jp/schedule/017181.php","event_link":"https://kakubarhythm.com/live/post/12846","raw_price_text":"一般 ¥4,500（税込/ドリンク代別）\nU25 ¥3,000（税込/ドリンク代別）\n※U25チケットは25歳以下のお客様が購入可能なチケットです。\nご入場時に年齢確認が出来るものをご持参ください。\n\nチケット発売中\n受付URL: https://eplus.jp/videotapemusic1214/","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:20 [INFO]: Processing event 16 of 32...
+2024-11-20 08:16:20 [INFO]: Event Title: 『片想いワンマンライブ 「からまるもお」』
+2024-11-20 08:16:20 [INFO]: Venue: 東京都　ダンスホール新世紀
+2024-11-20 08:16:20 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12715
+2024-11-20 08:16:20 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12715
+2024-11-20 08:16:24 [INFO]: Ticket info: 前売 ¥5,000 （別途D代）
+
+チケット一般発売中（eplus）
+受付URL：https://eplus.jp/kataomoi/
+
+＜備考＞
+※入場制限：高校生以上チケット必要、保護者同伴の場合に限り中学生以下無料(大人１名につき子供１名まで入場可)
+※入場特典あり（ステッカー）
+※学生キャッシュバックあり(学生証をご提示にて当日2000円キャッシュバック)
+※身体障害者キャッシュバックあり(お身体に不自由のある方・身体障害者手帳をご提示にて当日2000円キャッシュバック / 介助の方は1名まで入場無料)
+※12/15(日)東京公演ファミリーエリアあり
+2024-11-20 08:16:24 [INFO]: Extracted structured event data: {"title":"『片想いワンマンライブ 「からまるもお」』","date_start":"2024-12-15","date_end":"2024-12-15","time_start":"16:00:00","time_end":"17:00:00","venue":"東京都　ダンスホール新世紀","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-15","time_start":"16:00:00","time_end":"17:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\n前売 ¥5,000 （別途D代）\n\nチケット一般発売中（eplus）\n受付URL：https://eplus.jp/kataomoi/\n\n＜備考＞\n※入場制限：高校生以上チケット必要、保護者同伴の場合に限り中学生以下無料(大人１名につき子供１名まで入場可)\n※入場特典あり（ステッカー）\n※学生キャッシュバックあり(学生証をご提示にて当日2000円キャッシュバック)\n※身体障害者キャッシュバックあり(お身体に不自由のある方・身体障害者手帳をご提示にて当日2000円キャッシュバック / 介助の方は1名まで入場無料)\n※12/15(日)東京公演ファミリーエリアあり\n\nLIVE\n\n片想い（ONE-MAN LIVE）\n\nDJ\n\nMOODMAN\n\nINFO\n\nHOT STUFF PROMOTION 050-5211-6077","event_link":"https://kakubarhythm.com/live/post/12715","raw_price_text":"前売 ¥5,000 （別途D代）\n\nチケット一般発売中（eplus）\n受付URL：https://eplus.jp/kataomoi/\n\n＜備考＞\n※入場制限：高校生以上チケット必要、保護者同伴の場合に限り中学生以下無料(大人１名につき子供１名まで入場可)\n※入場特典あり（ステッカー）\n※学生キャッシュバックあり(学生証をご提示にて当日2000円キャッシュバック)\n※身体障害者キャッシュバックあり(お身体に不自由のある方・身体障害者手帳をご提示にて当日2000円キャッシュバック / 介助の方は1名まで入場無料)\n※12/15(日)東京公演ファミリーエリアあり","categories":[],"tags":[],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 08:16:24 [INFO]: Processing event 17 of 32...
+2024-11-20 08:16:24 [INFO]: Event Title: 『【京都公演】Homecomings oneman live “angel near you”』
+2024-11-20 08:16:24 [INFO]: Venue: 京都府　京都 MUSE
+2024-11-20 08:16:24 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12780
+2024-11-20 08:16:24 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12780
+2024-11-20 08:16:28 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 08:16:28 [INFO]: Extracted structured event data: {"title":"『【京都公演】Homecomings oneman live “angel near you”』","date_start":"2024-12-20","date_end":"2024-12-20","time_start":"18:30:00","time_end":"19:30:00","venue":"京都府　京都 MUSE","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-20","time_start":"18:30:00","time_end":"19:30:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:30\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)","event_link":"https://kakubarhythm.com/live/post/12780","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:28 [INFO]: Processing event 18 of 32...
+2024-11-20 08:16:28 [INFO]: Event Title: 『【名古屋公演】Homecomings oneman live "angel near you"』
+2024-11-20 08:16:28 [INFO]: Venue: 愛知県　NAGOYA JAMMIN’
+2024-11-20 08:16:28 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12544
+2024-11-20 08:16:28 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12544
+2024-11-20 08:16:33 [INFO]: Ticket info: 前売：STANDING 5,000円 / 学割STANDING 3,500円
+
+■チケット一般発売中
+受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/
+2024-11-20 08:16:33 [INFO]: Extracted structured event data: {"title":"『【名古屋公演】Homecomings oneman live \"angel near you\"』","date_start":"2024-12-21","date_end":"2024-12-21","time_start":"17:00:00","time_end":"18:00:00","venue":"愛知県　NAGOYA JAMMIN’","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-21","time_start":"17:00:00","time_end":"18:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売：STANDING 5,000円 / 学割STANDING 3,500円\n\n■チケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON\n\nお問合せ：JAILHOUSE 052-936-6035","event_link":"https://kakubarhythm.com/live/post/12544","raw_price_text":"前売：STANDING 5,000円 / 学割STANDING 3,500円\n\n■チケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:33 [INFO]: Processing event 19 of 32...
+2024-11-20 08:16:33 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 東京公演』
+2024-11-20 08:16:33 [INFO]: Venue: 東京都　渋谷区文化総合センター大和田さくらホール
+2024-11-20 08:16:33 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12514
+2024-11-20 08:16:33 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12514
+2024-11-20 08:16:36 [INFO]: Ticket info: 指定席 6,500円(税込)
+
+枚数制限：お一人様4枚まで
+発券形態：紙、電子チケット併用
+個人情報取得：購入者のみ取得
+入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット
+※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）
+
+プレイガイド
+【一般発売】8/31(土) 10:00～開始
+・イープラス
+・チケットぴあ
+・ローソンチケット
+2024-11-20 08:16:36 [INFO]: Extracted structured event data: {"title":"『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 東京公演』","date_start":"2024-12-22","date_end":"2024-12-22","time_start":"16:00:00","time_end":"17:00:00","venue":"東京都　渋谷区文化総合センター大和田さくらホール","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-22","time_start":"16:00:00","time_end":"17:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\n指定席 6,500円(税込)\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット\n\nLIVE\n\nキセル\n\nINFO\n\nSMASH: 03-3444-6751","event_link":"https://kakubarhythm.com/live/post/12514","raw_price_text":"指定席 6,500円(税込)\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット","categories":[],"tags":[],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 08:16:36 [INFO]: Processing event 20 of 32...
+2024-11-20 08:16:36 [INFO]: Event Title: 『【大阪公演】Homecomings oneman live "angel near you"』
+2024-11-20 08:16:36 [INFO]: Venue: 大阪府　梅田 Shangri-La
+2024-11-20 08:16:36 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12532
+2024-11-20 08:16:36 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12532
+2024-11-20 08:16:40 [INFO]: Ticket info: 前売：STANDING 5,000円 / 学割STANDING 3,500円
+
+■チケット一般発売中
+受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/
+2024-11-20 08:16:40 [INFO]: Extracted structured event data: {"title":"『【大阪公演】Homecomings oneman live \"angel near you\"』","date_start":"2024-12-22","date_end":"2024-12-22","time_start":"17:00:00","time_end":"18:00:00","venue":"大阪府　梅田 Shangri-La","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-22","time_start":"17:00:00","time_end":"18:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売：STANDING 5,000円 / 学割STANDING 3,500円\n\n■チケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON\n\nお問合せ：SMASH WEST 06-6535-5569","event_link":"https://kakubarhythm.com/live/post/12532","raw_price_text":"前売：STANDING 5,000円 / 学割STANDING 3,500円\n\n■チケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:40 [INFO]: Processing event 21 of 32...
+2024-11-20 08:16:40 [INFO]: Event Title: 『【東京公演】Homecomings oneman live “angel near you”』
+2024-11-20 08:16:40 [INFO]: Venue: 東京都　Zepp Shinjuku (TOKYO)
+2024-11-20 08:16:40 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12533
+2024-11-20 08:16:40 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12533
+2024-11-20 08:16:44 [INFO]: Ticket info: 前売：STANDING 5,500円 / 学割STANDING 3,500円
+
+チケット一般発売中
+受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/
+2024-11-20 08:16:44 [INFO]: Extracted structured event data: {"title":"『【東京公演】Homecomings oneman live “angel near you”』","date_start":"2024-12-28","date_end":"2024-12-28","time_start":"16:00:00","time_end":"17:00:00","venue":"東京都　Zepp Shinjuku (TOKYO)","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-28","time_start":"16:00:00","time_end":"17:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\n前売：STANDING 5,500円 / 学割STANDING 3,500円\n\nチケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/\n\n\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON\n\nお問合せ：HOTSTUFFPROMOTION 050-5211-6077","event_link":"https://kakubarhythm.com/live/post/12533","raw_price_text":"前売：STANDING 5,500円 / 学割STANDING 3,500円\n\nチケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:44 [INFO]: Processing event 22 of 32...
+2024-11-20 08:16:44 [INFO]: Event Title: 『【箱舟旅行 第34回】LAUSBUB × シャッポ』
+2024-11-20 08:16:44 [INFO]: Venue: 東京都　代官山 晴れたら空に豆まいて
+2024-11-20 08:16:44 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12838
+2024-11-20 08:16:44 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12838
+2024-11-20 08:16:49 [INFO]: Ticket info: 前売 ¥3500 / 当日 ¥4000
+(ともに別途1ドリンク代¥700)
+
+チケットご予約（Peatix）：https://haremame-241230-k.peatix.com/
+
+※ご到着順のご案内となります。
+※Peatixからお申し込みください。
+※エントランス時のお支払いは現金のみとなります。
+
+※お申し込みいただいたチケットのキャンセル、交換などは基本的に承っておりません。枚数と金額にご注意ください。
+
+※やむを得ない事情でキャンセルをご希望の際はPeatixページ「主催者へ連絡」からご相談くださいませ。
+
+※万が一イベントが中止になった場合などの返金の際、返金手数料340円のみご負担いただくことがございます。
+2024-11-20 08:16:49 [INFO]: Extracted structured event data: {"title":"『【箱舟旅行 第34回】LAUSBUB × シャッポ』","date_start":"2024-12-30","date_end":"2024-12-30","time_start":"17:30:00","time_end":"18:00:00","venue":"東京都　代官山 晴れたら空に豆まいて","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-30","time_start":"17:30:00","time_end":"18:00:00","special_notes":null}],"prices":[{"price_tier":"前売","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:30 / 18:00\n\nTICKET\n\n前売 ¥3500 / 当日 ¥4000\n(ともに別途1ドリンク代¥700)\n\nチケットご予約（Peatix）：https://haremame-241230-k.peatix.com/\n\n※ご到着順のご案内となります。\n※Peatixからお申し込みください。\n※エントランス時のお支払いは現金のみとなります。\n\n※お申し込みいただいたチケットのキャンセル、交換などは基本的に承っておりません。枚数と金額にご注意ください。\n\n※やむを得ない事情でキャンセルをご希望の際はPeatixページ「主催者へ連絡」からご相談くださいませ。\n\n※万が一イベントが中止になった場合などの返金の際、返金手数料340円のみご負担いただくことがございます。\n\nLIVE\n\nLAUSBUB / シャッポ\n\nINFO\n\nイベント会場（晴れたら空に豆まいて）HP：http://haremame.com/schedule/78067/","event_link":"https://kakubarhythm.com/live/post/12838","raw_price_text":"前売 ¥3500 / 当日 ¥4000\n(ともに別途1ドリンク代¥700)\n\nチケットご予約（Peatix）：https://haremame-241230-k.peatix.com/\n\n※ご到着順のご案内となります。\n※Peatixからお申し込みください。\n※エントランス時のお支払いは現金のみとなります。\n\n※お申し込みいただいたチケットのキャンセル、交換などは基本的に承っておりません。枚数と金額にご注意ください。\n\n※やむを得ない事情でキャンセルをご希望の際はPeatixページ「主催者へ連絡」からご相談くださいませ。\n\n※万が一イベントが中止になった場合などの返金の際、返金手数料340円のみご負担いただくことがございます。","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:49 [INFO]: Processing event 23 of 32...
+2024-11-20 08:16:49 [INFO]: Event Title: 『440(four forty) × タデクイ presents シャッポ × タデクイ』
+2024-11-20 08:16:49 [INFO]: Venue: 東京都　下北沢440
+2024-11-20 08:16:49 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12837
+2024-11-20 08:16:49 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12837
+2024-11-20 08:16:53 [INFO]: Ticket info: ADV¥3,500 / DOOR¥4,000
+※別途入場時1ドリンク必須
+
+2024/10/8(火)19:00〜 チケット発売（e＋）
+https://eplus.jp/sf/detail/4191510001-P0030001
+2024-11-20 08:16:53 [INFO]: Extracted structured event data: {"title":"『440(four forty) × タデクイ presents シャッポ × タデクイ』","date_start":"2025-01-08","date_end":"2025-01-08","time_start":"19:00:00","time_end":"19:30:00","venue":"東京都　下北沢440","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-08","time_start":"19:00:00","time_end":"19:30:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n19:00 / 19:30\n\nTICKET\n\nADV¥3,500 / DOOR¥4,000\n※別途入場時1ドリンク必須\n\n2024/10/8(火)19:00〜 チケット発売（e＋）\nhttps://eplus.jp/sf/detail/4191510001-P0030001\n\nLIVE\n\nタデクイ\nChappo","event_link":"https://kakubarhythm.com/live/post/12837","raw_price_text":"ADV¥3,500 / DOOR¥4,000\n※別途入場時1ドリンク必須\n\n2024/10/8(火)19:00〜 チケット発売（e＋）\nhttps://eplus.jp/sf/detail/4191510001-P0030001","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:53 [INFO]: Processing event 24 of 32...
+2024-11-20 08:16:53 [INFO]: Event Title: 『【金沢公演】Homecomings oneman live “angel near you”』
+2024-11-20 08:16:53 [INFO]: Venue: 石川県　金沢 vanvan V4
+2024-11-20 08:16:53 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12787
+2024-11-20 08:16:53 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12787
+2024-11-20 08:16:57 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 08:16:57 [INFO]: Extracted structured event data: {"title":"『【金沢公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-18","date_end":"2025-01-18","time_start":"17:30:00","time_end":"18:30:00","venue":"石川県　金沢 vanvan V4","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-18","time_start":"17:30:00","time_end":"18:30:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:30 / 18:30\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12787","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:16:57 [INFO]: Processing event 25 of 32...
+2024-11-20 08:16:57 [INFO]: Event Title: 『SOUL FLOWER MONONOKE SUMMIT "つづら折りの宴〜あれから30年"』
+2024-11-20 08:16:57 [INFO]: Venue: 京都府　磔磔
+2024-11-20 08:16:57 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12911
+2024-11-20 08:16:57 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12911
+2024-11-20 08:17:01 [INFO]: Ticket info: 前売5,500円 / 当日6,000円
+
+【取り扱い】
+※磔磔 店頭販売：10/27(日)15:00〜
+※イープラス一般発売：11/16(土)10:00〜
+販売URL：https://eplus.jp/sf/detail/4209680001-P0030001
+
+※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般
+2024-11-20 08:17:01 [INFO]: Extracted structured event data: {"title":"『SOUL FLOWER MONONOKE SUMMIT \"つづら折りの宴〜あれから30年\"』","date_start":"2025-01-19","date_end":"2025-01-19","time_start":"17:00:00","time_end":"18:00:00","venue":"京都府　磔磔","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-19","time_start":"17:00:00","time_end":"18:00:00","special_notes":null}],"prices":[{"price_tier":"前売","amount":"5500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売5,500円 / 当日6,000円\n\n【取り扱い】\n※磔磔 店頭販売：10/27(日)15:00〜\n※イープラス一般発売：11/16(土)10:00〜\n販売URL：https://eplus.jp/sf/detail/4209680001-P0030001\n\n※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般\n\nLIVE\n\nソウル・フラワー・モノノケ・サミット\nゲスト：二階堂和美\n\nINFO\n\n磔磔　075-351-1321\n京都市下京区富小路仏光寺下ル筋屋町136-9","event_link":"https://kakubarhythm.com/live/post/12911","raw_price_text":"前売5,500円 / 当日6,000円\n\n【取り扱い】\n※磔磔 店頭販売：10/27(日)15:00〜\n※イープラス一般発売：11/16(土)10:00〜\n販売URL：https://eplus.jp/sf/detail/4209680001-P0030001\n\n※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:17:01 [INFO]: Processing event 26 of 32...
+2024-11-20 08:17:01 [INFO]: Event Title: 『【香川公演】Homecomings oneman live “angel near you”』
+2024-11-20 08:17:01 [INFO]: Venue: 香川県　高松TOONICE
+2024-11-20 08:17:01 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12790
+2024-11-20 08:17:01 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12790
+2024-11-20 08:17:05 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 08:17:05 [INFO]: Extracted structured event data: {"title":"『【香川公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-19","date_end":"2025-01-19","time_start":"16:30:00","time_end":"17:00:00","venue":"香川県　高松TOONICE","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-19","time_start":"16:30:00","time_end":"17:00:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n16:30 / 17:00\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12790","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:17:05 [INFO]: Processing event 27 of 32...
+2024-11-20 08:17:05 [INFO]: Event Title: 『【福岡公演】Homecomings oneman live “angel near you”』
+2024-11-20 08:17:05 [INFO]: Venue: 福岡県　the voodoo lounge
+2024-11-20 08:17:05 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12785
+2024-11-20 08:17:05 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12785
+2024-11-20 08:17:08 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 08:17:08 [INFO]: Extracted structured event data: {"title":"『【福岡公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-21","date_end":"2025-01-21","time_start":"18:30:00","time_end":"19:00:00","venue":"福岡県　the voodoo lounge","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-21","time_start":"18:30:00","time_end":"19:00:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:00\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12785","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:17:08 [INFO]: Processing event 28 of 32...
+2024-11-20 08:17:08 [INFO]: Event Title: 『【仙台公演】Homecomings oneman live “angel near you”』
+2024-11-20 08:17:08 [INFO]: Venue: 宮城県　仙台 enn 2nd
+2024-11-20 08:17:08 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12788
+2024-11-20 08:17:08 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12788
+2024-11-20 08:17:12 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 08:17:12 [INFO]: Extracted structured event data: {"title":"『【仙台公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-24","date_end":"2025-01-24","time_start":"18:30:00","time_end":"19:00:00","venue":"宮城県　仙台 enn 2nd","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-24","time_start":"18:30:00","time_end":"19:00:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:00\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12788","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:17:12 [INFO]: Processing event 29 of 32...
+2024-11-20 08:17:12 [INFO]: Event Title: 『ROCK or LIVE！- ロックお笑い部 - Vol.4』
+2024-11-20 08:17:12 [INFO]: Venue: 大阪府　GORILLA HALL OSAKA
+2024-11-20 08:17:12 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12902
+2024-11-20 08:17:12 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12902
+2024-11-20 08:17:16 [INFO]: Ticket info: スタンディング　5,800円（税込） 　
+オフィシャル先行期間 2024/11/7(木)18:00〜2024/11/17(日)23:59
+https://w.pia.jp/t/rockorlive-vol4/
+一般発売 2024年12月21日(土)10:00〜　
+
+※入場時ドリンク代必要。
+※未就学児童入場不可。
+※先行は1人4枚まで。
+2024-11-20 08:17:16 [INFO]: Extracted structured event data: {"title":"『ROCK or LIVE！- ロックお笑い部 - Vol.4』","date_start":"2025-01-25","date_end":"2025-01-25","time_start":"16:30:00","time_end":"17:30:00","venue":"大阪府　GORILLA HALL OSAKA","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2025/01/03_sample.jpg","schedule":[{"date":"2025-01-25","time_start":"16:30:00","time_end":"17:30:00","special_notes":null}],"prices":[{"price_tier":"スタンディング","amount":"5800","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n16:30 / 17:30\n\nTICKET\n\nスタンディング　5,800円（税込） 　\nオフィシャル先行期間 2024/11/7(木)18:00〜2024/11/17(日)23:59\nhttps://w.pia.jp/t/rockorlive-vol4/\n一般発売 2024年12月21日(土)10:00〜　\n\n※入場時ドリンク代必要。\n※未就学児童入場不可。\n※先行は1人4枚まで。\n\nLIVE\n\n思い出野郎Aチーム / ハナコ\n\nINFO\n\n主催　GORILLA HALL OSAKA／ぴあ株式会社","event_link":"https://kakubarhythm.com/live/post/12902","raw_price_text":"スタンディング　5,800円（税込） 　\nオフィシャル先行期間 2024/11/7(木)18:00〜2024/11/17(日)23:59\nhttps://w.pia.jp/t/rockorlive-vol4/\n一般発売 2024年12月21日(土)10:00〜　\n\n※入場時ドリンク代必要。\n※未就学児童入場不可。\n※先行は1人4枚まで。","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:17:16 [INFO]: Processing event 30 of 32...
+2024-11-20 08:17:16 [INFO]: Event Title: 『【札幌公演】Homecomings oneman live “angel near you”』
+2024-11-20 08:17:16 [INFO]: Venue: 北海道　札幌 ベッシーホール
+2024-11-20 08:17:16 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12784
+2024-11-20 08:17:16 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12784
+2024-11-20 08:17:20 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 08:17:20 [INFO]: Extracted structured event data: {"title":"『【札幌公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-26","date_end":"2025-01-26","time_start":"16:00:00","time_end":"17:00:00","venue":"北海道　札幌 ベッシーホール","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-26","time_start":"16:00:00","time_end":"17:00:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12784","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:17:20 [INFO]: Processing event 31 of 32...
+2024-11-20 08:17:20 [INFO]: Event Title: 『SMA50th Anniversary×ライブナタリー “橋本絵莉子×スカート”』
+2024-11-20 08:17:20 [INFO]: Venue: 東京都　東京キネマ倶楽部
+2024-11-20 08:17:20 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12912
+2024-11-20 08:17:20 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12912
+2024-11-20 08:17:23 [INFO]: Ticket info: 【最速先行（e+（イープラス） / 抽選）】
+受付期間：2024年11月15日（金）12:00〜2024年11月24日（日）23:59
+チケット：https://eplus.jp/sma50th-natalie/
+
+【備考】
+・お一人様、4枚まで。（3歳未満入場不可 / 3歳以上はチケットが必要）
+・体調不良等、止むを得ず出演者の一部が急遽変更になる場合があります。一部出演者の変更を理由としたチケットの払い戻しは行いませんのであらかじめご了承ください。
+・主催者が中止および延期の判断をした場合を除き、お客様個人のご事情やガイドラインの詳細変更を理由とした払い戻しは行いませんのであらかじめご了承ください。
+
+【注意事項】
+ご来場される皆様が安心・安全にお楽しみいただく為、下記の項目に関してご理解、ご協力をお願いいたします。
+
+・37.5度以上の熱がある、または、発熱の有無に関わらず体調不良の症状がみられる場合はご入場をお断りすることがございます。
+・マスク推奨、手指の消毒をした上でご入場ください。
+・身近な方に感染の疑いがある場合、入場の自粛をお願いいたします。
+※上記の事をお守りいただけない・周囲の人に迷惑となる行為をはたらかれる場合は、他のお客様の安全を確保する為、ご退場いただきます。
+2024-11-20 08:17:23 [INFO]: Extracted structured event data: {"title":"『SMA50th Anniversary×ライブナタリー “橋本絵莉子×スカート”』","date_start":"2025-02-14","date_end":"2025-02-14","time_start":"18:00:00","time_end":"19:00:00","venue":"東京都　東京キネマ倶楽部","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/11/check_LNxSMA50th_241109_2_omote-scaled.jpg","schedule":[{"date":"2025-02-14","time_start":"18:00:00","time_end":"19:00:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n18:00 / 19:00\n\nTICKET\n\n【最速先行（e+（イープラス） / 抽選）】\n受付期間：2024年11月15日（金）12:00〜2024年11月24日（日）23:59\nチケット：https://eplus.jp/sma50th-natalie/\n\n【備考】\n・お一人様、4枚まで。（3歳未満入場不可 / 3歳以上はチケットが必要）\n・体調不良等、止むを得ず出演者の一部が急遽変更になる場合があります。一部出演者の変更を理由としたチケットの払い戻しは行いませんのであらかじめご了承ください。\n・主催者が中止および延期の判断をした場合を除き、お客様個人のご事情やガイドラインの詳細変更を理由とした払い戻しは行いませんのであらかじめご了承ください。\n\n【注意事項】\nご来場される皆様が安心・安全にお楽しみいただく為、下記の項目に関してご理解、ご協力をお願いいたします。\n\n・37.5度以上の熱がある、または、発熱の有無に関わらず体調不良の症状がみられる場合はご入場をお断りすることがございます。\n・マスク推奨、手指の消毒をした上でご入場ください。\n・身近な方に感染の疑いがある場合、入場の自粛をお願いいたします。\n※上記の事をお守りいただけない・周囲の人に迷惑となる行為をはたらかれる場合は、他のお客様の安全を確保する為、ご退場いただきます。\n\nLIVE\n\n橋本絵莉子 / スカート\n\nINFO\n\n【イベント特設サイト】https://live-lp.natalie.mu/sma50th-natalie/\n【SMA50th特設サイト】https://www.sma.co.jp/s/sma/page/50th?ima=0000&link=ROBO004\n【ライブナタリー公式X】https://twitter.com/live_natalie_mu/\n【ライブナタリー公式Instagram】https://www.instagram.com/live_natalie_mu/\n\n【お問い合わせ】ライブナタリー　live@natasha.co.jp\n【主催】株式会社ナターシャ\n【企画・制作】株式会社ナターシャ / Sony Music Artists","event_link":"https://kakubarhythm.com/live/post/12912","raw_price_text":"【最速先行（e+（イープラス） / 抽選）】\n受付期間：2024年11月15日（金）12:00〜2024年11月24日（日）23:59\nチケット：https://eplus.jp/sma50th-natalie/\n\n【備考】\n・お一人様、4枚まで。（3歳未満入場不可 / 3歳以上はチケットが必要）\n・体調不良等、止むを得ず出演者の一部が急遽変更になる場合があります。一部出演者の変更を理由としたチケットの払い戻しは行いませんのであらかじめご了承ください。\n・主催者が中止および延期の判断をした場合を除き、お客様個人のご事情やガイドラインの詳細変更を理由とした払い戻しは行いませんのであらかじめご了承ください。\n\n【注意事項】\nご来場される皆様が安心・安全にお楽しみいただく為、下記の項目に関してご理解、ご協力をお願いいたします。\n\n・37.5度以上の熱がある、または、発熱の有無に関わらず体調不良の症状がみられる場合はご入場をお断りすることがございます。\n・マスク推奨、手指の消毒をした上でご入場ください。\n・身近な方に感染の疑いがある場合、入場の自粛をお願いいたします。\n※上記の事をお守りいただけない・周囲の人に迷惑となる行為をはたらかれる場合は、他のお客様の安全を確保する為、ご退場いただきます。","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:17:23 [INFO]: Processing event 32 of 32...
+2024-11-20 08:17:23 [INFO]: Event Title: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-20 08:17:23 [INFO]: Venue: 京都府　磔磔
+2024-11-20 08:17:23 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12484
+2024-11-20 08:17:23 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12484
+2024-11-20 08:17:27 [INFO]: Ticket info: Comingsoon...
+2024-11-20 08:17:27 [INFO]: Extracted structured event data: {"title":"『ファンファン生誕祭 おかげさまで40!!!!』","date_start":"2025-02-15","date_end":"2025-02-15","time_start":"Comingsoon...:00","time_end":null,"venue":"京都府　磔磔","organization":"Kakubarhythm","image_url":"https://oyat.jp/wp/wp-content/uploads/2024/06/s__247414795-615x1024.jpg","schedule":[{"date":"2025-02-15","time_start":"Comingsoon...:00","time_end":null,"special_notes":null}],"prices":[],"description":"OPEN / START\n\nComingsoon...\n\nTICKET\n\nComingsoon...\n\nLIVE\n\n思い出野郎Aチーム\n小山田壮平(band)\nドクロズ\n伊藤せい子(夕凪)\nTOMOVSKY\nO.A. かわしまバンド\n\nDJ\n\nComingsoon...\n\n\n配信予定あり!!!!!\nその他詳細は後日お知らせいたします","event_link":"https://kakubarhythm.com/live/post/12484","raw_price_text":"Comingsoon...","categories":[],"tags":[],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 08:17:27 [INFO]: Final event data extraction complete.
+2024-11-20 08:17:27 [INFO]: Browser closed.
+2024-11-20 13:11:20 [INFO]: Browser launched.
+2024-11-20 13:11:20 [INFO]: New page opened.
+2024-11-20 13:11:20 [INFO]: Navigating to Kakubarhythm live events page...
+2024-11-20 13:11:22 [INFO]: Page loaded.
+2024-11-20 13:11:22 [INFO]: Found 32 event items.
+2024-11-20 13:11:22 [INFO]: Processing event 1 of 32...
+2024-11-20 13:11:22 [INFO]: Event Title: 『地球市民フェス 2024 produced by 核兵器廃絶地球市民長崎集会』
+2024-11-20 13:11:22 [INFO]: Venue: 長崎県　HAPPINESS ARENA
+2024-11-20 13:11:22 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12830
+2024-11-20 13:11:22 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12830
+2024-11-20 13:11:26 [INFO]: Ticket info: 参加費無料（要申込）
+※ただし無料開催のための応援チケットあり
+
+参加申し込み
+https://fes2024.ngo-nagasaki.com/#ticket
+
+※当フェスは無料開催ですがチケットお申し込みが必要です。
+2024-11-20 13:11:26 [WARN]: Invalid time format: 詳細は後日発表 for event: 『地球市民フェス 2024 produced by 核兵器廃絶地球市民長崎集会』
+2024-11-20 13:11:26 [INFO]: Extracted structured event data: {"title":"『地球市民フェス 2024 produced by 核兵器廃絶地球市民長崎集会』","date_start":"2024-11-24","date_end":"2024-11-24","time_start":null,"time_end":null,"venue":"長崎県　HAPPINESS ARENA","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/11/f1cc678bdd1a2b6ec5bbe8bb6829542d-scaled.jpg","schedule":[{"date":"2024-11-24","time_start":null,"time_end":null,"special_notes":null}],"prices":[],"description":"OPEN / START\n\n詳細は後日発表\n\nTICKET\n\n参加費無料（要申込）\n※ただし無料開催のための応援チケットあり\n\n参加申し込み\nhttps://fes2024.ngo-nagasaki.com/#ticket\n\n※当フェスは無料開催ですがチケットお申し込みが必要です。\n\nLIVE\n\n11月22日前夜祭：ピーター・バラカン (前夜祭は人数限定となります。詳しくはオフィシャルサイトをご確認ください)\n11月23日：加藤登紀子 / 七尾旅人 / Kan Sano (Band Set) / The fin.\n11月24日：ZAZEN BOYS / スチャダラパー / 二階堂和美\n\n※二階堂和美の出演は11月24日(日)となります。\n\nINFO\n\n地球市民フェス 2024","event_link":"https://kakubarhythm.com/live/post/12830","raw_price_text":"参加費無料（要申込）\n※ただし無料開催のための応援チケットあり\n\n参加申し込み\nhttps://fes2024.ngo-nagasaki.com/#ticket\n\n※当フェスは無料開催ですがチケットお申し込みが必要です。","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:11:26 [INFO]: Processing event 2 of 32...
+2024-11-20 13:11:26 [INFO]: Event Title: 『喫茶 片想い』
+2024-11-20 13:11:26 [INFO]: Venue: 東京都　神保町さぼうる
+2024-11-20 13:11:26 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12914
+2024-11-20 13:11:26 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12914
+2024-11-20 13:11:29 [INFO]: Ticket info: 入場料 ¥1,000（＋「さぼうる」のご注文1つ）
+※再入場の際は追加注文をお願いいたします。
+2024-11-20 13:11:29 [WARN]: Invalid time format: 13:00〜（夕方ごろまでの予定） for event: 『喫茶 片想い』
+2024-11-20 13:11:29 [INFO]: Extracted structured event data: {"title":"『喫茶 片想い』","date_start":"2024-11-24","date_end":"2024-11-24","time_start":null,"time_end":null,"venue":"東京都　神保町さぼうる","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-11-24","time_start":null,"time_end":null,"special_notes":null}],"prices":[],"description":"OPEN / START\n\n13:00〜（夕方ごろまでの予定）\n\nTICKET\n\n入場料 ¥1,000（＋「さぼうる」のご注文1つ）\n※再入場の際は追加注文をお願いいたします。\n\n\n\nLIVE\n\nお楽しみライブ、お楽しみDJあり","event_link":"https://kakubarhythm.com/live/post/12914","raw_price_text":"入場料 ¥1,000（＋「さぼうる」のご注文1つ）\n※再入場の際は追加注文をお願いいたします。","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:11:29 [INFO]: Processing event 3 of 32...
+2024-11-20 13:11:29 [INFO]: Event Title: 『『PARTY PEOPLES vol.1 てめえの中のAを弾け』』
+2024-11-20 13:11:29 [INFO]: Venue: 東京都　下北沢BASEMENTBAR
+2024-11-20 13:11:29 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12925
+2024-11-20 13:11:29 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12925
+2024-11-20 13:11:33 [INFO]: Ticket info: ¥3,000+1D（学生割¥2,000+1D）
+https://t.livepocket.jp/e/9iptp?fbclid=PAZXh0bgNhZW0CMTEAAaYnnN3g36K61ZP4M8nBjFBjghCxCv8tQci42Mpt9CrICl2rEKrqUX_E7NA_aem_8964GYILiSgMqBaiSSKJcQ
+2024-11-20 13:11:33 [INFO]: Extracted structured event data: {"title":"『『PARTY PEOPLES vol.1 てめえの中のAを弾け』』","date_start":"2024-11-29","date_end":"2024-11-29","time_start":"18:30","time_end":"19:30","venue":"東京都　下北沢BASEMENTBAR","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-11-29","time_start":"18:30","time_end":"19:30","special_notes":null}],"prices":[],"description":"OPEN / START\n\n18:30 / 19:30\n\nTICKET\n\n¥3,000+1D（学生割¥2,000+1D）\nhttps://t.livepocket.jp/e/9iptp?fbclid=PAZXh0bgNhZW0CMTEAAaYnnN3g36K61ZP4M8nBjFBjghCxCv8tQci42Mpt9CrICl2rEKrqUX_E7NA_aem_8964GYILiSgMqBaiSSKJcQ\n\nLIVE\n\nスカート、 MURABANKU。","event_link":"https://kakubarhythm.com/live/post/12925","raw_price_text":"¥3,000+1D（学生割¥2,000+1D）\nhttps://t.livepocket.jp/e/9iptp?fbclid=PAZXh0bgNhZW0CMTEAAaYnnN3g36K61ZP4M8nBjFBjghCxCv8tQci42Mpt9CrICl2rEKrqUX_E7NA_aem_8964GYILiSgMqBaiSSKJcQ","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:11:33 [INFO]: Processing event 4 of 32...
+2024-11-20 13:11:33 [INFO]: Event Title: 『瀬戸内ファンファーレ2024 "乙女座コンサート"』
+2024-11-20 13:11:33 [INFO]: Venue: 広島県　乙女座
+2024-11-20 13:11:33 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12822
+2024-11-20 13:11:33 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12822
+2024-11-20 13:11:37 [INFO]: Ticket info: 1,500円
+※小学生以下無料
+※定員：120名(先着)
+
+[ご予約]
+cowandmouse489@gmail.com / 080-3136-2673
+※件名に[乙女座コンサート：二階堂和美]と明記の上、　
+お名前(フルネーム)・お電話番号・チケット枚数をご記入いただき、
+上記メールアドレスにお申し込み下さい。
+確認後、ご購入方法などを折り返しご返信致します。
+
+[注意事項]
+※事前予約制です。
+※空席があれば当日参加も可能ですが、満席になる場合もございます。
+2024-11-20 13:11:37 [INFO]: Extracted structured event data: {"title":"『瀬戸内ファンファーレ2024 \"乙女座コンサート\"』","date_start":"2024-11-30","date_end":"2024-11-30","time_start":"14:00","time_end":"14:30","venue":"広島県　乙女座","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/11/2b658ee04be38f3c5a690dbf4f37114e.jpg","schedule":[{"date":"2024-11-30","time_start":"14:00","time_end":"14:30","special_notes":null}],"prices":[],"description":"OPEN / START\n\n14:00 / 14:30\n\nTICKET\n\n1,500円\n※小学生以下無料\n※定員：120名(先着)\n\n[ご予約]\ncowandmouse489@gmail.com / 080-3136-2673\n※件名に[乙女座コンサート：二階堂和美]と明記の上、　\nお名前(フルネーム)・お電話番号・チケット枚数をご記入いただき、\n上記メールアドレスにお申し込み下さい。\n確認後、ご購入方法などを折り返しご返信致します。\n\n[注意事項]\n※事前予約制です。\n※空席があれば当日参加も可能ですが、満席になる場合もございます。\n\nLIVE\n\n二階堂和美(歌) / 黒瀬みどり(ピアノ)\n\nINFO\n\n会場：乙女座\n住所：広島県呉市豊町御手洗243-1\nお問い合わせ：cowandmouse489@gmail.com / 080-3136-2673（カウアンドマウス）\n\nシャトルバスやその他のイベントなどは特設サイトをご確認ください。\n特設サイト：https://www.cowandmouse.info/setouchi-fanfare-2024","event_link":"https://kakubarhythm.com/live/post/12822","raw_price_text":"1,500円\n※小学生以下無料\n※定員：120名(先着)\n\n[ご予約]\ncowandmouse489@gmail.com / 080-3136-2673\n※件名に[乙女座コンサート：二階堂和美]と明記の上、　\nお名前(フルネーム)・お電話番号・チケット枚数をご記入いただき、\n上記メールアドレスにお申し込み下さい。\n確認後、ご購入方法などを折り返しご返信致します。\n\n[注意事項]\n※事前予約制です。\n※空席があれば当日参加も可能ですが、満席になる場合もございます。","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:11:37 [INFO]: Processing event 5 of 32...
+2024-11-20 13:11:37 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 名古屋公演』
+2024-11-20 13:11:37 [INFO]: Venue: 愛知県　名古屋クラブクアトロ
+2024-11-20 13:11:37 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12515
+2024-11-20 13:11:37 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12515
+2024-11-20 13:11:41 [INFO]: Ticket info: 前売 ¥5,500（D代別、全自由）
+
+枚数制限：お一人様4枚まで
+発券形態：紙、電子チケット併用
+個人情報取得：購入者のみ取得
+入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット
+※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）
+
+
+プレイガイド
+【一般発売】8/31(土) 10:00～開始
+・イープラス
+・チケットぴあ
+・ローソンチケット
+2024-11-20 13:11:41 [INFO]: Extracted structured event data: {"title":"『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 名古屋公演』","date_start":"2024-12-01","date_end":"2024-12-01","time_start":"16:00","time_end":"17:00","venue":"愛知県　名古屋クラブクアトロ","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-01","time_start":"16:00","time_end":"17:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\n前売 ¥5,500（D代別、全自由）\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット\n\nLIVE\n\nキセル\n\nINFO\n\n名古屋クラブクアトロ: 052-264-8211","event_link":"https://kakubarhythm.com/live/post/12515","raw_price_text":"前売 ¥5,500（D代別、全自由）\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:11:41 [INFO]: Processing event 6 of 32...
+2024-11-20 13:11:41 [INFO]: Event Title: 『スカートPresents. 「Town Feeling Vol.2」』
+2024-11-20 13:11:41 [INFO]: Venue: 大阪府　十三 246 LIVEHOUSE GABU
+2024-11-20 13:11:41 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12864
+2024-11-20 13:11:41 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12864
+2024-11-20 13:11:44 [INFO]: Ticket info: 一般チケット5,500円 +1Dr
+学割チケット3,000円 +1Dr
+
+オフィシャル1次先行 10/25(金)18:00〜11/4(月祝)23:59
+https://eplus.jp/skirt2024/
+
+※学割チケットをお持ちの方は入場時、学生証をご提示していただきます。不備の場合、2500円追加徴収させていただきます。
+※入場時、別途ドリンク代徴収させていただきます。
+※危険行為・迷惑行為の禁止 ※小学生以下入場不可、中学生以上チケット必要
+2024-11-20 13:11:44 [INFO]: Extracted structured event data: {"title":"『スカートPresents. 「Town Feeling Vol.2」』","date_start":"2024-12-02","date_end":"2024-12-02","time_start":"18:00","time_end":"19:00","venue":"大阪府　十三 246 LIVEHOUSE GABU","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/TF01-700x990.jpg","schedule":[{"date":"2024-12-02","time_start":"18:00","time_end":"19:00","special_notes":null}],"prices":[{"price_tier":"一般チケット","amount":"5500","currency":"JPY","discount_info":null},{"price_tier":"学割チケット","amount":"3000","currency":"JPY","discount_info":null},{"price_tier":"一般チケット","amount":"5500","currency":"JPY","discount_info":null},{"price_tier":"学割チケット","amount":"3000","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:00 / 19:00\n\nTICKET\n\n一般チケット5,500円 +1Dr\n学割チケット3,000円 +1Dr\n\nオフィシャル1次先行 10/25(金)18:00〜11/4(月祝)23:59\nhttps://eplus.jp/skirt2024/\n\n※学割チケットをお持ちの方は入場時、学生証をご提示していただきます。不備の場合、2500円追加徴収させていただきます。\n※入場時、別途ドリンク代徴収させていただきます。\n※危険行為・迷惑行為の禁止 ※小学生以下入場不可、中学生以上チケット必要\n\nLIVE\n\nスカート、chelmico\n\nINFO\n\n企画 カクバリズム\n制作 iTONY ENTERTAINMENT\n運営 / 問合せ SMASH WEST　TEL:06-6535-5569","event_link":"https://kakubarhythm.com/live/post/12864","raw_price_text":"一般チケット5,500円 +1Dr\n学割チケット3,000円 +1Dr\n\nオフィシャル1次先行 10/25(金)18:00〜11/4(月祝)23:59\nhttps://eplus.jp/skirt2024/\n\n※学割チケットをお持ちの方は入場時、学生証をご提示していただきます。不備の場合、2500円追加徴収させていただきます。\n※入場時、別途ドリンク代徴収させていただきます。\n※危険行為・迷惑行為の禁止 ※小学生以下入場不可、中学生以上チケット必要","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:11:44 [INFO]: Processing event 7 of 32...
+2024-11-20 13:11:44 [INFO]: Event Title: 『在日ファンク冬公演「年末こわい」』
+2024-11-20 13:11:44 [INFO]: Venue: 東京都　東京キネマ倶楽部
+2024-11-20 13:11:44 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12799
+2024-11-20 13:11:44 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12799
+2024-11-20 13:11:48 [INFO]: Ticket info: 前売り ¥5,000（ドリンク代別、スタンディング、整理番号あり）
+
+11/2(土)10:00〜、一般発売開始
+・チケットぴあ
+・e+
+2024-11-20 13:11:48 [INFO]: Extracted structured event data: {"title":"『在日ファンク冬公演「年末こわい」』","date_start":"2024-12-04","date_end":"2024-12-04","time_start":"18:30","time_end":"19:15","venue":"東京都　東京キネマ倶楽部","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-04","time_start":"18:30","time_end":"19:15","special_notes":null}],"prices":[{"price_tier":"前売り","amount":"5000","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:15\n\nTICKET\n\n前売り ¥5,000（ドリンク代別、スタンディング、整理番号あり）\n\n11/2(土)10:00〜、一般発売開始\n・チケットぴあ\n・e+\n\nLIVE\n\n在日ファンク\nGUEST：サイトウジュン（YOUR SONG IS GOOD）\n\nINFO\n\n主催：VINTAGE ROCK std.\n企画制作：カクバリズム／VINTAGE ROCK std.\n\n問い合わせ：VINTAGE ROCK std. 03-5787-5350（平日12:00～17:00）","event_link":"https://kakubarhythm.com/live/post/12799","raw_price_text":"前売り ¥5,000（ドリンク代別、スタンディング、整理番号あり）\n\n11/2(土)10:00〜、一般発売開始\n・チケットぴあ\n・e+","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:11:48 [INFO]: Processing event 8 of 32...
+2024-11-20 13:11:48 [INFO]: Event Title: 『cero presents “ Contemporary Tokyo Cruise”〈DAY1〉』
+2024-11-20 13:11:48 [INFO]: Venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-20 13:11:48 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12813
+2024-11-20 13:11:48 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12813
+2024-11-20 13:11:52 [INFO]: Ticket info: 前売 ¥5,000 (税込/D代別)
+※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)
+※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)
+
+受付URL: https://eplus.jp/cero-ctc/
+
+一般発売: 11/9(土) 10:00~
+2024-11-20 13:11:52 [INFO]: Extracted structured event data: {"title":"『cero presents “ Contemporary Tokyo Cruise”〈DAY1〉』","date_start":"2024-12-07","date_end":"2024-12-07","time_start":"17:00","time_end":"18:00","venue":"東京都　恵比寿 LIQUIDROOM","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-07","time_start":"17:00","time_end":"18:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売 ¥5,000 (税込/D代別)\n※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)\n※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)\n\n受付URL: https://eplus.jp/cero-ctc/\n\n一般発売: 11/9(土) 10:00~\n\nLIVE\n\ncero/ CHO CO PA CO CHO CO QUIN QUIN\n\n\nINFO\n\niTONY ENTERTAINMENT","event_link":"https://kakubarhythm.com/live/post/12813","raw_price_text":"前売 ¥5,000 (税込/D代別)\n※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)\n※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)\n\n受付URL: https://eplus.jp/cero-ctc/\n\n一般発売: 11/9(土) 10:00~","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:11:52 [INFO]: Processing event 9 of 32...
+2024-11-20 13:11:52 [INFO]: Event Title: 『Homecomings Live in Taipei（台湾公演）』
+2024-11-20 13:11:52 [INFO]: Venue: 台湾 台北市　台北・The Wall Live House （臺北市文山區羅斯福路四段200號B1）
+2024-11-20 13:11:52 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12918
+2024-11-20 13:11:52 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12918
+2024-11-20 13:11:55 [INFO]: Ticket info: 前売：NT. 1000
+当日：NT. 1200
+ペアチケット：NT. 1800
+
+🎫：11月14日（thu）ㅣ台灣時間12:00発売
+https://airheadrecords.kktix.cc/events/homecomings2024taipei
+2024-11-20 13:11:55 [INFO]: Extracted structured event data: {"title":"『Homecomings Live in Taipei（台湾公演）』","date_start":"2024-12-07","date_end":"2024-12-07","time_start":"19:00","time_end":"19:30","venue":"台湾 台北市　台北・The Wall Live House （臺北市文山區羅斯福路四段200號B1）","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-07","time_start":"19:00","time_end":"19:30","special_notes":null}],"prices":[],"description":"OPEN / START\n\n19:00 / 19:30\n\nTICKET\n\n前売：NT. 1000\n当日：NT. 1200\nペアチケット：NT. 1800\n\n🎫：11月14日（thu）ㅣ台灣時間12:00発売\nhttps://airheadrecords.kktix.cc/events/homecomings2024taipei\n\nLIVE\n\nHomecomings\nGuest: mia(tumo＆ami) / from DSPS,イルカポリス\n\n\nINFO\n\n主催：Airhead Records. 空氣腦唱片\n協力：Choumi 調味映樂祭\n\nFlyer design by ami tseng\nillustration by Sherry","event_link":"https://kakubarhythm.com/live/post/12918","raw_price_text":"前売：NT. 1000\n当日：NT. 1200\nペアチケット：NT. 1800\n\n🎫：11月14日（thu）ㅣ台灣時間12:00発売\nhttps://airheadrecords.kktix.cc/events/homecomings2024taipei","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:11:55 [INFO]: Processing event 10 of 32...
+2024-11-20 13:11:55 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 京都公演』
+2024-11-20 13:11:55 [INFO]: Venue: 京都府　先斗町歌舞練場
+2024-11-20 13:11:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12516
+2024-11-20 13:11:55 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12516
+2024-11-20 13:11:59 [INFO]: Ticket info: 指定席 ¥6,500
+ペア枡席（大人2名分） ¥13,000
+
+枚数制限：お一人様4枚まで
+発券形態：紙、電子チケット併用
+個人情報取得：購入者のみ取得
+入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット
+注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで
+※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）
+
+
+プレイガイド
+【一般発売】8/31(土) 10:00～開始
+・イープラス
+・チケットぴあ
+・ローソンチケット
+2024-11-20 13:11:59 [INFO]: Extracted structured event data: {"title":"『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 京都公演』","date_start":"2024-12-08","date_end":"2024-12-08","time_start":"16:15","time_end":"17:00","venue":"京都府　先斗町歌舞練場","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-08","time_start":"16:15","time_end":"17:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:15 / 17:00\n\nTICKET\n\n指定席 ¥6,500\nペア枡席（大人2名分） ¥13,000\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット\n\nLIVE\n\nキセル\n\nINFO\n\nSMASH WEST: 06-6535-5569","event_link":"https://kakubarhythm.com/live/post/12516","raw_price_text":"指定席 ¥6,500\nペア枡席（大人2名分） ¥13,000\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:11:59 [INFO]: Processing event 11 of 32...
+2024-11-20 13:11:59 [INFO]: Event Title: 『cero presents “ Contemporary Tokyo Cruise”〈DAY2〉』
+2024-11-20 13:11:59 [INFO]: Venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-20 13:11:59 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12814
+2024-11-20 13:11:59 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12814
+2024-11-20 13:12:03 [INFO]: Ticket info: 前売 ¥5,000 (税込/D代別)
+※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)
+※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)
+
+受付URL: https://eplus.jp/cero-ctc/
+
+一般発売: 11/9(土) 10:00~
+2024-11-20 13:12:03 [INFO]: Extracted structured event data: {"title":"『cero presents “ Contemporary Tokyo Cruise”〈DAY2〉』","date_start":"2024-12-08","date_end":"2024-12-08","time_start":"17:00","time_end":"18:00","venue":"東京都　恵比寿 LIQUIDROOM","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-08","time_start":"17:00","time_end":"18:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売 ¥5,000 (税込/D代別)\n※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)\n※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)\n\n受付URL: https://eplus.jp/cero-ctc/\n\n一般発売: 11/9(土) 10:00~\n\nLIVE\n\ncero\n\nINFO\n\niTONY ENTERTAINMENT","event_link":"https://kakubarhythm.com/live/post/12814","raw_price_text":"前売 ¥5,000 (税込/D代別)\n※小学生以上有料。未就学児童は無料(大人1名につき、子供1名まで入場可)\n※学割キャッシュバック有り(来場時、学生証提示で1500円キャッシュバック)\n\n受付URL: https://eplus.jp/cero-ctc/\n\n一般発売: 11/9(土) 10:00~","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:12:03 [INFO]: Processing event 12 of 32...
+2024-11-20 13:12:03 [INFO]: Event Title: 『CORNER presents『名前をつけてやる vol.2』』
+2024-11-20 13:12:03 [INFO]: Venue: 神奈川県　CORNER｜alternative pop-up space（神奈川県小田原市栄町3-22-100
+2024-11-20 13:12:03 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12908
+2024-11-20 13:12:03 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12908
+2024-11-20 13:12:07 [INFO]: Ticket info: 早割 ¥3,500（＋1ドリンク） ※11/24まで
+一般 ¥4,000（＋1ドリンク）
+
+■チケットご予約は下記メールアドレスまで「お名前・人数・ご連絡先」をご記入の上お送りください。
+cornerodawara@gmail.com
+2024-11-20 13:12:07 [INFO]: Extracted structured event data: {"title":"『CORNER presents『名前をつけてやる vol.2』』","date_start":"2024-12-08","date_end":"2024-12-08","time_start":"17:00","time_end":"18:00","venue":"神奈川県　CORNER｜alternative pop-up space（神奈川県小田原市栄町3-22-100","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-08","time_start":"17:00","time_end":"18:00","special_notes":null}],"prices":[{"price_tier":"一般","amount":"4000","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n早割 ¥3,500（＋1ドリンク） ※11/24まで\n一般 ¥4,000（＋1ドリンク）\n\n■チケットご予約は下記メールアドレスまで「お名前・人数・ご連絡先」をご記入の上お送りください。\ncornerodawara@gmail.com\n\n\nLIVE\n\nÅlborg","event_link":"https://kakubarhythm.com/live/post/12908","raw_price_text":"早割 ¥3,500（＋1ドリンク） ※11/24まで\n一般 ¥4,000（＋1ドリンク）\n\n■チケットご予約は下記メールアドレスまで「お名前・人数・ご連絡先」をご記入の上お送りください。\ncornerodawara@gmail.com","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:07 [INFO]: Processing event 13 of 32...
+2024-11-20 13:12:07 [INFO]: Event Title: 『Eupholks "hua" LP Release Show 』
+2024-11-20 13:12:07 [INFO]: Venue: 東京都　西永福JAM
+2024-11-20 13:12:07 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12867
+2024-11-20 13:12:07 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12867
+2024-11-20 13:12:11 [INFO]: Ticket info: adv: 3,000yen door: 3,500yen
+
+チケット販売URL（eplus）: https://eplus.jp/sf/detail/4210520001-P0030001
+2024-11-20 13:12:11 [INFO]: Extracted structured event data: {"title":"『Eupholks \"hua\" LP Release Show 』","date_start":"2024-12-14","date_end":"2024-12-14","time_start":"18:00","time_end":"18:30","venue":"東京都　西永福JAM","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-14","time_start":"18:00","time_end":"18:30","special_notes":null}],"prices":[],"description":"OPEN / START\n\n18:00 / 18:30\n\nTICKET\n\nadv: 3,000yen door: 3,500yen\n\nチケット販売URL（eplus）: https://eplus.jp/sf/detail/4210520001-P0030001\n\nLIVE\n\nEupholks\nTHEティバ / The Tiva\nÅlborg","event_link":"https://kakubarhythm.com/live/post/12867","raw_price_text":"adv: 3,000yen door: 3,500yen\n\nチケット販売URL（eplus）: https://eplus.jp/sf/detail/4210520001-P0030001","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:11 [INFO]: Processing event 14 of 32...
+2024-11-20 13:12:11 [INFO]: Event Title: 『CONCERT “Neon God”』
+2024-11-20 13:12:11 [INFO]: Venue: 東京都　渋谷WWW
+2024-11-20 13:12:11 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12846
+2024-11-20 13:12:11 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12846
+2024-11-20 13:12:14 [INFO]: Ticket info: 一般 ¥4,500（税込/ドリンク代別）
+U25 ¥3,000（税込/ドリンク代別）
+※U25チケットは25歳以下のお客様が購入可能なチケットです。
+ご入場時に年齢確認が出来るものをご持参ください。
+
+チケット発売中
+受付URL: https://eplus.jp/videotapemusic1214/
+2024-11-20 13:12:14 [INFO]: Extracted structured event data: {"title":"『CONCERT “Neon God”』","date_start":"2024-12-14","date_end":"2024-12-14","time_start":"17:00","time_end":"18:00","venue":"東京都　渋谷WWW","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-14","time_start":"17:00","time_end":"18:00","special_notes":null}],"prices":[{"price_tier":"一般","amount":"4500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n一般 ¥4,500（税込/ドリンク代別）\nU25 ¥3,000（税込/ドリンク代別）\n※U25チケットは25歳以下のお客様が購入可能なチケットです。\nご入場時に年齢確認が出来るものをご持参ください。\n\nチケット発売中\n受付URL: https://eplus.jp/videotapemusic1214/\n\n\nLIVE\n\nVIDEOTAPEMUSIC (bandset)\n\n\nエマーソン北村（Key）\n松井泉（Per）\n潮田雄一（Gt）\nmmm（Flute, Vo）\n橋本kids剛秀（Sax）\n\nDJ\n\n髙城晶平（cero）\n\nINFO\n\n主催 / 企画:カクバリズム\n問合せ: WWW: 03-5458-7685\nhttps://www-shibuya.jp/schedule/017181.php","event_link":"https://kakubarhythm.com/live/post/12846","raw_price_text":"一般 ¥4,500（税込/ドリンク代別）\nU25 ¥3,000（税込/ドリンク代別）\n※U25チケットは25歳以下のお客様が購入可能なチケットです。\nご入場時に年齢確認が出来るものをご持参ください。\n\nチケット発売中\n受付URL: https://eplus.jp/videotapemusic1214/","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:14 [INFO]: Processing event 15 of 32...
+2024-11-20 13:12:14 [INFO]: Event Title: 『片想いワンマンライブ 「からまるもお」』
+2024-11-20 13:12:14 [INFO]: Venue: 東京都　ダンスホール新世紀
+2024-11-20 13:12:14 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12715
+2024-11-20 13:12:14 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12715
+2024-11-20 13:12:18 [INFO]: Ticket info: 前売 ¥5,000 （別途D代）
+
+チケット一般発売中（eplus）
+受付URL：https://eplus.jp/kataomoi/
+
+＜備考＞
+※入場制限：高校生以上チケット必要、保護者同伴の場合に限り中学生以下無料(大人１名につき子供１名まで入場可)
+※入場特典あり（ステッカー）
+※学生キャッシュバックあり(学生証をご提示にて当日2000円キャッシュバック)
+※身体障害者キャッシュバックあり(お身体に不自由のある方・身体障害者手帳をご提示にて当日2000円キャッシュバック / 介助の方は1名まで入場無料)
+※12/15(日)東京公演ファミリーエリアあり
+2024-11-20 13:12:18 [INFO]: Extracted structured event data: {"title":"『片想いワンマンライブ 「からまるもお」』","date_start":"2024-12-15","date_end":"2024-12-15","time_start":"16:00","time_end":"17:00","venue":"東京都　ダンスホール新世紀","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-15","time_start":"16:00","time_end":"17:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\n前売 ¥5,000 （別途D代）\n\nチケット一般発売中（eplus）\n受付URL：https://eplus.jp/kataomoi/\n\n＜備考＞\n※入場制限：高校生以上チケット必要、保護者同伴の場合に限り中学生以下無料(大人１名につき子供１名まで入場可)\n※入場特典あり（ステッカー）\n※学生キャッシュバックあり(学生証をご提示にて当日2000円キャッシュバック)\n※身体障害者キャッシュバックあり(お身体に不自由のある方・身体障害者手帳をご提示にて当日2000円キャッシュバック / 介助の方は1名まで入場無料)\n※12/15(日)東京公演ファミリーエリアあり\n\nLIVE\n\n片想い（ONE-MAN LIVE）\n\nDJ\n\nMOODMAN\n\nINFO\n\nHOT STUFF PROMOTION 050-5211-6077","event_link":"https://kakubarhythm.com/live/post/12715","raw_price_text":"前売 ¥5,000 （別途D代）\n\nチケット一般発売中（eplus）\n受付URL：https://eplus.jp/kataomoi/\n\n＜備考＞\n※入場制限：高校生以上チケット必要、保護者同伴の場合に限り中学生以下無料(大人１名につき子供１名まで入場可)\n※入場特典あり（ステッカー）\n※学生キャッシュバックあり(学生証をご提示にて当日2000円キャッシュバック)\n※身体障害者キャッシュバックあり(お身体に不自由のある方・身体障害者手帳をご提示にて当日2000円キャッシュバック / 介助の方は1名まで入場無料)\n※12/15(日)東京公演ファミリーエリアあり","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:12:18 [INFO]: Processing event 16 of 32...
+2024-11-20 13:12:18 [INFO]: Event Title: 『【京都公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:12:18 [INFO]: Venue: 京都府　京都 MUSE
+2024-11-20 13:12:18 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12780
+2024-11-20 13:12:18 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12780
+2024-11-20 13:12:22 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 13:12:22 [INFO]: Extracted structured event data: {"title":"『【京都公演】Homecomings oneman live “angel near you”』","date_start":"2024-12-20","date_end":"2024-12-20","time_start":"18:30","time_end":"19:30","venue":"京都府　京都 MUSE","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-20","time_start":"18:30","time_end":"19:30","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:30\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)","event_link":"https://kakubarhythm.com/live/post/12780","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:22 [INFO]: Processing event 17 of 32...
+2024-11-20 13:12:22 [INFO]: Event Title: 『【名古屋公演】Homecomings oneman live "angel near you"』
+2024-11-20 13:12:22 [INFO]: Venue: 愛知県　NAGOYA JAMMIN’
+2024-11-20 13:12:22 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12544
+2024-11-20 13:12:22 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12544
+2024-11-20 13:12:25 [INFO]: Ticket info: 前売：STANDING 5,000円 / 学割STANDING 3,500円
+
+■チケット一般発売中
+受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/
+2024-11-20 13:12:25 [INFO]: Extracted structured event data: {"title":"『【名古屋公演】Homecomings oneman live \"angel near you\"』","date_start":"2024-12-21","date_end":"2024-12-21","time_start":"17:00","time_end":"18:00","venue":"愛知県　NAGOYA JAMMIN’","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-21","time_start":"17:00","time_end":"18:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売：STANDING 5,000円 / 学割STANDING 3,500円\n\n■チケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON\n\nお問合せ：JAILHOUSE 052-936-6035","event_link":"https://kakubarhythm.com/live/post/12544","raw_price_text":"前売：STANDING 5,000円 / 学割STANDING 3,500円\n\n■チケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:25 [INFO]: Processing event 18 of 32...
+2024-11-20 13:12:26 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 東京公演』
+2024-11-20 13:12:26 [INFO]: Venue: 東京都　渋谷区文化総合センター大和田さくらホール
+2024-11-20 13:12:26 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12514
+2024-11-20 13:12:26 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12514
+2024-11-20 13:12:29 [INFO]: Ticket info: 指定席 6,500円(税込)
+
+枚数制限：お一人様4枚まで
+発券形態：紙、電子チケット併用
+個人情報取得：購入者のみ取得
+入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット
+※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）
+
+プレイガイド
+【一般発売】8/31(土) 10:00～開始
+・イープラス
+・チケットぴあ
+・ローソンチケット
+2024-11-20 13:12:29 [INFO]: Extracted structured event data: {"title":"『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 東京公演』","date_start":"2024-12-22","date_end":"2024-12-22","time_start":"16:00","time_end":"17:00","venue":"東京都　渋谷区文化総合センター大和田さくらホール","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-22","time_start":"16:00","time_end":"17:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\n指定席 6,500円(税込)\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット\n\nLIVE\n\nキセル\n\nINFO\n\nSMASH: 03-3444-6751","event_link":"https://kakubarhythm.com/live/post/12514","raw_price_text":"指定席 6,500円(税込)\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:12:29 [INFO]: Processing event 19 of 32...
+2024-11-20 13:12:29 [INFO]: Event Title: 『【大阪公演】Homecomings oneman live "angel near you"』
+2024-11-20 13:12:29 [INFO]: Venue: 大阪府　梅田 Shangri-La
+2024-11-20 13:12:29 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12532
+2024-11-20 13:12:29 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12532
+2024-11-20 13:12:33 [INFO]: Ticket info: 前売：STANDING 5,000円 / 学割STANDING 3,500円
+
+■チケット一般発売中
+受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/
+2024-11-20 13:12:33 [INFO]: Extracted structured event data: {"title":"『【大阪公演】Homecomings oneman live \"angel near you\"』","date_start":"2024-12-22","date_end":"2024-12-22","time_start":"17:00","time_end":"18:00","venue":"大阪府　梅田 Shangri-La","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-22","time_start":"17:00","time_end":"18:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売：STANDING 5,000円 / 学割STANDING 3,500円\n\n■チケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON\n\nお問合せ：SMASH WEST 06-6535-5569","event_link":"https://kakubarhythm.com/live/post/12532","raw_price_text":"前売：STANDING 5,000円 / 学割STANDING 3,500円\n\n■チケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:33 [INFO]: Processing event 20 of 32...
+2024-11-20 13:12:33 [INFO]: Event Title: 『【東京公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:12:33 [INFO]: Venue: 東京都　Zepp Shinjuku (TOKYO)
+2024-11-20 13:12:33 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12533
+2024-11-20 13:12:33 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12533
+2024-11-20 13:12:37 [INFO]: Ticket info: 前売：STANDING 5,500円 / 学割STANDING 3,500円
+
+チケット一般発売中
+受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/
+2024-11-20 13:12:37 [INFO]: Extracted structured event data: {"title":"『【東京公演】Homecomings oneman live “angel near you”』","date_start":"2024-12-28","date_end":"2024-12-28","time_start":"16:00","time_end":"17:00","venue":"東京都　Zepp Shinjuku (TOKYO)","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-28","time_start":"16:00","time_end":"17:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\n前売：STANDING 5,500円 / 学割STANDING 3,500円\n\nチケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/\n\n\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON\n\nお問合せ：HOTSTUFFPROMOTION 050-5211-6077","event_link":"https://kakubarhythm.com/live/post/12533","raw_price_text":"前売：STANDING 5,500円 / 学割STANDING 3,500円\n\nチケット一般発売中\n受付URL（ぴあ）：https://w.pia.jp/t/homecomings-angelnearyou/","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:37 [INFO]: Processing event 21 of 32...
+2024-11-20 13:12:37 [INFO]: Event Title: 『【箱舟旅行 第34回】LAUSBUB × シャッポ』
+2024-11-20 13:12:37 [INFO]: Venue: 東京都　代官山 晴れたら空に豆まいて
+2024-11-20 13:12:37 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12838
+2024-11-20 13:12:37 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12838
+2024-11-20 13:12:41 [INFO]: Ticket info: 前売 ¥3500 / 当日 ¥4000
+(ともに別途1ドリンク代¥700)
+
+チケットご予約（Peatix）：https://haremame-241230-k.peatix.com/
+
+※ご到着順のご案内となります。
+※Peatixからお申し込みください。
+※エントランス時のお支払いは現金のみとなります。
+
+※お申し込みいただいたチケットのキャンセル、交換などは基本的に承っておりません。枚数と金額にご注意ください。
+
+※やむを得ない事情でキャンセルをご希望の際はPeatixページ「主催者へ連絡」からご相談くださいませ。
+
+※万が一イベントが中止になった場合などの返金の際、返金手数料340円のみご負担いただくことがございます。
+2024-11-20 13:12:41 [INFO]: Extracted structured event data: {"title":"『【箱舟旅行 第34回】LAUSBUB × シャッポ』","date_start":"2024-12-30","date_end":"2024-12-30","time_start":"17:30","time_end":"18:00","venue":"東京都　代官山 晴れたら空に豆まいて","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-30","time_start":"17:30","time_end":"18:00","special_notes":null}],"prices":[{"price_tier":"前売","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:30 / 18:00\n\nTICKET\n\n前売 ¥3500 / 当日 ¥4000\n(ともに別途1ドリンク代¥700)\n\nチケットご予約（Peatix）：https://haremame-241230-k.peatix.com/\n\n※ご到着順のご案内となります。\n※Peatixからお申し込みください。\n※エントランス時のお支払いは現金のみとなります。\n\n※お申し込みいただいたチケットのキャンセル、交換などは基本的に承っておりません。枚数と金額にご注意ください。\n\n※やむを得ない事情でキャンセルをご希望の際はPeatixページ「主催者へ連絡」からご相談くださいませ。\n\n※万が一イベントが中止になった場合などの返金の際、返金手数料340円のみご負担いただくことがございます。\n\nLIVE\n\nLAUSBUB / シャッポ\n\nINFO\n\nイベント会場（晴れたら空に豆まいて）HP：http://haremame.com/schedule/78067/","event_link":"https://kakubarhythm.com/live/post/12838","raw_price_text":"前売 ¥3500 / 当日 ¥4000\n(ともに別途1ドリンク代¥700)\n\nチケットご予約（Peatix）：https://haremame-241230-k.peatix.com/\n\n※ご到着順のご案内となります。\n※Peatixからお申し込みください。\n※エントランス時のお支払いは現金のみとなります。\n\n※お申し込みいただいたチケットのキャンセル、交換などは基本的に承っておりません。枚数と金額にご注意ください。\n\n※やむを得ない事情でキャンセルをご希望の際はPeatixページ「主催者へ連絡」からご相談くださいませ。\n\n※万が一イベントが中止になった場合などの返金の際、返金手数料340円のみご負担いただくことがございます。","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:41 [INFO]: Processing event 22 of 32...
+2024-11-20 13:12:41 [INFO]: Event Title: 『440(four forty) × タデクイ presents シャッポ × タデクイ』
+2024-11-20 13:12:41 [INFO]: Venue: 東京都　下北沢440
+2024-11-20 13:12:41 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12837
+2024-11-20 13:12:41 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12837
+2024-11-20 13:12:45 [INFO]: Ticket info: ADV¥3,500 / DOOR¥4,000
+※別途入場時1ドリンク必須
+
+2024/10/8(火)19:00〜 チケット発売（e＋）
+https://eplus.jp/sf/detail/4191510001-P0030001
+2024-11-20 13:12:45 [INFO]: Extracted structured event data: {"title":"『440(four forty) × タデクイ presents シャッポ × タデクイ』","date_start":"2025-01-08","date_end":"2025-01-08","time_start":"19:00","time_end":"19:30","venue":"東京都　下北沢440","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-08","time_start":"19:00","time_end":"19:30","special_notes":null}],"prices":[],"description":"OPEN / START\n\n19:00 / 19:30\n\nTICKET\n\nADV¥3,500 / DOOR¥4,000\n※別途入場時1ドリンク必須\n\n2024/10/8(火)19:00〜 チケット発売（e＋）\nhttps://eplus.jp/sf/detail/4191510001-P0030001\n\nLIVE\n\nタデクイ\nChappo","event_link":"https://kakubarhythm.com/live/post/12837","raw_price_text":"ADV¥3,500 / DOOR¥4,000\n※別途入場時1ドリンク必須\n\n2024/10/8(火)19:00〜 チケット発売（e＋）\nhttps://eplus.jp/sf/detail/4191510001-P0030001","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:45 [INFO]: Processing event 23 of 32...
+2024-11-20 13:12:45 [INFO]: Event Title: 『【金沢公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:12:45 [INFO]: Venue: 石川県　金沢 vanvan V4
+2024-11-20 13:12:45 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12787
+2024-11-20 13:12:45 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12787
+2024-11-20 13:12:49 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 13:12:49 [INFO]: Extracted structured event data: {"title":"『【金沢公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-18","date_end":"2025-01-18","time_start":"17:30","time_end":"18:30","venue":"石川県　金沢 vanvan V4","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-18","time_start":"17:30","time_end":"18:30","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:30 / 18:30\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12787","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:49 [INFO]: Processing event 24 of 32...
+2024-11-20 13:12:49 [INFO]: Event Title: 『SOUL FLOWER MONONOKE SUMMIT "つづら折りの宴〜あれから30年"』
+2024-11-20 13:12:49 [INFO]: Venue: 京都府　磔磔
+2024-11-20 13:12:49 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12911
+2024-11-20 13:12:49 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12911
+2024-11-20 13:12:53 [INFO]: Ticket info: 前売5,500円 / 当日6,000円
+
+【取り扱い】
+※磔磔 店頭販売：10/27(日)15:00〜
+※イープラス一般発売：11/16(土)10:00〜
+販売URL：https://eplus.jp/sf/detail/4209680001-P0030001
+
+※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般
+2024-11-20 13:12:53 [INFO]: Extracted structured event data: {"title":"『SOUL FLOWER MONONOKE SUMMIT \"つづら折りの宴〜あれから30年\"』","date_start":"2025-01-19","date_end":"2025-01-19","time_start":"17:00","time_end":"18:00","venue":"京都府　磔磔","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-19","time_start":"17:00","time_end":"18:00","special_notes":null}],"prices":[{"price_tier":"前売","amount":"5500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売5,500円 / 当日6,000円\n\n【取り扱い】\n※磔磔 店頭販売：10/27(日)15:00〜\n※イープラス一般発売：11/16(土)10:00〜\n販売URL：https://eplus.jp/sf/detail/4209680001-P0030001\n\n※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般\n\nLIVE\n\nソウル・フラワー・モノノケ・サミット\nゲスト：二階堂和美\n\nINFO\n\n磔磔　075-351-1321\n京都市下京区富小路仏光寺下ル筋屋町136-9","event_link":"https://kakubarhythm.com/live/post/12911","raw_price_text":"前売5,500円 / 当日6,000円\n\n【取り扱い】\n※磔磔 店頭販売：10/27(日)15:00〜\n※イープラス一般発売：11/16(土)10:00〜\n販売URL：https://eplus.jp/sf/detail/4209680001-P0030001\n\n※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:53 [INFO]: Processing event 25 of 32...
+2024-11-20 13:12:53 [INFO]: Event Title: 『【香川公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:12:53 [INFO]: Venue: 香川県　高松TOONICE
+2024-11-20 13:12:53 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12790
+2024-11-20 13:12:53 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12790
+2024-11-20 13:12:57 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 13:12:57 [INFO]: Extracted structured event data: {"title":"『【香川公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-19","date_end":"2025-01-19","time_start":"16:30","time_end":"17:00","venue":"香川県　高松TOONICE","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-19","time_start":"16:30","time_end":"17:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n16:30 / 17:00\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12790","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:12:57 [INFO]: Processing event 26 of 32...
+2024-11-20 13:12:57 [INFO]: Event Title: 『【福岡公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:12:57 [INFO]: Venue: 福岡県　the voodoo lounge
+2024-11-20 13:12:57 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12785
+2024-11-20 13:12:57 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12785
+2024-11-20 13:13:00 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 13:13:00 [INFO]: Extracted structured event data: {"title":"『【福岡公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-21","date_end":"2025-01-21","time_start":"18:30","time_end":"19:00","venue":"福岡県　the voodoo lounge","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-21","time_start":"18:30","time_end":"19:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:00\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12785","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:13:00 [INFO]: Processing event 27 of 32...
+2024-11-20 13:13:00 [INFO]: Event Title: 『わわわわわ音楽祭2025』
+2024-11-20 13:13:00 [INFO]: Venue: 大阪府　味園ユニバース
+2024-11-20 13:13:00 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12926
+2024-11-20 13:13:00 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12926
+2024-11-20 13:13:04 [INFO]: Ticket info: ¥3,500（税込）+1Drink
+※小学生未満は無料となります
+
+ご予約はこちらから
+https://rissi-online.stores.jp/items/67346cfabd758c0355405cf4
+2024-11-20 13:13:04 [INFO]: Extracted structured event data: {"title":"『わわわわわ音楽祭2025』","date_start":"2025-01-24","date_end":"2025-01-24","time_start":"17:30","time_end":"18:30","venue":"大阪府　味園ユニバース","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-24","time_start":"17:30","time_end":"18:30","special_notes":null}],"prices":[],"description":"OPEN / START\n\n17:30 / 18:30\n\nTICKET\n\n¥3,500（税込）+1Drink\n※小学生未満は無料となります\n\nご予約はこちらから\nhttps://rissi-online.stores.jp/items/67346cfabd758c0355405cf4\n\nLIVE\n\n在日ファンク / 民謡クルセイダーズ / ONIのBAND\n\n【FOOD etc.】\nキッチンセボイヤ\ntằm\nバンコ\nbistro.ENISHI\n結音茶舗\nwapiti\nRISSI\n\nINFO\n\n企画・主催：株式会社リッシ\n\nわわわわわ音楽祭2025ホームページ\nhttps://rissiinc.jp/wawawawawa/index.html","event_link":"https://kakubarhythm.com/live/post/12926","raw_price_text":"¥3,500（税込）+1Drink\n※小学生未満は無料となります\n\nご予約はこちらから\nhttps://rissi-online.stores.jp/items/67346cfabd758c0355405cf4","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:13:04 [INFO]: Processing event 28 of 32...
+2024-11-20 13:13:04 [INFO]: Event Title: 『【仙台公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:13:04 [INFO]: Venue: 宮城県　仙台 enn 2nd
+2024-11-20 13:13:04 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12788
+2024-11-20 13:13:04 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12788
+2024-11-20 13:13:08 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 13:13:08 [INFO]: Extracted structured event data: {"title":"『【仙台公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-24","date_end":"2025-01-24","time_start":"18:30","time_end":"19:00","venue":"宮城県　仙台 enn 2nd","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-24","time_start":"18:30","time_end":"19:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:00\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12788","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:13:08 [INFO]: Processing event 29 of 32...
+2024-11-20 13:13:08 [INFO]: Event Title: 『ROCK or LIVE！- ロックお笑い部 - Vol.4』
+2024-11-20 13:13:08 [INFO]: Venue: 大阪府　GORILLA HALL OSAKA
+2024-11-20 13:13:08 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12902
+2024-11-20 13:13:08 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12902
+2024-11-20 13:13:12 [INFO]: Ticket info: スタンディング　5,800円（税込） 　
+オフィシャル先行期間 2024/11/7(木)18:00〜2024/11/17(日)23:59
+https://w.pia.jp/t/rockorlive-vol4/
+一般発売 2024年12月21日(土)10:00〜　
+
+※入場時ドリンク代必要。
+※未就学児童入場不可。
+※先行は1人4枚まで。
+2024-11-20 13:13:12 [INFO]: Extracted structured event data: {"title":"『ROCK or LIVE！- ロックお笑い部 - Vol.4』","date_start":"2025-01-25","date_end":"2025-01-25","time_start":"16:30","time_end":"17:30","venue":"大阪府　GORILLA HALL OSAKA","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2025/01/03_sample.jpg","schedule":[{"date":"2025-01-25","time_start":"16:30","time_end":"17:30","special_notes":null}],"prices":[{"price_tier":"スタンディング","amount":"5800","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n16:30 / 17:30\n\nTICKET\n\nスタンディング　5,800円（税込） 　\nオフィシャル先行期間 2024/11/7(木)18:00〜2024/11/17(日)23:59\nhttps://w.pia.jp/t/rockorlive-vol4/\n一般発売 2024年12月21日(土)10:00〜　\n\n※入場時ドリンク代必要。\n※未就学児童入場不可。\n※先行は1人4枚まで。\n\nLIVE\n\n思い出野郎Aチーム / ハナコ\n\nINFO\n\n主催　GORILLA HALL OSAKA／ぴあ株式会社","event_link":"https://kakubarhythm.com/live/post/12902","raw_price_text":"スタンディング　5,800円（税込） 　\nオフィシャル先行期間 2024/11/7(木)18:00〜2024/11/17(日)23:59\nhttps://w.pia.jp/t/rockorlive-vol4/\n一般発売 2024年12月21日(土)10:00〜　\n\n※入場時ドリンク代必要。\n※未就学児童入場不可。\n※先行は1人4枚まで。","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:13:12 [INFO]: Processing event 30 of 32...
+2024-11-20 13:13:12 [INFO]: Event Title: 『【札幌公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:13:12 [INFO]: Venue: 北海道　札幌 ベッシーホール
+2024-11-20 13:13:12 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12784
+2024-11-20 13:13:12 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12784
+2024-11-20 13:13:17 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 13:13:17 [INFO]: Extracted structured event data: {"title":"『【札幌公演】Homecomings oneman live “angel near you”』","date_start":"2025-01-26","date_end":"2025-01-26","time_start":"16:00","time_end":"17:00","venue":"北海道　札幌 ベッシーホール","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-26","time_start":"16:00","time_end":"17:00","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n16:00 / 17:00\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)\n\nINFO\n\n企画制作：Second Royal Records / カクバリズム / HOT STUFF PROMOTION\n協力 : PONY CANYON","event_link":"https://kakubarhythm.com/live/post/12784","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:13:17 [INFO]: Processing event 31 of 32...
+2024-11-20 13:13:17 [INFO]: Event Title: 『SMA50th Anniversary×ライブナタリー “橋本絵莉子×スカート”』
+2024-11-20 13:13:17 [INFO]: Venue: 東京都　東京キネマ倶楽部
+2024-11-20 13:13:17 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12912
+2024-11-20 13:13:17 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12912
+2024-11-20 13:13:21 [INFO]: Ticket info: 【最速先行（e+（イープラス） / 抽選）】
+受付期間：2024年11月15日（金）12:00〜2024年11月24日（日）23:59
+チケット：https://eplus.jp/sma50th-natalie/
+
+【備考】
+・お一人様、4枚まで。（3歳未満入場不可 / 3歳以上はチケットが必要）
+・体調不良等、止むを得ず出演者の一部が急遽変更になる場合があります。一部出演者の変更を理由としたチケットの払い戻しは行いませんのであらかじめご了承ください。
+・主催者が中止および延期の判断をした場合を除き、お客様個人のご事情やガイドラインの詳細変更を理由とした払い戻しは行いませんのであらかじめご了承ください。
+
+【注意事項】
+ご来場される皆様が安心・安全にお楽しみいただく為、下記の項目に関してご理解、ご協力をお願いいたします。
+
+・37.5度以上の熱がある、または、発熱の有無に関わらず体調不良の症状がみられる場合はご入場をお断りすることがございます。
+・マスク推奨、手指の消毒をした上でご入場ください。
+・身近な方に感染の疑いがある場合、入場の自粛をお願いいたします。
+※上記の事をお守りいただけない・周囲の人に迷惑となる行為をはたらかれる場合は、他のお客様の安全を確保する為、ご退場いただきます。
+2024-11-20 13:13:21 [INFO]: Extracted structured event data: {"title":"『SMA50th Anniversary×ライブナタリー “橋本絵莉子×スカート”』","date_start":"2025-02-14","date_end":"2025-02-14","time_start":"18:00","time_end":"19:00","venue":"東京都　東京キネマ倶楽部","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/11/check_LNxSMA50th_241109_2_omote-scaled.jpg","schedule":[{"date":"2025-02-14","time_start":"18:00","time_end":"19:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n18:00 / 19:00\n\nTICKET\n\n【最速先行（e+（イープラス） / 抽選）】\n受付期間：2024年11月15日（金）12:00〜2024年11月24日（日）23:59\nチケット：https://eplus.jp/sma50th-natalie/\n\n【備考】\n・お一人様、4枚まで。（3歳未満入場不可 / 3歳以上はチケットが必要）\n・体調不良等、止むを得ず出演者の一部が急遽変更になる場合があります。一部出演者の変更を理由としたチケットの払い戻しは行いませんのであらかじめご了承ください。\n・主催者が中止および延期の判断をした場合を除き、お客様個人のご事情やガイドラインの詳細変更を理由とした払い戻しは行いませんのであらかじめご了承ください。\n\n【注意事項】\nご来場される皆様が安心・安全にお楽しみいただく為、下記の項目に関してご理解、ご協力をお願いいたします。\n\n・37.5度以上の熱がある、または、発熱の有無に関わらず体調不良の症状がみられる場合はご入場をお断りすることがございます。\n・マスク推奨、手指の消毒をした上でご入場ください。\n・身近な方に感染の疑いがある場合、入場の自粛をお願いいたします。\n※上記の事をお守りいただけない・周囲の人に迷惑となる行為をはたらかれる場合は、他のお客様の安全を確保する為、ご退場いただきます。\n\nLIVE\n\n橋本絵莉子 / スカート\n\nINFO\n\n【イベント特設サイト】https://live-lp.natalie.mu/sma50th-natalie/\n【SMA50th特設サイト】https://www.sma.co.jp/s/sma/page/50th?ima=0000&link=ROBO004\n【ライブナタリー公式X】https://twitter.com/live_natalie_mu/\n【ライブナタリー公式Instagram】https://www.instagram.com/live_natalie_mu/\n\n【お問い合わせ】ライブナタリー　live@natasha.co.jp\n【主催】株式会社ナターシャ\n【企画・制作】株式会社ナターシャ / Sony Music Artists","event_link":"https://kakubarhythm.com/live/post/12912","raw_price_text":"【最速先行（e+（イープラス） / 抽選）】\n受付期間：2024年11月15日（金）12:00〜2024年11月24日（日）23:59\nチケット：https://eplus.jp/sma50th-natalie/\n\n【備考】\n・お一人様、4枚まで。（3歳未満入場不可 / 3歳以上はチケットが必要）\n・体調不良等、止むを得ず出演者の一部が急遽変更になる場合があります。一部出演者の変更を理由としたチケットの払い戻しは行いませんのであらかじめご了承ください。\n・主催者が中止および延期の判断をした場合を除き、お客様個人のご事情やガイドラインの詳細変更を理由とした払い戻しは行いませんのであらかじめご了承ください。\n\n【注意事項】\nご来場される皆様が安心・安全にお楽しみいただく為、下記の項目に関してご理解、ご協力をお願いいたします。\n\n・37.5度以上の熱がある、または、発熱の有無に関わらず体調不良の症状がみられる場合はご入場をお断りすることがございます。\n・マスク推奨、手指の消毒をした上でご入場ください。\n・身近な方に感染の疑いがある場合、入場の自粛をお願いいたします。\n※上記の事をお守りいただけない・周囲の人に迷惑となる行為をはたらかれる場合は、他のお客様の安全を確保する為、ご退場いただきます。","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:13:21 [INFO]: Processing event 32 of 32...
+2024-11-20 13:13:21 [INFO]: Event Title: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-20 13:13:21 [INFO]: Venue: 京都府　磔磔
+2024-11-20 13:13:21 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12484
+2024-11-20 13:13:21 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12484
+2024-11-20 13:13:25 [INFO]: Ticket info: Comingsoon...
+2024-11-20 13:13:25 [WARN]: Free status indeterminate for event: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-20 13:13:25 [WARN]: Invalid time format: Comingsoon... for event: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-20 13:13:25 [INFO]: Extracted structured event data: {"title":"『ファンファン生誕祭 おかげさまで40!!!!』","date_start":"2025-02-15","date_end":"2025-02-15","time_start":null,"time_end":null,"venue":"京都府　磔磔","organization":"Kakubarhythm","image_url":"https://oyat.jp/wp/wp-content/uploads/2024/06/s__247414795-615x1024.jpg","schedule":[{"date":"2025-02-15","time_start":null,"time_end":null,"special_notes":null}],"prices":[],"description":"OPEN / START\n\nComingsoon...\n\nTICKET\n\nComingsoon...\n\nLIVE\n\n思い出野郎Aチーム\n小山田壮平(band)\nドクロズ\n伊藤せい子(夕凪)\nTOMOVSKY\nO.A. かわしまバンド\n\nDJ\n\nComingsoon...\n\n\n配信予定あり!!!!!\nその他詳細は後日お知らせいたします","event_link":"https://kakubarhythm.com/live/post/12484","raw_price_text":"Comingsoon...","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:13:25 [INFO]: Final event data extraction complete.
+2024-11-20 13:13:25 [INFO]: Browser closed.
+2024-11-20 13:38:52 [INFO]: Browser launched.
+2024-11-20 13:38:52 [INFO]: New page opened.
+2024-11-20 13:38:52 [INFO]: Navigating to Kakubarhythm live events page...
+2024-11-20 13:38:54 [INFO]: Page loaded.
+2024-11-20 13:38:55 [INFO]: Found 32 event items.
+2024-11-20 13:38:55 [INFO]: Processing event 1 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『地球市民フェス 2024 produced by 核兵器廃絶地球市民長崎集会』
+2024-11-20 13:38:55 [INFO]: Venue: 長崎県　HAPPINESS ARENA
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12830
+2024-11-20 13:38:55 [INFO]: Skipping event at venue: 長崎県　HAPPINESS ARENA
+2024-11-20 13:38:55 [INFO]: Processing event 2 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『喫茶 片想い』
+2024-11-20 13:38:55 [INFO]: Venue: 東京都　神保町さぼうる
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12914
+2024-11-20 13:38:55 [INFO]: Skipping event at venue: 東京都　神保町さぼうる
+2024-11-20 13:38:55 [INFO]: Processing event 3 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『『PARTY PEOPLES vol.1 てめえの中のAを弾け』』
+2024-11-20 13:38:55 [INFO]: Venue: 東京都　下北沢BASEMENTBAR
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12925
+2024-11-20 13:38:55 [INFO]: Skipping event at venue: 東京都　下北沢BASEMENTBAR
+2024-11-20 13:38:55 [INFO]: Processing event 4 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『瀬戸内ファンファーレ2024 "乙女座コンサート"』
+2024-11-20 13:38:55 [INFO]: Venue: 広島県　乙女座
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12822
+2024-11-20 13:38:55 [INFO]: Skipping event at venue: 広島県　乙女座
+2024-11-20 13:38:55 [INFO]: Processing event 5 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 名古屋公演』
+2024-11-20 13:38:55 [INFO]: Venue: 愛知県　名古屋クラブクアトロ
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12515
+2024-11-20 13:38:55 [INFO]: Skipping event at venue: 愛知県　名古屋クラブクアトロ
+2024-11-20 13:38:55 [INFO]: Processing event 6 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『スカートPresents. 「Town Feeling Vol.2」』
+2024-11-20 13:38:55 [INFO]: Venue: 大阪府　十三 246 LIVEHOUSE GABU
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12864
+2024-11-20 13:38:55 [INFO]: Skipping event at venue: 大阪府　十三 246 LIVEHOUSE GABU
+2024-11-20 13:38:55 [INFO]: Processing event 7 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『在日ファンク冬公演「年末こわい」』
+2024-11-20 13:38:55 [INFO]: Venue: 東京都　東京キネマ倶楽部
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12799
+2024-11-20 13:38:55 [INFO]: Skipping event at venue: 東京都　東京キネマ倶楽部
+2024-11-20 13:38:55 [INFO]: Processing event 8 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『cero presents “ Contemporary Tokyo Cruise”〈DAY1〉』
+2024-11-20 13:38:55 [INFO]: Venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12813
+2024-11-20 13:38:55 [INFO]: Skipping event at venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-20 13:38:55 [INFO]: Processing event 9 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『Homecomings Live in Taipei（台湾公演）』
+2024-11-20 13:38:55 [INFO]: Venue: 台湾 台北市　台北・The Wall Live House （臺北市文山區羅斯福路四段200號B1）
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12918
+2024-11-20 13:38:55 [INFO]: Skipping event at venue: 台湾 台北市　台北・The Wall Live House （臺北市文山區羅斯福路四段200號B1）
+2024-11-20 13:38:55 [INFO]: Processing event 10 of 32...
+2024-11-20 13:38:55 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 京都公演』
+2024-11-20 13:38:55 [INFO]: Venue: 京都府　先斗町歌舞練場
+2024-11-20 13:38:55 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12516
+2024-11-20 13:38:55 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12516
+2024-11-20 13:38:59 [INFO]: Ticket info: 指定席 ¥6,500
+ペア枡席（大人2名分） ¥13,000
+
+枚数制限：お一人様4枚まで
+発券形態：紙、電子チケット併用
+個人情報取得：購入者のみ取得
+入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット
+注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで
+※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）
+
+
+プレイガイド
+【一般発売】8/31(土) 10:00～開始
+・イープラス
+・チケットぴあ
+・ローソンチケット
+2024-11-20 13:38:59 [INFO]: Extracted structured event data: {"title":"『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 京都公演』","date_start":"2024-12-08","date_end":"2024-12-08","time_start":"16:15","time_end":"17:00","venue":"京都府　先斗町歌舞練場","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-08","time_start":"16:15","time_end":"17:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:15 / 17:00\n\nTICKET\n\n指定席 ¥6,500\nペア枡席（大人2名分） ¥13,000\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット\n\nLIVE\n\nキセル\n\nINFO\n\nSMASH WEST: 06-6535-5569","event_link":"https://kakubarhythm.com/live/post/12516","raw_price_text":"指定席 ¥6,500\nペア枡席（大人2名分） ¥13,000\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-20 13:38:59 [INFO]: Processing event 11 of 32...
+2024-11-20 13:38:59 [INFO]: Event Title: 『cero presents “ Contemporary Tokyo Cruise”〈DAY2〉』
+2024-11-20 13:38:59 [INFO]: Venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-20 13:38:59 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12814
+2024-11-20 13:38:59 [INFO]: Skipping event at venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-20 13:38:59 [INFO]: Processing event 12 of 32...
+2024-11-20 13:38:59 [INFO]: Event Title: 『CORNER presents『名前をつけてやる vol.2』』
+2024-11-20 13:38:59 [INFO]: Venue: 神奈川県　CORNER｜alternative pop-up space（神奈川県小田原市栄町3-22-100
+2024-11-20 13:38:59 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12908
+2024-11-20 13:38:59 [INFO]: Skipping event at venue: 神奈川県　CORNER｜alternative pop-up space（神奈川県小田原市栄町3-22-100
+2024-11-20 13:38:59 [INFO]: Processing event 13 of 32...
+2024-11-20 13:38:59 [INFO]: Event Title: 『Eupholks "hua" LP Release Show 』
+2024-11-20 13:38:59 [INFO]: Venue: 東京都　西永福JAM
+2024-11-20 13:38:59 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12867
+2024-11-20 13:38:59 [INFO]: Skipping event at venue: 東京都　西永福JAM
+2024-11-20 13:38:59 [INFO]: Processing event 14 of 32...
+2024-11-20 13:38:59 [INFO]: Event Title: 『CONCERT “Neon God”』
+2024-11-20 13:38:59 [INFO]: Venue: 東京都　渋谷WWW
+2024-11-20 13:38:59 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12846
+2024-11-20 13:38:59 [INFO]: Skipping event at venue: 東京都　渋谷WWW
+2024-11-20 13:38:59 [INFO]: Processing event 15 of 32...
+2024-11-20 13:38:59 [INFO]: Event Title: 『片想いワンマンライブ 「からまるもお」』
+2024-11-20 13:38:59 [INFO]: Venue: 東京都　ダンスホール新世紀
+2024-11-20 13:38:59 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12715
+2024-11-20 13:38:59 [INFO]: Skipping event at venue: 東京都　ダンスホール新世紀
+2024-11-20 13:38:59 [INFO]: Processing event 16 of 32...
+2024-11-20 13:38:59 [INFO]: Event Title: 『【京都公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:38:59 [INFO]: Venue: 京都府　京都 MUSE
+2024-11-20 13:38:59 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12780
+2024-11-20 13:38:59 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12780
+2024-11-20 13:39:03 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-20 13:39:03 [INFO]: Extracted structured event data: {"title":"『【京都公演】Homecomings oneman live “angel near you”』","date_start":"2024-12-20","date_end":"2024-12-20","time_start":"18:30","time_end":"19:30","venue":"京都府　京都 MUSE","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-20","time_start":"18:30","time_end":"19:30","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:30\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)","event_link":"https://kakubarhythm.com/live/post/12780","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:39:03 [INFO]: Processing event 17 of 32...
+2024-11-20 13:39:03 [INFO]: Event Title: 『【名古屋公演】Homecomings oneman live "angel near you"』
+2024-11-20 13:39:03 [INFO]: Venue: 愛知県　NAGOYA JAMMIN’
+2024-11-20 13:39:03 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12544
+2024-11-20 13:39:03 [INFO]: Skipping event at venue: 愛知県　NAGOYA JAMMIN’
+2024-11-20 13:39:03 [INFO]: Processing event 18 of 32...
+2024-11-20 13:39:03 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 東京公演』
+2024-11-20 13:39:03 [INFO]: Venue: 東京都　渋谷区文化総合センター大和田さくらホール
+2024-11-20 13:39:03 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12514
+2024-11-20 13:39:03 [INFO]: Skipping event at venue: 東京都　渋谷区文化総合センター大和田さくらホール
+2024-11-20 13:39:03 [INFO]: Processing event 19 of 32...
+2024-11-20 13:39:03 [INFO]: Event Title: 『【大阪公演】Homecomings oneman live "angel near you"』
+2024-11-20 13:39:03 [INFO]: Venue: 大阪府　梅田 Shangri-La
+2024-11-20 13:39:03 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12532
+2024-11-20 13:39:03 [INFO]: Skipping event at venue: 大阪府　梅田 Shangri-La
+2024-11-20 13:39:03 [INFO]: Processing event 20 of 32...
+2024-11-20 13:39:03 [INFO]: Event Title: 『【東京公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:39:03 [INFO]: Venue: 東京都　Zepp Shinjuku (TOKYO)
+2024-11-20 13:39:03 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12533
+2024-11-20 13:39:03 [INFO]: Skipping event at venue: 東京都　Zepp Shinjuku (TOKYO)
+2024-11-20 13:39:03 [INFO]: Processing event 21 of 32...
+2024-11-20 13:39:03 [INFO]: Event Title: 『【箱舟旅行 第34回】LAUSBUB × シャッポ』
+2024-11-20 13:39:03 [INFO]: Venue: 東京都　代官山 晴れたら空に豆まいて
+2024-11-20 13:39:03 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12838
+2024-11-20 13:39:03 [INFO]: Skipping event at venue: 東京都　代官山 晴れたら空に豆まいて
+2024-11-20 13:39:03 [INFO]: Processing event 22 of 32...
+2024-11-20 13:39:03 [INFO]: Event Title: 『440(four forty) × タデクイ presents シャッポ × タデクイ』
+2024-11-20 13:39:03 [INFO]: Venue: 東京都　下北沢440
+2024-11-20 13:39:03 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12837
+2024-11-20 13:39:03 [INFO]: Skipping event at venue: 東京都　下北沢440
+2024-11-20 13:39:03 [INFO]: Processing event 23 of 32...
+2024-11-20 13:39:03 [INFO]: Event Title: 『【金沢公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:39:03 [INFO]: Venue: 石川県　金沢 vanvan V4
+2024-11-20 13:39:03 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12787
+2024-11-20 13:39:03 [INFO]: Skipping event at venue: 石川県　金沢 vanvan V4
+2024-11-20 13:39:03 [INFO]: Processing event 24 of 32...
+2024-11-20 13:39:03 [INFO]: Event Title: 『SOUL FLOWER MONONOKE SUMMIT "つづら折りの宴〜あれから30年"』
+2024-11-20 13:39:03 [INFO]: Venue: 京都府　磔磔
+2024-11-20 13:39:03 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12911
+2024-11-20 13:39:03 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12911
+2024-11-20 13:39:09 [INFO]: Ticket info: 前売5,500円 / 当日6,000円
+
+【取り扱い】
+※磔磔 店頭販売：10/27(日)15:00〜
+※イープラス一般発売：11/16(土)10:00〜
+販売URL：https://eplus.jp/sf/detail/4209680001-P0030001
+
+※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般
+2024-11-20 13:39:09 [INFO]: Extracted structured event data: {"title":"『SOUL FLOWER MONONOKE SUMMIT \"つづら折りの宴〜あれから30年\"』","date_start":"2025-01-19","date_end":"2025-01-19","time_start":"17:00","time_end":"18:00","venue":"京都府　磔磔","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-19","time_start":"17:00","time_end":"18:00","special_notes":null}],"prices":[{"price_tier":"前売","amount":"5500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売5,500円 / 当日6,000円\n\n【取り扱い】\n※磔磔 店頭販売：10/27(日)15:00〜\n※イープラス一般発売：11/16(土)10:00〜\n販売URL：https://eplus.jp/sf/detail/4209680001-P0030001\n\n※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般\n\nLIVE\n\nソウル・フラワー・モノノケ・サミット\nゲスト：二階堂和美\n\nINFO\n\n磔磔　075-351-1321\n京都市下京区富小路仏光寺下ル筋屋町136-9","event_link":"https://kakubarhythm.com/live/post/12911","raw_price_text":"前売5,500円 / 当日6,000円\n\n【取り扱い】\n※磔磔 店頭販売：10/27(日)15:00〜\n※イープラス一般発売：11/16(土)10:00〜\n販売URL：https://eplus.jp/sf/detail/4209680001-P0030001\n\n※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:39:09 [INFO]: Processing event 25 of 32...
+2024-11-20 13:39:09 [INFO]: Event Title: 『【香川公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:39:09 [INFO]: Venue: 香川県　高松TOONICE
+2024-11-20 13:39:09 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12790
+2024-11-20 13:39:09 [INFO]: Skipping event at venue: 香川県　高松TOONICE
+2024-11-20 13:39:09 [INFO]: Processing event 26 of 32...
+2024-11-20 13:39:09 [INFO]: Event Title: 『【福岡公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:39:09 [INFO]: Venue: 福岡県　the voodoo lounge
+2024-11-20 13:39:09 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12785
+2024-11-20 13:39:09 [INFO]: Skipping event at venue: 福岡県　the voodoo lounge
+2024-11-20 13:39:09 [INFO]: Processing event 27 of 32...
+2024-11-20 13:39:09 [INFO]: Event Title: 『わわわわわ音楽祭2025』
+2024-11-20 13:39:09 [INFO]: Venue: 大阪府　味園ユニバース
+2024-11-20 13:39:09 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12926
+2024-11-20 13:39:09 [INFO]: Skipping event at venue: 大阪府　味園ユニバース
+2024-11-20 13:39:09 [INFO]: Processing event 28 of 32...
+2024-11-20 13:39:09 [INFO]: Event Title: 『【仙台公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:39:09 [INFO]: Venue: 宮城県　仙台 enn 2nd
+2024-11-20 13:39:09 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12788
+2024-11-20 13:39:09 [INFO]: Skipping event at venue: 宮城県　仙台 enn 2nd
+2024-11-20 13:39:09 [INFO]: Processing event 29 of 32...
+2024-11-20 13:39:09 [INFO]: Event Title: 『ROCK or LIVE！- ロックお笑い部 - Vol.4』
+2024-11-20 13:39:09 [INFO]: Venue: 大阪府　GORILLA HALL OSAKA
+2024-11-20 13:39:09 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12902
+2024-11-20 13:39:09 [INFO]: Skipping event at venue: 大阪府　GORILLA HALL OSAKA
+2024-11-20 13:39:09 [INFO]: Processing event 30 of 32...
+2024-11-20 13:39:09 [INFO]: Event Title: 『【札幌公演】Homecomings oneman live “angel near you”』
+2024-11-20 13:39:09 [INFO]: Venue: 北海道　札幌 ベッシーホール
+2024-11-20 13:39:09 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12784
+2024-11-20 13:39:09 [INFO]: Skipping event at venue: 北海道　札幌 ベッシーホール
+2024-11-20 13:39:09 [INFO]: Processing event 31 of 32...
+2024-11-20 13:39:09 [INFO]: Event Title: 『SMA50th Anniversary×ライブナタリー “橋本絵莉子×スカート”』
+2024-11-20 13:39:09 [INFO]: Venue: 東京都　東京キネマ倶楽部
+2024-11-20 13:39:09 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12912
+2024-11-20 13:39:09 [INFO]: Skipping event at venue: 東京都　東京キネマ倶楽部
+2024-11-20 13:39:09 [INFO]: Processing event 32 of 32...
+2024-11-20 13:39:09 [INFO]: Event Title: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-20 13:39:09 [INFO]: Venue: 京都府　磔磔
+2024-11-20 13:39:09 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12484
+2024-11-20 13:39:09 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12484
+2024-11-20 13:39:15 [INFO]: Ticket info: Comingsoon...
+2024-11-20 13:39:15 [WARN]: Free status indeterminate for event: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-20 13:39:15 [WARN]: Invalid time format: Comingsoon... for event: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-20 13:39:15 [INFO]: Extracted structured event data: {"title":"『ファンファン生誕祭 おかげさまで40!!!!』","date_start":"2025-02-15","date_end":"2025-02-15","time_start":null,"time_end":null,"venue":"京都府　磔磔","organization":"Kakubarhythm","image_url":"https://oyat.jp/wp/wp-content/uploads/2024/06/s__247414795-615x1024.jpg","schedule":[{"date":"2025-02-15","time_start":null,"time_end":null,"special_notes":null}],"prices":[],"description":"OPEN / START\n\nComingsoon...\n\nTICKET\n\nComingsoon...\n\nLIVE\n\n思い出野郎Aチーム\n小山田壮平(band)\nドクロズ\n伊藤せい子(夕凪)\nTOMOVSKY\nO.A. かわしまバンド\n\nDJ\n\nComingsoon...\n\n\n配信予定あり!!!!!\nその他詳細は後日お知らせいたします","event_link":"https://kakubarhythm.com/live/post/12484","raw_price_text":"Comingsoon...","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-20 13:39:15 [INFO]: Final event data extraction complete.
+2024-11-20 13:39:16 [INFO]: Browser closed.

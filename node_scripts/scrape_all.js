@@ -1,4 +1,4 @@
-import 'dotenv/config'; // Load environment variables
+import dotenv from 'dotenv'; // Import dotenv as a variable
 import axios from 'axios';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -9,27 +9,36 @@ import scrapeKyotoKanze from './kyoto_kanze.js';
 import scrapeWaondo from './waondo.js';
 import scrapeKyotoGattaca from './kyoto_gattaca.js';
 import scrapeKakubarhythm from './kakubarhythm.js';
-
-// Log the value of process.env.APP_URL
-console.log('process.env.APP_URL:', process.env.APP_URL);
-
-// Define the backend URL using APP_URL from .env
-const backendUrl = process.env.APP_URL || 'http://localhost:8000';
+import scrapeGrowly from './growly.js';
 
 // Handle __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+// Load environment variables from parent directory's .env file
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
+
+// Log the value of process.env.APP_URL
+console.log('Current Working Directory:', process.cwd());
+console.log('process.env.APP_URL:', process.env.APP_URL);
+
+// Define the backend URL using APP_URL from .env
+const backendUrl = process.env.APP_URL;
+
+
 
 const useMockData = false; // Set to true for mock data testing
 
 // Array of scraper functions and their identifiers
 const scrapers = [
-   { name: 'kyoto_concert_hall', func: scrapeKyotoConcertHall },
-   { name: 'rohm_theatre', func: scrapeRohmTheatre },
-   { name: 'kyoto_kanze', func: scrapeKyotoKanze },
-   { name: 'waondo', func: scrapeWaondo },
-   { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
-   { name: 'kakubarhythm', func: scrapeKakubarhythm},
+      // { name: 'kyoto_concert_hall', func: scrapeKyotoConcertHall },
+      // { name: 'rohm_theatre', func: scrapeRohmTheatre },
+      // { name: 'kyoto_kanze', func: scrapeKyotoKanze },
+      // { name: 'waondo', func: scrapeWaondo },
+      // { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
+      // { name: 'kakubarhythm', func: scrapeKakubarhythm},
+      { name: 'growly', func: scrapeGrowly},
+
 ];
 
 const scrapeAll = async () => {

@@ -361,9 +361,9 @@ img {
   bottom: 0;
   left: 0;
   padding: 3px;
-  background-color: rgba(255, 255, 255, 0.9);
+  width: auto;
+  background-color: rgba(255, 255, 255, 1);
   margin: 10px;
-  width: calc(100% - 20px); /* Adjust width considering margin */
 }
 .caption-type { 
   background-color: black; 
