@@ -10,6 +10,8 @@ import scrapeWaondo from './waondo.js';
 import scrapeKyotoGattaca from './kyoto_gattaca.js';
 import scrapeKakubarhythm from './kakubarhythm.js';
 import scrapeGrowly from './growly.js';
+import scrapeKyotoFanj from './kyoto_fanj.js';
+import scrapeFabCafe from './fabcafe.js';
 
 // Handle __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -38,6 +40,8 @@ const scrapers = [
       { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
       { name: 'kakubarhythm', func: scrapeKakubarhythm},
       { name: 'growly', func: scrapeGrowly},
+      { name: 'kyoto_fanj', func: scrapeKyotoFanj},
+       { name: 'fabcafe', func: scrapeFabCafe},
 
 ];
 

@@ -20,6 +20,8 @@ class DataTransformerFactory
             'kyoto_gattaca' => new KyotoGattacaDataTransformer(),
             'kakubarhythm' => new KakubarhythmDataTransformer(),
             'growly'=> new GrowlyDataTransformer(),
+            'kyoto_fanj'=> new KyotoFanjDataTransformer(),
+            'fabcafe' => new FabCafeDataTransformer(),
             // Add other site-specific transformers as you create them
             default => null,
         };
