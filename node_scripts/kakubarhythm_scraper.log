@@ -1274,3 +1274,212 @@ https://w.pia.jp/t/homecomings-angelnearyou/
 2024-11-21 13:17:17 [INFO]: Extracted structured event data: {"title":"『ファンファン生誕祭 おかげさまで40!!!!』","date_start":"2025-02-15","date_end":"2025-02-15","time_start":null,"time_end":null,"venue":"京都府　磔磔","organization":"Kakubarhythm","image_url":"https://oyat.jp/wp/wp-content/uploads/2024/06/s__247414795-615x1024.jpg","schedule":[{"date":"2025-02-15","time_start":null,"time_end":null,"special_notes":null}],"prices":[],"description":"OPEN / START\n\nComingsoon...\n\nTICKET\n\nComingsoon...\n\nLIVE\n\n思い出野郎Aチーム\n小山田壮平(band)\nドクロズ\n伊藤せい子(夕凪)\nTOMOVSKY\nO.A. かわしまバンド\n\nDJ\n\nComingsoon...\n\n\n配信予定あり!!!!!\nその他詳細は後日お知らせいたします","event_link":"https://kakubarhythm.com/live/post/12484","raw_price_text":"Comingsoon...","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
 2024-11-21 13:17:17 [INFO]: Final event data extraction complete.
 2024-11-21 13:17:17 [INFO]: Browser closed.
+2024-11-24 05:24:33 [INFO]: Browser launched.
+2024-11-24 05:24:33 [INFO]: New page opened.
+2024-11-24 05:24:33 [INFO]: Navigating to Kakubarhythm live events page...
+2024-11-24 05:24:35 [INFO]: Page loaded.
+2024-11-24 05:24:35 [INFO]: Found 33 event items.
+2024-11-24 05:24:35 [INFO]: Processing event 1 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『地球市民フェス 2024 produced by 核兵器廃絶地球市民長崎集会』
+2024-11-24 05:24:35 [INFO]: Venue: 長崎県　HAPPINESS ARENA
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12830
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 長崎県　HAPPINESS ARENA
+2024-11-24 05:24:35 [INFO]: Processing event 2 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『喫茶 片想い』
+2024-11-24 05:24:35 [INFO]: Venue: 東京都　神保町さぼうる
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12914
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 東京都　神保町さぼうる
+2024-11-24 05:24:35 [INFO]: Processing event 3 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『『PARTY PEOPLES vol.1 てめえの中のAを弾け』』
+2024-11-24 05:24:35 [INFO]: Venue: 東京都　下北沢BASEMENTBAR
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12925
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 東京都　下北沢BASEMENTBAR
+2024-11-24 05:24:35 [INFO]: Processing event 4 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『瀬戸内ファンファーレ2024 "乙女座コンサート"』
+2024-11-24 05:24:35 [INFO]: Venue: 広島県　乙女座
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12822
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 広島県　乙女座
+2024-11-24 05:24:35 [INFO]: Processing event 5 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 名古屋公演』
+2024-11-24 05:24:35 [INFO]: Venue: 愛知県　名古屋クラブクアトロ
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12515
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 愛知県　名古屋クラブクアトロ
+2024-11-24 05:24:35 [INFO]: Processing event 6 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『スカートPresents. 「Town Feeling Vol.2」』
+2024-11-24 05:24:35 [INFO]: Venue: 大阪府　十三 246 LIVEHOUSE GABU
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12864
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 大阪府　十三 246 LIVEHOUSE GABU
+2024-11-24 05:24:35 [INFO]: Processing event 7 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『“Circus Funk” Festival』
+2024-11-24 05:24:35 [INFO]: Venue: 東京都　国⽴代々⽊競技場 第⼀体育館
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12938
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 東京都　国⽴代々⽊競技場 第⼀体育館
+2024-11-24 05:24:35 [INFO]: Processing event 8 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『在日ファンク冬公演「年末こわい」』
+2024-11-24 05:24:35 [INFO]: Venue: 東京都　東京キネマ倶楽部
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12799
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 東京都　東京キネマ倶楽部
+2024-11-24 05:24:35 [INFO]: Processing event 9 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『cero presents “ Contemporary Tokyo Cruise”〈DAY1〉※SOLD OUT』
+2024-11-24 05:24:35 [INFO]: Venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12813
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-24 05:24:35 [INFO]: Processing event 10 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『Homecomings Live in Taipei（台湾公演）』
+2024-11-24 05:24:35 [INFO]: Venue: 台湾 台北市　台北・The Wall Live House （臺北市文山區羅斯福路四段200號B1）
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12918
+2024-11-24 05:24:35 [INFO]: Skipping event at venue: 台湾 台北市　台北・The Wall Live House （臺北市文山區羅斯福路四段200號B1）
+2024-11-24 05:24:35 [INFO]: Processing event 11 of 33...
+2024-11-24 05:24:35 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 京都公演』
+2024-11-24 05:24:35 [INFO]: Venue: 京都府　先斗町歌舞練場
+2024-11-24 05:24:35 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12516
+2024-11-24 05:24:35 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12516
+2024-11-24 05:24:39 [INFO]: Ticket info: 指定席 ¥6,500
+ペア枡席（大人2名分） ¥13,000
+
+枚数制限：お一人様4枚まで
+発券形態：紙、電子チケット併用
+個人情報取得：購入者のみ取得
+入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット
+注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで
+※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）
+
+
+プレイガイド
+【一般発売】8/31(土) 10:00～開始
+・イープラス
+・チケットぴあ
+・ローソンチケット
+2024-11-24 05:24:39 [INFO]: Extracted structured event data: {"title":"『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 京都公演』","date_start":"2024-12-08","date_end":"2024-12-08","time_start":"16:15","time_end":"17:00","venue":"京都府　先斗町歌舞練場","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-08","time_start":"16:15","time_end":"17:00","special_notes":null}],"prices":[],"description":"OPEN / START\n\n16:15 / 17:00\n\nTICKET\n\n指定席 ¥6,500\nペア枡席（大人2名分） ¥13,000\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット\n\nLIVE\n\nキセル\n\nINFO\n\nSMASH WEST: 06-6535-5569","event_link":"https://kakubarhythm.com/live/post/12516","raw_price_text":"指定席 ¥6,500\nペア枡席（大人2名分） ¥13,000\n\n枚数制限：お一人様4枚まで\n発券形態：紙、電子チケット併用\n個人情報取得：購入者のみ取得\n入場制限：小学生以上チケット必要、未就学児は席が必要な場合は要チケット\n注意事項：ペア枡席は大人2名に加え、子ども（ひざ上で御覧いただける未就学児）2名まで\n※お身体に不自由のある方、身体障害者手帳ご提示にて当日2,000円キャッシュバック（介助者の方1名まで無料）\n\n\nプレイガイド\n【一般発売】8/31(土) 10:00～開始\n・イープラス\n・チケットぴあ\n・ローソンチケット","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":true,"site":"kakubarhythm"}
+2024-11-24 05:24:39 [INFO]: Processing event 12 of 33...
+2024-11-24 05:24:39 [INFO]: Event Title: 『cero presents “ Contemporary Tokyo Cruise”〈DAY2〉※SOLD OUT』
+2024-11-24 05:24:39 [INFO]: Venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-24 05:24:39 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12814
+2024-11-24 05:24:39 [INFO]: Skipping event at venue: 東京都　恵比寿 LIQUIDROOM
+2024-11-24 05:24:39 [INFO]: Processing event 13 of 33...
+2024-11-24 05:24:39 [INFO]: Event Title: 『CORNER presents『名前をつけてやる vol.2』』
+2024-11-24 05:24:39 [INFO]: Venue: 神奈川県　CORNER｜alternative pop-up space（神奈川県小田原市栄町3-22-100
+2024-11-24 05:24:39 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12908
+2024-11-24 05:24:39 [INFO]: Skipping event at venue: 神奈川県　CORNER｜alternative pop-up space（神奈川県小田原市栄町3-22-100
+2024-11-24 05:24:39 [INFO]: Processing event 14 of 33...
+2024-11-24 05:24:39 [INFO]: Event Title: 『Eupholks "hua" LP Release Show 』
+2024-11-24 05:24:39 [INFO]: Venue: 東京都　西永福JAM
+2024-11-24 05:24:39 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12867
+2024-11-24 05:24:39 [INFO]: Skipping event at venue: 東京都　西永福JAM
+2024-11-24 05:24:39 [INFO]: Processing event 15 of 33...
+2024-11-24 05:24:39 [INFO]: Event Title: 『CONCERT “Neon God”』
+2024-11-24 05:24:39 [INFO]: Venue: 東京都　渋谷WWW
+2024-11-24 05:24:39 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12846
+2024-11-24 05:24:39 [INFO]: Skipping event at venue: 東京都　渋谷WWW
+2024-11-24 05:24:39 [INFO]: Processing event 16 of 33...
+2024-11-24 05:24:39 [INFO]: Event Title: 『片想いワンマンライブ 「からまるもお」』
+2024-11-24 05:24:39 [INFO]: Venue: 東京都　ダンスホール新世紀
+2024-11-24 05:24:39 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12715
+2024-11-24 05:24:39 [INFO]: Skipping event at venue: 東京都　ダンスホール新世紀
+2024-11-24 05:24:39 [INFO]: Processing event 17 of 33...
+2024-11-24 05:24:39 [INFO]: Event Title: 『【京都公演】Homecomings oneman live “angel near you”』
+2024-11-24 05:24:39 [INFO]: Venue: 京都府　京都 MUSE
+2024-11-24 05:24:39 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12780
+2024-11-24 05:24:39 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12780
+2024-11-24 05:24:42 [INFO]: Ticket info: STANDING ¥5,000
+学割STANDING ¥3,500
+
+Homecomingsオフィシャル4次先行予約受付（全国）
+https://w.pia.jp/t/homecomings-angelnearyou/
+期間：9/14(土)14:00〜9/23(月祝)23:59
+2024-11-24 05:24:42 [INFO]: Extracted structured event data: {"title":"『【京都公演】Homecomings oneman live “angel near you”』","date_start":"2024-12-20","date_end":"2024-12-20","time_start":"18:30","time_end":"19:30","venue":"京都府　京都 MUSE","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2024-12-20","time_start":"18:30","time_end":"19:30","special_notes":null}],"prices":[{"price_tier":"STANDING","amount":"5000","currency":"JPY","discount_info":null},{"price_tier":"学割STANDING","amount":"3500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n18:30 / 19:30\n\nTICKET\n\nSTANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59\n\nLIVE\n\nHomecomings (ONE-MAN LIVE)","event_link":"https://kakubarhythm.com/live/post/12780","raw_price_text":"STANDING ¥5,000\n学割STANDING ¥3,500\n\nHomecomingsオフィシャル4次先行予約受付（全国）\nhttps://w.pia.jp/t/homecomings-angelnearyou/\n期間：9/14(土)14:00〜9/23(月祝)23:59","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-24 05:24:42 [INFO]: Processing event 18 of 33...
+2024-11-24 05:24:42 [INFO]: Event Title: 『【名古屋公演】Homecomings oneman live "angel near you"』
+2024-11-24 05:24:42 [INFO]: Venue: 愛知県　NAGOYA JAMMIN’
+2024-11-24 05:24:42 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12544
+2024-11-24 05:24:42 [INFO]: Skipping event at venue: 愛知県　NAGOYA JAMMIN’
+2024-11-24 05:24:42 [INFO]: Processing event 19 of 33...
+2024-11-24 05:24:42 [INFO]: Event Title: 『キセル結成25周年ツアー 〜ぐるりと回ってまた始めから〜 東京公演』
+2024-11-24 05:24:42 [INFO]: Venue: 東京都　渋谷区文化総合センター大和田さくらホール
+2024-11-24 05:24:42 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12514
+2024-11-24 05:24:42 [INFO]: Skipping event at venue: 東京都　渋谷区文化総合センター大和田さくらホール
+2024-11-24 05:24:42 [INFO]: Processing event 20 of 33...
+2024-11-24 05:24:42 [INFO]: Event Title: 『【大阪公演】Homecomings oneman live "angel near you"』
+2024-11-24 05:24:42 [INFO]: Venue: 大阪府　梅田 Shangri-La
+2024-11-24 05:24:42 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12532
+2024-11-24 05:24:42 [INFO]: Skipping event at venue: 大阪府　梅田 Shangri-La
+2024-11-24 05:24:42 [INFO]: Processing event 21 of 33...
+2024-11-24 05:24:42 [INFO]: Event Title: 『【東京公演】Homecomings oneman live “angel near you”』
+2024-11-24 05:24:42 [INFO]: Venue: 東京都　Zepp Shinjuku (TOKYO)
+2024-11-24 05:24:42 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12533
+2024-11-24 05:24:42 [INFO]: Skipping event at venue: 東京都　Zepp Shinjuku (TOKYO)
+2024-11-24 05:24:42 [INFO]: Processing event 22 of 33...
+2024-11-24 05:24:43 [INFO]: Event Title: 『【箱舟旅行 第34回】LAUSBUB × シャッポ』
+2024-11-24 05:24:43 [INFO]: Venue: 東京都　代官山 晴れたら空に豆まいて
+2024-11-24 05:24:43 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12838
+2024-11-24 05:24:43 [INFO]: Skipping event at venue: 東京都　代官山 晴れたら空に豆まいて
+2024-11-24 05:24:43 [INFO]: Processing event 23 of 33...
+2024-11-24 05:24:43 [INFO]: Event Title: 『440(four forty) × タデクイ presents シャッポ × タデクイ』
+2024-11-24 05:24:43 [INFO]: Venue: 東京都　下北沢440
+2024-11-24 05:24:43 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12837
+2024-11-24 05:24:43 [INFO]: Skipping event at venue: 東京都　下北沢440
+2024-11-24 05:24:43 [INFO]: Processing event 24 of 33...
+2024-11-24 05:24:43 [INFO]: Event Title: 『【金沢公演】Homecomings oneman live “angel near you”』
+2024-11-24 05:24:43 [INFO]: Venue: 石川県　金沢 vanvan V4
+2024-11-24 05:24:43 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12787
+2024-11-24 05:24:43 [INFO]: Skipping event at venue: 石川県　金沢 vanvan V4
+2024-11-24 05:24:43 [INFO]: Processing event 25 of 33...
+2024-11-24 05:24:43 [INFO]: Event Title: 『SOUL FLOWER MONONOKE SUMMIT "つづら折りの宴〜あれから30年"』
+2024-11-24 05:24:43 [INFO]: Venue: 京都府　磔磔
+2024-11-24 05:24:43 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12911
+2024-11-24 05:24:43 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12911
+2024-11-24 05:24:46 [INFO]: Ticket info: 前売5,500円 / 当日6,000円
+
+【取り扱い】
+※磔磔 店頭販売：10/27(日)15:00〜
+※イープラス一般発売：11/16(土)10:00〜
+販売URL：https://eplus.jp/sf/detail/4209680001-P0030001
+
+※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般
+2024-11-24 05:24:46 [INFO]: Extracted structured event data: {"title":"『SOUL FLOWER MONONOKE SUMMIT \"つづら折りの宴〜あれから30年\"』","date_start":"2025-01-19","date_end":"2025-01-19","time_start":"17:00","time_end":"18:00","venue":"京都府　磔磔","organization":"Kakubarhythm","image_url":"https://kakubarhythm.com/wordpress/wp-content/uploads/2024/10/mainvisual_pc_20241031.jpg","schedule":[{"date":"2025-01-19","time_start":"17:00","time_end":"18:00","special_notes":null}],"prices":[{"price_tier":"前売","amount":"5500","currency":"JPY","discount_info":null}],"description":"OPEN / START\n\n17:00 / 18:00\n\nTICKET\n\n前売5,500円 / 当日6,000円\n\n【取り扱い】\n※磔磔 店頭販売：10/27(日)15:00〜\n※イープラス一般発売：11/16(土)10:00〜\n販売URL：https://eplus.jp/sf/detail/4209680001-P0030001\n\n※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般\n\nLIVE\n\nソウル・フラワー・モノノケ・サミット\nゲスト：二階堂和美\n\nINFO\n\n磔磔　075-351-1321\n京都市下京区富小路仏光寺下ル筋屋町136-9","event_link":"https://kakubarhythm.com/live/post/12911","raw_price_text":"前売5,500円 / 当日6,000円\n\n【取り扱い】\n※磔磔 店頭販売：10/27(日)15:00〜\n※イープラス一般発売：11/16(土)10:00〜\n販売URL：https://eplus.jp/sf/detail/4209680001-P0030001\n\n※入場順：磔磔店頭＆イープラス先行(並列入場) → イープラス一般","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-24 05:24:46 [INFO]: Processing event 26 of 33...
+2024-11-24 05:24:46 [INFO]: Event Title: 『【香川公演】Homecomings oneman live “angel near you”』
+2024-11-24 05:24:46 [INFO]: Venue: 香川県　高松TOONICE
+2024-11-24 05:24:46 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12790
+2024-11-24 05:24:46 [INFO]: Skipping event at venue: 香川県　高松TOONICE
+2024-11-24 05:24:46 [INFO]: Processing event 27 of 33...
+2024-11-24 05:24:46 [INFO]: Event Title: 『【福岡公演】Homecomings oneman live “angel near you”』
+2024-11-24 05:24:46 [INFO]: Venue: 福岡県　the voodoo lounge
+2024-11-24 05:24:46 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12785
+2024-11-24 05:24:46 [INFO]: Skipping event at venue: 福岡県　the voodoo lounge
+2024-11-24 05:24:46 [INFO]: Processing event 28 of 33...
+2024-11-24 05:24:46 [INFO]: Event Title: 『わわわわわ音楽祭2025』
+2024-11-24 05:24:46 [INFO]: Venue: 大阪府　味園ユニバース
+2024-11-24 05:24:46 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12926
+2024-11-24 05:24:46 [INFO]: Skipping event at venue: 大阪府　味園ユニバース
+2024-11-24 05:24:46 [INFO]: Processing event 29 of 33...
+2024-11-24 05:24:46 [INFO]: Event Title: 『【仙台公演】Homecomings oneman live “angel near you”』
+2024-11-24 05:24:46 [INFO]: Venue: 宮城県　仙台 enn 2nd
+2024-11-24 05:24:46 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12788
+2024-11-24 05:24:46 [INFO]: Skipping event at venue: 宮城県　仙台 enn 2nd
+2024-11-24 05:24:46 [INFO]: Processing event 30 of 33...
+2024-11-24 05:24:46 [INFO]: Event Title: 『ROCK or LIVE！- ロックお笑い部 - Vol.4』
+2024-11-24 05:24:46 [INFO]: Venue: 大阪府　GORILLA HALL OSAKA
+2024-11-24 05:24:46 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12902
+2024-11-24 05:24:46 [INFO]: Skipping event at venue: 大阪府　GORILLA HALL OSAKA
+2024-11-24 05:24:46 [INFO]: Processing event 31 of 33...
+2024-11-24 05:24:46 [INFO]: Event Title: 『【札幌公演】Homecomings oneman live “angel near you”』
+2024-11-24 05:24:46 [INFO]: Venue: 北海道　札幌 ベッシーホール
+2024-11-24 05:24:46 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12784
+2024-11-24 05:24:46 [INFO]: Skipping event at venue: 北海道　札幌 ベッシーホール
+2024-11-24 05:24:46 [INFO]: Processing event 32 of 33...
+2024-11-24 05:24:46 [INFO]: Event Title: 『SMA50th Anniversary×ライブナタリー “橋本絵莉子×スカート”』
+2024-11-24 05:24:46 [INFO]: Venue: 東京都　東京キネマ倶楽部
+2024-11-24 05:24:46 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12912
+2024-11-24 05:24:46 [INFO]: Skipping event at venue: 東京都　東京キネマ倶楽部
+2024-11-24 05:24:46 [INFO]: Processing event 33 of 33...
+2024-11-24 05:24:46 [INFO]: Event Title: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-24 05:24:46 [INFO]: Venue: 京都府　磔磔
+2024-11-24 05:24:46 [INFO]: Extracted event link: https://kakubarhythm.com/live/post/12484
+2024-11-24 05:24:46 [INFO]: Navigating to event detail page: https://kakubarhythm.com/live/post/12484
+2024-11-24 05:24:50 [INFO]: Ticket info: Comingsoon...
+2024-11-24 05:24:50 [WARN]: Free status indeterminate for event: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-24 05:24:50 [WARN]: Invalid time format: Comingsoon... for event: 『ファンファン生誕祭 おかげさまで40!!!!』
+2024-11-24 05:24:50 [INFO]: Extracted structured event data: {"title":"『ファンファン生誕祭 おかげさまで40!!!!』","date_start":"2025-02-15","date_end":"2025-02-15","time_start":null,"time_end":null,"venue":"京都府　磔磔","organization":"Kakubarhythm","image_url":"https://oyat.jp/wp/wp-content/uploads/2024/06/s__247414795-615x1024.jpg","schedule":[{"date":"2025-02-15","time_start":null,"time_end":null,"special_notes":null}],"prices":[],"description":"OPEN / START\n\nComingsoon...\n\nTICKET\n\nComingsoon...\n\nLIVE\n\n思い出野郎Aチーム\n小山田壮平(band)\nドクロズ\n伊藤せい子(夕凪)\nTOMOVSKY\nO.A. かわしまバンド\n\nDJ\n\nComingsoon...\n\n\n配信予定あり!!!!!\nその他詳細は後日お知らせいたします","event_link":"https://kakubarhythm.com/live/post/12484","raw_price_text":"Comingsoon...","categories":["Live Event"],"tags":["Music","Concert"],"ended":false,"free":false,"site":"kakubarhythm"}
+2024-11-24 05:24:50 [INFO]: Final event data extraction complete.
+2024-11-24 05:24:50 [INFO]: Browser closed.

@@ -292,6 +292,7 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         return null;
     }
 
+
     public function saveVenue(string $venueName): int
     {
         $venue = Venue::firstOrCreate(['name' => $venueName]);
