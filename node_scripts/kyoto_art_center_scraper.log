@@ -1,0 +1,78 @@
+2024-11-25 20:04:56 [INFO]: Browser launched.
+2024-11-25 20:04:56 [INFO]: New page opened.
+2024-11-25 20:04:56 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/
+2024-11-25 20:04:59 [INFO]: Page loaded.
+2024-11-25 20:04:59 [INFO]: Found 2 event links.
+2024-11-25 20:04:59 [INFO]: Processing event 1 of 2: https://www.kac.or.jp/events/20240913/
+2024-11-25 20:05:02 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-11-25 20:05:02 [INFO]: Processing event 2 of 2: https://www.kac.or.jp/events/20241003/
+2024-11-25 20:05:05 [INFO]: Extracted event: アンドレイ・タルコフスキー『サクリファイス』4Kレストア版　上映会&トーク（Dr. Holiday Laboratory 『想像の犠牲』関連企画）
+2024-11-25 20:05:06 [INFO]: Browser closed.
+2024-11-25 20:07:25 [INFO]: Browser launched.
+2024-11-25 20:07:25 [INFO]: New page opened.
+2024-11-25 20:07:25 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/
+2024-11-25 20:07:28 [INFO]: Page loaded.
+2024-11-25 20:07:28 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/
+2024-11-25 20:07:28 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-11-25 20:07:30 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-11-25 20:07:30 [INFO]: Processing event: https://www.kac.or.jp/events/20241003/
+2024-11-25 20:07:32 [INFO]: Extracted event: アンドレイ・タルコフスキー『サクリファイス』4Kレストア版　上映会&トーク（Dr. Holiday Laboratory 『想像の犠牲』関連企画）
+2024-11-25 20:07:32 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202412/
+2024-11-25 20:07:33 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202412/
+2024-11-25 20:07:35 [INFO]: Page loaded.
+2024-11-25 20:07:35 [INFO]: Found 5 event links on page: https://www.kac.or.jp/events/month/202412/
+2024-11-25 20:07:35 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-11-25 20:07:37 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-11-25 20:07:37 [INFO]: Processing event: https://www.kac.or.jp/events/20240607/
+2024-11-25 20:07:39 [INFO]: Extracted event: 第276回市民狂言会（12月６日開催）
+2024-11-25 20:07:39 [INFO]: Processing event: https://www.kac.or.jp/events/20240904/
+2024-11-25 20:07:41 [INFO]: Extracted event: Dr. Holiday Laboratory『想像の犠牲』
+2024-11-25 20:07:41 [INFO]: Processing event: https://www.kac.or.jp/events/20240519/
+2024-11-25 20:07:43 [INFO]: Extracted event: 明倫レコード倶楽部 其の85「生の会」
+2024-11-25 20:07:43 [INFO]: Processing event: https://www.kac.or.jp/events/20241113/
+2024-11-25 20:07:45 [INFO]: Extracted event: ルサンチカ『まさらまち』
+2024-11-25 20:07:45 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202501/
+2024-11-25 20:07:46 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202501/
+2024-11-25 20:07:48 [INFO]: Page loaded.
+2024-11-25 20:07:48 [INFO]: Found 1 event links on page: https://www.kac.or.jp/events/month/202501/
+2024-11-25 20:07:48 [INFO]: Processing event: https://www.kac.or.jp/events/20241105/
+2024-11-25 20:07:50 [INFO]: Extracted event: 令和6年度 京の伝統文化体験事業「冬の学校」着付けと日本舞踊の教室
+2024-11-25 20:07:50 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202502/
+2024-11-25 20:07:51 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202502/
+2024-11-25 20:07:53 [INFO]: Page loaded.
+2024-11-25 20:07:53 [INFO]: No events found on this page.
+2024-11-25 20:07:53 [INFO]: Browser closed.
+2024-11-25 20:21:14 [INFO]: Browser launched.
+2024-11-25 20:21:14 [INFO]: New page opened.
+2024-11-25 20:21:14 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/
+2024-11-25 20:21:17 [INFO]: Page loaded.
+2024-11-25 20:21:17 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/
+2024-11-25 20:21:17 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-11-25 20:21:19 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-11-25 20:21:19 [INFO]: Processing event: https://www.kac.or.jp/events/20241003/
+2024-11-25 20:21:21 [INFO]: Extracted event: アンドレイ・タルコフスキー『サクリファイス』4Kレストア版　上映会&トーク（Dr. Holiday Laboratory 『想像の犠牲』関連企画）
+2024-11-25 20:21:21 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202412/
+2024-11-25 20:21:22 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202412/
+2024-11-25 20:21:24 [INFO]: Page loaded.
+2024-11-25 20:21:24 [INFO]: Found 5 event links on page: https://www.kac.or.jp/events/month/202412/
+2024-11-25 20:21:24 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-11-25 20:21:26 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-11-25 20:21:26 [INFO]: Processing event: https://www.kac.or.jp/events/20240607/
+2024-11-25 20:21:28 [INFO]: Extracted event: 第276回市民狂言会（12月６日開催）
+2024-11-25 20:21:28 [INFO]: Processing event: https://www.kac.or.jp/events/20240904/
+2024-11-25 20:21:30 [INFO]: Extracted event: Dr. Holiday Laboratory『想像の犠牲』
+2024-11-25 20:21:30 [INFO]: Processing event: https://www.kac.or.jp/events/20240519/
+2024-11-25 20:21:32 [INFO]: Extracted event: 明倫レコード倶楽部 其の85「生の会」
+2024-11-25 20:21:32 [INFO]: Processing event: https://www.kac.or.jp/events/20241113/
+2024-11-25 20:21:34 [INFO]: Extracted event: ルサンチカ『まさらまち』
+2024-11-25 20:21:34 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202501/
+2024-11-25 20:21:35 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202501/
+2024-11-25 20:21:37 [INFO]: Page loaded.
+2024-11-25 20:21:37 [INFO]: Found 1 event links on page: https://www.kac.or.jp/events/month/202501/
+2024-11-25 20:21:37 [INFO]: Processing event: https://www.kac.or.jp/events/20241105/
+2024-11-25 20:21:39 [INFO]: Extracted event: 令和6年度 京の伝統文化体験事業「冬の学校」着付けと日本舞踊の教室
+2024-11-25 20:21:39 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202502/
+2024-11-25 20:21:40 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202502/
+2024-11-25 20:21:42 [INFO]: Page loaded.
+2024-11-25 20:21:42 [INFO]: No events found on this page.
+2024-11-25 20:21:42 [INFO]: Browser closed.

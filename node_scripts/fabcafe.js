@@ -52,6 +52,7 @@ const __filenameESM = fileURLToPath(import.meta.url);
 const __dirnameESM = dirname(__filenameESM);
 
 // Main scraping function for FabCafe Kyoto Events
+// Main scraping function for FabCafe Kyoto Events
 const scrapeFabCafe = async () => {
   const browser = await puppeteer.launch({
     headless: true,
@@ -82,7 +83,9 @@ const scrapeFabCafe = async () => {
     });
 
     // Extract all event containers
-    const eventElements = await page.$$('.event-slide-elm');
+    const eventElements = await page.$$(
+      'div.event-slide-col1-list > div.event-slide-elm.animate'
+    );
     logger.info(`Found ${eventElements.length} events on the listing page.`);
 
     const eventsData = [];
@@ -91,24 +94,30 @@ const scrapeFabCafe = async () => {
       try {
         logger.info(`Processing event ${index + 1} of ${eventElements.length}...`);
 
-        // Extract the event URL
-        const eventUrl = await eventElement.$eval('a', (el) => el.href).catch(() => null);
+        // Extract the event URL from the <a> tag
+        const eventUrl = await eventElement.$eval('a', (el) => el.href.trim()).catch(() => null);
+
         if (!eventUrl) {
           logger.warn(`Missing event URL for event ${index + 1}. Skipping.`);
           continue;
         }
 
-        // Extract event title
-        const eventTitle = await eventElement.$eval('div.top-info > h2.ttl', (el) =>
+        // Extract event title (using universal selector)
+        const eventTitle = await eventElement.$eval('div.top-info > .ttl', (el) =>
           el.innerText.trim()
         ).catch(() => null);
 
         if (!eventTitle) {
-          logger.warn(`Missing event title for event ${index + 1}. Skipping.`);
+          const outerHTML = await eventElement.evaluate((el) => el.outerHTML);
+          logger.warn(
+            `Missing event title for event ${index + 1}. Skipping. Event URL: ${eventUrl}. Outer HTML: ${outerHTML}`
+          );
           continue;
+        } else {
+          logger.info(`Event title extracted: ${eventTitle}`);
         }
 
-        // Extract event description (short description)
+        // Extract event description
         const eventDescription = await eventElement.$eval('div.top-info > p.text', (el) =>
           el.innerText.trim()
         ).catch(() => null);
@@ -182,7 +191,9 @@ const scrapeFabCafe = async () => {
 
         // Validate essential fields
         if (!detailedEventData.title || !detailedEventData.date_start) {
-          logger.warn(`Essential information missing for event ${index + 1}. Skipping.`);
+          logger.warn(
+            `Essential information missing for event ${index + 1}. Skipping. Event URL: ${eventUrl}`
+          );
           continue;
         }
 
@@ -190,6 +201,7 @@ const scrapeFabCafe = async () => {
         logger.info(`Extracted event: ${eventTitle}`);
       } catch (error) {
         logger.error(`Error processing event ${index + 1}: ${error.message}`);
+        logger.error(`Stack Trace: ${error.stack}`);
       }
     }
 
@@ -204,6 +216,9 @@ const scrapeFabCafe = async () => {
     return [];
   }
 };
+
+
+
 
 // Function to extract detailed event data from the event detail page
 const extractEventDetails = async (eventPage, eventData) => {

@@ -7,8 +7,7 @@
       <div
         v-for="(event, index) in pastEvents"
         :key="event.id"
-        :class="getCardClass(index)"
-        class="bg-white overflow-hidden relative"
+        :class="['custom-card', 'event-card', 'bg-white', 'overflow-hidden', 'relative', getCardClass(index)]"
       >
         <!-- Render without <a> tag for specific organizations if needed -->
         <div @click="openModal(event)" class="block h-full cursor-pointer">
@@ -183,5 +182,87 @@ img {
 }
 .bg-opacity-50 { 
   background-color: rgba(0, 0, 0, 0.5); 
+}
+
+@media (max-width: 480px) {
+  .custom-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .event-card {
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: 120px; /* Adjust the height as needed */
+    overflow: hidden;
+  }
+
+  /* Apply flex to both <a> and <div> wrappers inside .event-card */
+  .event-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    text-decoration: none; /* Remove underline for <a> */
+    width: 100%;
+  }
+
+  .event-image {
+    flex: 0 0 33%; /* Ensures the image takes one-third of the width */
+    max-width: 33%; /* Reinforces the width constraint */
+    height: 100%; /* Matches the card's height */
+    border-radius: 0.5rem 0 0 0.5rem; /* Rounded corners on the left */
+    overflow: hidden;
+  }
+
+  .event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .event-details {
+    flex: 1; /* Ensures the text section takes up the remaining space */
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; /* Prevents text overflow */
+    min-width: 0; /* Allows the flex item to shrink properly */
+  }
+
+  .caption-container {
+    position: static; /* Remove absolute positioning */
+    background-color: transparent;
+    margin: 0;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflowing text */
+    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+    padding: 0; /* Remove padding */
+  }
+
+  .caption-type { 
+    background-color: black; 
+    color: white; 
+    padding: 2px 6px; 
+    font-size: 0.8rem; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    display: inline-block; 
+    margin-bottom: 5px; 
+  }
+  .caption-title { 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    margin: 0; 
+    flex-shrink: 1;
+  }
+  .caption-date { 
+    font-size: 1rem; 
+    color: #666; 
+    margin-top: 0.5rem; 
+    flex-shrink: 0;
+  }
 }
 </style>

@@ -22,6 +22,7 @@ class DataTransformerFactory
             'growly'=> new GrowlyDataTransformer(),
             'kyoto_fanj'=> new KyotoFanjDataTransformer(),
             'fabcafe' => new FabCafeDataTransformer(),
+            'kyotoartcenter' => new KyotoArtCenterDataTransformer(),
             // Add other site-specific transformers as you create them
             default => null,
         };

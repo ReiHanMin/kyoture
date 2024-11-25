@@ -1,8 +1,9 @@
+// scraper_kyoto_gattaca.js
+
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import fs from 'fs';
 
 // Use the stealth plugin
 puppeteer.use(StealthPlugin());
@@ -29,24 +30,18 @@ const parseDate = (dateText, pageUrl) => {
 // Function to parse price data from the price text
 const parsePriceData = (priceText) => {
   const prices = [];
-  const priceRegex = /(?:ADV|DOOR|STUDENT|ticket|ticke)\s*￥?([\d,]+)-?\s*(?:\/\s*￥?([\d,]+)-?)?/gi;
+  // Adjusted regex to capture price tier (optional) and amount
+  const priceRegex = /(?:\b(ADV|DOOR|STUDENT|ticket|ticke)?\b)?\s*￥?([\d,]+)-?/gi;
   let match;
 
   while ((match = priceRegex.exec(priceText)) !== null) {
-    if (match[1]) {
-      prices.push({
-        price_tier: 'Advance',
-        amount: parseInt(match[1].replace(/,/g, ''), 10),
-        currency: 'JPY'
-      });
-    }
-    if (match[2]) {
-      prices.push({
-        price_tier: 'Door',
-        amount: parseInt(match[2].replace(/,/g, ''), 10),
-        currency: 'JPY'
-      });
-    }
+    let price_tier = match[1] ? match[1].toUpperCase() : 'General';
+    let amount = match[2];
+    prices.push({
+      price_tier: price_tier,
+      amount: parseInt(amount.replace(/,/g, ''), 10),
+      currency: 'JPY',
+    });
   }
   return prices;
 };
@@ -75,12 +70,17 @@ const scrapeKyotoGattaca = async () => {
       // Wait for images to load
       await page.evaluate(async () => {
         const selectors = Array.from(document.images).map((img) => img.src);
-        await Promise.all(selectors.map((src) => new Promise((resolve) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = resolve;
-          img.onerror = resolve;
-        })));
+        await Promise.all(
+          selectors.map(
+            (src) =>
+              new Promise((resolve) => {
+                const img = new Image();
+                img.src = src;
+                img.onload = resolve;
+                img.onerror = resolve;
+              })
+          )
+        );
       });
 
       await delay(2000);
@@ -88,7 +88,7 @@ const scrapeKyotoGattaca = async () => {
 
       console.log('On the Schedule page.');
 
-      const hasEvents = await page.$('h2.month_date') !== null;
+      const hasEvents = (await page.$('h2.month_date')) !== null;
       if (!hasEvents) {
         console.log('No events found on this page. Stopping pagination.');
         break;
@@ -98,7 +98,7 @@ const scrapeKyotoGattaca = async () => {
 
       for (const eventElement of eventElements) {
         try {
-          const hasDate = await eventElement.$('h2.month_date') !== null;
+          const hasDate = (await eventElement.$('h2.month_date')) !== null;
           if (!hasDate) continue;
 
           const dateText = await eventElement.$eval('h2.month_date', (el) => el.textContent.trim());
@@ -106,12 +106,18 @@ const scrapeKyotoGattaca = async () => {
           let title = await eventElement.$eval('h3', (el) => el.innerText.trim());
           title = title.replace(/\n+/g, ' ').trim();
 
-          let imageUrl = await eventElement.$eval('div.eventbox span.event a img', (el) => el.src).catch(() => null);
+          let imageUrl = await eventElement
+            .$eval('div.eventbox span.event a img', (el) => el.src)
+            .catch(() => null);
           if (!imageUrl) {
-            imageUrl = await eventElement.$eval('div.eventbox span.event a', (el) => el.href).catch(() => null);
+            imageUrl = await eventElement
+              .$eval('div.eventbox span.event a', (el) => el.href)
+              .catch(() => null);
           }
 
-          const bandsText = await eventElement.$eval('div.eventboxpro h6 span.bandname', (el) => el.innerText.trim()).catch(() => '');
+          const bandsText = await eventElement
+            .$eval('div.eventboxpro h6 span.bandname', (el) => el.innerText.trim())
+            .catch(() => '');
 
           const priceEventBox = await eventElement.$$('div.eventbox');
           if (priceEventBox.length >= 3) {
@@ -121,12 +127,14 @@ const scrapeKyotoGattaca = async () => {
             let ticketInfoLink = null;
             let description = '';
             let prices = [];
+            let foundPrice = false;
 
             for (let i = 0; i < pElements.length; i++) {
               const text = await pElements[i].evaluate((el) => el.textContent.trim());
               console.log('Extracted paragraph text:', text);
 
               if (text.includes('OPEN / START')) {
+                // Extract times
                 const times = text.replace('OPEN / START', '').trim();
                 const timesMatch = times.match(/(\d+:\d+)\s*\/\s*(\d+:\d+)/);
                 if (timesMatch) {
@@ -136,13 +144,43 @@ const scrapeKyotoGattaca = async () => {
                   openTime = 'TBA';
                   startTime = 'TBA';
                 }
-              } else if (text.includes('ADV') || text.includes('DOOR') || text.includes('STUDENT') || text.toLowerCase().includes('ticke')) {
+              } else if (text.includes('OPEN')) {
+                // Extract open time
+                const timeMatch = text.match(/OPEN\s*(\d+:\d+)/);
+                if (timeMatch) {
+                  openTime = timeMatch[1];
+                }
+              } else if (text.includes('START')) {
+                // Extract start time
+                const timeMatch = text.match(/START\s*(\d+:\d+)/);
+                if (timeMatch) {
+                  startTime = timeMatch[1];
+                }
+              } else if (
+                text.includes('ADV') ||
+                text.includes('DOOR') ||
+                text.includes('STUDENT') ||
+                text.toLowerCase().includes('ticket') ||
+                text.includes('￥') ||
+                text.includes('¥')
+              ) {
                 console.log('Detected price-related text:', text);
                 const extractedPrices = parsePriceData(text);
                 console.log('Prices extracted:', extractedPrices);
-
-                prices = prices.concat(extractedPrices);
+                if (extractedPrices.length > 0) {
+                  prices = prices.concat(extractedPrices);
+                  foundPrice = true;
+                }
+              } else if (text.includes('無料') || text.includes('入場無料') || text.includes('🆓')) {
+                console.log('Detected free event:', text);
+                prices.push({
+                  price_tier: 'Free',
+                  amount: 0,
+                  currency: 'JPY',
+                });
+                foundPrice = true;
               } else if (text.toLowerCase().includes('ticket info')) {
+                // Extract ticket info link
                 if (i + 1 < pElements.length) {
                   const linkElement = await pElements[i + 1].$('a.event');
                   if (linkElement) {
@@ -152,6 +190,12 @@ const scrapeKyotoGattaca = async () => {
               } else {
                 description += text + '\n';
               }
+            }
+
+            if (!foundPrice) {
+              console.warn(`Price information not found for event: ${title}`);
+              // Optionally, set prices to null or leave it empty
+              // prices = null;
             }
 
             const eventInfo = {
@@ -165,9 +209,9 @@ const scrapeKyotoGattaca = async () => {
                   time_start: openTime,
                   time_end: startTime,
                   special_notes: null,
-                }
+                },
               ],
-              prices: prices,
+              prices: prices.length > 0 ? prices : null,
               venue: 'Kyoto Gattaca',
               organization: 'Kyoto Gattaca',
               description: description.trim(),
