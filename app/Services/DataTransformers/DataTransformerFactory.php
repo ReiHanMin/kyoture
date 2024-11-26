@@ -23,6 +23,7 @@ class DataTransformerFactory
             'kyoto_fanj'=> new KyotoFanjDataTransformer(),
             'fabcafe' => new FabCafeDataTransformer(),
             'kyotoartcenter' => new KyotoArtCenterDataTransformer(),
+            'kyoto_national_museum' => new KyotoNationalMuseumDataTransformer(),
             // Add other site-specific transformers as you create them
             default => null,
         };
