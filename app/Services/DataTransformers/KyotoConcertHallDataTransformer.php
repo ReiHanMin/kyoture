@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\QueryException;
+use App\Services\ImageHelper; // Import the ImageHelper if centralized
 
 class KyotoConcertHallDataTransformer implements DataTransformerInterface
 {
@@ -55,6 +56,14 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
             $processedEvent['description'] = $eventData['description'] ?? '';
             $processedEvent['external_id'] = $eventData['external_id'];
 
+            // Ensure image_url is present; if not, set to placeholder
+            if (isset($processedEvent['image_url']) && !empty($processedEvent['image_url'])) {
+                // Assume it's already a relative path from the scraper
+            } else {
+                // Assign a default placeholder if image_url is missing
+                $processedEvent['image_url'] = '/images/events/placeholder.jpg';
+            }
+
             $this->processAndSaveEvent($processedEvent);
         }
 
@@ -64,8 +73,6 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
     Log::warning('API response is empty or malformed.', ['response' => $responseData]);
     return null;
 }
-
-    
 
 
     public function processAndSaveEvent(array $eventData): void
@@ -168,15 +175,14 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
         2. **Schedule Parsing**:
            - Create a 'schedule' array with entries that include 'date', 'time_start', 'time_end', and 'special_notes'.
         
-           3. **Category Assignment**:
+        3. **Category Assignment**:
            - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
                ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
            
-           4. **Tag Assignment**:
+        4. **Tag Assignment**:
            - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
                ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
 
-        
         5. **Price Parsing**:
            - Parse information from the 'prices' array.
            - Each price should include:
@@ -203,8 +209,7 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                 "discount_info": "None"
               }
 
-        
-        5. **Output Format**:
+        6. **Output Format**:
            - Ensure the output strictly follows the JSON format:
              {
                "events": [
@@ -238,10 +243,9 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
                  }
                ]
              }
-        
+
         EVENT DATA TO BE PARSED: {$jsonEventData}
         EOT;
-        
 
         Log::info('Constructed prompt:', ['prompt' => $prompt]);
 
@@ -251,6 +255,8 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
     public function callOpenAI(string $prompt): ?array
     {
         $apiKey = env('OPENAI_API_KEY');
+
+        Log::info('OpenAI API Key:', ['key' => $apiKey]);
 
         try {
             $response = Http::withHeaders([
@@ -356,30 +362,30 @@ class KyotoConcertHallDataTransformer implements DataTransformerInterface
 
 
 
-public function isValidEventData(array $eventData): bool
-{
-    Log::info('Checking type of $eventData', ['type' => gettype($eventData)]);
+    public function isValidEventData(array $eventData): bool
+    {
+        Log::info('Checking type of $eventData', ['type' => gettype($eventData)]);
 
-    // Check if $eventData is indeed an array
-    if (!is_array($eventData)) {
-        Log::error('Expected $eventData to be an array, but it is not.', ['event_data' => $eventData]);
-        return false;
+        // Check if $eventData is indeed an array
+        if (!is_array($eventData)) {
+            Log::error('Expected $eventData to be an array, but it is not.', ['event_data' => $eventData]);
+            return false;
+        }
+
+        $validator = Validator::make($eventData, [
+            'title' => 'required|string',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date',
+            'external_id' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            Log::error('Validation failed:', $validator->errors()->all());
+            return false;
+        }
+
+        return true;
     }
-
-    $validator = Validator::make($eventData, [
-        'title' => 'required|string',
-        'date_start' => 'required|date',
-        'date_end' => 'required|date',
-        'external_id' => 'required|string',
-    ]);
-
-    if ($validator->fails()) {
-        Log::error('Validation failed:', $validator->errors()->all());
-        return false;
-    }
-
-    return true;
-}
 
 
     public function saveSchedules(int $eventId, array $schedules)
@@ -436,24 +442,24 @@ public function isValidEventData(array $eventData): bool
     }
 
     public function savePrices(int $eventId, array $prices)
-{
-    // Log the incoming prices data for debugging
-    Log::info('Saving prices for event', ['event_id' => $eventId, 'prices' => $prices]);
+    {
+        // Log the incoming prices data for debugging
+        Log::info('Saving prices for event', ['event_id' => $eventId, 'prices' => $prices]);
 
-    foreach ($prices as $priceData) {
-        Price::updateOrCreate(
-            [
-                'event_id' => $eventId,
-                'price_tier' => $priceData['price_tier'],
-            ],
-            [
-                'amount' => $this->nullIfEmpty($priceData['amount']),
-                'currency' => $priceData['currency'] ?? 'JPY',
-                'discount_info' => $this->nullIfEmpty($priceData['discount_info']),
-            ]
-        );
+        foreach ($prices as $priceData) {
+            Price::updateOrCreate(
+                [
+                    'event_id' => $eventId,
+                    'price_tier' => $priceData['price_tier'],
+                ],
+                [
+                    'amount' => $this->nullIfEmpty($priceData['amount']),
+                    'currency' => $priceData['currency'] ?? 'JPY',
+                    'discount_info' => $this->nullIfEmpty($priceData['discount_info']),
+                ]
+            );
+        }
     }
-}
 
 
     public function saveCategories(Event $event, array $categories)

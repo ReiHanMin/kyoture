@@ -12,11 +12,18 @@ use App\Models\Image;
 use App\Models\EventLink;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\QueryException;
+use App\Services\ImageHelper; // Assuming centralized ImageHelper exists
 
 class RohmTheatreDataTransformer implements DataTransformerInterface
 {
+    /**
+     * Dispatches the event data processing job.
+     *
+     * @param array $eventData
+     * @return array|null
+     */
     public function transform(array $eventData): ?array
     {
         Log::info('Dispatching job for Rohm Theatre event data', ['event_data' => $eventData]);
@@ -37,6 +44,12 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         return null;
     }
 
+    /**
+     * Processes the event data by transforming and saving it.
+     *
+     * @param array $eventData
+     * @return array|null
+     */
     public function processEvent(array $eventData): ?array
     {
         Log::info('Starting transformation process for Rohm Theatre event data', ['event_data' => $eventData]);
@@ -66,6 +79,14 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
                 $processedEvent['description'] = $eventData['description'] ?? null;
                 $processedEvent['organization'] = $eventData['organization'] ?? null;
 
+                // Ensure image_url is present; if not, set to placeholder
+                if (isset($processedEvent['image_url']) && !empty($processedEvent['image_url'])) {
+                    // Assume it's already a relative path from the scraper
+                } else {
+                    // Assign a default placeholder if image_url is missing
+                    $processedEvent['image_url'] = '/images/events/placeholder.jpg';
+                }
+
                 $this->processAndSaveEvent($processedEvent);
             }
             unset($processedEvent); // Break the reference
@@ -77,126 +98,138 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         return null;
     }
 
+    /**
+     * Constructs the prompt for OpenAI API based on event data.
+     *
+     * @param array $eventData
+     * @return string
+     */
     public function constructPrompt(array $eventData): string
     {
-        // Constructing a detailed and precise prompt
-        $prompt = "
-        Transform the provided event data into the specified JSON format with the following requirements:
+        if (empty($eventData)) {
+            Log::warning('Empty event data provided to constructPrompt.');
+            return "No event data provided.";
+        }
 
-        1. **Date Parsing**:
-        - Parse 'raw_date' into 'date_start' and 'date_end':
-            - If 'raw_date' contains a date range in the format 'YYYY.MM.DD (DAY) – MM.DD (DAY)', extract:
-            - 'date_start' as 'YYYY-MM-DD' from the first date,
-            - 'date_end' as 'YYYY-MM-DD' using the same year as 'date_start', but replacing the month and day.
-            - If 'raw_date' contains only a single date, set both 'date_start' and 'date_end' to the same value.
-            - Ensure 'date_start' is not after 'date_end'.
+        $jsonEventData = json_encode($eventData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        if ($jsonEventData === false) {
+            Log::error('Failed to JSON encode event data.', ['event_data' => $eventData]);
+            return "Invalid event data provided.";
+        }
 
-        2. **Schedule Parsing**:
-        - Parse 'raw_schedule' into an array of schedules:
-            - Each schedule should include 'date', 'time_start', 'time_end', and 'special_notes'.
-            - Use the date from 'raw_date' to populate the 'date' field for each schedule entry.
-            - If 'raw_schedule' contains multiple entries on different days, separate them into individual schedule objects.
-            - If 'time_end' is not specified, leave it empty.
-        - If 'raw_schedule' is empty or unavailable, set 'schedule' as an empty array.
+        $prompt = <<<EOT
+Transform the provided event data into the specified JSON format with the following requirements:
 
-        3. **Category Assignment**:
-        - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
-            ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Tour', 'Festival', 'Family', 'Wellness', 'Sports'].
+1. **Date Parsing**:
+   - Set 'date_start' and 'date_end':
+     - Use 'YYYY-MM-DD' format for dates.
 
-        4. **Tag Assignment**:
-        - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
-            ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
+2. **Schedule Parsing**:
+   - Create a 'schedule' array with entries that include 'date', 'time_start', 'time_end', and 'special_notes'.
 
-        5. **Price Parsing**:
-        - Extract pricing information from 'raw_price_text' and format it as an array of price objects:
-            - Each price object should include 'price_tier', 'amount', and 'currency'.
-            - 'price_tier' should represent the ticket type or seating type, including any relevant notes (e.g., 'General (1F)', 'S', '25 and Under', 'Repeat ticket').
-            - 'amount' should be the numeric value of the price, excluding currency symbols (e.g., '6000', '4000').
-            - Assume 'currency' to be 'JPY' if no currency is provided in 'raw_price_text'.
-            - Include 'discount_info' if additional information about discounts or conditions is present in 'raw_price_text'.
-            - If pricing varies by date, split these into separate price objects with the relevant details.
-        - Example: For 'raw_price_text': 'General (1F): ¥6,000 / General (2F): ¥5,000 / 25 and Under: ¥3,000 / 18 and Under: ¥1,000', the output should be:
-            [
-                { \"price_tier\": \"General (1F)\", \"amount\": \"6000\", \"currency\": \"JPY\" },
-                { \"price_tier\": \"General (2F)\", \"amount\": \"5000\", \"currency\": \"JPY\" },
-                { \"price_tier\": \"25 and Under\", \"amount\": \"3000\", \"currency\": \"JPY\" },
-                { \"price_tier\": \"18 and Under\", \"amount\": \"1000\", \"currency\": \"JPY\" }
-            ].
+3. **Category Assignment**:
+   - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
+       ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
 
-            6. **Event Link Extraction**:
-            - Ensure the 'event_link' is parsed from the provided data and included in the event object.
-            - If an event link is present, set it as 'event_link' in the output. If no link is available, leave the field empty or set a placeholder to indicate it requires review.
+4. **Tag Assignment**:
+   - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
+       ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
 
-        7. **Output Format**:
-        - Ensure the output strictly follows the specified JSON format, even if some fields (e.g., 'categories', 'tags', 'prices') are empty:
-            {
-                \"events\": [
-                    {
-                        \"title\": \"Event Title\",
-                        \"date_start\": \"YYYY-MM-DD\",
-                        \"date_end\": \"YYYY-MM-DD\",
-                        \"venue\": \"Venue Name\",
-                        \"event_link\": \"Event URL\",
-                        \"image_url\": \"Image URL\",
-                        \"schedule\": [
-                            {
-                                \"date\": \"YYYY-MM-DD\",
-                                \"time_start\": \"HH:mm:ss\",
-                                \"time_end\": \"HH:mm:ss\",
-                                \"special_notes\": \"Special Notes\"
-                            }
-                        ],
-                        \"categories\": [\"Category1\", \"Category2\"],
-                        \"tags\": [\"Tag1\", \"Tag2\"],
-                        \"prices\": [
-                            {
-                                \"price_tier\": \"Tier1\",
-                                \"amount\": \"1000\",
-                                \"currency\": \"JPY\",
-                                \"discount_info\": \"Discount Info\"
-                            }
-                        ]
-                    }
-                ]
-            } 
+5. **Price Parsing**:
+   - Parse information from the 'prices' array.
+   - Each price should include:
+     - 'price_tier': the description or category of the price (e.g., "Adults").
+     - 'amount': the numerical amount, formatted as a string (e.g., "7000").
+     - 'currency': use "JPY" for Japanese Yen.
+     - 'discount_info': include any available discount details. If no discount information is provided, set 'discount_info' to null.
 
-        7. **Edge Case Handling**:
-        - Handle any edge cases or unexpected formats gracefully, ensuring that the output structure remains consistent and valid.
+6. **Event Link Extraction**:
+   - Ensure the 'event_link' is parsed from the provided data and included in the event object.
+   - If an event link is present, set it as 'event_link' in the output. If no link is available, leave the field empty or set a placeholder to indicate it requires review.
 
-        EVENT DATA TO BE PARSED: " . json_encode($eventData);
+7. **Output Format**:
+   - Ensure the output strictly follows the specified JSON format:
+     {
+       "events": [
+         {
+           "title": "Event Title",
+           "date_start": "YYYY-MM-DD",
+           "date_end": "YYYY-MM-DD",
+           "venue": "Venue Name",
+           "organization": "Organization Name",
+           "event_link": "Event URL",
+           "image_url": "Image URL",
+           "schedule": [
+             {
+               "date": "YYYY-MM-DD",
+               "time_start": "HH:mm:ss",
+               "time_end": "HH:mm:ss",
+               "special_notes": "Special Notes"
+             }
+           ],
+           "categories": ["Category1", "Category2"],
+           "tags": ["Tag1", "Tag2"],
+           "prices": [
+             {
+               "price_tier": "Adults",
+               "amount": "1000",
+               "currency": "JPY",
+               "discount_info": "Discount Info"
+             }
+           ],
+           "free": false
+         }
+       ]
+     }
+
+EVENT DATA TO BE PARSED: {$jsonEventData}
+EOT;
+
+        Log::info('Constructed prompt:', ['prompt' => $prompt]);
 
         return $prompt;
     }
 
-
+    /**
+     * Calls the OpenAI API with the constructed prompt.
+     *
+     * @param string $prompt
+     * @return array|null
+     */
     public function callOpenAI(string $prompt): ?array
     {
         $apiKey = env('OPENAI_API_KEY');
 
+        // Avoid logging sensitive information
+        // Log::info('OpenAI API Key:', ['key' => $apiKey]); // Remove or comment out this line
+
         try {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $apiKey,
+                'Content-Type' => 'application/json',
             ])->post('https://api.openai.com/v1/chat/completions', [
-                'model' => 'gpt-4o-mini',  // Ensure you have access to GPT-4
+                'model' => 'gpt-4', // Ensure you have access to GPT-4
                 'messages' => [
                     ['role' => 'user', 'content' => $prompt],
                 ],
-                'max_tokens' => 2000,  // Adjust if needed
+                'max_tokens' => 2000, // Adjust if needed
                 'temperature' => 0.2,
             ]);
+
+            if ($response->status() == 429) {
+                Log::warning('Rate limit hit. Retrying after delay.');
+                sleep(5);
+                return $this->callOpenAI($prompt);
+            }
 
             $responseArray = $response->json();
 
             if (isset($responseArray['choices'][0]['message']['content'])) {
-                // Get the content
                 $parsedData = $responseArray['choices'][0]['message']['content'];
 
-                // Use regex to extract JSON between braces
                 if (preg_match('/\{(?:[^{}]|(?R))*\}/s', $parsedData, $matches)) {
-                    $jsonContent = $matches[0];  // Extracted JSON string
+                    $jsonContent = $matches[0];
                     Log::info('Extracted JSON from OpenAI response', ['response' => $jsonContent]);
-
-                    // Decode the JSON
                     return json_decode($jsonContent, true);
                 } else {
                     Log::warning('No JSON found in OpenAI response', ['response' => $parsedData]);
@@ -211,14 +244,23 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         return null;
     }
 
+    /**
+     * Processes and saves the event data into the database.
+     *
+     * @param array $eventData
+     * @return void
+     */
     public function processAndSaveEvent(array $eventData): void
     {
         Log::info('Processing event data for saving', ['event_data' => $eventData]);
 
-        // We no longer generate external_id here
-        // $eventData['external_id'] = md5("{$eventData['title']}_{$eventData['date_start']}_{$eventData['venue']}");
+        // Ensure external_id is present
+        if (!isset($eventData['external_id'])) {
+            Log::warning('External ID missing for event', ['event_data' => $eventData]);
+            return;
+        }
 
-        $eventData['venue_id'] = $this->saveVenue($eventData) ?? null;
+        $eventData['venue_id'] = $this->saveVenue($eventData['venue'] ?? null);
         Log::info('Venue ID assigned', ['venue_id' => $eventData['venue_id']]);
 
         if ($this->isValidEventData($eventData)) {
@@ -236,14 +278,27 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
             }
 
             if ($event) {
-                $this->saveEventLink($event->id, $eventData['event_link']);
-                Log::info('Event link saved', ['event_id' => $event->id, 'event_link' => $eventData['event_link']]);
+                $this->saveEventLink($event->id, $eventData['event_link'] ?? null);
+                Log::info('Event link saved', ['event_id' => $event->id, 'event_link' => $eventData['event_link'] ?? null]);
+
+                // Save related data
+                $this->saveSchedules($event, $eventData['schedule'] ?? []);
+                $this->saveCategoriesAndTags($event, $eventData);
+                $this->saveImages($event, $eventData['image_url'] ?? null, $eventData['additional_images'] ?? []);
+                $this->savePrices($event, $eventData['prices'] ?? []);
             }
         } else {
             Log::warning('Invalid event data', ['event_data' => $eventData]);
         }
     }
 
+    /**
+     * Updates an existing event with new data.
+     *
+     * @param int $eventId
+     * @param array $eventData
+     * @return Event|null
+     */
     public function updateEvent(int $eventId, array $eventData): ?Event
     {
         try {
@@ -265,7 +320,7 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
                 // Update related data
                 $this->saveSchedules($event, $eventData['schedule'] ?? []);
                 $this->saveCategoriesAndTags($event, $eventData);
-                $this->saveImages($event, $eventData['image_url'] ?? null, []);
+                $this->saveImages($event, $eventData['image_url'] ?? null, $eventData['additional_images'] ?? []);
                 $this->savePrices($event, $eventData['prices'] ?? []);
 
                 return $event;
@@ -284,11 +339,17 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         return null;
     }
 
-    public function saveVenue(array $eventData): ?int
+    /**
+     * Saves or retrieves a venue based on the provided name.
+     *
+     * @param string|null $venueName
+     * @return int|null
+     */
+    public function saveVenue(?string $venueName): ?int
     {
-        if (!empty($eventData['venue'])) {
+        if (!empty($venueName)) {
             // Clean the venue name
-            $cleanedVenueName = trim($eventData['venue']);
+            $cleanedVenueName = trim($venueName);
 
             if (!empty($cleanedVenueName)) {
                 Log::info('Saving or retrieving venue', ['venue_name' => $cleanedVenueName]);
@@ -306,7 +367,7 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
                 Log::info('Venue saved or retrieved', ['venue_id' => $venue->id]);
                 return $venue->id;
             } else {
-                Log::warning('Venue name is empty after cleaning; venue data was not saved.', ['eventData' => $eventData]);
+                Log::warning('Venue name is empty after cleaning; venue data was not saved.', ['venueName' => $venueName]);
             }
         } else {
             Log::warning('Venue name is missing; venue data was not saved.', ['eventData' => $eventData]);
@@ -314,6 +375,12 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         return null;
     }
 
+    /**
+     * Saves a new event to the database.
+     *
+     * @param array $eventData
+     * @return Event|null
+     */
     public function saveEvent(array $eventData): ?Event
     {
         try {
@@ -334,7 +401,7 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
             // Save related data
             $this->saveSchedules($event, $eventData['schedule'] ?? []);
             $this->saveCategoriesAndTags($event, $eventData);
-            $this->saveImages($event, $eventData['image_url'] ?? null, []);
+            $this->saveImages($event, $eventData['image_url'] ?? null, $eventData['additional_images'] ?? []);
             $this->savePrices($event, $eventData['prices'] ?? []);
 
             return $event;
@@ -350,16 +417,22 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         return null;
     }
 
-    public function saveEventLink(int $eventId, string $eventLink): void
-    {
-        EventLink::updateOrCreate(
-            ['event_id' => $eventId, 'url' => $eventLink],
-            ['link_type' => 'primary']
-        );
-    }
-
+    /**
+     * Validates the event data.
+     *
+     * @param array $eventData
+     * @return bool
+     */
     public function isValidEventData(array $eventData): bool
     {
+        Log::info('Checking type of $eventData', ['type' => gettype($eventData)]);
+
+        // Check if $eventData is indeed an array
+        if (!is_array($eventData)) {
+            Log::error('Expected $eventData to be an array, but it is not.', ['event_data' => $eventData]);
+            return false;
+        }
+
         $validator = Validator::make($eventData, [
             'title' => 'required|string',
             'date_start' => 'required|date',
@@ -376,6 +449,13 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         return true;
     }
 
+    /**
+     * Saves schedules related to an event.
+     *
+     * @param Event $event
+     * @param array $schedules
+     * @return void
+     */
     public function saveSchedules(Event $event, array $schedules): void
     {
         foreach ($schedules as $schedule) {
@@ -396,6 +476,13 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         }
     }
 
+    /**
+     * Saves categories and tags related to an event.
+     *
+     * @param Event $event
+     * @param array $eventData
+     * @return void
+     */
     public function saveCategoriesAndTags(Event $event, array $eventData): void
     {
         $categoryIds = [];
@@ -413,6 +500,14 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         $event->tags()->sync($tagIds);
     }
 
+    /**
+     * Saves images related to an event.
+     *
+     * @param Event $event
+     * @param string|null $primaryImageUrl
+     * @param array $images
+     * @return void
+     */
     public function saveImages(Event $event, ?string $primaryImageUrl, array $images): void
     {
         if ($primaryImageUrl) {
@@ -444,6 +539,13 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
         }
     }
 
+    /**
+     * Saves prices related to an event.
+     *
+     * @param Event $event
+     * @param array $prices
+     * @return void
+     */
     public function savePrices(Event $event, array $prices): void
     {
         foreach ($prices as $priceData) {
@@ -460,6 +562,25 @@ class RohmTheatreDataTransformer implements DataTransformerInterface
                     ]
                 );
             }
+        }
+    }
+
+    /**
+     * Saves the event link.
+     *
+     * @param int $eventId
+     * @param string|null $eventLink
+     * @return void
+     */
+    public function saveEventLink(int $eventId, ?string $eventLink): void
+    {
+        if ($eventLink) {
+            EventLink::updateOrCreate(
+                ['event_id' => $eventId, 'url' => $eventLink],
+                ['link_type' => 'primary']
+            );
+        } else {
+            Log::warning('Event link is missing; skipping EventLink save.', ['event_id' => $eventId]);
         }
     }
 }
