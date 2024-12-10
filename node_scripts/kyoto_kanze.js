@@ -2,26 +2,62 @@
 
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-import fs from 'fs';
+import fs from 'fs/promises';
+import path from 'path';
 import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
 import axios from 'axios';
+import crypto from 'crypto';
+import PQueue from 'p-queue';
+import winston from 'winston';
+import { v4 as uuidv4 } from 'uuid';
 
-// Use the stealth plugin to avoid detection
+// Configure Puppeteer to use Stealth Plugin
 puppeteer.use(StealthPlugin());
 
-// Utility function to delay execution
+// Define __dirname for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Configure Logger
+const logger = winston.createLogger({
+    level: 'debug', // Set to 'debug' for detailed logs
+    format: winston.format.combine(
+        winston.format.timestamp({
+            format: 'YYYY-MM-DD HH:mm:ss'
+        }),
+        winston.format.printf(info => `${info.timestamp} [${info.level.toUpperCase()}]: ${info.message}`)
+    ),
+    transports: [
+        new winston.transports.File({ filename: path.join(__dirname, 'logs', 'scraper.log') }),
+        new winston.transports.Console()
+    ]
+});
+
+// Utility Functions
+
+/**
+ * Delay execution for given milliseconds
+ * @param {number} ms 
+ * @returns {Promise}
+ */
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// Function to convert full-width characters to half-width
+/**
+ * Convert full-width characters to half-width
+ * @param {string} str 
+ * @returns {string}
+ */
 const toHalfWidth = (str) =>
     str
         .replace(/[！-～]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xFEE0))
         .replace(/　/g, ' '); // Convert full-width space to half-width
 
-// Function to normalize event titles by removing known prefixes and trimming whitespace
+/**
+ * Normalize event titles by removing known prefixes and trimming whitespace
+ * @param {string} title 
+ * @returns {string}
+ */
 function normalizeTitle(title) {
-    // Remove known prefixes (case-insensitive) if any
     return title
         .replace(/^(Kyoto Kanze|林能楽会|橋本聲吟社|fever)\s*[-：:]\s*/i, '')
         .replace(/<[^>]+>/g, '') // Remove any remaining HTML tags
@@ -29,7 +65,11 @@ function normalizeTitle(title) {
         .trim();
 }
 
-// Function to parse date and time from the Japanese format
+/**
+ * Parse date and time from Japanese format
+ * @param {string} dateTimeStr 
+ * @returns {object|null}
+ */
 function parseJapaneseDateTime(dateTimeStr) {
     // Regex to match "MM月DD日(曜日) HH:MM開演" or "MM月DD日(曜日) 開演時間未定"
     const regex = /(\d{1,2})月(\d{1,2})日\s*\((?:日|月|火|水|木|金|土|祝)\D*\)\s*(?:(\d{1,2}):(\d{2})開演|開演時間未定)/;
@@ -38,7 +78,8 @@ function parseJapaneseDateTime(dateTimeStr) {
     if (match) {
         const month = match[1].padStart(2, '0');
         const day = match[2].padStart(2, '0');
-        const year = new Date().getFullYear(); // Assuming current year; adjust if necessary
+        const currentYear = new Date().getFullYear();
+        const year = currentYear; // Adjust if events span multiple years
 
         let date_start = `${year}-${month}-${day}`;
         let date_end = date_start;
@@ -47,9 +88,13 @@ function parseJapaneseDateTime(dateTimeStr) {
 
         if (match[3] && match[4]) {
             time_start = `${match[3].padStart(2, '0')}:${match[4]}`;
-            // If end time is not provided, you might set a default duration or leave it null
+            // Optionally, set a default duration if end time is not provided
+            // For example, assume 2 hours duration:
+            // const [hour, minute] = [parseInt(match[3]), parseInt(match[4])];
+            // const endHour = (hour + 2) % 24;
+            // time_end = `${endHour.toString().padStart(2, '0')}:${match[4]}`;
         } else if (dateTimeStr.includes('開演時間未定')) {
-            time_start = 'To Be Announced';
+            time_start = null; // Or assign a default value like 'To Be Announced'
         }
 
         return { date_start, date_end, time_start, time_end };
@@ -58,18 +103,95 @@ function parseJapaneseDateTime(dateTimeStr) {
     return null;
 }
 
-// Function to extract text from HTML comments
-function extractTextFromComments(html) {
-    const commentRegex = /<!--([\s\S]*?)-->/g;
-    let match;
-    let comments = [];
-    while ((match = commentRegex.exec(html)) !== null) {
-        comments.push(match[1]);
-    }
-    return comments.join('\n');
+/**
+ * Generate a SHA256 hash for a given string
+ * @param {string} str 
+ * @returns {string}
+ */
+function generateHash(str) {
+    return crypto.createHash('sha256').update(str).digest('hex');
 }
 
-// Function to parse price information from text
+/**
+ * Make absolute URL from relative URL and base URL
+ * @param {string} url 
+ * @param {string} base 
+ * @returns {string|null}
+ */
+function makeAbsoluteUrl(url, base) {
+    try {
+        const baseUrl = new URL(base);
+        // Ensure base URL ends with a slash
+        if (!baseUrl.pathname.endsWith('/')) {
+            baseUrl.pathname += '/';
+        }
+        return new URL(url, baseUrl).href;
+    } catch (e) {
+        logger.error(`Invalid URL: ${url} with base: ${base}`);
+        return null; // Return null to handle invalid URLs
+    }
+}
+
+/**
+ * Downloads an image from the given URL and saves it locally.
+ * @param {string} imageUrl - The URL of the image to download.
+ * @param {string} site - The site identifier (e.g., 'kyoto_kanze').
+ * @param {number} retries - Number of retry attempts for downloading.
+ * @returns {Promise<string>} - The relative URL of the saved image.
+ */
+const downloadAndSaveImage = async (imageUrl, site, retries = 3) => {
+    if (!imageUrl) {
+        logger.warn('No image URL provided. Assigning placeholder.');
+        return '/images/events/kyoto_kanze/placeholder.jpg';
+    }
+
+    const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : makeAbsoluteUrl(imageUrl, 'https://kyoto-kanze.jp');
+    if (!absoluteImageUrl) {
+        logger.warn('Invalid image URL. Assigning placeholder.');
+        return '/images/events/kyoto_kanze/placeholder.jpg';
+    }
+
+    logger.debug(`Attempting to download image from URL: ${absoluteImageUrl}`);
+
+    try {
+        const response = await axios.get(absoluteImageUrl, { responseType: 'arraybuffer' });
+
+        // Check if the response content type is an image
+        const contentType = response.headers['content-type'];
+        if (!contentType || !contentType.startsWith('image/')) {
+            throw new Error(`Invalid content type: ${contentType}`);
+        }
+
+        const extension = path.extname(new URL(absoluteImageUrl).pathname) || '.jpg';
+        const filename = `${uuidv4()}${extension}`;
+        const filepath = path.join(__dirname, '..', 'public', 'images', 'events', site, filename);
+
+        // Ensure the directory exists
+        await fs.mkdir(path.dirname(filepath), { recursive: true });
+
+        // Save the image file
+        await fs.writeFile(filepath, response.data);
+
+        const relativeImageUrl = `/images/events/${site}/${filename}`;
+        logger.debug(`Image successfully saved: ${relativeImageUrl}`);
+        return relativeImageUrl;
+    } catch (error) {
+        if (retries > 0) {
+            logger.warn(`Retrying download (${retries} attempts left) for URL: ${absoluteImageUrl}`);
+            await delay(1000);
+            return downloadAndSaveImage(imageUrl, site, retries - 1);
+        }
+        logger.error(`Failed to download image after retries. Assigning placeholder. Error: ${error.message}`);
+        return '/images/events/kyoto_kanze/placeholder.jpg';
+    }
+};
+
+
+/**
+ * Parse price information from text
+ * @param {string} text 
+ * @returns {Array}
+ */
 function parsePrices(text) {
     const prices = [];
 
@@ -81,28 +203,34 @@ function parsePrices(text) {
 
     // Define a mapping for common price tiers (can be expanded as needed)
     const priceTierMapping = {
-        '一般前売指定席券': 'General Advance Reserved Seat',
+        '正面指定席': 'Front Reserved Seat',
+        '脇中正面指定席': 'Side & Middle Front Reserved Seat',
+        '次世代応援シート': 'Next Generation Support Sheet',
+        '各当日券': 'General Day Ticket',
+        '学生席': 'Student Seat',
+        '当日': 'Day Ticket',
+        '学生': 'Student Ticket',
+        '前売券': 'Advance Ticket',
+        '当日券': 'Day Ticket',
+        '１階': 'First Floor Seat',
+        '２階': 'Second Floor Seat',
+        'Ｓ席': 'S Seat',
+        'Ａ席': 'A Seat',
+        'Ｂ席': 'B Seat',
+        '料金': 'Fee',
+        '一般前売指定席券※WEB': 'General Advance Reserved Seat (WEB)',
         '一般前売自由席券': 'General Advance Free Seat',
-        '一般当日券': 'General Day Ticket',
-        '学生券': 'Student Ticket',
-        'S席': 'S Seat',
-        'A席': 'A Seat',
-        '１階席': 'First Floor Seat',
-        '２階席': 'Second Floor Seat',
-        'ﾃﾞｲﾀｲﾑ･ﾄﾜｲﾗｲﾄ席': 'Timed & Twilite Seat',
-        '金': 'Friday',
-        '回数券５枚綴': 'Multi-Use Ticket (5-Pack)',
-        '特別会員会員券10枚': 'Special Member Ticket (10-Pack)',
-        '普通会員会員券10枚': 'Regular Member Ticket (10-Pack)',
+        '学生券２階自由席のみ': 'Student Ticket - Second Floor Free Seat Only',
+        '特別会員会員券10枚': 'Special Member Ticket (10 pcs)',
+        '普通会員会員券10枚': 'Regular Member Ticket (10 pcs)',
+        'Free': 'Free',
         // Add more mappings as necessary
     };
 
     let lastPriceTier = null;
 
-    // Regex to match lines with both label and amount
-    const labeledPriceRegex = /^([^\s￥]+)\s*￥([\d,]+)/;
-
-    // Regex to match lines with only amount
+    // Enhanced Regex to capture more complex patterns
+    const labeledPriceRegex = /^([^\s￥]+(?:席|券|シート|パートナー|料金|Free))\s*￥([\d,]+)/i;
     const amountOnlyRegex = /^￥([\d,]+)/;
 
     for (let line of lines) {
@@ -122,7 +250,7 @@ function parsePrices(text) {
 
             prices.push({
                 price_tier: label,
-                amount: amount,
+                amount: parseFloat(amount),
                 currency: 'JPY',
             });
 
@@ -137,7 +265,7 @@ function parsePrices(text) {
 
             prices.push({
                 price_tier: lastPriceTier,
-                amount: amount,
+                amount: parseFloat(amount),
                 currency: 'JPY',
             });
 
@@ -146,125 +274,77 @@ function parsePrices(text) {
 
         // Handle "無料" mentions
         if (/無料/.test(line)) {
-            prices.push({ price_tier: 'Free', amount: '0', currency: 'JPY' });
+            prices.push({ price_tier: 'Free', amount: 0, currency: 'JPY' });
+            continue;
+        }
+
+        // Handle discounts or other modifiers
+        if (/割引/.test(line)) {
+            // Extract the amount and assign a 'Discount' tier
+            const discountMatch = /￥([\d,]+)/.exec(line);
+            if (discountMatch) {
+                let discountAmount = parseFloat(discountMatch[1].replace(/,/g, ''));
+                prices.push({
+                    price_tier: 'Discount',
+                    amount: discountAmount,
+                    currency: 'JPY',
+                });
+            }
             continue;
         }
 
         // If line doesn't match any pattern, log it for further inspection
-        console.warn(`Unrecognized price line format: "${line}"`);
+        logger.warn(`Unrecognized price line format: "${line}"`);
     }
 
     return prices;
 }
 
-// Function to make absolute URLs from relative ones
-function makeAbsoluteUrl(url, base) {
-    try {
-        return new URL(url, base).href;
-    } catch (e) {
-        console.error(`Invalid URL: ${url} with base: ${base}`);
-        return null; // Return null to handle invalid URLs
+/**
+ * Extract text from HTML comments
+ * @param {string} html 
+ * @returns {string}
+ */
+function extractTextFromComments(html) {
+    const commentRegex = /<!--([\s\S]*?)-->/g;
+    let match;
+    let comments = [];
+    while ((match = commentRegex.exec(html)) !== null) {
+        comments.push(match[1]);
     }
+    return comments.join('\n');
 }
 
-// Function to validate image size (in bytes)
-async function isImageHighRes(url, minSize = 50000) { // 50KB as a threshold
-    try {
-        const response = await axios.head(url);
-        const size = parseInt(response.headers['content-length'], 10);
-        return size >= minSize;
-    } catch (error) {
-        console.error(`Error fetching image headers for ${url}:`, error);
-        return false;
-    }
-}
+/**
+ * Extract high-resolution image URLs from detail page
+ * @param {object} page 
+ * @param {string} baseUrl 
+ * @returns {Array}
+ */
+const extractHighResImages = async (page, baseUrl) => {
+    logger.debug(`Extracting high-res images from page: ${baseUrl}`);
+    const imageSelectors = [
+        'div.event-images img[src]',
+        'div.event-images a[href]',
+    ];
 
-// Function to extract all high-resolution image URLs from the detail page
-async function extractHighResImages(detailPage, baseUrl) {
-    // Initialize an array to hold high-res image URLs
-    let highResImageUrls = [];
+    const imgUrls = await page.$$eval('div.left .link a[href$="_l.jpg"]', (anchors) =>
+    anchors.map((a) => a.href)
+);
 
-    // 1. Extract from <a> tags linking to high-res images
-    const aTagsHighRes = await detailPage.$$eval(
-        'a[href*="_l.jpg"], a[href*="_l.png"], a[href*="_l.gif"], a[href*="_highres.jpg"], a[href*="_highres.png"], a[href*="omote_l.jpg"], a[href*="ura_l.jpg"]',
-        (as) => as.map((a) => a.href)
-    ).catch(() => []);
 
-    console.log(`Found ${aTagsHighRes.length} high-res images within <a> tags.`);
 
-    // 2. Extract from <img> tags directly referencing high-res images
-    const imgTagsHighRes = await detailPage.$$eval(
-        'img[src*="_l.jpg"], img[src*="_l.png"], img[src*="_l.gif"], img[src*="_highres.jpg"], img[src*="_highres.png"], img[src*="omote_l.jpg"], img[src*="ura_l.jpg"]',
-        (imgs) => imgs.map((img) => img.src)
-    ).catch(() => []);
+    const absoluteUrls = imgUrls
+        .map(imgUrl => (imgUrl.startsWith('http') ? imgUrl : makeAbsoluteUrl(imgUrl, baseUrl)))
+        .filter(Boolean);
 
-    console.log(`Found ${imgTagsHighRes.length} high-res images within <img> tags.`);
+    logger.debug(`Extracted absolute image URLs: ${absoluteUrls}`);
+    return [...new Set(absoluteUrls)];
+};
 
-    // 3. Additional Patterns: Look for any image with 'highres' in the class or data attributes
-    const additionalHighRes = await detailPage.$$eval(
-        'img[class*="highres"], img[data-src*="highres"], img[data-original*="highres"]',
-        (imgs) => imgs.map((img) => img.src || img.dataset.src || img.dataset.original)
-    ).catch(() => []);
-
-    console.log(`Found ${additionalHighRes.length} high-res images within additional patterns.`);
-
-    // 4. Handle Images with Relative Paths
-    const relativeImages = await detailPage.$$eval(
-        'a[href*="_l.jpg"], a[href*="_l.png"], a[href*="_l.gif"], a[href*="_highres.jpg"], a[href*="_highres.png"], a[href*="omote_l.jpg"], a[href*="ura_l.jpg"], img[src*="_l.jpg"], img[src*="_l.png"], img[src*="_l.gif"], img[src*="_highres.jpg"], img[src*="_highres.png"], img[src*="omote_l.jpg"], img[src*="ura_l.jpg"]',
-        (elements) =>
-            elements
-                .map((el) => el.href || el.src)
-                .filter((url) => url && !url.startsWith('http'))
-    ).catch(() => []);
-
-    console.log(`Found ${relativeImages.length} relative high-res image URLs.`);
-
-    // Convert relative URLs to absolute URLs
-    const absoluteHighResImageUrls = aTagsHighRes.concat(imgTagsHighRes, additionalHighRes).map((href) =>
-        href.startsWith('http') ? href : makeAbsoluteUrl(href, baseUrl)
-    ).filter(url => url !== null);
-
-    // Include relative image URLs converted to absolute
-    absoluteHighResImageUrls.push(...relativeImages.map((href) => makeAbsoluteUrl(href, baseUrl)).filter(url => url !== null));
-
-    // Remove duplicates
-    highResImageUrls = [...new Set(absoluteHighResImageUrls)];
-
-    console.log(`Total high-res image URLs found: ${highResImageUrls.length}`);
-
-    // Filter out any images ending with 'thumb01.jpg' or main page defaults
-    const filteredHighResImageUrls = highResImageUrls.filter(
-        (url) =>
-            !url.toLowerCase().endsWith('thumb01.jpg') &&
-            !url.toLowerCase().endsWith('top002.jpg') &&
-            !url.toLowerCase().includes('default_placeholder')
-    );
-
-    console.log(`Filtered High-Res Image URLs (excluding 'thumb01.jpg' and defaults): ${filteredHighResImageUrls.join(', ')}`);
-
-    // Validate image sizes to ensure they're truly high-res
-    const validHighResImages = [];
-    for (const url of filteredHighResImageUrls) {
-        const highRes = await isImageHighRes(url);
-        if (highRes) {
-            validHighResImages.push(url);
-        }
-    }
-
-    console.log(`Valid high-res images after size check: ${validHighResImages.length}`);
-
-    // If high-res images are found, return them
-    if (validHighResImages.length > 0) {
-        return validHighResImages;
-    }
-
-    // Fallback: Assign a default placeholder image
-    const defaultPlaceholder = 'http://kyoto-kanze.jp/images/top002.jpg'; // Ensure this exists
-    console.warn(`No valid high-res images found. Assigning default placeholder: ${defaultPlaceholder}`);
-    return [defaultPlaceholder];
-}
-
-// Main scraping function
+/**
+ * Main Scraping Function
+ */
 const scrapeKyotoKanze = async () => {
     const browser = await puppeteer.launch({
         headless: true,
@@ -279,337 +359,306 @@ const scrapeKyotoKanze = async () => {
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
     );
 
-    console.log('Navigating to the main page...');
-    await page.goto('http://kyoto-kanze.jp/show_info/', {
-        waitUntil: 'networkidle2',
-        timeout: 60000,
-    });
+    logger.info('Navigating to the main page...');
+    try {
+        await page.goto('http://kyoto-kanze.jp/show_info/', {
+            waitUntil: 'networkidle2',
+            timeout: 60000,
+        });
+    } catch (error) {
+        logger.error(`Failed to navigate to main page: ${error.message}`);
+        await browser.close();
+        return [];
+    }
 
     // Wait for the main content to load
-    await page.waitForSelector('.jump_m50', { timeout: 30000 }).catch(() => {
-        console.warn('Timeout waiting for .jump_m50 selector.');
-    });
+    try {
+        await page.waitForSelector('.jump_m50', { timeout: 30000 });
+    } catch (error) {
+        logger.warn('Timeout waiting for .jump_m50 selector.');
+    }
 
     await delay(3000); // Additional wait to ensure full rendering
 
-    console.log('Main page loaded.');
+    logger.info('Main page loaded.');
 
     const eventData = [];
     const visitedLinks = new Set();
 
+    // Define Venue Information (assuming all events are at the same venue)
+    const venueData = {
+        name: '観世会館',
+        address: '京都府京都市左京区四条通下鴨東入ル末社町７８',
+        city: '京都市',
+        postal_code: '606-8501',
+        country: 'Japan'
+    };
+
+    // Generate or retrieve a venue_id (for simplicity, use a hash of the venue name)
+    const venue_id = generateHash(venueData.name);
+
+    // Initialize a queue to handle concurrency
+    const queue = new PQueue({ concurrency: 5 }); // Adjust concurrency as needed
+
     // Select all monthly sections
     const jumpSections = await page.$$('.jump_m50');
 
-    console.log(`Found ${jumpSections.length} monthly sections.`);
+    logger.info(`Found ${jumpSections.length} monthly sections.`);
 
     if (jumpSections.length === 0) {
-        console.warn('No monthly sections found. Please check the selectors or the website structure.');
+        logger.warn('No monthly sections found. Please check the selectors or the website structure.');
     }
 
     for (const section of jumpSections) {
-        // Extract base year and month from the title
-        const yearMonthText = await section
-            .$eval('.title .kouen_month', (el) => el.textContent.trim())
-            .catch(() => '');
-
-        if (!yearMonthText) {
-            console.warn('Year and month text not found in a section. Skipping this section.');
-            continue;
-        }
-
+        // Extract base year and month from the section's ID or other attributes
+        const sectionId = await section.evaluate((el) => el.id).catch(() => '');
         let year = '';
         let month = '';
-        const match = yearMonthText.match(/(\d{4})年\s*?(\d{1,2})月/);
+        const match = sectionId.match(/(\d{4})(\d{2})/);
         if (match) {
-            year = match[1]; // e.g., '2024'
-            month = match[2].padStart(2, '0'); // e.g., '11'
-            console.log(`Processing events for ${year}-${month}`);
+            year = match[1];
+            month = match[2];
+            logger.info(`Processing events for ${year}-${month}`);
         } else {
-            console.warn('Year and month not found in text:', yearMonthText);
+            logger.warn(`Unable to extract year and month from section ID: ${sectionId}`);
             continue;
         }
 
         // Select all events within the current monthly section
         const eventDivs = await section.$$('.link');
-        console.log(`Found ${eventDivs.length} events in section ${year}-${month}.`);
+        logger.info(`Found ${eventDivs.length} events in section ${year}-${month}.`);
 
         for (const [index, eventDiv] of eventDivs.entries()) {
-            try {
-                const innerHTML = await eventDiv.evaluate((el) => el.innerHTML);
-                const isFreeEvent = innerHTML.includes('<!-- 無料公演 -->') || innerHTML.includes('無料');
+            // Enqueue each event processing to handle concurrency
+            queue.add(async () => {
+                try {
+                    const innerHTML = await eventDiv.evaluate((el) => el.innerHTML);
+                    const isFreeEvent = innerHTML.includes('無料公演') || innerHTML.includes('無料');
 
-                // Extract event title from <h2>
-                let rawTitle = await eventDiv
-                    .$eval('h2', (el) => el.textContent.replace(/\n/g, ' ').trim())
-                    .catch(() => '');
+                    // Extract event link from <a href="...">
+                    const eventLink = await eventDiv.$eval('a', (a) => a.href).catch(() => null);
+                    logger.debug(`Extracted event link: ${eventLink}`);
 
-                // If <h2> is not found or empty, try alternative methods
-                if (!rawTitle) {
-                    rawTitle = await eventDiv
-                        .$eval('.box p', (el) => el.textContent.replace(/\n/g, ' ').trim())
-                        .catch(() => 'Unnamed Event');
-                }
+                    // Extract event title from <p class="bl_title">
+                    let rawTitle = await eventDiv.$eval('.bl_title', (el) => el.textContent.trim()).catch(() => 'Unnamed Event');
+                    logger.debug(`Extracted raw title: ${rawTitle}`);
 
-                // Normalize the title
-                const title = rawTitle ? normalizeTitle(rawTitle) : 'Unnamed Event';
+                    // Normalize the title
+                    const title = normalizeTitle(rawTitle);
+                    logger.debug(`Normalized title: ${title}`);
 
-                // Determine if the event is "Candlelightコンサート"
-                const isCandlelight = title.includes('Candlelightコンサート');
+                    // Extract date and time string, then convert to half-width
+                    let dateAndTime = toHalfWidth(rawTitle);
+                    logger.debug(`Converted date and time string: ${dateAndTime}`);
 
-                // Extract date and time string, then convert to half-width
-                let dateAndTime = await eventDiv
-                    .$eval('.bl_title', (el) => el.textContent.trim())
-                    .catch(() => '');
-                dateAndTime = toHalfWidth(dateAndTime);
+                    // Parse date and time
+                    const parsedDateTime = parseJapaneseDateTime(dateAndTime);
 
-                // Extract host information
-                let host = await eventDiv
-                    .$eval('.box p:not(.midashi):nth-of-type(1)', (el) =>
-                        el.textContent.trim()
-                    )
-                    .catch(() => '');
-
-                // Fallback: If host is empty, attempt to extract from another element
-                if (!host) {
-                    host = await eventDiv
-                        .$eval('.box p', (el) => el.textContent.trim())
-                        .catch(() => 'Unknown Host');
-                }
-
-                // Extract price information
-                let priceText = '';
-
-                // Attempt to extract visible price information
-                const priceElements = await eventDiv.$$eval('.box', (boxes) =>
-                    boxes.map((box) => box.textContent.trim())
-                );
-
-                // Identify boxes that likely contain price information
-                for (const boxText of priceElements) {
-                    if (
-                        boxText.includes('入場料：') ||
-                        boxText.includes('前売券') ||
-                        boxText.includes('当日券') ||
-                        boxText.includes('学生券') ||
-                        boxText.includes('料金') ||
-                        boxText.includes('価格') ||
-                        boxText.includes('￥')
-                    ) {
-                        priceText = boxText;
-                        break;
+                    if (!parsedDateTime) {
+                        logger.error(`Date not found or does not match expected format in dateAndTime: "${dateAndTime}"`);
+                        return; // Skip this event
                     }
-                }
 
-                // If priceText is still empty, attempt to extract from HTML comments
-                if (!priceText) {
-                    const extractedComments = extractTextFromComments(innerHTML);
-                    if (extractedComments.includes('￥')) {
-                        priceText = extractedComments;
-                    }
-                }
+                    const { date_start, date_end, time_start, time_end } = parsedDateTime;
+                    logger.debug(`Parsed Date and Time: Start - ${date_start}, End - ${date_end}, Start Time - ${time_start}, End Time - ${time_end}`);
 
-                // Parse prices from priceText
-                const prices = parsePrices(priceText);
-
-                // Log extracted information for debugging
-                console.log(`\n---\nProcessing Event ${index + 1} in ${year}-${month}:\nTitle: ${rawTitle}\nNormalized Title: ${title}\nDate and Time: ${dateAndTime}\nHost: ${host}\nPrice Text: ${priceText}`);
-                console.log(`Extracted Prices: ${JSON.stringify(prices)}`);
-
-                // Date Parsing Logic
-                const parsedDateTime = parseJapaneseDateTime(dateAndTime);
-
-                let date_start, date_end, time_start = null, time_end = null;
-
-                if (parsedDateTime) {
-                    ({ date_start, date_end, time_start, time_end } = parsedDateTime);
-                    console.log(`Parsed Date: ${date_start}`);
-                    if (time_start) {
-                        console.log(`Parsed Time Start: ${time_start}`);
-                    } else {
-                        console.log(`No time information found for event on ${date_start}`);
-                    }
-                } else {
-                    console.error('Date not found or does not match expected format in dateAndTime:', dateAndTime);
-                    // Optionally, skip this event or assign a default date
-                    continue;
-                }
-
-                // Initialize event data entry
-                const eventDataEntry = {
-                    title,
-                    date_start,
-                    date_end,
-                    venue: 'Kyoto Kanze', // Static value; adjust if venue info is available
-                    organization: 'Kyoto Kanze', // Static value; adjust if organization info is available
-                    image_url: 'http://kyoto-kanze.jp/images/top002.jpg', // Default image; may be updated below
-                    schedule: [
-                        {
-                            date: date_start,
-                            time_start,
-                            time_end,
-                            special_notes: null,
-                        },
-                    ],
-                    prices,
-                    host,
-                    event_link: 'http://kyoto-kanze.jp/show_info/', // Placeholder; will update for paid events
-                    content_base_html: innerHTML,
-                    description: 'No description available', // Placeholder; can be updated if description exists
-                    categories: [],
-                    tags: [],
-                    ended: false,
-                    free: isFreeEvent,
-                    site: 'kyoto_kanze',
-                };
-
-                // Check for duplicate based on normalized title and date
-                if (
-                    !eventData.some(
-                        (event) =>
-                            event.title === title &&
-                            event.date_start === date_start
-                    )
-                ) {
-                    eventData.push(eventDataEntry);
-                    console.log(`Added event: ${title} on ${date_start}`);
-                } else {
-                    console.log(
-                        `Duplicate event detected: ${title} on ${date_start}`
-                    );
-                }
-
-                // Determine if the event is "Candlelightコンサート"
-                if (isCandlelight) {
-                    // Assign stock image and skip further image scraping
-                    eventDataEntry.image_url = 'http://kyoto-kanze.jp/images/top002.jpg';
-                    console.log(`Assigned stock image for Candlelightコンサート: ${title}`);
-                    continue; // Skip scraping detail page for this exception
-                }
-
-                // Handle paid events by visiting their detail pages
-                if (!isFreeEvent && prices.length > 0) {
-                    const eventLinks = await eventDiv.$$eval('a', (els) =>
-                        els.map((el) => el.href)
-                    );
-                    const validEventLinks = eventLinks.filter((link) => {
-                        if (!link) return false;
-                        try {
-                            const url = new URL(link);
-                            return (
-                                url.hostname === 'kyoto-kanze.jp' &&
-                                url.pathname.startsWith('/show_info/')
-                            );
-                        } catch (e) {
-                            return false;
+                    // Extract organizer information
+                    let organizer = await eventDiv.$$eval('.box p', (ps) => {
+                        for (const p of ps) {
+                            if (p.textContent.includes('主催：')) {
+                                return p.textContent.replace('主催：', '').trim();
+                            }
                         }
-                    });
+                        return 'Unknown Organizer';
+                    }).catch(() => 'Unknown Organizer');
+                    logger.debug(`Extracted organizer: ${organizer}`);
 
-                    const eventLink =
-                        validEventLinks.length > 0
-                            ? validEventLinks[0]
-                            : null;
+                    // Extract description (if available)
+                    let description = await eventDiv.$$eval('.box p', (ps) => {
+                        let desc = '';
+                        ps.forEach(p => {
+                            if (!p.textContent.includes('主催：') && !p.textContent.includes('入場料：')) {
+                                desc += p.textContent.trim() + '\n';
+                            }
+                        });
+                        return desc.trim();
+                    }).catch(() => 'No description available');
+                    logger.debug(`Extracted description: ${description}`);
+
+                    // Extract price information
+                    let priceText = await eventDiv.$$eval('.box', (boxes) => {
+                        let text = '';
+                        boxes.forEach(box => {
+                            if (box.textContent.includes('入場料：') || box.textContent.includes('￥')) {
+                                text += box.textContent.trim() + '\n';
+                            }
+                        });
+                        return text;
+                    }).catch(() => '');
+                    logger.debug(`Extracted price text: ${priceText}`);
+
+                    // If priceText is empty, attempt to extract from comments
+                    if (!priceText) {
+                        priceText = extractTextFromComments(innerHTML);
+                        logger.debug(`Extracted price text from comments: ${priceText}`);
+                    }
+
+                    const prices = parsePrices(priceText);
+                    logger.debug(`Parsed prices: ${JSON.stringify(prices)}`);
+
+                    // Extract image URL
+                    let imageUrl = '/images/events/kyoto_kanze/placeholder.jpg'; // Default placeholder
+
                     if (eventLink && !visitedLinks.has(eventLink)) {
                         visitedLinks.add(eventLink);
-                        console.log(
-                            `Opening detail page for paid event: ${eventLink}`
-                        );
+                        logger.info(`Processing event detail page: ${eventLink}`);
 
                         const detailPage = await browser.newPage();
-                        await detailPage.goto(eventLink, {
-                            waitUntil: 'domcontentloaded',
-                            timeout: 60000,
-                        });
+                        try {
+                            await detailPage.goto(eventLink, {
+                                waitUntil: 'domcontentloaded',
+                                timeout: 60000,
+                            });
+                            logger.debug(`Navigated to detail page: ${eventLink}`);
+                        } catch (error) {
+                            logger.error(`Failed to navigate to detail page: ${eventLink} - ${error.message}`);
+                            await detailPage.close();
+                            return;
+                        }
 
-                        // Delay to ensure the page has fully loaded
-                        await delay(3000); // Wait for 3 seconds
+                        await delay(3000); // Wait for the page to load
 
                         try {
-                            // Extract detailed content HTML
-                            const contentBaseHTML = await detailPage
-                                .$eval('#content', (el) => el.innerHTML)
-                                .catch(() => '');
-
-                            // Extract detailed image URLs using the new image scraping logic
+                            // Extract high-res image URLs
                             const highResImageUrls = await extractHighResImages(detailPage, eventLink);
+                            logger.debug(`High-res image URLs extracted: ${highResImageUrls}`);
 
-                            if (contentBaseHTML) {
-                                // Update event entry with detailed information
-                                eventDataEntry.event_link = eventLink;
-                                eventDataEntry.content_base_html = contentBaseHTML;
-
-                                if (highResImageUrls && highResImageUrls.length > 0) {
-                                    // Assign the first high-res image
-                                    eventDataEntry.image_url = highResImageUrls[0];
-                                    console.log(`Updated image URL from detail page: ${highResImageUrls[0]}`);
-                                } else {
-                                    console.warn(`No high-res images found for event: ${eventLink}. Assigned default placeholder.`);
-                                    // Assign a default image
-                                    eventDataEntry.image_url = 'http://kyoto-kanze.jp/images/top002.jpg';
+                            if (highResImageUrls && highResImageUrls.length > 0) {
+                                const downloadedImageUrl = await downloadAndSaveImage(highResImageUrls[0], 'kyoto_kanze');
+                                if (downloadedImageUrl) {
+                                    imageUrl = downloadedImageUrl;
                                 }
-
-                                eventDataEntry.free = false;
-                                console.log('Extracted paid event data:', eventDataEntry);
-                            } else {
-                                console.error(`Content not found for event: ${eventLink}`);
+                                logger.debug(`Downloaded image URL: ${imageUrl}`);
                             }
+                             else {
+                                logger.warn(`No high-res images found for event: ${eventLink}. Using placeholder.`);
+                            }
+
+                            // Optionally, extract more details like description from detail page
+                            // Example:
+                            // const detailedDescription = await detailPage.$eval('#contentBase .enmoku_text', el => el.innerHTML).catch(() => '');
+                            // description = detailedDescription || description;
+
                         } catch (error) {
-                            console.error(
-                                `Error extracting content from ${eventLink}:`,
-                                error
-                            );
+                            logger.error(`Error extracting content from ${eventLink}: ${error.message}`);
                         } finally {
                             await detailPage.close();
-                            // Optional delay after closing the page
-                            await delay(1000); // Wait for 1 second before continuing
+                            await delay(1000); // Small delay before continuing
                         }
                     } else if (!eventLink) {
-                        console.warn(
-                            `No valid event link found for paid event: ${title} on ${date_start}`
-                        );
-                        // Optionally, mark the event as incomplete or skip additional processing
+                        logger.warn(`No event link found for event: ${title} on ${date_start}`);
                     }
+
+                    // Generate external_id using SHA256 hash of event link or title + date
+                    const external_id = eventLink ? generateHash(eventLink) : generateHash(`${title}-${date_start}`);
+                    logger.debug(`Generated external_id: ${external_id}`);
+
+                    // Assign image_url to placeholder if no image was found
+                    if (!imageUrl) {
+                        imageUrl = '/images/events/kyoto_kanze/placeholder.jpg';
+                        logger.debug(`No image found. Assigned placeholder image.`);
+                    }
+
+                    // Create event data entry
+                    const eventDataEntry = {
+                        title,
+                        organization: organizer,
+                        description,
+                        date_start,
+                        date_end,
+                        time_start,
+                        time_end,
+                        venue_id,
+                        address: venueData.address, // Assuming all events share the same venue address
+                        external_id,
+                        name: venueData.name,
+                        address: venueData.address,
+                        city: venueData.city,
+                        postal_code: venueData.postal_code,
+                        country: venueData.country,
+                        schedule: [
+                            {
+                                date: date_start,
+                                time_start,
+                                time_end,
+                                special_notes: null,
+                                status: 'upcoming' // Adjust based on current date if necessary
+                            }
+                        ],
+                        prices,
+                        host: organizer,
+                        event_link: eventLink || null,
+                        image_url: imageUrl,
+                        alt_text: `${title} Image`,
+                        is_featured: true,
+                        categories: isFreeEvent ? ['Free Event'] : ['Paid Event'],
+                        tags: isFreeEvent ? ['Free'] : ['Professional', 'Paid'],
+                        status: 'upcoming', // Adjust based on current date if necessary
+                        free: isFreeEvent,
+                        site: 'kyoto_kanze',
+                    };
+
+                    logger.debug(`Assigned image URL to event "${title}": ${imageUrl}`);
+
+
+                    // Check for duplicate based on external_id
+                    if (!eventData.some((event) => event.external_id === external_id)) {
+                        eventData.push(eventDataEntry);
+                        logger.info(`Added event: ${title} on ${date_start}`);
+                    } else {
+                        logger.warn(`Duplicate event detected: ${title} on ${date_start}`);
+                    }
+
+                } catch (error) {
+                    logger.error(`Error processing event: ${error.message}`);
                 }
-            } catch (error) {
-                console.error('Error processing event:', error);
-            }
+            });
         }
     }
+
+    // Wait for all queued tasks to complete
+    await queue.onIdle();
 
     await browser.close();
 
     if (eventData.length === 0) {
-        console.warn('No data scraped for site: kyoto_kanze');
+        logger.warn('No data scraped for site: kyoto_kanze');
     } else {
-        console.log(`Scraped ${eventData.length} events for site: kyoto_kanze`);
+        logger.info(`Scraped ${eventData.length} events for site: kyoto_kanze`);
     }
 
-    return eventData.map((event) => ({ ...event, site: 'kyoto_kanze' }));
+    return eventData;
 };
 
-export default scrapeKyotoKanze;
-
-// Defining __filename and __dirname for ES Modules
-const __filenameESM = fileURLToPath(import.meta.url);
-const __dirnameESM = dirname(__filenameESM);
-
-// Check if the current module is the main module
-if (process.argv[1] === __filenameESM) {
+// Execute the scraper if the script is run directly
+if (process.argv[1] === path.join(__dirname, 'scrapeKyotoKanze.js')) {
     (async () => {
-        console.log('Running real scraping...');
-        console.log('Scraping site: kyoto_kanze');
+        logger.info('Starting scraping process for Kyoto Kanze...');
         try {
             const data = await scrapeKyotoKanze();
             if (data.length === 0) {
-                console.log('No data scraped for site: kyoto_kanze');
+                logger.warn('No data scraped for site: kyoto_kanze');
             } else {
-                console.log('Scraped Data:', data);
-                // Optionally, save the data to a JSON file
-                fs.writeFileSync('kyoto_kanze_events.json', JSON.stringify(data, null, 2), 'utf-8');
-                console.log('Data saved to kyoto_kanze_events.json');
+                // Save the data to a JSON file
+                const outputPath = path.join(__dirname, 'kyoto_kanze_events.json');
+                await fs.writeFile(outputPath, JSON.stringify(data, null, 2), 'utf-8');
+                logger.info(`Data saved to ${outputPath}`);
             }
         } catch (error) {
-            console.error('Error during scraping:', error);
+            logger.error(`Error during scraping: ${error.message}`);
         }
-        console.log('All scraping tasks completed.');
+        logger.info('Scraping process completed.');
     })();
 }
+
+export default scrapeKyotoKanze;

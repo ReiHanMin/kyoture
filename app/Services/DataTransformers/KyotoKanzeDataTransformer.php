@@ -38,36 +38,44 @@ class KyotoKanzeDataTransformer implements DataTransformerInterface
 }
 
 
-    public function processEvent(array $eventData): ?array
-    {
-        Log::info('Starting transformation process for Kyoto Kanze event data', ['event_data' => $eventData]);
+public function processEvent(array $eventData): ?array
+{
+    Log::info('Starting transformation process for Kyoto Kanze event data', ['event_data' => $eventData]);
 
-        $originalEventLink = $eventData['event_link'] ?? null;
-        $originalExternalId = $eventData['external_id'] ?? null;
+    // Preserve original image_url from the scraper
+    $originalImageUrl = $eventData['image_url'] ?? null;
+    $originalEventLink = $eventData['event_link'] ?? null;
+    $originalExternalId = $eventData['external_id'] ?? null;
 
-        unset($eventData['event_link'], $eventData['external_id']);
+    // Remove fields that might be handled by OpenAI
+    unset($eventData['event_link'], $eventData['external_id'], $eventData['image_url']);
 
-        $prompt = $this->constructPrompt($eventData);
-        Log::info('Constructed OpenAI prompt', ['prompt' => $prompt]);
+    // Construct the prompt without image_url
+    $prompt = $this->constructPrompt($eventData);
+    Log::info('Constructed OpenAI prompt', ['prompt' => $prompt]);
 
-        $responseData = $this->callOpenAI($prompt);
+    $responseData = $this->callOpenAI($prompt);
 
-        if (!empty($responseData) && isset($responseData['events'])) {
-            Log::info('OpenAI response received', ['response_data' => $responseData]);
+    if (!empty($responseData) && isset($responseData['events'])) {
+        Log::info('OpenAI response received', ['response_data' => $responseData]);
 
-            foreach ($responseData['events'] as &$processedEvent) {
-                $processedEvent['event_link'] = $originalEventLink;
-                $processedEvent['external_id'] = $originalExternalId;
+        foreach ($responseData['events'] as &$processedEvent) {
+            $processedEvent['event_link'] = $originalEventLink;
+            $processedEvent['external_id'] = $originalExternalId;
 
-                $this->processAndSaveEvent($processedEvent);
-            }
+            // Override OpenAI's image_url with the original one from the scraper
+            $processedEvent['image_url'] = $originalImageUrl;
 
-            return $responseData;
+            $this->processAndSaveEvent($processedEvent);
         }
 
-        Log::warning('API response is empty or malformed.', ['response' => $responseData]);
-        return null;
+        return $responseData;
     }
+
+    Log::warning('API response is empty or malformed.', ['response' => $responseData]);
+    return null;
+}
+
 
     public function processAndSaveEvent(array $eventData): void
     {
@@ -136,7 +144,7 @@ class KyotoKanzeDataTransformer implements DataTransformerInterface
             $this->saveSchedules($event->id, $eventData['schedule'] ?? []);
             $this->saveCategories($event, $eventData['categories'] ?? []);
             $this->saveTags($event, $eventData['tags'] ?? []);
-            $this->saveImages($event, $eventData['image_url'] ?? 'http://kyoto-kanze.jp/images/top002.jpg', [], $eventData['event_link'] ?? null);
+            $this->saveImages($event, $eventData['image_url'] ?? 'placeholder.jpg');
             $this->savePrices($event->id, $eventData['prices'] ?? []);
 
             return $event;
@@ -159,221 +167,151 @@ class KyotoKanzeDataTransformer implements DataTransformerInterface
     }
 
     public function updateEvent(int $eventId, array $eventData): ?Event
-    {
-        try {
-            Log::info('Updating existing event for Kyoto Kanze', ['event_id' => $eventId]);
+{
+    try {
+        Log::info('Updating existing event for Kyoto Kanze', ['event_id' => $eventId]);
 
-            $event = Event::find($eventId);
-            if ($event) {
-                $event->update([
-                    'title' => $eventData['title'],
-                    'organization' => $eventData['organization'] ?? null,
-                    'description' => $eventData['description'] ?? null,
-                    'date_start' => $eventData['date_start'],
-                    'date_end' => $eventData['date_end'],
-                    'venue_id' => $eventData['venue_id'],
-                    'program' => $eventData['program'] ?? null,
-                    'sold_out' => $eventData['sold_out'] ?? false,
-                ]);
-
-                $this->saveSchedules($event->id, $eventData['schedule'] ?? []);
-                $this->saveCategories($event, $eventData['categories'] ?? []);
-                $this->saveTags($event, $eventData['tags'] ?? []);
-                $this->saveImages($event, $eventData['image_url'] ?? null, [], $eventData['event_link'] ?? null);
-                $this->savePrices($event->id, $eventData['prices'] ?? []);
-
-                return $event;
-            } else {
-                Log::warning('Event not found for updating', ['event_id' => $eventId]);
-            }
-        } catch (QueryException $qe) {
-            Log::error('Database error while updating Kyoto Kanze event', [
-                'error_message' => $qe->getMessage(),
-                'sql' => $qe->getSql(),
-                'bindings' => $qe->getBindings(),
-                'event_data' => $eventData,
+        $event = Event::find($eventId);
+        if ($event) {
+            $event->update([
+                'title' => $eventData['title'],
+                'organization' => $eventData['organization'] ?? null,
+                'description' => $eventData['description'] ?? null,
+                'date_start' => $eventData['date_start'],
+                'date_end' => $eventData['date_end'],
+                'venue_id' => $eventData['venue_id'],
+                'program' => $eventData['program'] ?? null,
+                'sold_out' => $eventData['sold_out'] ?? false,
             ]);
-        }
 
-        return null;
+            $this->saveSchedules($event->id, $eventData['schedule'] ?? []);
+            $this->saveCategories($event, $eventData['categories'] ?? []);
+            $this->saveTags($event, $eventData['tags'] ?? []);
+            
+            // Correct the parameters passed to saveImages
+            $this->saveImages($event, $eventData['image_url'] ?? null, []);
+            
+            $this->savePrices($event->id, $eventData['prices'] ?? []);
+
+            return $event;
+        } else {
+            Log::warning('Event not found for updating', ['event_id' => $eventId]);
+        }
+    } catch (QueryException $qe) {
+        Log::error('Database error while updating Kyoto Kanze event', [
+            'error_message' => $qe->getMessage(),
+            'sql' => $qe->getSql(),
+            'bindings' => $qe->getBindings(),
+            'event_data' => $eventData,
+        ]);
     }
+
+    return null;
+}
+
 
     public function constructPrompt(array $eventData): string
+{
+    if ($eventData['free'] ?? false) {
+        // Existing prompt for free events
+        // ...
+    } else {
+        // For paid events, exclude image_url from OpenAI's processing
+        $contentBaseHTML = $eventData['content_base_html'] ?? '';  // Access the contentBase HTML
+
+        $prompt = <<<EOT
+Extract structured event data from the following HTML content of a Kyoto Kanze event page. Parse this data into the specified JSON format and follow these requirements:
+
+HTML Content:
+{$contentBaseHTML}
+
+**Extraction Requirements**:
+
+1. **Date Parsing**:
+- Parse 'raw_date' into 'date_start' and 'date_end':
+    - If 'raw_date' contains a date range in the format 'YYYY.MM.DD (DAY) – MM.DD (DAY)', extract:
+    - 'date_start' as 'YYYY-MM-DD' from the first date,
+    - 'date_end' as 'YYYY-MM-DD' using the same year as 'date_start', but replacing the month and day.
+    - If 'raw_date' contains only a single date, set both 'date_start' and 'date_end' to the same value.
+    - Ensure 'date_start' is not after 'date_end'.
+
+2. **Schedule Parsing**:
+- Parse 'raw_schedule' into an array of schedules:
+    - Each schedule should include 'date', 'time_start', 'time_end', and 'special_notes'.
+    - Use the date from 'raw_date' to populate the 'date' field for each schedule entry.
+    - If 'raw_schedule' contains multiple entries on different days, separate them into individual schedule objects.
+    - If 'time_end' is not specified, leave it empty.
+- If 'raw_schedule' is empty or unavailable, set 'schedule' as an empty array.
+
+3. **Category Assignment**:
+- Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
+['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
+
+4. **Tag Assignment**:
+- Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
+    ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
+
+5. **Price Parsing**:
+- Extract pricing information from 'raw_price_text' and format it as an array of price objects:
+    - Each price object should include 'price_tier', 'amount', and 'currency'.
+    - 'price_tier' should represent the ticket type or seating type, including any relevant notes (e.g., 'General (1F)', 'S', '25 and Under', 'Repeat ticket').
+    - 'amount' should be the numeric value of the price, excluding currency symbols (e.g., '6000', '4000').
+    - Assume 'currency' to be 'JPY' if no currency is provided in 'raw_price_text'.
+    - Include 'discount_info' if additional information about discounts or conditions is present in 'raw_price_text'.
+    - If pricing varies by date, split these into separate price objects with the relevant details.
+- Example: For 'raw_price_text': 'General (1F): ¥6,000 / General (2F): ¥5,000 / 25 and Under: ¥3,000 / 18 and Under: ¥1,000', the output should be:
+    [
+        { "price_tier": "General (1F)", "amount": "6000", "currency": "JPY" },
+        { "price_tier": "General (2F)", "amount": "5000", "currency": "JPY" },
+        { "price_tier": "25 and Under", "amount": "3000", "currency": "JPY" },
+        { "price_tier": "18 and Under", "amount": "1000", "currency": "JPY" }
+    ].
+
+6. **Output Format**:
+    - Return the extracted data in this JSON format, with an 'events' array containing one event object:
     {
-        if ($eventData['free'] ?? false) {
-            // For free events, construct a prompt that includes $eventData
-            $jsonEventData = json_encode($eventData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    
-            $prompt = <<<EOT
-            Transform the provided event data into the specified JSON format with the following requirements:
-    
-            Event Data:
-            {$jsonEventData}
-    
-            **Requirements**:
-    
-            1. **Date Parsing**:
-            - Parse 'date_and_time' into 'date_start' and 'date_end':
-                - Use 'YYYY-MM-DD' format for dates.
-                - Extract the date from 'date_and_time', even if it contains day names or extra text.
-                - If 'date_and_time' includes a time, extract 'time_start' and 'time_end' if applicable.
-    
-            2. **Schedule Parsing**:
-            - Create a 'schedule' array with entries that include 'date', 'time_start', 'time_end', and 'special_notes'.
-            - Use the parsed dates and times from 'date_and_time'. 
-    
-            3. **Price Parsing**:
-            - Extract pricing information from 'price':
-                - If the event is free (e.g., '無料'), set 'amount' to '0' and 'price_tier' to 'Free'.
-                - Assume 'currency' to be 'JPY' if not specified.
-              
-    
-            4. **Category Assignment**:
-            - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
-            ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
-    
-            5. **Tag Assignment**:
-            - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
-            ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
-    
-            6. **Output Format**:
-            - Return the transformed data in the following JSON format:
+        "events": [
             {
-                "events": [
+                "title": "Organisation Name - Extracted Event Title",
+                "date_start": "YYYY-MM-DD",
+                "date_end": "YYYY-MM-DD",
+                "venue": "Kyoto Kanze",
+                "organization": "Kyoto Kanze",
+                "event_link": "Event link",
+                "image_url": "http://kyoto-kanze.jp/images/events/kyoto_kanze/somefile.jpg",
+                "schedule": [
                     {
-                        "title": "Event Title",
-                        "date_start": "YYYY-MM-DD",
-                        "date_end": "YYYY-MM-DD",
-                        "venue": "Kyoto Kanze",
-                        "organization": "Kyoto Kanze",
-                        "event_link": "Event link",
-                        "image_url": "http://kyoto-kanze.jp/images/top002.jpg",
-                        "schedule": [
-                            {
-                                "date": "YYYY-MM-DD",
-                                "time_start": "HH:mm:ss",
-                                "time_end": "HH:mm:ss",
-                                "special_notes": "Any available notes"
-                            }
-                        ],
-                        "categories": ["Category1", "Category2"],
-                        "tags": ["Tag1", "Tag2"],
-                        "prices": [
-                            {
-                                "price_tier": "Free",
-                                "amount": "0",
-                                "currency": "JPY",
-                                "discount_info": null
-                            }
-                        ],
-                        "host": "Event organizer's name",
-                        "ended": false,
-                        "free": true
+                        "date": "YYYY-MM-DD",
+                        "time_start": "HH:mm",
+                        "time_end": "HH:mm",
+                        "special_notes": "Any available notes"
                     }
-                ]
+                ],
+                "categories": ["Category1", "Category2"],
+                "tags": ["Tag1", "Tag2"],
+                "prices": [
+                    {
+                        "price_tier": "Tier1",
+                        "amount": "1000",
+                        "currency": "JPY",
+                        "discount_info": "Discount information if available"
+                    }
+                ],
+                "host": "Event organizer's name",
+                "ended": false,
+                "free": true or false based on the price tier
             }
-    
-            Please process the event data accordingly.
-            EOT;
-    
-                } else {
-                    // For paid events, use the existing prompt with 'content_base_html'
-                    $contentBaseHTML = $eventData['content_base_html'] ?? '';  // Access the contentBase HTML
-    
-                    $prompt = <<<EOT
-            Extract structured event data from the following HTML content of a Kyoto Kanze event page. Parse this data into the specified JSON format and follow these requirements:
-    
-            HTML Content:
-            {$contentBaseHTML}
-    
-            **Extraction Requirements**:
-    
-            1. **Date Parsing**:
-            - Parse 'raw_date' into 'date_start' and 'date_end':
-                - If 'raw_date' contains a date range in the format 'YYYY.MM.DD (DAY) – MM.DD (DAY)', extract:
-                - 'date_start' as 'YYYY-MM-DD' from the first date,
-                - 'date_end' as 'YYYY-MM-DD' using the same year as 'date_start', but replacing the month and day.
-                - If 'raw_date' contains only a single date, set both 'date_start' and 'date_end' to the same value.
-                - Ensure 'date_start' is not after 'date_end'.
-    
-                    2. **Schedule Parsing**:
-                    - Parse 'raw_schedule' into an array of schedules:
-                        - Each schedule should include 'date', 'time_start', 'time_end', and 'special_notes'.
-                        - Use the date from 'raw_date' to populate the 'date' field for each schedule entry.
-                        - If 'raw_schedule' contains multiple entries on different days, separate them into individual schedule objects.
-                        - If 'time_end' is not specified, leave it empty.
-                    - If 'raw_schedule' is empty or unavailable, set 'schedule' as an empty array.
-    
-            3. **Category Assignment**:
-            - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
-            ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
-    
-            4. **Tag Assignment**:
-            - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
-                ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
-    
-    
-            5. **Price Parsing**:
-            - Extract pricing information from 'raw_price_text' and format it as an array of price objects:
-                - Each price object should include 'price_tier', 'amount', and 'currency'.
-                - 'price_tier' should represent the ticket type or seating type, including any relevant notes (e.g., 'General (1F)', 'S', '25 and Under', 'Repeat ticket').
-                - 'amount' should be the numeric value of the price, excluding currency symbols (e.g., '6000', '4000').
-                - Assume 'currency' to be 'JPY' if no currency is provided in 'raw_price_text'.
-                - Include 'discount_info' if additional information about discounts or conditions is present in 'raw_price_text'.
-                - If pricing varies by date, split these into separate price objects with the relevant details.
-            - Example: For 'raw_price_text': 'General (1F): ¥6,000 / General (2F): ¥5,000 / 25 and Under: ¥3,000 / 18 and Under: ¥1,000', the output should be:
-                [
-                    { \"price_tier\": \"General (1F)\", \"amount\": \"6000\", \"currency\": \"JPY\" },
-                    { \"price_tier\": \"General (2F)\", \"amount\": \"5000\", \"currency\": \"JPY\" },
-                    { \"price_tier\": \"25 and Under\", \"amount\": \"3000\", \"currency\": \"JPY\" },
-                    { \"price_tier\": \"18 and Under\", \"amount\": \"1000\", \"currency\": \"JPY\" }
-                ].
-    
-            6. **Output Format**:
-                - Return the extracted data in this JSON format, with an 'events' array containing one event object:
-                {
-                    "events": [
-                        {
-                            "title": "Organisation Name - Extracted Event Title",
-                            "date_start": "YYYY-MM-DD",
-                            "date_end": "YYYY-MM-DD",
-                            "venue": "Kyoto Kanze",
-                            "organization": "Kyoto Kanze",
-                            "event_link": "Event link",
-                            "image_url": "Image URL if available or 'http://kyoto-kanze.jp/images/top002.jpg' as a default",
-                            "schedule": [
-                                {
-                                    "date": "YYYY-MM-DD",
-                                    "time_start": "HH:mm",
-                                    "time_end": "HH:mm",
-                                    "special_notes": "Any available notes"
-                                }
-                            ],
-                            "categories": ["Category1", "Category2"],
-                            "tags": ["Tag1", "Tag2"],
-                            "prices": [
-                                {
-                                    "price_tier": "Tier1",
-                                    "amount": "1000",
-                                    "currency": "JPY",
-                                    "discount_info": "Discount information if available"
-                                }
-                            ],
-                            "host": "Event organizer's name",
-                            "ended": false,
-                            "free": true or false based on the price tier
-                        }
-                    ]
-                }
-    
-    
-            Parse the HTML content and structure it as instructed.
-            EOT;
-                }
-    
-        Log::info('Constructed prompt for Kyoto Kanze', ['prompt' => $prompt]);
-        return $prompt;
+        ]
     }
+
+Parse the HTML content and structure it as instructed, ensuring that 'image_url' is an absolute URL or a properly formatted local path.
+EOT;
+    }
+
+    Log::info('Constructed prompt for Kyoto Kanze', ['prompt' => $prompt]);
+    return $prompt;
+}
+
     
         
     
@@ -478,52 +416,51 @@ class KyotoKanzeDataTransformer implements DataTransformerInterface
         }
     }
 
-    public function saveImages(Event $event, ?string $primaryImageUrl, array $images = [], ?string $eventLink = null): void
-    {
-        $primaryImageUrl = $primaryImageUrl ?: 'http://kyoto-kanze.jp/images/top002.jpg';
+    public function saveImages(Event $event, ?string $primaryImageUrl, array $images = []): void
+{
+    // If no primary image URL is provided, use the placeholder
+    $primaryImageUrl = $primaryImageUrl ?: '/images/events/kyoto_kanze/placeholder.jpg';
 
-        if ($eventLink && strpos($primaryImageUrl, './') === 0) {
-            $primaryImageUrl = ltrim($primaryImageUrl, './');
-            $primaryImageUrl = rtrim($eventLink, '/') . '/' . $primaryImageUrl;
+    // Log the primary image URL being saved
+    Log::info('Saving primary image', [
+        'event_id' => $event->id,
+        'image_url' => $primaryImageUrl
+    ]);
 
-            Log::info('Primary image URL updated with event link', [
-                'updated_primary_image_url' => $primaryImageUrl,
+    Image::updateOrCreate(
+        [
+            'event_id' => $event->id,
+            'image_url' => $primaryImageUrl,
+        ],
+        [
+            'alt_text' => 'Main Event Image',
+            'is_featured' => true,
+        ]
+    );
+
+    foreach ($images as $imageUrl) {
+        if (!empty($imageUrl)) {
+            // Log each additional image URL being saved
+            Log::info('Saving additional image', [
                 'event_id' => $event->id,
-                'event_link' => $eventLink
+                'image_url' => $imageUrl
             ]);
-        }
 
-        Image::updateOrCreate(
-            [
-                'event_id' => $event->id,
-                'image_url' => $primaryImageUrl,
-            ],
-            [
-                'alt_text' => 'Main Event Image',
-                'is_featured' => true,
-            ]
-        );
-
-        foreach ($images as $imageUrl) {
-            if (!empty($imageUrl)) {
-                if ($eventLink && strpos($imageUrl, './') === 0) {
-                    $imageUrl = ltrim($imageUrl, './');
-                    $imageUrl = rtrim($eventLink, '/') . '/' . $imageUrl;
-                }
-
-                Image::updateOrCreate(
-                    [
-                        'event_id' => $event->id,
-                        'image_url' => $imageUrl,
-                    ],
-                    [
-                        'alt_text' => 'Additional Event Image',
-                        'is_featured' => false,
-                    ]
-                );
-            }
+            Image::updateOrCreate(
+                [
+                    'event_id' => $event->id,
+                    'image_url' => $imageUrl,
+                ],
+                [
+                    'alt_text' => 'Additional Event Image',
+                    'is_featured' => false,
+                ]
+            );
         }
     }
+}
+
+
 
     public function savePrices(int $eventId, array $prices): void
     {
