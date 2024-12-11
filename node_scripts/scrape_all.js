@@ -37,7 +37,7 @@ const useMockData = false; // Set to true for mock data testing
 const scrapers = [
       // { name: 'kyoto_concert_hall', func: scrapeKyotoConcertHall },
       // { name: 'rohm_theatre', func: scrapeRohmTheatre },
-       { name: 'kyoto_kanze', func: scrapeKyotoKanze },
+      // { name: 'kyoto_kanze', func: scrapeKyotoKanze },
       // { name: 'waondo', func: scrapeWaondo },
       // { name: 'kyoto_gattaca', func: scrapeKyotoGattaca },
       // { name: 'kakubarhythm', func: scrapeKakubarhythm},
@@ -45,7 +45,7 @@ const scrapers = [
       // { name: 'kyoto_fanj', func: scrapeKyotoFanj},
       // { name: 'fabcafe', func: scrapeFabCafe},
       // {name: 'kyotoartcenter', func: scrapeKyotoArtCenter},
-      // {name: 'kyoto_national_museum', func: scrapeKyotoNationalMuseum},
+       {name: 'kyoto_national_museum', func: scrapeKyotoNationalMuseum},
 
 ];
 

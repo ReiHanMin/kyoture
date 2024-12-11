@@ -4,10 +4,14 @@ import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
+import path from 'path'; // Import the entire 'path' module
 import fs from 'fs';
 import dotenv from 'dotenv';
 import winston from 'winston';
 import crypto from 'crypto';
+import axios from 'axios';
+// If you intend to use p-limit for concurrency, ensure it's installed and uncomment the line below
+// import pLimit from 'p-limit';
 
 // Load environment variables from .env file if present
 dotenv.config();
@@ -51,12 +55,135 @@ const generateExternalId = (title, date_start) => {
 const __filenameESM = fileURLToPath(import.meta.url);
 const __dirnameESM = dirname(__filenameESM);
 
-// Main scraping function for FabCafe Kyoto Events
+/**
+ * Utility function to generate a SHA256 hash of a given string.
+ * @param {string} str - The input string to hash.
+ * @returns {string} - The resulting SHA256 hash in hexadecimal format.
+ */
+const generateHash = (str) => {
+  return crypto.createHash('sha256').update(str).digest('hex');
+};
+
+/**
+ * Downloads an image from the given URL and saves it locally.
+ * Ensures that images are saved with unique filenames based on their URL hashes.
+ * Prevents duplicate downloads by checking existing files.
+ * 
+ * @param {string} imageUrl - The URL of the image to download.
+ * @param {string} site - The site identifier (e.g., 'fabcafe').
+ * @param {string} imagesDir - The directory where images are saved.
+ * @param {number} retries - Number of retry attempts for downloading.
+ * @returns {Promise<string>} - The relative URL of the saved image.
+ */
+const downloadImage = async (imageUrl, site, imagesDir, retries = 3) => {
+  try {
+    if (!imageUrl || imageUrl === 'No image available') {
+      logger.warn('No valid image URL provided. Using placeholder.');
+      return '/images/events/fabcafe/placeholder.jpg'; // Ensure this placeholder exists
+    }
+
+    // Ensure the image URL is absolute
+    const absoluteImageUrl = imageUrl.startsWith('http')
+      ? imageUrl
+      : `https://fabcafe.com${imageUrl.startsWith('/') ? '' : '/'}${imageUrl.replace('../', '')}`;
+
+    logger.info(`Downloading image: ${absoluteImageUrl}`);
+
+    // Parse the URL to remove query parameters for consistent hashing
+    const parsedUrl = new URL(absoluteImageUrl);
+    const normalizedUrl = `${parsedUrl.origin}${parsedUrl.pathname}`; // Excludes query params
+
+    // Generate a unique filename using SHA256 hash of the normalized image URL
+    const imageHash = generateHash(normalizedUrl);
+    let extension = path.extname(parsedUrl.pathname) || '.jpg'; // Handle URLs without extensions
+
+    // If extension is not valid, attempt to get it from Content-Type
+    if (!['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'].includes(extension.toLowerCase())) {
+      const headResponse = await axios.head(absoluteImageUrl);
+      const contentType = headResponse.headers['content-type'];
+      if (contentType) {
+        const matches = /image\/(jpeg|png|gif|bmp|webp)/.exec(contentType);
+        if (matches && matches[1]) {
+          extension = `.${matches[1]}`;
+        } else {
+          extension = '.jpg'; // Default extension
+        }
+      } else {
+        extension = '.jpg'; // Default extension
+      }
+    }
+
+    const filename = `${imageHash}${extension}`;
+    const filepath = resolve(imagesDir, filename);
+
+    // Check if the image file already exists
+    if (fs.existsSync(filepath)) {
+      logger.info(`Image already exists locally: ${filename}`);
+      return `/images/events/${site}/${filename}`;
+    }
+
+    // Download the image
+    const response = await axios.get(absoluteImageUrl, { responseType: 'stream', timeout: 30000 }); // 30 seconds timeout
+
+    const writer = fs.createWriteStream(filepath);
+
+    response.data.pipe(writer);
+
+    // Wait for the download to finish
+    await new Promise((resolve, reject) => {
+      writer.on('finish', resolve);
+      writer.on('error', (err) => {
+        logger.error(`Error writing image to ${filepath}: ${err.message}`);
+        reject(err);
+      });
+    });
+
+    logger.info(`Image downloaded and saved to: ${filepath}`);
+
+    // Return the relative URL to the image
+    return `/images/events/${site}/${filename}`;
+  } catch (error) {
+    if (retries > 0) {
+      logger.warn(`Retrying download for image: ${imageUrl}. Attempts left: ${retries}`);
+      await delay(1000); // Wait before retrying
+      return downloadImage(imageUrl, site, imagesDir, retries - 1);
+    }
+    logger.error(`Failed to download image after retries: ${imageUrl}. Error: ${error.message}`);
+    // Return path to a placeholder image
+    return '/images/events/fabcafe/placeholder.jpg'; // Ensure this placeholder exists
+  }
+};
+
+// Ensure screenshots directory exists
+const screenshotDir = resolve(__dirnameESM, 'screenshots');
+if (!fs.existsSync(screenshotDir)) {
+  fs.mkdirSync(screenshotDir, { recursive: true });
+  logger.info(`Created screenshots directory at ${screenshotDir}`);
+} else {
+  logger.info(`Screenshots directory already exists at ${screenshotDir}`);
+}
+
 // Main scraping function for FabCafe Kyoto Events
 const scrapeFabCafe = async () => {
+  // Define the site identifier for image storage
+  const siteIdentifier = 'fabcafe';
+
+  // Define the directory where images will be saved
+  // Navigate one level up from 'node_scripts' to 'kyoture'
+  const imagesDir = resolve(__dirnameESM, '..', 'public', 'images', 'events', siteIdentifier);
+
+  // Create the directory if it doesn't exist
+  if (!fs.existsSync(imagesDir)) {
+    fs.mkdirSync(imagesDir, { recursive: true });
+    logger.info(`Created image directory: ${imagesDir}`);
+  } else {
+    logger.info(`Image directory already exists: ${imagesDir}`);
+  }
+
+  // Launch Puppeteer with necessary options
   const browser = await puppeteer.launch({
-    headless: true,
-    slowMo: 0,
+    headless: true, // Set to false for debugging
+    slowMo: 0, // Adjust as needed
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 
@@ -185,7 +312,7 @@ const scrapeFabCafe = async () => {
         await eventPage.goto(eventUrl, { waitUntil: 'networkidle0', timeout: 60000 });
 
         // Extract more details from the event page
-        const detailedEventData = await extractEventDetails(eventPage, eventData);
+        const detailedEventData = await extractEventDetails(eventPage, eventData, imagesDir, siteIdentifier);
 
         await eventPage.close();
 
@@ -217,11 +344,15 @@ const scrapeFabCafe = async () => {
   }
 };
 
-
-
-
-// Function to extract detailed event data from the event detail page
-const extractEventDetails = async (eventPage, eventData) => {
+/**
+ * Function to extract detailed event data from the event detail page
+ * @param {puppeteer.Page} eventPage - The Puppeteer page instance for the event detail
+ * @param {Object} eventData - The initial event data extracted from the listing page
+ * @param {string} imagesDir - Directory to save images
+ * @param {string} siteIdentifier - Identifier for the site (e.g., 'fabcafe')
+ * @returns {Object} - The detailed event data
+ */
+const extractEventDetails = async (eventPage, eventData, imagesDir, siteIdentifier) => {
   try {
     // Wait for the main content to load
     await eventPage.waitForSelector('.ct-inner-960', { timeout: 30000 }).catch(() => {
@@ -235,6 +366,7 @@ const extractEventDetails = async (eventPage, eventData) => {
     ).catch(() => null);
     if (detailTitle) {
       eventData.title = detailTitle;
+      logger.info(`Detail page title extracted: ${detailTitle}`);
     }
 
     // Extract event description
@@ -243,6 +375,7 @@ const extractEventDetails = async (eventPage, eventData) => {
     ).catch(() => null);
     if (detailDescription) {
       eventData.description = detailDescription;
+      logger.info(`Detail page description extracted.`);
     }
 
     // Extract event dates and times
@@ -254,12 +387,14 @@ const extractEventDetails = async (eventPage, eventData) => {
       if (dateMatch) {
         eventData.date_start = `${dateMatch[1]}-${dateMatch[2].padStart(2, '0')}-${dateMatch[3].padStart(2, '0')}`;
         eventData.date_end = `${dateMatch[4]}-${dateMatch[5].padStart(2, '0')}-${dateMatch[6].padStart(2, '0')}`;
+        logger.info(`Detail page dates extracted: ${eventData.date_start} to ${eventData.date_end}`);
       } else {
         // Single day event
         const singleDateMatch = dateText.match(/(\d{4})\.(\d{1,2})\.(\d{1,2})/);
         if (singleDateMatch) {
           eventData.date_start = `${singleDateMatch[1]}-${singleDateMatch[2].padStart(2, '0')}-${singleDateMatch[3].padStart(2, '0')}`;
           eventData.date_end = eventData.date_start;
+          logger.info(`Detail page single date extracted: ${eventData.date_start}`);
         }
       }
     }
@@ -274,12 +409,14 @@ const extractEventDetails = async (eventPage, eventData) => {
       if (timeMatch) {
         eventData.time_start = timeMatch[1];
         eventData.time_end = timeMatch[2];
+        logger.info(`Detail page times extracted: ${eventData.time_start} to ${eventData.time_end}`);
       } else {
         // Handle cases like "11:00 – 19:00 水曜日・土曜日開催"
         const timeOnlyMatch = timeText.match(/(\d{1,2}:\d{2})\s*–\s*(\d{1,2}:\d{2})/);
         if (timeOnlyMatch) {
           eventData.time_start = timeOnlyMatch[1];
           eventData.time_end = timeOnlyMatch[2];
+          logger.info(`Detail page times extracted: ${eventData.time_start} to ${eventData.time_end}`);
         }
       }
     }
@@ -336,6 +473,7 @@ const extractEventDetails = async (eventPage, eventData) => {
           currency: 'JPY',
           discount_info: null,
         });
+        logger.info(`Detail page price extracted: ${price_tier} - ${amount} ${prices[0].currency}`);
       }
     }
 
@@ -347,13 +485,46 @@ const extractEventDetails = async (eventPage, eventData) => {
     // Create schedules
     eventData.schedules = [
       {
-        date: eventData.date_start,
+        date: eventData.date_start || null,
         time_start: isValidTime(eventData.time_start) ? eventData.time_start : null,
         time_end: isValidTime(eventData.time_end) ? eventData.time_end : null,
         special_notes: null, // Add any special notes if available
         status: 'upcoming', // Determine based on current date
       },
     ];
+
+    // Extract alt text for image
+    let alt_text = await eventPage.$eval('div.img-box > div.img > div.posi-full.bg-style', (el) =>
+      el.getAttribute('data-alt')
+    ).catch(() => null);
+
+    eventData.alt_text = alt_text || null;
+
+    // Extract image URL from the detail page
+    const detailImageUrl = await eventPage.$eval(
+      'div.img-box > div.img > div.posi-full.bg-style',
+      (el) => el.getAttribute('data-bg')
+    ).catch(() => null);
+
+    if (detailImageUrl) {
+      // Download the detailed image
+      const detailedImageUrl = detailImageUrl.startsWith('http')
+        ? detailImageUrl
+        : new URL(detailImageUrl, eventData.event_link).href;
+
+      const localImageUrl = await downloadImage(detailedImageUrl, siteIdentifier, imagesDir);
+      eventData.image_url = localImageUrl;
+      logger.info(`Detail page image downloaded: ${localImageUrl}`);
+    } else if (eventData.image_url) {
+      // Download the image from the listing page
+      const localImageUrl = await downloadImage(eventData.image_url, siteIdentifier, imagesDir);
+      eventData.image_url = localImageUrl;
+      logger.info(`Listing page image downloaded: ${localImageUrl}`);
+    } else {
+      // Assign placeholder if no image is available
+      eventData.image_url = '/images/events/fabcafe/placeholder.jpg';
+      logger.warn(`No image available for event "${eventData.title}". Assigned placeholder.`);
+    }
 
     return eventData;
   } catch (error) {
@@ -362,7 +533,11 @@ const extractEventDetails = async (eventPage, eventData) => {
   }
 };
 
-// Helper function to convert abbreviated month to number
+/**
+ * Helper function to convert abbreviated month to number
+ * @param {string} monthAbbreviation - Abbreviated month name (e.g., 'Jan', 'Feb')
+ * @returns {string} - Two-digit month number (e.g., '01', '02')
+ */
 const convertMonthToNumber = (monthAbbreviation) => {
   const months = {
     Jan: '01',
@@ -401,10 +576,15 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     try {
       logger.info('Running FabCafe Kyoto scraper...');
       const data = await scrapeFabCafe();
-      logger.info(`Scraped Data: ${JSON.stringify(data, null, 2)}`);
-      const outputPath = resolve(__dirnameESM, 'fabcafe_kyoto_events.json');
-      fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
-      logger.info(`Data saved to ${outputPath}`);
+      if (data.length > 0) {
+        logger.info(`Scraped Data: ${JSON.stringify(data, null, 2)}`);
+        const outputPath = resolve(__dirnameESM, 'fabcafe_kyoto_events.json');
+        fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
+        logger.info(`Data saved to ${outputPath}`);
+      } else {
+        logger.warn('No data scraped for site: fabcafe');
+      }
+      logger.info('All scraping tasks completed.');
     } catch (error) {
       logger.error(`Error during scraping execution: ${error.message}`);
     }

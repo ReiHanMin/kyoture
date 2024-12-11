@@ -1,0 +1,128 @@
+2024-12-11 20:31:12 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:31:12 [INFO]: Created image directory: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj
+2024-12-11 20:31:16 [INFO]: Browser launched.
+2024-12-11 20:31:16 [INFO]: New page opened.
+2024-12-11 20:31:16 [INFO]: Navigating to Kyoto-Fanj schedule page...
+2024-12-11 20:31:18 [INFO]: Page loaded.
+2024-12-11 20:31:18 [INFO]: Found 12 event containers.
+2024-12-11 20:31:18 [INFO]: Processing event 1 of 12...
+2024-12-11 20:31:18 [WARN]: Missing left section for event 1. Skipping.
+2024-12-11 20:31:18 [INFO]: Processing event 2 of 12...
+2024-12-11 20:31:18 [WARN]: Missing left section for event 2. Skipping.
+2024-12-11 20:31:18 [INFO]: Processing event 3 of 12...
+2024-12-11 20:31:18 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1006.jpg
+2024-12-11 20:31:18 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj/e6fe6983aefad39387f35ecad3f87c22f19be44a9b19d20d051c100371ba2e13.jpg
+2024-12-11 20:31:18 [INFO]: Extracted event: Plastic Tree  結成30周年“樹念” Autumn Tour2024「続・Plastic Tree」
+2024-12-11 20:31:18 [INFO]: Processing event 4 of 12...
+2024-12-11 20:31:18 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1012.jpg
+2024-12-11 20:31:18 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj/9987a36931afc06c13c8ba33a42e2352eeb636b665be96040401e7cd0db2547c.jpg
+2024-12-11 20:31:18 [INFO]: Extracted event: Gold & Silver 3nd One Man LIVE ーSIGNALー
+2024-12-11 20:31:18 [INFO]: Processing event 5 of 12...
+2024-12-11 20:31:18 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1014.jpg
+2024-12-11 20:31:18 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj/b843d3f7cd7755803d1ab74daa01d5db9224ef33bd0c10c527fb08b29b0366d0.jpg
+2024-12-11 20:31:18 [INFO]: Extracted event: TRUE MUSIC CAMP Vol.1 ～TRUE vs 亜咲花～
+2024-12-11 20:31:18 [INFO]: Processing event 6 of 12...
+2024-12-11 20:31:18 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1020.jpg
+2024-12-11 20:31:18 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj/6ed82facfadcde90c7adb5d7ff2bb75056d4b6b12517e87166f6bf647f1db24d.jpg
+2024-12-11 20:31:18 [INFO]: Extracted event: サークルライチ主催 『サブカル』お試し編
+2024-12-11 20:31:18 [INFO]: Processing event 7 of 12...
+2024-12-11 20:31:18 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/20241020.jpg
+2024-12-11 20:31:18 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj/9e4682b7d458fa10490b1b40cbcfc2e1bac985050d416b0a56809542e88d3657.jpg
+2024-12-11 20:31:18 [INFO]: Extracted event: マーキュロ主催　単独巡業 『超アブノーマル★(ヒカリ)倶楽部』京都編
+2024-12-11 20:31:18 [INFO]: Processing event 8 of 12...
+2024-12-11 20:31:18 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1110.jpg
+2024-12-11 20:31:18 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj/7d5242ccf1fe9119409aea991ded2ed6985714859f1e2227caaee2a8d3ad46e9.jpg
+2024-12-11 20:31:18 [INFO]: Extracted event: 滋野誠 Shigeno Makoto Live 2024 ZERO
+2024-12-11 20:31:18 [INFO]: Processing event 9 of 12...
+2024-12-11 20:31:18 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1117.jpg
+2024-12-11 20:31:18 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj/4c2d19cea2cf8cf8e02944ea5888daaa1b242535770308271b4221ad4a03d58c.jpg
+2024-12-11 20:31:18 [INFO]: Extracted event: Verde Hybrid Tour 2024〝Wanderlust/〟
+2024-12-11 20:31:18 [INFO]: Processing event 10 of 12...
+2024-12-11 20:31:19 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1130.jpg
+2024-12-11 20:31:19 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj/8c6bd121ff16ea4d86e3191f285d103e20a6175c911582bdb3a8d82233045908.jpg
+2024-12-11 20:31:19 [INFO]: Extracted event: 9mm Parabellum Bullet 10th Album リリースツアー
+2024-12-11 20:31:19 [INFO]: Processing event 11 of 12...
+2024-12-11 20:31:19 [WARN]: Missing left section for event 11. Skipping.
+2024-12-11 20:31:19 [INFO]: Processing event 12 of 12...
+2024-12-11 20:31:19 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1206.jpg
+2024-12-11 20:31:19 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj/e18fcd83d5b789fe9035dd8c726975725250f9664a64112a3e727a17c038590a.jpg
+2024-12-11 20:31:19 [INFO]: Extracted event: LINDBERG Debut 35th Anniversary Tour「Thanx a Million☆Vol.2」
+2024-12-11 20:31:19 [INFO]: Final event data extraction complete.
+2024-12-11 20:31:19 [INFO]: Browser closed.
+2024-12-11 20:33:33 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:33:33 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_fanj
+2024-12-11 20:33:36 [INFO]: Browser launched.
+2024-12-11 20:33:36 [INFO]: New page opened.
+2024-12-11 20:33:36 [INFO]: Navigating to Kyoto-Fanj schedule page...
+2024-12-11 20:33:38 [INFO]: Page loaded.
+2024-12-11 20:33:38 [INFO]: Found 12 event containers.
+2024-12-11 20:33:38 [INFO]: Processing event 1 of 12...
+2024-12-11 20:33:38 [WARN]: Missing left section for event 1. Skipping.
+2024-12-11 20:33:38 [INFO]: Processing event 2 of 12...
+2024-12-11 20:33:38 [WARN]: Missing left section for event 2. Skipping.
+2024-12-11 20:33:38 [INFO]: Processing event 3 of 12...
+2024-12-11 20:33:38 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1006.jpg
+2024-12-11 20:33:38 [INFO]: Image already exists locally: e6fe6983aefad39387f35ecad3f87c22f19be44a9b19d20d051c100371ba2e13.jpg
+2024-12-11 20:33:38 [INFO]: Extracted event: Plastic Tree  結成30周年“樹念” Autumn Tour2024「続・Plastic Tree」
+2024-12-11 20:33:38 [INFO]: Processing event 4 of 12...
+2024-12-11 20:33:38 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1012.jpg
+2024-12-11 20:33:38 [INFO]: Image already exists locally: 9987a36931afc06c13c8ba33a42e2352eeb636b665be96040401e7cd0db2547c.jpg
+2024-12-11 20:33:38 [INFO]: Extracted event: Gold & Silver 3nd One Man LIVE ーSIGNALー
+2024-12-11 20:33:38 [INFO]: Processing event 5 of 12...
+2024-12-11 20:33:38 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1014.jpg
+2024-12-11 20:33:38 [INFO]: Image already exists locally: b843d3f7cd7755803d1ab74daa01d5db9224ef33bd0c10c527fb08b29b0366d0.jpg
+2024-12-11 20:33:38 [INFO]: Extracted event: TRUE MUSIC CAMP Vol.1 ～TRUE vs 亜咲花～
+2024-12-11 20:33:38 [INFO]: Processing event 6 of 12...
+2024-12-11 20:33:38 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1020.jpg
+2024-12-11 20:33:38 [INFO]: Image already exists locally: 6ed82facfadcde90c7adb5d7ff2bb75056d4b6b12517e87166f6bf647f1db24d.jpg
+2024-12-11 20:33:38 [INFO]: Extracted event: サークルライチ主催 『サブカル』お試し編
+2024-12-11 20:33:38 [INFO]: Processing event 7 of 12...
+2024-12-11 20:33:38 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/20241020.jpg
+2024-12-11 20:33:38 [INFO]: Image already exists locally: 9e4682b7d458fa10490b1b40cbcfc2e1bac985050d416b0a56809542e88d3657.jpg
+2024-12-11 20:33:38 [INFO]: Extracted event: マーキュロ主催　単独巡業 『超アブノーマル★(ヒカリ)倶楽部』京都編
+2024-12-11 20:33:38 [INFO]: Processing event 8 of 12...
+2024-12-11 20:33:38 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1110.jpg
+2024-12-11 20:33:38 [INFO]: Image already exists locally: 7d5242ccf1fe9119409aea991ded2ed6985714859f1e2227caaee2a8d3ad46e9.jpg
+2024-12-11 20:33:38 [INFO]: Extracted event: 滋野誠 Shigeno Makoto Live 2024 ZERO
+2024-12-11 20:33:38 [INFO]: Processing event 9 of 12...
+2024-12-11 20:33:38 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1117.jpg
+2024-12-11 20:33:38 [INFO]: Image already exists locally: 4c2d19cea2cf8cf8e02944ea5888daaa1b242535770308271b4221ad4a03d58c.jpg
+2024-12-11 20:33:38 [INFO]: Extracted event: Verde Hybrid Tour 2024〝Wanderlust/〟
+2024-12-11 20:33:38 [INFO]: Processing event 10 of 12...
+2024-12-11 20:33:38 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1130.jpg
+2024-12-11 20:33:38 [INFO]: Image already exists locally: 8c6bd121ff16ea4d86e3191f285d103e20a6175c911582bdb3a8d82233045908.jpg
+2024-12-11 20:33:38 [INFO]: Extracted event: 9mm Parabellum Bullet 10th Album リリースツアー
+2024-12-11 20:33:38 [INFO]: Processing event 11 of 12...
+2024-12-11 20:33:38 [WARN]: Missing left section for event 11. Skipping.
+2024-12-11 20:33:38 [INFO]: Processing event 12 of 12...
+2024-12-11 20:33:38 [INFO]: Downloading image: http://www.kyoto-fanj.com/sch_img/1206.jpg
+2024-12-11 20:33:38 [INFO]: Image already exists locally: e18fcd83d5b789fe9035dd8c726975725250f9664a64112a3e727a17c038590a.jpg
+2024-12-11 20:33:38 [INFO]: Extracted event: LINDBERG Debut 35th Anniversary Tour「Thanx a Million☆Vol.2」
+2024-12-11 20:33:38 [INFO]: Final event data extraction complete.
+2024-12-11 20:33:38 [INFO]: Browser closed.
+2024-12-11 20:40:03 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:40:43 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:42:48 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:47:13 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:48:01 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:56:50 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 21:00:36 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 02:54:45 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:02:32 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:04:34 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:07:00 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:10:54 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:11:31 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:12:13 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:19:40 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:22:26 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:25:24 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:35:08 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:37:09 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:37:35 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:41:20 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:49:52 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:29:11 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:36:36 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:42:53 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:44:31 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots

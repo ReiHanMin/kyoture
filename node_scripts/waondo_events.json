@@ -1,25 +1,31 @@
 [
   {
-    "title": "ファンキーソウルセッション",
-    "date_start": "2024年11月26日 18:30",
-    "date_end": "2024年11月26日 18:30",
-    "venue": "和音堂, 日本、〒615-0032 京都府京都市右京区西院西高田町１９−３ 永芳ビル B1",
-    "image_url": "https://static.wixstatic.com/media/21524a_60176ba5eede4c0aa60d7f10a97282ba~mv2.jpg/v1/fill/w_1104,h_1104,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/21524a_60176ba5eede4c0aa60d7f10a97282ba~mv2.jpg",
+    "title": "DoDoNight",
+    "date_start": "2024年12月11日 19:00",
+    "date_end": "2024年12月11日 19:00",
+    "venue": "和音堂, 〒615-0032 京都府京都市右京区西院西高田町１９−３ 永芳ビル B1",
+    "image_url": "/images/events/waondo/686055585f4e983e0fdb232ef5606c392f784f299c80b89862e15737cac379ad.jpg",
     "schedule": [
       {
-        "date": "2024年11月26日 18:30",
+        "date": "2024年12月11日 19:00",
         "time_start": null,
         "time_end": null,
         "special_notes": null
       }
     ],
-    "description": "Funk/Soul/Blues/Jazz/etc.\n腕前問わず楽しむセッション！\n毎月第4火曜open18:30start19:00\n京都西院和音堂にて開催中",
-    "event_link": "https://www.waondo.net/event-details/fankisourusesshon-21",
-    "prices": [],
+    "description": "【OPEN】19:00\n【START】19:30\n【料金】￥1500drink付\n飛び入りオープンマイク",
+    "event_link": "https://www.waondo.net/event-details/dodonight-20",
+    "prices": [
+      {
+        "price_tier": "Tier 1",
+        "amount": "1500",
+        "currency": "JPY"
+      }
+    ],
     "categories": [],
     "tags": [],
     "ended": false,
-    "free": true,
+    "free": false,
     "site": "waondo"
   },
   {
@@ -49,6 +55,81 @@
     "tags": [],
     "ended": false,
     "free": false,
+    "site": "waondo"
+  },
+  {
+    "title": "GRABBAGS",
+    "date_start": "2024年12月15日 18:30",
+    "date_end": "2024年12月15日 18:30",
+    "venue": "和音堂, 〒615-0032 京都府京都市右京区西院西高田町１９−３ 永芳ビル B1",
+    "image_url": "/images/events/waondo/2eecee88caae0a65d7d12be450ca7878c923f433d6fc18605e46101706b6ff40.webp",
+    "schedule": [
+      {
+        "date": "2024年12月15日 18:30",
+        "time_start": null,
+        "time_end": null,
+        "special_notes": null
+      }
+    ],
+    "description": "【OPEN】17:30\n【START】18:30\n【料金】¥2000+2ドリンク\n【出演】GRABBAGS",
+    "event_link": "https://www.waondo.net/event-details/grabbags",
+    "prices": [
+      {
+        "price_tier": "Tier 1",
+        "amount": "2000",
+        "currency": "JPY"
+      }
+    ],
+    "categories": [],
+    "tags": [],
+    "ended": false,
+    "free": false,
+    "site": "waondo"
+  },
+  {
+    "title": "カホンワークショップ",
+    "date_start": "2024年12月18日 19:30",
+    "date_end": "2024年12月18日 19:30",
+    "venue": "和音堂, 日本、〒615-0032 京都府京都市右京区西院西高田町１９−３ 永芳ビル B1",
+    "image_url": "/images/events/waondo/bac84bf74efc510025ab84078fe6be13a899edd3d7e76101f5ed042646153930.jpg",
+    "schedule": [
+      {
+        "date": "2024年12月18日 19:30",
+        "time_start": null,
+        "time_end": null,
+        "special_notes": null
+      }
+    ],
+    "description": "OPEN 19:00\nSTART 19:30\n料金　¥2500drink付",
+    "event_link": "https://www.waondo.net/event-details/kahonwakushoppu-16",
+    "prices": [],
+    "categories": [],
+    "tags": [],
+    "ended": false,
+    "free": true,
+    "site": "waondo"
+  },
+  {
+    "title": "ファンキーソウルセッション",
+    "date_start": "2024年12月24日 18:30",
+    "date_end": "2024年12月24日 18:30",
+    "venue": "和音堂, 日本、〒615-0032 京都府京都市右京区西院西高田町１９−３ 永芳ビル B1",
+    "image_url": "/images/events/waondo/054c7da0028bbf7b5242505893279a083436a585a8935663d12ab0b61b2973c3.jpg",
+    "schedule": [
+      {
+        "date": "2024年12月24日 18:30",
+        "time_start": null,
+        "time_end": null,
+        "special_notes": null
+      }
+    ],
+    "description": "Funk/Soul/Blues/Jazz/etc.\n腕前問わず楽しむセッション！\n毎月第4火曜open18:30start19:00\n京都西院和音堂にて開催中",
+    "event_link": "https://www.waondo.net/event-details/fankisourusesshon-20",
+    "prices": [],
+    "categories": [],
+    "tags": [],
+    "ended": false,
+    "free": true,
     "site": "waondo"
   }
 ]

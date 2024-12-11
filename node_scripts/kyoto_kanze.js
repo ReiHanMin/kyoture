@@ -75,6 +75,7 @@ function makeAbsoluteUrl(url, base) {
 
 /**
  * Downloads an image from the given URL and saves it locally.
+ * Checks if the image already exists to avoid redundant downloads.
  * @param {string} imageUrl - The URL of the image to download.
  * @param {string} site - The site identifier (e.g., 'kyoto_kanze').
  * @returns {Promise<string>} - The relative URL of the saved image.
@@ -85,13 +86,45 @@ const downloadAndSaveImage = async (imageUrl, site) => {
         return '/images/events/kyoto_kanze/placeholder.jpg'; // Ensure this exists
     }
 
-    const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : makeAbsoluteUrl(imageUrl, 'https://kyoto-kanze.jp');
+    // Define the base URL
+    const baseUrl = 'https://kyoto-kanze.jp';
+    const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : makeAbsoluteUrl(imageUrl, baseUrl);
     if (!absoluteImageUrl) {
         console.warn('Invalid image URL. Assigning placeholder.');
         return '/images/events/kyoto_kanze/placeholder.jpg';
     }
 
     try {
+        const urlObj = new URL(absoluteImageUrl);
+        const imagePath = urlObj.pathname; // e.g., '/show_info/20241201show_meeting/images/omote_l.jpg'
+
+        const imagesIndex = imagePath.indexOf('/images/');
+        let relativeImagePath = '';
+
+        if (imagesIndex !== -1) {
+            relativeImagePath = imagePath.substring(imagesIndex + '/images/'.length); // e.g., 'omote_l.jpg'
+        } else {
+            relativeImagePath = path.basename(imagePath);
+        }
+
+        // Use relativeImagePath as the hash input
+        const hash = generateHash(relativeImagePath);
+        const extension = path.extname(relativeImagePath) || '.jpg';
+        const filename = `${hash}${extension}`;
+        const filepath = path.join(__dirname, '..', 'public', 'images', 'events', site, filename);
+        const relativeImageUrlLocal = `/images/events/${site}/${filename}`;
+
+        // Check if the image already exists
+        try {
+            await fs.access(filepath);
+            console.log(`Image already exists locally: ${relativeImageUrlLocal}`);
+            return relativeImageUrlLocal;
+        } catch (err) {
+            // File does not exist, proceed to download
+            console.log(`Image not found locally. Downloading: ${absoluteImageUrl}`);
+        }
+
+        // Download the image
         const response = await axios.get(absoluteImageUrl, { responseType: 'arraybuffer' });
 
         // Check if the response content type is an image
@@ -100,20 +133,14 @@ const downloadAndSaveImage = async (imageUrl, site) => {
             throw new Error(`Invalid content type: ${contentType}`);
         }
 
-        const extension = path.extname(new URL(absoluteImageUrl).pathname) || '.jpg';
-        const filename = `${uuidv4()}${extension}`;
-        const filepath = path.join(__dirname, '..', 'public', 'images', 'events', site, filename);
-
         // Ensure the directory exists
         await fs.mkdir(path.dirname(filepath), { recursive: true });
 
         // Save the image file
         await fs.writeFile(filepath, response.data);
+        console.log(`Image successfully saved: ${relativeImageUrlLocal}`);
 
-        const relativeImageUrl = `/images/events/${site}/${filename}`;
-        console.log(`Image successfully saved: ${relativeImageUrl}`);
-
-        return relativeImageUrl;
+        return relativeImageUrlLocal;
     } catch (error) {
         console.error(`Failed to download image from ${absoluteImageUrl}:`, error.message);
         return '/images/events/kyoto_kanze/placeholder.jpg'; // Assign placeholder on failure
@@ -142,8 +169,9 @@ function parseJapaneseDateTime(dateTimeStr) {
 
         if (match[3] && match[4]) {
             time_start = `${match[3].padStart(2, '0')}:${match[4]}`;
-            // If end time is not provided, you might set a default duration or leave it null
-            time_end = `${(parseInt(match[3]) + 2).toString().padStart(2, '0')}:${match[4]}`; // Assuming 2-hour duration
+            // Assuming a 2-hour duration; adjust as needed
+            const endHour = (parseInt(match[3], 10) + 2) % 24;
+            time_end = `${endHour.toString().padStart(2, '0')}:${match[4]}`;
         } else if (dateTimeStr.includes('開演時間未定')) {
             time_start = 'To Be Announced';
         }
@@ -370,21 +398,6 @@ async function isImageHighRes(url, minSize = 50000) { // 50KB as a threshold
 }
 
 /**
- * Parse price information from text
- * @param {string} text 
- * @returns {Array}
- */
-
-
-/**
- * Extract high-resolution image URLs from the detail page and download them
- * @param {object} detailPage 
- * @param {string} baseUrl 
- * @returns {Promise<string>} - Returns the local image URL
- */
-
-
-/**
  * Main scraping function
  */
 const scrapeKyotoKanze = async () => {
@@ -512,6 +525,7 @@ const scrapeKyotoKanze = async () => {
                     console.log(`Parsed Date: ${date_start}`);
                     if (time_start) {
                         console.log(`Parsed Time Start: ${time_start}`);
+                        console.log(`Parsed Time End: ${time_end}`);
                     } else {
                         console.log(`No time information found for event on ${date_start}`);
                     }
@@ -586,7 +600,7 @@ const scrapeKyotoKanze = async () => {
                         await delay(3000); // Wait for 3 seconds
 
                         try {
-                            // Extract high-res image URL
+                            // Extract high-res image URL and download it
                             const highResImageUrl = await extractHighResImages(detailPage, eventLink);
                             console.log(`High-Res Image URL: ${highResImageUrl}`);
 

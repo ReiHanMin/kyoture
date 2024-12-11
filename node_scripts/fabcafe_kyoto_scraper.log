@@ -1,0 +1,107 @@
+2024-12-11 20:40:03 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:40:03 [INFO]: Created image directory: /Users/liban/Documents/kyoture/public/images/events/fabcafe
+2024-12-11 20:40:08 [INFO]: Browser launched.
+2024-12-11 20:40:09 [INFO]: New page opened.
+2024-12-11 20:40:09 [INFO]: Navigating to FabCafe Kyoto events page...
+2024-12-11 20:40:43 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:40:43 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/fabcafe
+2024-12-11 20:40:45 [INFO]: Browser launched.
+2024-12-11 20:40:45 [INFO]: New page opened.
+2024-12-11 20:40:45 [INFO]: Navigating to FabCafe Kyoto events page...
+2024-12-11 20:40:59 [INFO]: Page loaded.
+2024-12-11 20:40:59 [INFO]: Found 8 events on the listing page.
+2024-12-11 20:40:59 [INFO]: Processing event 1 of 8...
+2024-12-11 20:40:59 [INFO]: Event title extracted: こんばんは寄席 by 桂枝之進
+2024-12-11 20:41:03 [INFO]: Detail page title extracted: こんばんは寄席 by 桂枝之進
+2024-12-11 20:41:03 [INFO]: Detail page description extracted.
+2024-12-11 20:41:03 [INFO]: Detail page single date extracted: 2024-10-09
+2024-12-11 20:41:03 [INFO]: Detail page times extracted: 19:00 to 21:00
+2024-12-11 20:41:03 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/yose_visual-920x920.jpg
+2024-12-11 20:41:04 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/dbdf4d7fd00f34a0c6976ba14500f45c68c627b9fde3b507af8a34962a40320d.jpg
+2024-12-11 20:41:04 [INFO]: Detail page image downloaded: /images/events/fabcafe/dbdf4d7fd00f34a0c6976ba14500f45c68c627b9fde3b507af8a34962a40320d.jpg
+2024-12-11 20:41:04 [INFO]: Extracted event: こんばんは寄席 by 桂枝之進
+2024-12-11 20:41:04 [INFO]: Processing event 2 of 8...
+2024-12-11 20:41:04 [INFO]: Event title extracted: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-11 20:41:08 [INFO]: Detail page title extracted: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-11 20:41:08 [INFO]: Detail page description extracted.
+2024-12-11 20:41:08 [INFO]: Detail page dates extracted: 2024-12-04 to 2024-12-21
+2024-12-11 20:41:08 [INFO]: Detail page times extracted: 11:00 to 19:00
+2024-12-11 20:41:08 [INFO]: Detail page price extracted: General - 4000 JPY
+2024-12-11 20:41:08 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/09/yose_visual_banner_-540x304.jpg
+2024-12-11 20:41:08 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:08 [INFO]: Detail page image downloaded: /images/events/fabcafe/58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:08 [INFO]: Extracted event: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-11 20:41:08 [INFO]: Processing event 3 of 8...
+2024-12-11 20:41:08 [INFO]: Event title extracted: ホワイトノットノイズ
+2024-12-11 20:41:12 [INFO]: Detail page title extracted: ホワイトノットノイズ
+2024-12-11 20:41:12 [INFO]: Detail page description extracted.
+2024-12-11 20:41:12 [INFO]: Detail page dates extracted: 2024-12-10 to 2024-12-27
+2024-12-11 20:41:12 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2020/09/CP_square-920x920.gif
+2024-12-11 20:41:13 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/0ef048dc6a60a65d420751af13e0de6b8d4d6d88264fecd98c5f0d59ed719865.gif
+2024-12-11 20:41:13 [INFO]: Detail page image downloaded: /images/events/fabcafe/0ef048dc6a60a65d420751af13e0de6b8d4d6d88264fecd98c5f0d59ed719865.gif
+2024-12-11 20:41:13 [INFO]: Extracted event: ホワイトノットノイズ
+2024-12-11 20:41:13 [INFO]: Processing event 4 of 8...
+2024-12-11 20:41:13 [INFO]: Event title extracted: 映像でみるアフリカ・アジア社会とその課題 – 第3回「『ヤングムスリムの窓』映像を通した協働の可能性」
+2024-12-11 20:41:17 [INFO]: Detail page title extracted: 映像でみるアフリカ・アジア社会とその課題 – 第3回「『ヤングムスリムの窓』映像を通した協働の可能性」
+2024-12-11 20:41:17 [INFO]: Detail page description extracted.
+2024-12-11 20:41:17 [INFO]: Detail page single date extracted: 2024-12-13
+2024-12-11 20:41:17 [INFO]: Detail page times extracted: 19:00 to 21:00
+2024-12-11 20:41:17 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/09/yose_visual_banner_-540x304.jpg
+2024-12-11 20:41:17 [INFO]: Image already exists locally: 58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:17 [INFO]: Detail page image downloaded: /images/events/fabcafe/58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:17 [INFO]: Extracted event: 映像でみるアフリカ・アジア社会とその課題 – 第3回「『ヤングムスリムの窓』映像を通した協働の可能性」
+2024-12-11 20:41:17 [INFO]: Processing event 5 of 8...
+2024-12-11 20:41:17 [INFO]: Event title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-11 20:41:21 [INFO]: Detail page title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-11 20:41:21 [INFO]: Detail page description extracted.
+2024-12-11 20:41:21 [INFO]: Detail page single date extracted: 2024-12-14
+2024-12-11 20:41:21 [INFO]: Detail page times extracted: 14:00 to 15:30
+2024-12-11 20:41:21 [INFO]: Detail page price extracted: General - 3500 JPY
+2024-12-11 20:41:21 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/09/yose_visual_banner_-540x304.jpg
+2024-12-11 20:41:21 [INFO]: Image already exists locally: 58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:21 [INFO]: Detail page image downloaded: /images/events/fabcafe/58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:21 [INFO]: Extracted event: 世界薬草キャラバン　アンデス茶会
+2024-12-11 20:41:21 [INFO]: Processing event 6 of 8...
+2024-12-11 20:41:21 [INFO]: Event title extracted: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-11 20:41:25 [INFO]: Detail page title extracted: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-11 20:41:25 [INFO]: Detail page description extracted.
+2024-12-11 20:41:25 [INFO]: Detail page dates extracted: 2024-12-14 to 2024-12-14
+2024-12-11 20:41:25 [INFO]: Detail page price extracted: General - 2200 JPY
+2024-12-11 20:41:25 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/09/yose_visual_banner_-540x304.jpg
+2024-12-11 20:41:25 [INFO]: Image already exists locally: 58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:25 [INFO]: Detail page image downloaded: /images/events/fabcafe/58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:25 [INFO]: Extracted event: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-11 20:41:25 [INFO]: Processing event 7 of 8...
+2024-12-11 20:41:25 [INFO]: Event title extracted: こんばんは寄席 by 桂枝之進
+2024-12-11 20:41:30 [INFO]: Detail page title extracted: こんばんは寄席 by 桂枝之進
+2024-12-11 20:41:30 [INFO]: Detail page description extracted.
+2024-12-11 20:41:30 [INFO]: Detail page single date extracted: 2025-01-08
+2024-12-11 20:41:30 [INFO]: Detail page times extracted: 19:00 to 21:00
+2024-12-11 20:41:30 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/yose_visual-920x920.jpg
+2024-12-11 20:41:30 [INFO]: Image already exists locally: dbdf4d7fd00f34a0c6976ba14500f45c68c627b9fde3b507af8a34962a40320d.jpg
+2024-12-11 20:41:30 [INFO]: Detail page image downloaded: /images/events/fabcafe/dbdf4d7fd00f34a0c6976ba14500f45c68c627b9fde3b507af8a34962a40320d.jpg
+2024-12-11 20:41:30 [INFO]: Extracted event: こんばんは寄席 by 桂枝之進
+2024-12-11 20:41:30 [INFO]: Processing event 8 of 8...
+2024-12-11 20:41:30 [INFO]: Event title extracted: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-11 20:41:34 [INFO]: Detail page title extracted: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-11 20:41:34 [INFO]: Detail page description extracted.
+2024-12-11 20:41:34 [INFO]: Detail page single date extracted: 2025-01-10
+2024-12-11 20:41:34 [INFO]: Detail page times extracted: 17:00 to 19:00
+2024-12-11 20:41:34 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/09/yose_visual_banner_-540x304.jpg
+2024-12-11 20:41:34 [INFO]: Image already exists locally: 58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:34 [INFO]: Detail page image downloaded: /images/events/fabcafe/58f949446dfec34e4516c798f415fa9845b22149d19f0986e49c86b930035d62.jpg
+2024-12-11 20:41:34 [INFO]: Extracted event: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-11 20:41:34 [INFO]: Final event data extraction complete.
+2024-12-11 20:41:34 [INFO]: Browser closed.
+2024-12-11 20:42:48 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:47:13 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:48:01 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:56:50 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 21:00:36 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 02:54:45 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:41:20 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:49:52 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:29:11 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:36:36 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:42:53 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:44:31 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots

@@ -7,6 +7,9 @@ import { dirname, resolve } from 'path';
 import fs from 'fs';
 import dotenv from 'dotenv';
 import winston from 'winston';
+import crypto from 'crypto';
+// If you intend to use p-limit for concurrency, ensure it's installed and uncomment the line below
+// import pLimit from 'p-limit';
 
 // Load environment variables from .env file if present
 dotenv.config();
@@ -43,8 +46,123 @@ const isValidTime = (timeStr) => {
 const __filenameESM = fileURLToPath(import.meta.url);
 const __dirnameESM = dirname(__filenameESM);
 
+/**
+ * Utility function to generate a SHA256 hash of a given string.
+ * @param {string} str - The input string to hash.
+ * @returns {string} - The resulting SHA256 hash in hexadecimal format.
+ */
+const generateHash = (str) => {
+  return crypto.createHash('sha256').update(str).digest('hex');
+};
+
+/**
+ * Downloads an image from the given URL and saves it locally.
+ * Ensures that images are saved with unique filenames based on their URL hashes.
+ * Prevents duplicate downloads by checking existing files.
+ * 
+ * @param {string} imageUrl - The URL of the image to download.
+ * @param {string} site - The site identifier (e.g., 'kakubarhythm').
+ * @param {string} imagesDir - The directory where images are saved.
+ * @param {number} retries - Number of retry attempts for downloading.
+ * @returns {Promise<string>} - The relative URL of the saved image.
+ */
+const downloadImage = async (imageUrl, site, imagesDir, retries = 3) => {
+  try {
+    if (!imageUrl || imageUrl === 'No image available') {
+      logger.warn('No valid image URL provided. Using placeholder.');
+      return '/images/events/kakubarhythm/placeholder.jpg'; // Ensure this placeholder exists
+    }
+
+    // Ensure the image URL is absolute
+    const absoluteImageUrl = imageUrl.startsWith('http')
+      ? imageUrl
+      : `https://kakubarhythm.com${imageUrl.startsWith('/') ? '' : '/'}${imageUrl.replace('../', '')}`;
+
+    logger.info(`Downloading image: ${absoluteImageUrl}`);
+
+    // Parse the URL to remove query parameters for consistent hashing
+    const parsedUrl = new URL(absoluteImageUrl);
+    const normalizedUrl = `${parsedUrl.origin}${parsedUrl.pathname}`; // Excludes query params
+
+    // Generate a unique filename using SHA256 hash of the normalized image URL
+    const imageHash = generateHash(normalizedUrl);
+    let extension = path.extname(parsedUrl.pathname) || '.jpg'; // Handle URLs without extensions
+
+    // If extension is not valid, attempt to get it from Content-Type
+    if (!['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'].includes(extension.toLowerCase())) {
+      const headResponse = await axios.head(absoluteImageUrl);
+      const contentType = headResponse.headers['content-type'];
+      if (contentType) {
+        const matches = /image\/(jpeg|png|gif|bmp|webp)/.exec(contentType);
+        if (matches && matches[1]) {
+          extension = `.${matches[1]}`;
+        } else {
+          extension = '.jpg'; // Default extension
+        }
+      } else {
+        extension = '.jpg'; // Default extension
+      }
+    }
+
+    const filename = `${imageHash}${extension}`;
+    const filepath = path.join(imagesDir, filename);
+
+    // Check if the image file already exists
+    if (fs.existsSync(filepath)) {
+      logger.info(`Image already exists locally: ${filename}`);
+      return `/images/events/${site}/${filename}`;
+    }
+
+    // Download the image
+    const response = await axios.get(absoluteImageUrl, { responseType: 'stream', timeout: 30000 }); // 30 seconds timeout
+
+    const writer = fs.createWriteStream(filepath);
+
+    response.data.pipe(writer);
+
+    // Wait for the download to finish
+    await new Promise((resolve, reject) => {
+      writer.on('finish', resolve);
+      writer.on('error', (err) => {
+        logger.error(`Error writing image to ${filepath}: ${err.message}`);
+        reject(err);
+      });
+    });
+
+    logger.info(`Image downloaded and saved to: ${filepath}`);
+
+    // Return the relative URL to the image
+    return `/images/events/${site}/${filename}`;
+  } catch (error) {
+    if (retries > 0) {
+      logger.warn(`Retrying download for image: ${imageUrl}. Attempts left: ${retries}`);
+      await delay(1000); // Wait before retrying
+      return downloadImage(imageUrl, site, imagesDir, retries - 1);
+    }
+    logger.error(`Failed to download image after retries: ${imageUrl}. Error: ${error.message}`);
+    // Return path to a placeholder image
+    return '/images/events/kakubarhythm/placeholder.jpg'; // Ensure this placeholder exists
+  }
+};
+
 // Main scraping function for Kakubarhythm Kyoto Events
 const scrapeKakubarhythm = async () => {
+  // Define the site identifier for image storage
+  const siteIdentifier = 'kakubarhythm';
+
+  // Define the directory where images will be saved
+  // Navigate one level up from 'node_scripts' to 'kyoture'
+  const imagesDir = resolve(__dirnameESM, '..', 'public', 'images', 'events', siteIdentifier);
+
+  // Create the directory if it doesn't exist
+  if (!fs.existsSync(imagesDir)) {
+    fs.mkdirSync(imagesDir, { recursive: true });
+    logger.info(`Created directory: ${imagesDir}`);
+  } else {
+    logger.info(`Directory already exists: ${imagesDir}`);
+  }
+
+  // Launch Puppeteer with necessary options
   const browser = await puppeteer.launch({
     headless: true,
     slowMo: 0,
@@ -98,6 +216,9 @@ const scrapeKakubarhythm = async () => {
     // Create a regex pattern dynamically based on the price tier keywords
     const priceTierPattern = priceTierKeywords.join('|');
     const priceRegex = new RegExp(`^(${priceTierPattern})\\s*[:：]?\\s*[¥￥]?([\\d,]+)`, 'i');
+
+    // If using p-limit for concurrency, set it up here
+    // const limit = pLimit(5); // Limit to 5 concurrent downloads
 
     for (const [index, eventElement] of eventElements.entries()) {
       try {
@@ -265,6 +386,11 @@ const scrapeKakubarhythm = async () => {
             }
           }
 
+          // Download the image and get the local URL
+          const localImageUrl = validImageUrl && validImageUrl !== 'No image available'
+            ? await downloadImage(validImageUrl, siteIdentifier, imagesDir)
+            : '/images/events/kakubarhythm/placeholder.jpg'; // Ensure this placeholder exists
+
           const eventInfo = {
             title: eventTitle,
             date_start,
@@ -273,7 +399,7 @@ const scrapeKakubarhythm = async () => {
             time_end,
             venue,
             organization: 'Kakubarhythm',
-            image_url: validImageUrl,
+            image_url: localImageUrl,
             schedule: [
               {
                 date: date_start,
@@ -282,7 +408,7 @@ const scrapeKakubarhythm = async () => {
                 special_notes: null,
               },
             ],
-            prices,
+            prices: prices.length > 0 ? prices : [],
             description,
             event_link: eventLink,
             raw_price_text: ticketInfo,
@@ -327,8 +453,10 @@ const scrapeKakubarhythm = async () => {
   }
 };
 
+// Export the scraping function
 export default scrapeKakubarhythm;
 
+// If the script is run directly, execute the scraping function
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   (async () => {
     try {

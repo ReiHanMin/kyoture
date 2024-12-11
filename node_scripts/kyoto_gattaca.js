@@ -6,29 +6,53 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import axios from 'axios';
 import fs from 'fs';
-import { v4 as uuidv4 } from 'uuid';
+import crypto from 'crypto';
+import sharp from 'sharp'; // For image validation
+import pLimit from 'p-limit'; // For concurrency control
 
 // Define __dirname for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Use the stealth plugin
+// Use the stealth plugin to evade detection
 puppeteer.use(StealthPlugin());
 
 // Helper function for delay
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
+ * Utility function to generate a SHA256 hash of a given string.
+ * Strips query parameters and fragments to ensure consistency.
+ * @param {string} url - The input URL to hash.
+ * @returns {string} - The resulting SHA256 hash in hexadecimal format.
+ */
+const generateHash = (url) => {
+  try {
+    const urlObj = new URL(url);
+    const hashInput = `${urlObj.origin}${urlObj.pathname}`; // Exclude query params and fragments
+    return crypto.createHash('sha256').update(hashInput).digest('hex');
+  } catch (error) {
+    console.error(`Invalid URL provided for hashing: ${url}`);
+    // Fallback to hashing the entire URL if parsing fails
+    return crypto.createHash('sha256').update(url).digest('hex');
+  }
+};
+
+/**
  * Downloads an image from the given URL and saves it locally.
+ * Ensures that images are saved with unique filenames based on their URL hashes.
+ * Prevents duplicate downloads by checking existing files.
+ * 
  * @param {string} imageUrl - The URL of the image to download.
  * @param {string} site - The site identifier (e.g., 'kyoto_gattaca').
+ * @param {string} imagesDir - The directory where images are saved.
  * @param {number} retries - Number of retry attempts for downloading.
  * @returns {Promise<string>} - The relative URL of the saved image.
  */
-const downloadImage = async (imageUrl, site, retries = 3) => {
+const downloadImage = async (imageUrl, site, imagesDir, retries = 3) => {
   try {
-    if (!imageUrl) {
-      console.warn('No image URL provided.');
+    if (!imageUrl || imageUrl === 'No image available') {
+      console.warn('No valid image URL provided. Using placeholder.');
       return '/images/events/placeholder.jpg'; // Ensure this placeholder exists
     }
 
@@ -39,30 +63,42 @@ const downloadImage = async (imageUrl, site, retries = 3) => {
 
     console.log(`Downloading image: ${absoluteImageUrl}`);
 
-    const response = await axios.get(absoluteImageUrl, { responseType: 'stream' });
+    // Generate a unique filename using SHA256 hash of the image URL (excluding query params and fragments)
+    const imageHash = generateHash(absoluteImageUrl);
+    let extension = path.extname(new URL(absoluteImageUrl).pathname).split('?')[0] || '.jpg'; // Handle URLs with query params
 
-    // Determine the file extension
-    let extension = path.extname(new URL(absoluteImageUrl).pathname);
-    if (!extension || extension === '.php') {
-      // Attempt to get extension from Content-Type header
-      const contentType = response.headers['content-type'];
-      if (contentType) {
-        const matches = /image\/(jpeg|png|gif|bmp)/.exec(contentType);
-        if (matches && matches[1]) {
-          extension = `.${matches[1]}`;
+    // If extension is not valid, attempt to get it from Content-Type
+    if (!['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'].includes(extension.toLowerCase())) {
+      try {
+        const headResponse = await axios.head(absoluteImageUrl, { timeout: 5000 });
+        const contentType = headResponse.headers['content-type'];
+        if (contentType) {
+          const matches = /image\/(jpeg|png|gif|bmp|webp)/.exec(contentType);
+          if (matches && matches[1]) {
+            extension = `.${matches[1]}`;
+          } else {
+            extension = '.jpg'; // Default extension
+          }
         } else {
           extension = '.jpg'; // Default extension
         }
-      } else {
+      } catch (headError) {
+        console.warn(`Failed to retrieve headers for ${absoluteImageUrl}. Using default extension.`);
         extension = '.jpg'; // Default extension
       }
     }
 
-    const filename = `${uuidv4()}${extension}`;
-    const filepath = path.join(__dirname, '..', 'public', 'images', 'events', site, filename); // Updated path
+    const filename = `${imageHash}${extension}`;
+    const filepath = path.join(imagesDir, filename);
 
-    // Ensure the directory exists
-    fs.mkdirSync(path.dirname(filepath), { recursive: true });
+    // Check if the image file already exists
+    if (fs.existsSync(filepath)) {
+      console.log(`Image already exists locally: ${filename}`);
+      return `/images/events/${site}/${filename}`;
+    }
+
+    // Download the image
+    const response = await axios.get(absoluteImageUrl, { responseType: 'stream', timeout: 30000 }); // 30 seconds timeout
 
     const writer = fs.createWriteStream(filepath);
     response.data.pipe(writer);
@@ -70,17 +106,29 @@ const downloadImage = async (imageUrl, site, retries = 3) => {
     // Wait for the download to finish
     await new Promise((resolve, reject) => {
       writer.on('finish', resolve);
-      writer.on('error', reject);
+      writer.on('error', (err) => {
+        console.error(`Error writing image to ${filepath}:`, err.message);
+        reject(err);
+      });
     });
 
+    console.log(`Image downloaded and saved to: ${filepath}`);
+
+    // Validate the downloaded image
+    const isValid = await validateImage(filepath);
+    if (!isValid) {
+      fs.unlinkSync(filepath); // Remove corrupted image
+      console.warn(`Corrupted image removed: ${filepath}. Using placeholder.`);
+      return '/images/events/placeholder.jpg';
+    }
+
     // Return the relative URL to the image
-    const localImageUrl = `/images/events/${site}/${filename}`;
-    return localImageUrl;
+    return `/images/events/${site}/${filename}`;
   } catch (error) {
     if (retries > 0) {
       console.warn(`Retrying download for image: ${imageUrl}. Attempts left: ${retries}`);
       await delay(1000); // Wait before retrying
-      return downloadImage(imageUrl, site, retries - 1);
+      return downloadImage(imageUrl, site, imagesDir, retries - 1);
     }
     console.error(`Failed to download image after retries: ${imageUrl}. Error: ${error.message}`);
     // Return path to a placeholder image
@@ -88,7 +136,28 @@ const downloadImage = async (imageUrl, site, retries = 3) => {
   }
 };
 
-// Function to parse date from the event date text
+/**
+ * Validates that the file at the given path is a valid image.
+ * @param {string} filepath - The path to the image file.
+ * @returns {Promise<boolean>} - Returns true if valid, false otherwise.
+ */
+const validateImage = async (filepath) => {
+  try {
+    await sharp(filepath).metadata();
+    return true;
+  } catch (error) {
+    console.error(`Image validation failed for ${filepath}:`, error.message);
+    return false;
+  }
+};
+
+/**
+ * Parses the date from the event date text.
+ * 
+ * @param {string} dateText - The raw date text extracted from the page.
+ * @param {string} pageUrl - The URL of the current page to extract the year.
+ * @returns {string|null} - The formatted date in 'YYYY-MM-DD' format or null if parsing fails.
+ */
 const parseDate = (dateText, pageUrl) => {
   const dateMatch = dateText.match(/(\d{1,2})月(\d{1,2})日/);
   if (dateMatch) {
@@ -104,11 +173,16 @@ const parseDate = (dateText, pageUrl) => {
   return null;
 };
 
-// Function to parse price data from the price text
+/**
+ * Parses the price data from the price text.
+ * 
+ * @param {string} priceText - The raw price text extracted from the page.
+ * @returns {Array} - An array of price objects.
+ */
 const parsePriceData = (priceText) => {
   const prices = [];
   // Adjusted regex to capture price tier (optional) and amount
-  const priceRegex = /(?:\b(ADV|DOOR|STUDENT|TICKET|ticke)?\b)?\s*￥?([\d,]+)-?/gi;
+  const priceRegex = /(?:\b(ADV|DOOR|STUDENT|TICKET|General)?\b)?\s*￥?([\d,]+)/gi;
   let match;
 
   while ((match = priceRegex.exec(priceText)) !== null) {
@@ -124,13 +198,112 @@ const parsePriceData = (priceText) => {
   return prices;
 };
 
+/**
+ * Assigns categories based on keywords in the title and description.
+ * @param {string} title - The event title.
+ * @param {string} description - The event description.
+ * @returns {Array} - An array of categories.
+ */
+const assignCategories = (title, description) => {
+  const categories = [];
+  const categoryKeywords = {
+    Music: ['music', 'concert', 'live'],
+    Theatre: ['theatre', 'drama', 'play'],
+    Dance: ['dance', 'ballet', 'b-boy'],
+    Art: ['art', 'exhibition', 'gallery'],
+    Workshop: ['workshop', 'seminar', 'class'],
+    Festival: ['festival', 'fete', 'celebration'],
+    Family: ['family', 'kids', 'children'],
+    Wellness: ['wellness', 'yoga', 'meditation'],
+    Sports: ['sports', 'marathon', 'competition'],
+  };
+
+  Object.keys(categoryKeywords).forEach((category) => {
+    const keywords = categoryKeywords[category];
+    const regex = new RegExp(`\\b(${keywords.join('|')})\\b`, 'i');
+    if (regex.test(title) || regex.test(description)) {
+      categories.push(category);
+    }
+  });
+
+  return categories;
+};
+
+/**
+ * Assigns tags based on keywords in the title and description.
+ * @param {string} title - The event title.
+ * @param {string} description - The event description.
+ * @returns {Array} - An array of tags.
+ */
+const assignTags = (title, description) => {
+  const tags = [];
+  const tagKeywords = {
+    'Classical Music': ['classical', 'symphony', 'opera'],
+    'Jazz': ['jazz'],
+    'Rock': ['rock', 'metal', 'alternative'],
+    'Ballet': ['ballet'],
+    'Modern Dance': ['modern dance', 'contemporary'],
+    'Drama': ['drama', 'play'],
+    'Comedy': ['comedy', 'stand-up'],
+    'Art Exhibition': ['exhibition', 'gallery'],
+    'Photography': ['photography'],
+    'Workshop': ['workshop', 'seminar'],
+    // Add more tags as needed
+  };
+
+  Object.keys(tagKeywords).forEach((tag) => {
+    const keywords = tagKeywords[tag];
+    const regex = new RegExp(`\\b(${keywords.join('|')})\\b`, 'i');
+    if (regex.test(title) || regex.test(description)) {
+      tags.push(tag);
+    }
+  });
+
+  return tags;
+};
+
+/**
+ * Validates that the file at the given path is a valid image.
+ * @param {string} filepath - The path to the image file.
+ * @returns {Promise<boolean>} - Returns true if valid, false otherwise.
+ */
+
+
+/**
+ * Main function to scrape Kyoto Gattaca event data.
+ * Downloads images, prevents duplicates, and saves event data.
+ * 
+ * @returns {Promise<Array>} - An array of event objects with updated local image URLs.
+ */
 const scrapeKyotoGattaca = async () => {
+  // Define the site identifier for image storage
+  const siteIdentifier = 'kyoto_gattaca';
+
+  // Define the directory where images will be saved
+  // Navigate one level up from 'node_scripts' to 'kyoture'
+  const imagesDir = path.join(__dirname, '..', 'public', 'images', 'events', siteIdentifier);
+
+  // Create the directory if it doesn't exist
+  if (!fs.existsSync(imagesDir)) {
+    fs.mkdirSync(imagesDir, { recursive: true });
+    console.log(`Created directory: ${imagesDir}`);
+  } else {
+    console.log(`Directory already exists: ${imagesDir}`);
+  }
+
+  // Initialize concurrency limiter
+  const limit = pLimit(5); // Limit to 5 concurrent downloads
+
+  // Launch Puppeteer with necessary options
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
+
   const page = await browser.newPage();
   await page.setViewport({ width: 1280, height: 800 });
+  
+  // Set a realistic user agent
   await page.setUserAgent(
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
   );
@@ -138,31 +311,16 @@ const scrapeKyotoGattaca = async () => {
   try {
     console.log('Starting to scrape Kyoto Gattaca Schedule pages...');
     const eventsData = [];
-    let currentPageUrl = 'http://kyoto-gattaca.jp/schedule/2024/11.html';
+    let currentPageUrl = 'http://kyoto-gattaca.jp/schedule/2024/11.html'; // Starting page
     const visitedUrls = new Set();
-    const siteIdentifier = 'kyoto_gattaca'; // For image storage
 
     while (currentPageUrl && !visitedUrls.has(currentPageUrl)) {
       console.log(`Navigating to ${currentPageUrl}`);
-      await page.goto(currentPageUrl, { waitUntil: 'networkidle0' });
+      await page.goto(currentPageUrl, { waitUntil: 'networkidle0', timeout: 60000 }); // 60 seconds timeout
 
-      // Wait for images to load
-      await page.evaluate(async () => {
-        const selectors = Array.from(document.images).map((img) => img.src);
-        await Promise.all(
-          selectors.map(
-            (src) =>
-              new Promise((resolve) => {
-                const img = new Image();
-                img.src = src;
-                img.onload = resolve;
-                img.onerror = resolve;
-              })
-          )
-        );
-      });
+      // Wait for the page content to load
+      await delay(2000); // Wait for 2 seconds
 
-      await delay(2000);
       visitedUrls.add(currentPageUrl);
 
       console.log('On the Schedule page.');
@@ -173,15 +331,18 @@ const scrapeKyotoGattaca = async () => {
         break;
       }
 
+      // Select all event elements
       const eventElements = await page.$$('div.schedule');
 
-      for (const eventElement of eventElements) {
+      // Collect download promises with concurrency control
+      const downloadPromises = eventElements.map(eventElement => limit(async () => {
         try {
           const hasDate = (await eventElement.$('h2.month_date')) !== null;
-          if (!hasDate) continue;
+          if (!hasDate) return;
 
           const dateText = await eventElement.$eval('h2.month_date', (el) => el.textContent.trim());
           const dateStr = parseDate(dateText, page.url());
+
           let title = await eventElement.$eval('h3', (el) => el.innerText.trim());
           title = title.replace(/\n+/g, ' ').trim();
 
@@ -280,8 +441,12 @@ const scrapeKyotoGattaca = async () => {
 
             // Download the image and get the local URL
             const localImageUrl = imageUrl && imageUrl !== 'No image available'
-              ? await downloadImage(imageUrl, siteIdentifier)
+              ? await downloadImage(imageUrl, siteIdentifier, imagesDir)
               : '/images/events/placeholder.jpg'; // Ensure this placeholder exists
+
+            // Assign categories and tags
+            const categories = assignCategories(title, description);
+            const tags = assignTags(title, description);
 
             const eventInfo = {
               title: title,
@@ -301,8 +466,8 @@ const scrapeKyotoGattaca = async () => {
               organization: 'Kyoto Gattaca',
               description: description.trim(),
               event_link: currentPageUrl,
-              categories: [], // Add logic to populate based on title/description
-              tags: [], // Add logic to populate based on title/description
+              categories: categories,
+              tags: tags,
               site: siteIdentifier,
             };
 
@@ -312,8 +477,12 @@ const scrapeKyotoGattaca = async () => {
         } catch (error) {
           console.error('Error extracting event data:', error);
         }
-      } // End of for loop
+      }));
 
+      // Await all download promises
+      await Promise.all(downloadPromises);
+
+      // Handle pagination: find the 'Next' button/link
       const nextLinkHref = await page.evaluate(() => {
         const areaElements = document.querySelectorAll('map[name="Map"] area');
         for (let area of areaElements) {
@@ -340,6 +509,11 @@ const scrapeKyotoGattaca = async () => {
 
     console.log('Final cleaned event data:', eventsData);
     await browser.close();
+
+    // Save the data to a JSON file for manual inspection
+    fs.writeFileSync('kyoto_gattaca_events.json', JSON.stringify(eventsData, null, 2));
+    console.log('Data saved to kyoto_gattaca_events.json');
+
     return eventsData.map((event) => ({ ...event, site: siteIdentifier }));
   } catch (error) {
     console.error('Error during scraping:', error);
@@ -350,6 +524,7 @@ const scrapeKyotoGattaca = async () => {
 
 export default scrapeKyotoGattaca;
 
+// If the script is run directly, execute the scraping function
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   (async () => {
     try {

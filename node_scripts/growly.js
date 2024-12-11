@@ -4,9 +4,14 @@ import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
+import path from 'path'; // **Added Import**
 import fs from 'fs';
 import dotenv from 'dotenv';
 import winston from 'winston';
+import crypto from 'crypto';
+import axios from 'axios';
+// If you intend to use p-limit for concurrency, ensure it's installed and uncomment the line below
+// import pLimit from 'p-limit';
 
 // Load environment variables from .env file if present
 dotenv.config();
@@ -43,6 +48,105 @@ const isValidTime = (timeStr) => {
 const __filenameESM = fileURLToPath(import.meta.url);
 const __dirnameESM = dirname(__filenameESM);
 
+/**
+ * Utility function to generate a SHA256 hash of a given string.
+ * @param {string} str - The input string to hash.
+ * @returns {string} - The resulting SHA256 hash in hexadecimal format.
+ */
+const generateHash = (str) => {
+  return crypto.createHash('sha256').update(str).digest('hex');
+};
+
+/**
+ * Downloads an image from the given URL and saves it locally.
+ * Ensures that images are saved with unique filenames based on their URL hashes.
+ * Prevents duplicate downloads by checking existing files.
+ * 
+ * @param {string} imageUrl - The URL of the image to download.
+ * @param {string} site - The site identifier (e.g., 'growly').
+ * @param {string} imagesDir - The directory where images are saved.
+ * @param {number} retries - Number of retry attempts for downloading.
+ * @returns {Promise<string>} - The relative URL of the saved image.
+ */
+const downloadImage = async (imageUrl, site, imagesDir, retries = 3) => {
+  try {
+    if (!imageUrl || imageUrl === 'No image available') {
+      logger.warn('No valid image URL provided. Using placeholder.');
+      return '/images/events/growly/placeholder.jpg'; // Ensure this placeholder exists
+    }
+
+    // Ensure the image URL is absolute
+    const absoluteImageUrl = imageUrl.startsWith('http')
+      ? imageUrl
+      : `https://growly.net${imageUrl.startsWith('/') ? '' : '/'}${imageUrl.replace('../', '')}`;
+
+    logger.info(`Downloading image: ${absoluteImageUrl}`);
+
+    // Parse the URL to remove query parameters for consistent hashing
+    const parsedUrl = new URL(absoluteImageUrl);
+    const normalizedUrl = `${parsedUrl.origin}${parsedUrl.pathname}`; // Excludes query params
+
+    // Generate a unique filename using SHA256 hash of the normalized image URL
+    const imageHash = generateHash(normalizedUrl);
+    let extension = path.extname(parsedUrl.pathname) || '.jpg'; // Handle URLs without extensions
+
+    // If extension is not valid, attempt to get it from Content-Type
+    if (!['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'].includes(extension.toLowerCase())) {
+      const headResponse = await axios.head(absoluteImageUrl);
+      const contentType = headResponse.headers['content-type'];
+      if (contentType) {
+        const matches = /image\/(jpeg|png|gif|bmp|webp)/.exec(contentType);
+        if (matches && matches[1]) {
+          extension = `.${matches[1]}`;
+        } else {
+          extension = '.jpg'; // Default extension
+        }
+      } else {
+        extension = '.jpg'; // Default extension
+      }
+    }
+
+    const filename = `${imageHash}${extension}`;
+    const filepath = resolve(imagesDir, filename);
+
+    // Check if the image file already exists
+    if (fs.existsSync(filepath)) {
+      logger.info(`Image already exists locally: ${filename}`);
+      return `/images/events/${site}/${filename}`;
+    }
+
+    // Download the image
+    const response = await axios.get(absoluteImageUrl, { responseType: 'stream', timeout: 30000 }); // 30 seconds timeout
+
+    const writer = fs.createWriteStream(filepath);
+
+    response.data.pipe(writer);
+
+    // Wait for the download to finish
+    await new Promise((resolve, reject) => {
+      writer.on('finish', resolve);
+      writer.on('error', (err) => {
+        logger.error(`Error writing image to ${filepath}: ${err.message}`);
+        reject(err);
+      });
+    });
+
+    logger.info(`Image downloaded and saved to: ${filepath}`);
+
+    // Return the relative URL to the image
+    return `/images/events/${site}/${filename}`;
+  } catch (error) {
+    if (retries > 0) {
+      logger.warn(`Retrying download for image: ${imageUrl}. Attempts left: ${retries}`);
+      await delay(1000); // Wait before retrying
+      return downloadImage(imageUrl, site, imagesDir, retries - 1);
+    }
+    logger.error(`Failed to download image after retries: ${imageUrl}. Error: ${error.message}`);
+    // Return path to a placeholder image
+    return '/images/events/growly/placeholder.jpg'; // Ensure this placeholder exists
+  }
+};
+
 // Helper function to resolve URLs with enhanced logging
 const resolveUrl = (base, relative) => {
   try {
@@ -71,15 +175,33 @@ const resolveUrl = (base, relative) => {
 // Ensure screenshots directory exists
 const screenshotDir = resolve(__dirnameESM, 'screenshots');
 if (!fs.existsSync(screenshotDir)) {
-  fs.mkdirSync(screenshotDir);
+  fs.mkdirSync(screenshotDir, { recursive: true });
   logger.info(`Created screenshots directory at ${screenshotDir}`);
+} else {
+  logger.info(`Screenshots directory already exists at ${screenshotDir}`);
 }
 
 // Main scraping function for Growly Events
 const scrapeGrowly = async () => {
+  // Define the site identifier for image storage
+  const siteIdentifier = 'growly';
+
+  // Define the directory where images will be saved
+  // Navigate one level up from 'node_scripts' to 'kyoture'
+  const imagesDir = resolve(__dirnameESM, '..', 'public', 'images', 'events', siteIdentifier);
+
+  // Create the directory if it doesn't exist
+  if (!fs.existsSync(imagesDir)) {
+    fs.mkdirSync(imagesDir, { recursive: true });
+    logger.info(`Created image directory: ${imagesDir}`);
+  } else {
+    logger.info(`Image directory already exists: ${imagesDir}`);
+  }
+
+  // Launch Puppeteer with necessary options
   const browser = await puppeteer.launch({
     headless: true, // Set to false for debugging
-    slowMo: 100, // Slow down Puppeteer operations by 100ms for better observation
+    slowMo: 0, // Adjust as needed
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 
@@ -209,7 +331,7 @@ const scrapeGrowly = async () => {
                 logger.info(`Navigated to event detail page: ${detailUrl}`);
 
                 // Take a screenshot for debugging
-                await detailPage.screenshot({ path: `screenshots/${external_id}.png`, fullPage: true });
+                await detailPage.screenshot({ path: resolve(screenshotDir, `${external_id}.png`), fullPage: true });
                 logger.info(`Screenshot taken for event "${title}" at screenshots/${external_id}.png`);
 
                 // Wait for image selector
@@ -251,17 +373,24 @@ const scrapeGrowly = async () => {
                     const [start, end] = times;
                     if (isValidTime(start)) {
                       time_start = start;
+                    } else {
+                      logger.warn(`Invalid start time format: ${start} for event: ${title}`);
+                      time_start = null;
                     }
-                    if (isValidTime(end)) {
-                      time_end = end;
+                    if (times[1] && isValidTime(times[1])) {
+                      time_end = times[1];
+                    } else {
+                      logger.warn(`Invalid end time format: ${times[1]} for event: ${title}`);
+                      time_end = null;
                     }
-                    logger.info(`Extracted times for event "${title}": Start - ${time_start}, End - ${time_end}`);
                   } else if (times.length === 1) {
                     const [start] = times;
                     if (isValidTime(start)) {
                       time_start = start;
+                    } else {
+                      logger.warn(`Invalid time format: ${start} for event: ${title}`);
+                      time_start = null;
                     }
-                    logger.info(`Extracted time for event "${title}": Start - ${time_start}`);
                   } else {
                     logger.warn(`Unexpected time format for event "${title}": ${timeText}`);
                   }
@@ -367,6 +496,14 @@ const scrapeGrowly = async () => {
                 continue;
               }
 
+              // Download the image and get the local URL
+              const localImageUrl = finalImageUrl && finalImageUrl !== 'No image available'
+                ? await downloadImage(finalImageUrl, siteIdentifier, imagesDir)
+                : '/images/events/growly/placeholder.jpg'; // Ensure this placeholder exists
+
+              // Update the image_url to the local path
+              eventInfo.image_url = localImageUrl;
+
               monthEventData.push(eventInfo);
               logger.info(`Extracted event data: ${JSON.stringify(eventInfo, null, 2)}`);
             } catch (error) {
@@ -420,6 +557,14 @@ const scrapeGrowly = async () => {
       allEventData.push(...monthEvents);
       // Move to the next month
       ({ year, month } = incrementMonth(year, month));
+      // Optional: Implement a limit to prevent infinite scraping
+      // For example, scrape only up to 12 months ahead
+      if (allEventData.length > 1000) { // Adjust as needed
+        logger.warn('Scraped a large number of events. Stopping to prevent excessive scraping.');
+        break;
+      }
+      // Optional: Delay between scraping months to respect server load
+      await delay(2000); // 2 seconds
     }
 
     logger.info(`Total events scraped: ${allEventData.length}`);
@@ -436,7 +581,10 @@ const scrapeGrowly = async () => {
   }
 };
 
-// Execute the scraper and save data if run directly
+// Export the scraping function
+export default scrapeGrowly;
+
+// If the script is run directly, execute the scraping function
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   (async () => {
     try {
@@ -447,9 +595,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         const outputPath = resolve(__dirnameESM, 'growly_events.json');
         fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
         logger.info(`Data saved to ${outputPath}`);
-        // TODO: Send data to backend if needed
-        // Example:
-        // await sendToBackend(data);
       } else {
         logger.warn('No data scraped for site: growly');
       }
@@ -459,5 +604,3 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     }
   })();
 }
-
-export default scrapeGrowly;

@@ -76,3 +76,431 @@
 2024-11-25 20:21:42 [INFO]: Page loaded.
 2024-11-25 20:21:42 [INFO]: No events found on this page.
 2024-11-25 20:21:42 [INFO]: Browser closed.
+2024-12-11 20:42:50 [INFO]: Browser launched.
+2024-12-11 20:42:50 [INFO]: New page opened.
+2024-12-11 20:42:50 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/
+2024-12-11 20:42:53 [INFO]: Page loaded.
+2024-12-11 20:42:53 [INFO]: Found 5 event links on page: https://www.kac.or.jp/events/month/
+2024-12-11 20:42:53 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-12-11 20:42:56 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-12-11 20:42:56 [INFO]: Processing event: https://www.kac.or.jp/events/20240904/
+2024-12-11 20:42:58 [INFO]: Extracted event: Dr. Holiday Laboratory『想像の犠牲』
+2024-12-11 20:42:58 [INFO]: Processing event: https://www.kac.or.jp/events/20241215/
+2024-12-11 20:43:00 [INFO]: Extracted event: 💙💛STUDIO OPEN DAY vol.6💛💙
+2024-12-11 20:43:00 [INFO]: Processing event: https://www.kac.or.jp/events/20240519/
+2024-12-11 20:43:02 [INFO]: Extracted event: 明倫レコード倶楽部 其の85「生の会」
+2024-12-11 20:43:02 [INFO]: Processing event: https://www.kac.or.jp/events/20241113/
+2024-12-11 20:43:05 [INFO]: Extracted event: ルサンチカ『まさらまち』
+2024-12-11 20:43:05 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202501/
+2024-12-11 20:43:06 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202501/
+2024-12-11 20:43:08 [INFO]: Page loaded.
+2024-12-11 20:43:08 [INFO]: Found 1 event links on page: https://www.kac.or.jp/events/month/202501/
+2024-12-11 20:43:08 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 20:43:10 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 20:43:10 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202502/
+2024-12-11 20:43:11 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202502/
+2024-12-11 20:43:13 [INFO]: Page loaded.
+2024-12-11 20:43:13 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202502/
+2024-12-11 20:43:13 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 20:43:17 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 20:43:17 [INFO]: Processing event: https://www.kac.or.jp/events/20241205/
+2024-12-11 20:43:20 [INFO]: Extracted event: 民俗芸能交流会vol.4
+2024-12-11 20:43:20 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202503/
+2024-12-11 20:43:21 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202503/
+2024-12-11 20:43:23 [INFO]: Page loaded.
+2024-12-11 20:43:23 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202503/
+2024-12-11 20:43:23 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 20:43:26 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 20:43:26 [INFO]: Processing event: https://www.kac.or.jp/events/%e7%ac%ac277%e5%9b%9e%e5%b8%82%e6%b0%91%e7%8b%82%e8%a8%80%e4%bc%9a%ef%bc%88%e4%bb%a4%e5%92%8c%ef%bc%97%e5%b9%b4%ef%bc%93%e6%9c%88%ef%bc%97%e6%97%a5%ef%bc%88%e9%87%91%ef%bc%89%e9%96%8b%e5%82%ac/
+2024-12-11 20:43:29 [INFO]: Extracted event: 第277回市民狂言会（令和７年３月７日（金）開催）
+2024-12-11 20:43:29 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202504/
+2024-12-11 20:43:30 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202504/
+2024-12-11 20:43:31 [INFO]: Page loaded.
+2024-12-11 20:43:31 [INFO]: No events found on this page.
+2024-12-11 20:43:32 [INFO]: Browser closed.
+2024-12-11 20:47:13 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:47:13 [INFO]: Created image directory: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-11 20:47:16 [INFO]: Browser launched.
+2024-12-11 20:47:16 [INFO]: New page opened.
+2024-12-11 20:47:16 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/
+2024-12-11 20:47:18 [INFO]: Page loaded.
+2024-12-11 20:47:19 [INFO]: Found 5 event links on page: https://www.kac.or.jp/events/month/
+2024-12-11 20:47:19 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-12-11 20:47:21 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:47:21 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-12-11 20:47:21 [INFO]: Processing event: https://www.kac.or.jp/events/20240904/
+2024-12-11 20:47:24 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:47:24 [INFO]: Extracted event: Dr. Holiday Laboratory『想像の犠牲』
+2024-12-11 20:47:24 [INFO]: Processing event: https://www.kac.or.jp/events/20241215/
+2024-12-11 20:48:01 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:48:01 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-11 20:48:02 [INFO]: Browser launched.
+2024-12-11 20:48:02 [INFO]: New page opened.
+2024-12-11 20:48:02 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/
+2024-12-11 20:48:05 [INFO]: Page loaded.
+2024-12-11 20:48:05 [INFO]: Found 5 event links on page: https://www.kac.or.jp/events/month/
+2024-12-11 20:48:05 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-12-11 20:48:08 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:08 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-12-11 20:48:08 [INFO]: Processing event: https://www.kac.or.jp/events/20240904/
+2024-12-11 20:48:10 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:10 [INFO]: Extracted event: Dr. Holiday Laboratory『想像の犠牲』
+2024-12-11 20:48:10 [INFO]: Processing event: https://www.kac.or.jp/events/20241215/
+2024-12-11 20:48:12 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:12 [INFO]: Extracted event: 💙💛STUDIO OPEN DAY vol.6💛💙
+2024-12-11 20:48:12 [INFO]: Processing event: https://www.kac.or.jp/events/20240519/
+2024-12-11 20:48:14 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:14 [INFO]: Extracted event: 明倫レコード倶楽部 其の85「生の会」
+2024-12-11 20:48:14 [INFO]: Processing event: https://www.kac.or.jp/events/20241113/
+2024-12-11 20:48:16 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:16 [INFO]: Extracted event: ルサンチカ『まさらまち』
+2024-12-11 20:48:16 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202501/
+2024-12-11 20:48:17 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202501/
+2024-12-11 20:48:19 [INFO]: Page loaded.
+2024-12-11 20:48:19 [INFO]: Found 1 event links on page: https://www.kac.or.jp/events/month/202501/
+2024-12-11 20:48:19 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 20:48:22 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:22 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 20:48:22 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202502/
+2024-12-11 20:48:23 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202502/
+2024-12-11 20:48:24 [INFO]: Page loaded.
+2024-12-11 20:48:24 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202502/
+2024-12-11 20:48:24 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 20:48:27 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:27 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 20:48:27 [INFO]: Processing event: https://www.kac.or.jp/events/20241205/
+2024-12-11 20:48:29 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:29 [INFO]: Extracted event: 民俗芸能交流会vol.4
+2024-12-11 20:48:29 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202503/
+2024-12-11 20:48:30 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202503/
+2024-12-11 20:48:31 [INFO]: Page loaded.
+2024-12-11 20:48:31 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202503/
+2024-12-11 20:48:31 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 20:48:34 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:34 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 20:48:34 [INFO]: Processing event: https://www.kac.or.jp/events/%e7%ac%ac277%e5%9b%9e%e5%b8%82%e6%b0%91%e7%8b%82%e8%a8%80%e4%bc%9a%ef%bc%88%e4%bb%a4%e5%92%8c%ef%bc%97%e5%b9%b4%ef%bc%93%e6%9c%88%ef%bc%97%e6%97%a5%ef%bc%88%e9%87%91%ef%bc%89%e9%96%8b%e5%82%ac/
+2024-12-11 20:48:36 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:48:36 [INFO]: Extracted event: 第277回市民狂言会（令和７年３月７日（金）開催）
+2024-12-11 20:48:36 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202504/
+2024-12-11 20:48:37 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202504/
+2024-12-11 20:48:38 [INFO]: Page loaded.
+2024-12-11 20:48:38 [INFO]: No events found on this page.
+2024-12-11 20:48:38 [INFO]: Browser closed.
+2024-12-11 20:56:50 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 20:56:50 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-11 20:57:02 [INFO]: Browser launched.
+2024-12-11 20:57:04 [INFO]: New page opened.
+2024-12-11 20:57:04 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/
+2024-12-11 20:57:08 [INFO]: Page loaded.
+2024-12-11 20:57:09 [INFO]: Found 5 event links on page: https://www.kac.or.jp/events/month/
+2024-12-11 20:57:09 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-12-11 20:57:12 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:12 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-12-11 20:57:12 [INFO]: Processing event: https://www.kac.or.jp/events/20240904/
+2024-12-11 20:57:15 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:15 [INFO]: Extracted event: Dr. Holiday Laboratory『想像の犠牲』
+2024-12-11 20:57:15 [INFO]: Processing event: https://www.kac.or.jp/events/20241215/
+2024-12-11 20:57:18 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:18 [INFO]: Extracted event: 💙💛STUDIO OPEN DAY vol.6💛💙
+2024-12-11 20:57:18 [INFO]: Processing event: https://www.kac.or.jp/events/20240519/
+2024-12-11 20:57:20 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:20 [INFO]: Extracted event: 明倫レコード倶楽部 其の85「生の会」
+2024-12-11 20:57:20 [INFO]: Processing event: https://www.kac.or.jp/events/20241113/
+2024-12-11 20:57:23 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:23 [INFO]: Extracted event: ルサンチカ『まさらまち』
+2024-12-11 20:57:23 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202501/
+2024-12-11 20:57:24 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202501/
+2024-12-11 20:57:25 [INFO]: Page loaded.
+2024-12-11 20:57:26 [INFO]: Found 1 event links on page: https://www.kac.or.jp/events/month/202501/
+2024-12-11 20:57:26 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 20:57:28 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:28 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 20:57:28 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202502/
+2024-12-11 20:57:29 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202502/
+2024-12-11 20:57:30 [INFO]: Page loaded.
+2024-12-11 20:57:31 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202502/
+2024-12-11 20:57:31 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 20:57:33 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:33 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 20:57:33 [INFO]: Processing event: https://www.kac.or.jp/events/20241205/
+2024-12-11 20:57:35 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:35 [INFO]: Extracted event: 民俗芸能交流会vol.4
+2024-12-11 20:57:35 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202503/
+2024-12-11 20:57:36 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202503/
+2024-12-11 20:57:38 [INFO]: Page loaded.
+2024-12-11 20:57:38 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202503/
+2024-12-11 20:57:38 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 20:57:40 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:40 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 20:57:40 [INFO]: Processing event: https://www.kac.or.jp/events/%e7%ac%ac277%e5%9b%9e%e5%b8%82%e6%b0%91%e7%8b%82%e8%a8%80%e4%bc%9a%ef%bc%88%e4%bb%a4%e5%92%8c%ef%bc%97%e5%b9%b4%ef%bc%93%e6%9c%88%ef%bc%97%e6%97%a5%ef%bc%88%e9%87%91%ef%bc%89%e9%96%8b%e5%82%ac/
+2024-12-11 20:57:42 [ERROR]: Error extracting event details: eventPage.waitForSelector is not a function
+2024-12-11 20:57:42 [INFO]: Extracted event: 第277回市民狂言会（令和７年３月７日（金）開催）
+2024-12-11 20:57:42 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202504/
+2024-12-11 20:57:43 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202504/
+2024-12-11 20:57:45 [INFO]: Page loaded.
+2024-12-11 20:57:45 [INFO]: No events found on this page.
+2024-12-11 20:57:46 [INFO]: Browser closed.
+2024-12-11 21:00:36 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-11 21:00:36 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-11 21:00:39 [INFO]: Browser launched.
+2024-12-11 21:00:40 [INFO]: New page opened.
+2024-12-11 21:00:40 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/
+2024-12-11 21:00:43 [INFO]: Page loaded.
+2024-12-11 21:00:43 [INFO]: Found 5 event links on page: https://www.kac.or.jp/events/month/
+2024-12-11 21:00:43 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-12-11 21:00:45 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20240913/
+2024-12-11 21:01:20 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:01:20 [INFO]: Detail page title extracted: 展覧会「Body Buddy Baby」
+2024-12-11 21:01:20 [INFO]: Detail page description extracted.
+2024-12-11 21:01:20 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/09/BBB_web_img-724x1024.jpg
+2024-12-11 21:01:21 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center/48477ebc9f70e4a7676273c350a63a46f081f67c51b88cec8039327b3dc69471.jpg
+2024-12-11 21:01:21 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/48477ebc9f70e4a7676273c350a63a46f081f67c51b88cec8039327b3dc69471.jpg
+2024-12-11 21:01:21 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-12-11 21:01:21 [INFO]: Processing event: https://www.kac.or.jp/events/20240904/
+2024-12-11 21:01:23 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20240904/
+2024-12-11 21:01:58 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:01:58 [INFO]: Detail page title extracted: Dr. Holiday Laboratory『想像の犠牲』
+2024-12-11 21:01:58 [INFO]: Detail page description extracted.
+2024-12-11 21:01:58 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/09/%E3%80%90%E5%9F%BA%E6%9C%AC_%E8%BB%BD%E9%87%8F%E3%80%91%E3%80%8C%E6%83%B3%E5%83%8F%E3%81%AE%E7%8A%A0%E7%89%B2%E3%80%8DWeb%E3%82%B5%E3%83%A0%E3%83%8D_0905-1024x576.jpg
+2024-12-11 21:01:59 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center/e78873247380c595894a74742892443393a14fa4b19b7a0504eb49d2ce1831ad.jpg
+2024-12-11 21:01:59 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/e78873247380c595894a74742892443393a14fa4b19b7a0504eb49d2ce1831ad.jpg
+2024-12-11 21:01:59 [INFO]: Extracted event: Dr. Holiday Laboratory『想像の犠牲』
+2024-12-11 21:01:59 [INFO]: Processing event: https://www.kac.or.jp/events/20241215/
+2024-12-11 21:02:02 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241215/
+2024-12-11 21:02:36 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:02:36 [INFO]: Detail page title extracted: 💙💛STUDIO OPEN DAY vol.6💛💙
+2024-12-11 21:02:36 [INFO]: Detail page description extracted.
+2024-12-11 21:02:36 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/%E8%A1%A8-730x1024.jpg
+2024-12-11 21:02:36 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center/c928df7330a8e3575d529733bea86e227c7de54533a196e9bd24b4237383cfa1.jpg
+2024-12-11 21:02:36 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/c928df7330a8e3575d529733bea86e227c7de54533a196e9bd24b4237383cfa1.jpg
+2024-12-11 21:02:36 [INFO]: Extracted event: 💙💛STUDIO OPEN DAY vol.6💛💙
+2024-12-11 21:02:36 [INFO]: Processing event: https://www.kac.or.jp/events/20240519/
+2024-12-11 21:02:38 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20240519/
+2024-12-11 21:03:12 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:03:12 [INFO]: Detail page title extracted: 明倫レコード倶楽部 其の85「生の会」
+2024-12-11 21:03:12 [INFO]: Detail page description extracted.
+2024-12-11 21:03:12 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/05/1_MEIRIN24_FRONT_240813-724x1024.jpg
+2024-12-11 21:03:12 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center/beda1a759416ea18a5ea5cf905e9241c8add4628e275f1423f4730046de2d52e.jpg
+2024-12-11 21:03:12 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/beda1a759416ea18a5ea5cf905e9241c8add4628e275f1423f4730046de2d52e.jpg
+2024-12-11 21:03:13 [INFO]: Extracted event: 明倫レコード倶楽部 其の85「生の会」
+2024-12-11 21:03:13 [INFO]: Processing event: https://www.kac.or.jp/events/20241113/
+2024-12-11 21:03:15 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241113/
+2024-12-11 21:03:49 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:03:49 [INFO]: Detail page title extracted: ルサンチカ『まさらまち』
+2024-12-11 21:03:49 [INFO]: Detail page description extracted.
+2024-12-11 21:03:49 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/1-1-725x1024.jpeg
+2024-12-11 21:03:50 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center/7dfd437eaa034eb8a7b92fd5d17d9bf15549c700f59400981faf6cd4eb1bc978.jpeg
+2024-12-11 21:03:50 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/7dfd437eaa034eb8a7b92fd5d17d9bf15549c700f59400981faf6cd4eb1bc978.jpeg
+2024-12-11 21:03:50 [INFO]: Extracted event: ルサンチカ『まさらまち』
+2024-12-11 21:03:50 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202501/
+2024-12-11 21:03:51 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202501/
+2024-12-11 21:03:53 [INFO]: Page loaded.
+2024-12-11 21:03:53 [INFO]: Found 1 event links on page: https://www.kac.or.jp/events/month/202501/
+2024-12-11 21:03:53 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 21:03:55 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241127/
+2024-12-11 21:04:30 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:04:30 [INFO]: Detail page title extracted: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 21:04:30 [INFO]: Detail page description extracted.
+2024-12-11 21:04:30 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/1_%E3%83%A1%E3%82%A4%E3%83%B3-1024x683.jpg
+2024-12-11 21:04:30 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center/3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-11 21:04:30 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-11 21:04:30 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 21:04:30 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202502/
+2024-12-11 21:04:31 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202502/
+2024-12-11 21:04:33 [INFO]: Page loaded.
+2024-12-11 21:04:34 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202502/
+2024-12-11 21:04:34 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 21:04:37 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241127/
+2024-12-11 21:05:14 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:05:15 [INFO]: Detail page title extracted: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 21:05:15 [INFO]: Detail page description extracted.
+2024-12-11 21:05:15 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/1_%E3%83%A1%E3%82%A4%E3%83%B3-1024x683.jpg
+2024-12-11 21:05:15 [INFO]: Image already exists locally: 3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-11 21:05:15 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-11 21:05:15 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 21:05:15 [INFO]: Processing event: https://www.kac.or.jp/events/20241205/
+2024-12-11 21:05:18 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241205/
+2024-12-11 21:05:53 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:05:53 [INFO]: Detail page title extracted: 民俗芸能交流会vol.4
+2024-12-11 21:05:53 [INFO]: Detail page description extracted.
+2024-12-11 21:05:53 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/12/vol.4_%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.png
+2024-12-11 21:05:53 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center/c92ba1b631cf2e20492940ce86289c498fe6ff8785b6afda85f91b333bffc12e.png
+2024-12-11 21:05:53 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/c92ba1b631cf2e20492940ce86289c498fe6ff8785b6afda85f91b333bffc12e.png
+2024-12-11 21:05:54 [INFO]: Extracted event: 民俗芸能交流会vol.4
+2024-12-11 21:05:54 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202503/
+2024-12-11 21:05:55 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202503/
+2024-12-11 21:05:57 [INFO]: Page loaded.
+2024-12-11 21:05:57 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202503/
+2024-12-11 21:05:57 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-11 21:05:59 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241127/
+2024-12-11 21:06:34 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:06:35 [INFO]: Detail page title extracted: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 21:06:35 [INFO]: Detail page description extracted.
+2024-12-11 21:06:35 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/1_%E3%83%A1%E3%82%A4%E3%83%B3-1024x683.jpg
+2024-12-11 21:06:35 [INFO]: Image already exists locally: 3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-11 21:06:35 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-11 21:06:35 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-11 21:06:35 [INFO]: Processing event: https://www.kac.or.jp/events/%e7%ac%ac277%e5%9b%9e%e5%b8%82%e6%b0%91%e7%8b%82%e8%a8%80%e4%bc%9a%ef%bc%88%e4%bb%a4%e5%92%8c%ef%bc%97%e5%b9%b4%ef%bc%93%e6%9c%88%ef%bc%97%e6%97%a5%ef%bc%88%e9%87%91%ef%bc%89%e9%96%8b%e5%82%ac/
+2024-12-11 21:06:38 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/%e7%ac%ac277%e5%9b%9e%e5%b8%82%e6%b0%91%e7%8b%82%e8%a8%80%e4%bc%9a%ef%bc%88%e4%bb%a4%e5%92%8c%ef%bc%97%e5%b9%b4%ef%bc%93%e6%9c%88%ef%bc%97%e6%97%a5%ef%bc%88%e9%87%91%ef%bc%89%e9%96%8b%e5%82%ac/
+2024-12-11 21:07:14 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-11 21:07:14 [INFO]: Detail page title extracted: 第277回市民狂言会（令和７年３月７日（金）開催）
+2024-12-11 21:07:14 [INFO]: Detail page description extracted.
+2024-12-11 21:07:14 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/03/01-5-1000x1000-1.jpg
+2024-12-11 21:07:14 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center/cdc0b0752f1956e2a14f0f301e151394574981c2a20ada2da4bbff4f1d413aae.jpg
+2024-12-11 21:07:14 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/cdc0b0752f1956e2a14f0f301e151394574981c2a20ada2da4bbff4f1d413aae.jpg
+2024-12-11 21:07:18 [INFO]: Extracted event: 第277回市民狂言会（令和７年３月７日（金）開催）
+2024-12-11 21:07:18 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202504/
+2024-12-11 21:07:19 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202504/
+2024-12-11 21:07:24 [INFO]: Page loaded.
+2024-12-11 21:07:24 [INFO]: No events found on this page.
+2024-12-11 21:07:40 [INFO]: Browser closed.
+2024-12-12 02:54:45 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 02:54:45 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 02:54:48 [INFO]: Browser launched.
+2024-12-12 02:54:49 [INFO]: New page opened.
+2024-12-12 02:54:49 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/
+2024-12-12 02:54:51 [INFO]: Page loaded.
+2024-12-12 02:54:52 [INFO]: Found 5 event links on page: https://www.kac.or.jp/events/month/
+2024-12-12 02:54:52 [INFO]: Processing event: https://www.kac.or.jp/events/20240913/
+2024-12-12 02:54:54 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20240913/
+2024-12-12 02:55:28 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 02:55:28 [INFO]: Detail page title extracted: 展覧会「Body Buddy Baby」
+2024-12-12 02:55:28 [INFO]: Detail page description extracted.
+2024-12-12 02:55:28 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/09/BBB_web_img-724x1024.jpg
+2024-12-12 02:55:28 [INFO]: Image already exists locally: 48477ebc9f70e4a7676273c350a63a46f081f67c51b88cec8039327b3dc69471.jpg
+2024-12-12 02:55:28 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/48477ebc9f70e4a7676273c350a63a46f081f67c51b88cec8039327b3dc69471.jpg
+2024-12-12 02:55:28 [INFO]: Extracted event: 展覧会「Body Buddy Baby」
+2024-12-12 02:55:28 [INFO]: Processing event: https://www.kac.or.jp/events/20240904/
+2024-12-12 02:55:31 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20240904/
+2024-12-12 02:56:05 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 02:56:05 [INFO]: Detail page title extracted: Dr. Holiday Laboratory『想像の犠牲』
+2024-12-12 02:56:05 [INFO]: Detail page description extracted.
+2024-12-12 02:56:05 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/09/%E3%80%90%E5%9F%BA%E6%9C%AC_%E8%BB%BD%E9%87%8F%E3%80%91%E3%80%8C%E6%83%B3%E5%83%8F%E3%81%AE%E7%8A%A0%E7%89%B2%E3%80%8DWeb%E3%82%B5%E3%83%A0%E3%83%8D_0905-1024x576.jpg
+2024-12-12 02:56:05 [INFO]: Image already exists locally: e78873247380c595894a74742892443393a14fa4b19b7a0504eb49d2ce1831ad.jpg
+2024-12-12 02:56:05 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/e78873247380c595894a74742892443393a14fa4b19b7a0504eb49d2ce1831ad.jpg
+2024-12-12 02:56:05 [INFO]: Extracted event: Dr. Holiday Laboratory『想像の犠牲』
+2024-12-12 02:56:05 [INFO]: Processing event: https://www.kac.or.jp/events/20241215/
+2024-12-12 02:56:09 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241215/
+2024-12-12 02:56:43 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 02:56:43 [INFO]: Detail page title extracted: 💙💛STUDIO OPEN DAY vol.6💛💙
+2024-12-12 02:56:43 [INFO]: Detail page description extracted.
+2024-12-12 02:56:43 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/%E8%A1%A8-730x1024.jpg
+2024-12-12 02:56:43 [INFO]: Image already exists locally: c928df7330a8e3575d529733bea86e227c7de54533a196e9bd24b4237383cfa1.jpg
+2024-12-12 02:56:43 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/c928df7330a8e3575d529733bea86e227c7de54533a196e9bd24b4237383cfa1.jpg
+2024-12-12 02:56:44 [INFO]: Extracted event: 💙💛STUDIO OPEN DAY vol.6💛💙
+2024-12-12 02:56:44 [INFO]: Processing event: https://www.kac.or.jp/events/20240519/
+2024-12-12 02:56:46 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20240519/
+2024-12-12 02:57:21 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 02:57:21 [INFO]: Detail page title extracted: 明倫レコード倶楽部 其の85「生の会」
+2024-12-12 02:57:21 [INFO]: Detail page description extracted.
+2024-12-12 02:57:21 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/05/1_MEIRIN24_FRONT_240813-724x1024.jpg
+2024-12-12 02:57:21 [INFO]: Image already exists locally: beda1a759416ea18a5ea5cf905e9241c8add4628e275f1423f4730046de2d52e.jpg
+2024-12-12 02:57:21 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/beda1a759416ea18a5ea5cf905e9241c8add4628e275f1423f4730046de2d52e.jpg
+2024-12-12 02:57:21 [INFO]: Extracted event: 明倫レコード倶楽部 其の85「生の会」
+2024-12-12 02:57:21 [INFO]: Processing event: https://www.kac.or.jp/events/20241113/
+2024-12-12 02:57:26 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241113/
+2024-12-12 02:58:02 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 02:58:02 [INFO]: Detail page title extracted: ルサンチカ『まさらまち』
+2024-12-12 02:58:02 [INFO]: Detail page description extracted.
+2024-12-12 02:58:02 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/1-1-725x1024.jpeg
+2024-12-12 02:58:02 [INFO]: Image already exists locally: 7dfd437eaa034eb8a7b92fd5d17d9bf15549c700f59400981faf6cd4eb1bc978.jpeg
+2024-12-12 02:58:02 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/7dfd437eaa034eb8a7b92fd5d17d9bf15549c700f59400981faf6cd4eb1bc978.jpeg
+2024-12-12 02:58:02 [INFO]: Extracted event: ルサンチカ『まさらまち』
+2024-12-12 02:58:02 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202501/
+2024-12-12 02:58:03 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202501/
+2024-12-12 02:58:05 [INFO]: Page loaded.
+2024-12-12 02:58:05 [INFO]: Found 1 event links on page: https://www.kac.or.jp/events/month/202501/
+2024-12-12 02:58:05 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-12 02:58:08 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241127/
+2024-12-12 02:58:42 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 02:58:42 [INFO]: Detail page title extracted: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-12 02:58:42 [INFO]: Detail page description extracted.
+2024-12-12 02:58:42 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/1_%E3%83%A1%E3%82%A4%E3%83%B3-1024x683.jpg
+2024-12-12 02:58:42 [INFO]: Image already exists locally: 3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-12 02:58:42 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-12 02:58:42 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-12 02:58:42 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202502/
+2024-12-12 02:58:43 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202502/
+2024-12-12 02:58:45 [INFO]: Page loaded.
+2024-12-12 02:58:45 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202502/
+2024-12-12 02:58:45 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-12 02:58:47 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241127/
+2024-12-12 02:59:21 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 02:59:21 [INFO]: Detail page title extracted: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-12 02:59:21 [INFO]: Detail page description extracted.
+2024-12-12 02:59:21 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/1_%E3%83%A1%E3%82%A4%E3%83%B3-1024x683.jpg
+2024-12-12 02:59:21 [INFO]: Image already exists locally: 3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-12 02:59:21 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-12 02:59:21 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-12 02:59:21 [INFO]: Processing event: https://www.kac.or.jp/events/20241205/
+2024-12-12 02:59:23 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241205/
+2024-12-12 02:59:58 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 02:59:58 [INFO]: Detail page title extracted: 民俗芸能交流会vol.4
+2024-12-12 02:59:59 [INFO]: Detail page description extracted.
+2024-12-12 02:59:59 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/12/vol.4_%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.png
+2024-12-12 02:59:59 [INFO]: Image already exists locally: c92ba1b631cf2e20492940ce86289c498fe6ff8785b6afda85f91b333bffc12e.png
+2024-12-12 02:59:59 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/c92ba1b631cf2e20492940ce86289c498fe6ff8785b6afda85f91b333bffc12e.png
+2024-12-12 02:59:59 [INFO]: Extracted event: 民俗芸能交流会vol.4
+2024-12-12 02:59:59 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202503/
+2024-12-12 03:00:00 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202503/
+2024-12-12 03:00:02 [INFO]: Page loaded.
+2024-12-12 03:00:02 [INFO]: Found 2 event links on page: https://www.kac.or.jp/events/month/202503/
+2024-12-12 03:00:02 [INFO]: Processing event: https://www.kac.or.jp/events/20241127/
+2024-12-12 03:00:04 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/20241127/
+2024-12-12 03:00:55 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 03:00:55 [INFO]: Detail page title extracted: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-12 03:00:55 [INFO]: Detail page description extracted.
+2024-12-12 03:00:55 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/11/1_%E3%83%A1%E3%82%A4%E3%83%B3-1024x683.jpg
+2024-12-12 03:00:55 [INFO]: Image already exists locally: 3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-12 03:00:55 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/3867d86ebf79a8a745714eaf499174c8e354a458e3539a27994b4d21f3f746f3.jpg
+2024-12-12 03:00:55 [INFO]: Extracted event: 【参加者募集】演劇で思考力とコミュニケーション力を鍛える！ビジネスパーソン向け講座★参加無料★（２０２５年１月~３月）
+2024-12-12 03:00:55 [INFO]: Processing event: https://www.kac.or.jp/events/%e7%ac%ac277%e5%9b%9e%e5%b8%82%e6%b0%91%e7%8b%82%e8%a8%80%e4%bc%9a%ef%bc%88%e4%bb%a4%e5%92%8c%ef%bc%97%e5%b9%b4%ef%bc%93%e6%9c%88%ef%bc%97%e6%97%a5%ef%bc%88%e9%87%91%ef%bc%89%e9%96%8b%e5%82%ac/
+2024-12-12 03:00:58 [INFO]: Extracting detailed data for event: https://www.kac.or.jp/events/%e7%ac%ac277%e5%9b%9e%e5%b8%82%e6%b0%91%e7%8b%82%e8%a8%80%e4%bc%9a%ef%bc%88%e4%bb%a4%e5%92%8c%ef%bc%97%e5%b9%b4%ef%bc%93%e6%9c%88%ef%bc%97%e6%97%a5%ef%bc%88%e9%87%91%ef%bc%89%e9%96%8b%e5%82%ac/
+2024-12-12 03:01:33 [WARN]: Timeout waiting for .ct-inner-960 selector.
+2024-12-12 03:01:33 [INFO]: Detail page title extracted: 第277回市民狂言会（令和７年３月７日（金）開催）
+2024-12-12 03:01:33 [INFO]: Detail page description extracted.
+2024-12-12 03:01:33 [INFO]: Downloading image: https://www.kac.or.jp/wp-content/uploads/2024/03/01-5-1000x1000-1.jpg
+2024-12-12 03:01:33 [INFO]: Image already exists locally: cdc0b0752f1956e2a14f0f301e151394574981c2a20ada2da4bbff4f1d413aae.jpg
+2024-12-12 03:01:33 [INFO]: Image downloaded and updated: /images/events/kyoto_art_center/cdc0b0752f1956e2a14f0f301e151394574981c2a20ada2da4bbff4f1d413aae.jpg
+2024-12-12 03:01:33 [INFO]: Extracted event: 第277回市民狂言会（令和７年３月７日（金）開催）
+2024-12-12 03:01:33 [INFO]: Found next month link: https://www.kac.or.jp/events/month/202504/
+2024-12-12 03:01:34 [INFO]: Navigating to Kyoto Art Center events page: https://www.kac.or.jp/events/month/202504/
+2024-12-12 03:01:36 [INFO]: Page loaded.
+2024-12-12 03:01:36 [INFO]: No events found on this page.
+2024-12-12 03:01:36 [INFO]: Browser closed.
+2024-12-12 03:02:32 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:02:32 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:04:34 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:04:34 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:07:00 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:07:00 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:10:54 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:10:54 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:11:31 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:11:31 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:12:13 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:12:13 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:19:40 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:19:40 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:22:26 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:22:26 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:25:24 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:25:24 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:35:08 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:35:08 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:37:09 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:37:09 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:37:35 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:37:35 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:41:20 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:41:20 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 03:49:52 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 03:49:52 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 04:29:11 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:29:11 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 04:36:36 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:36:36 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 04:42:53 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:42:53 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
+2024-12-12 04:44:31 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 04:44:31 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/kyoto_art_center
