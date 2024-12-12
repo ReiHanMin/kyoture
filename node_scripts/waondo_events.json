@@ -1,24 +1,24 @@
 [
   {
-    "title": "DoDoNight",
-    "date_start": "2024年12月11日 19:00",
-    "date_end": "2024年12月11日 19:00",
+    "title": "和音堂19周年　特別な夜を",
+    "date_start": "2024年12月13日 18:00",
+    "date_end": "2024年12月13日 18:00",
     "venue": "和音堂, 〒615-0032 京都府京都市右京区西院西高田町１９−３ 永芳ビル B1",
-    "image_url": "/images/events/waondo/686055585f4e983e0fdb232ef5606c392f784f299c80b89862e15737cac379ad.jpg",
+    "image_url": "/images/events/waondo/6b344eac681678779cc2cfcf2bfe8a22b2484fc57bc7de0131ae6a9d6f71d312.webp",
     "schedule": [
       {
-        "date": "2024年12月11日 19:00",
+        "date": "2024年12月13日 18:00",
         "time_start": null,
         "time_end": null,
         "special_notes": null
       }
     ],
-    "description": "【OPEN】19:00\n【START】19:30\n【料金】￥1500drink付\n飛び入りオープンマイク",
-    "event_link": "https://www.waondo.net/event-details/dodonight-20",
+    "description": "【OPEN】18:00\n【START】19:00\n【料金】¥2000+2ドリンク\n【出演】FatDaddy(功刀丈弘＆長谷川和宏)/リサトヨ(Lisa & トヨアキ)",
+    "event_link": "https://www.waondo.net/event-details/waondo19shunen-tokubetsunayoruwo",
     "prices": [
       {
         "price_tier": "Tier 1",
-        "amount": "1500",
+        "amount": "2000",
         "currency": "JPY"
       }
     ],
@@ -107,6 +107,35 @@
     "tags": [],
     "ended": false,
     "free": true,
+    "site": "waondo"
+  },
+  {
+    "title": "break through the wall !",
+    "date_start": "2024年12月19日 18:00",
+    "date_end": "2024年12月19日 18:00",
+    "venue": "和音堂, 〒615-0032 京都府京都市右京区西院西高田町１９−３ 永芳ビル B1",
+    "image_url": "/images/events/waondo/798398d8fea4c71834b67114e6271aed57b3676092bc3c1d96b79d7e05badb02.webp",
+    "schedule": [
+      {
+        "date": "2024年12月19日 18:00",
+        "time_start": null,
+        "time_end": null,
+        "special_notes": null
+      }
+    ],
+    "description": "【OPEN】18:00\n【START】19:00\n【料金】¥2000+2ドリンク\n【出演】The Rodelia/at last fool/Haseyan",
+    "event_link": "https://www.waondo.net/event-details/break-through-the-wall",
+    "prices": [
+      {
+        "price_tier": "Tier 1",
+        "amount": "2000",
+        "currency": "JPY"
+      }
+    ],
+    "categories": [],
+    "tags": [],
+    "ended": false,
+    "free": false,
     "site": "waondo"
   },
   {

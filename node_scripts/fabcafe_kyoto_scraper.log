@@ -105,3 +105,168 @@
 2024-12-12 04:36:36 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
 2024-12-12 04:42:53 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
 2024-12-12 04:44:31 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 13:16:28 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 13:22:36 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/fabcafe
+2024-12-12 13:22:37 [INFO]: Browser launched.
+2024-12-12 13:22:37 [INFO]: New page opened.
+2024-12-12 13:22:37 [INFO]: Navigating to FabCafe Kyoto events page...
+2024-12-12 13:22:52 [INFO]: Page loaded.
+2024-12-12 13:22:52 [INFO]: Found 7 events on the listing page.
+2024-12-12 13:22:52 [INFO]: Processing event 1 of 7...
+2024-12-12 13:22:52 [INFO]: Event title extracted: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-12 13:22:57 [INFO]: Detail page title extracted: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-12 13:22:57 [INFO]: Detail page description extracted.
+2024-12-12 13:22:57 [INFO]: Detail page dates extracted: 2024-12-04 to 2024-12-21
+2024-12-12 13:22:57 [INFO]: Detail page times extracted: 11:00 to 19:00
+2024-12-12 13:22:57 [INFO]: Detail page price extracted: General - 4000 JPY
+2024-12-12 13:22:57 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/8d8b9da646908db566c43e3c1b1bb3b1-540x304.jpg
+2024-12-12 13:22:58 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/24e2cf6db7932d2715a0bd5ec4e28f825dfa65a1f6cf4bcb44a4a66b25429a89.jpg
+2024-12-12 13:22:58 [INFO]: Detail page image downloaded: /images/events/fabcafe/24e2cf6db7932d2715a0bd5ec4e28f825dfa65a1f6cf4bcb44a4a66b25429a89.jpg
+2024-12-12 13:22:58 [INFO]: Extracted event: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-12 13:22:58 [INFO]: Processing event 2 of 7...
+2024-12-12 13:22:58 [INFO]: Event title extracted: ホワイトノットノイズ
+2024-12-12 13:23:04 [INFO]: Detail page title extracted: ホワイトノットノイズ
+2024-12-12 13:23:04 [INFO]: Detail page description extracted.
+2024-12-12 13:23:04 [INFO]: Detail page dates extracted: 2024-12-10 to 2024-12-27
+2024-12-12 13:23:04 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2020/09/CP_square-920x920.gif
+2024-12-12 13:23:04 [INFO]: Image already exists locally: 0ef048dc6a60a65d420751af13e0de6b8d4d6d88264fecd98c5f0d59ed719865.gif
+2024-12-12 13:23:04 [INFO]: Detail page image downloaded: /images/events/fabcafe/0ef048dc6a60a65d420751af13e0de6b8d4d6d88264fecd98c5f0d59ed719865.gif
+2024-12-12 13:23:04 [INFO]: Extracted event: ホワイトノットノイズ
+2024-12-12 13:23:04 [INFO]: Processing event 3 of 7...
+2024-12-12 13:23:04 [INFO]: Event title extracted: 映像でみるアフリカ・アジア社会とその課題 – 第3回「『ヤングムスリムの窓』映像を通した協働の可能性」
+2024-12-12 13:23:09 [INFO]: Detail page title extracted: 映像でみるアフリカ・アジア社会とその課題 – 第3回「『ヤングムスリムの窓』映像を通した協働の可能性」
+2024-12-12 13:23:09 [INFO]: Detail page description extracted.
+2024-12-12 13:23:09 [INFO]: Detail page single date extracted: 2024-12-13
+2024-12-12 13:23:09 [INFO]: Detail page times extracted: 19:00 to 21:00
+2024-12-12 13:23:09 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web-540x304.jpg
+2024-12-12 13:23:09 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 13:23:09 [INFO]: Detail page image downloaded: /images/events/fabcafe/345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 13:23:09 [INFO]: Extracted event: 映像でみるアフリカ・アジア社会とその課題 – 第3回「『ヤングムスリムの窓』映像を通した協働の可能性」
+2024-12-12 13:23:09 [INFO]: Processing event 4 of 7...
+2024-12-12 13:23:09 [INFO]: Event title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-12 13:23:13 [INFO]: Detail page title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-12 13:23:13 [INFO]: Detail page description extracted.
+2024-12-12 13:23:13 [INFO]: Detail page single date extracted: 2024-12-14
+2024-12-12 13:23:13 [INFO]: Detail page times extracted: 14:00 to 15:30
+2024-12-12 13:23:13 [INFO]: Detail page price extracted: General - 3500 JPY
+2024-12-12 13:23:13 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web-540x304.jpg
+2024-12-12 13:23:13 [INFO]: Image already exists locally: 345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 13:23:13 [INFO]: Detail page image downloaded: /images/events/fabcafe/345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 13:23:13 [INFO]: Extracted event: 世界薬草キャラバン　アンデス茶会
+2024-12-12 13:23:13 [INFO]: Processing event 5 of 7...
+2024-12-12 13:23:13 [INFO]: Event title extracted: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-12 13:23:18 [INFO]: Detail page title extracted: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-12 13:23:18 [INFO]: Detail page description extracted.
+2024-12-12 13:23:18 [INFO]: Detail page dates extracted: 2024-12-14 to 2024-12-14
+2024-12-12 13:23:18 [INFO]: Detail page price extracted: General - 2200 JPY
+2024-12-12 13:23:18 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web-540x304.jpg
+2024-12-12 13:23:18 [INFO]: Image already exists locally: 345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 13:23:18 [INFO]: Detail page image downloaded: /images/events/fabcafe/345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 13:23:18 [INFO]: Extracted event: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-12 13:23:18 [INFO]: Processing event 6 of 7...
+2024-12-12 13:23:18 [INFO]: Event title extracted: こんばんは寄席 by 桂枝之進
+2024-12-12 13:23:22 [INFO]: Detail page title extracted: こんばんは寄席 by 桂枝之進
+2024-12-12 13:23:22 [INFO]: Detail page description extracted.
+2024-12-12 13:23:22 [INFO]: Detail page single date extracted: 2025-01-08
+2024-12-12 13:23:22 [INFO]: Detail page times extracted: 19:00 to 21:00
+2024-12-12 13:23:22 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/yose_visual-920x920.jpg
+2024-12-12 13:23:22 [INFO]: Image already exists locally: dbdf4d7fd00f34a0c6976ba14500f45c68c627b9fde3b507af8a34962a40320d.jpg
+2024-12-12 13:23:22 [INFO]: Detail page image downloaded: /images/events/fabcafe/dbdf4d7fd00f34a0c6976ba14500f45c68c627b9fde3b507af8a34962a40320d.jpg
+2024-12-12 13:23:22 [INFO]: Extracted event: こんばんは寄席 by 桂枝之進
+2024-12-12 13:23:22 [INFO]: Processing event 7 of 7...
+2024-12-12 13:23:22 [INFO]: Event title extracted: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-12 13:23:27 [INFO]: Detail page title extracted: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-12 13:23:27 [INFO]: Detail page description extracted.
+2024-12-12 13:23:27 [INFO]: Detail page single date extracted: 2025-01-10
+2024-12-12 13:23:27 [INFO]: Detail page times extracted: 17:00 to 19:00
+2024-12-12 13:23:27 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web-540x304.jpg
+2024-12-12 13:23:27 [INFO]: Image already exists locally: 345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 13:23:27 [INFO]: Detail page image downloaded: /images/events/fabcafe/345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 13:23:27 [INFO]: Extracted event: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-12 13:23:27 [INFO]: Final event data extraction complete.
+2024-12-12 13:23:27 [INFO]: Browser closed.
+2024-12-12 21:00:33 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 21:11:24 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 21:30:01 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 21:31:38 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 21:34:22 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 22:04:24 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-12 22:10:35 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/fabcafe
+2024-12-12 22:10:36 [INFO]: Browser launched.
+2024-12-12 22:10:37 [INFO]: New page opened.
+2024-12-12 22:10:37 [INFO]: Navigating to FabCafe Kyoto events page...
+2024-12-12 22:10:52 [INFO]: Page loaded.
+2024-12-12 22:10:52 [INFO]: Found 7 events on the listing page.
+2024-12-12 22:10:52 [INFO]: Processing event 1 of 7...
+2024-12-12 22:10:52 [INFO]: Event title extracted: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-12 22:10:59 [INFO]: Detail page title extracted: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-12 22:10:59 [INFO]: Detail page description extracted.
+2024-12-12 22:10:59 [INFO]: Detail page dates extracted: 2024-12-04 to 2024-12-21
+2024-12-12 22:10:59 [INFO]: Detail page times extracted: 11:00 to 19:00
+2024-12-12 22:10:59 [INFO]: Detail page price extracted: General - 4000 JPY
+2024-12-12 22:10:59 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/8d8b9da646908db566c43e3c1b1bb3b1-540x304.jpg
+2024-12-12 22:10:59 [INFO]: Image already exists locally: 24e2cf6db7932d2715a0bd5ec4e28f825dfa65a1f6cf4bcb44a4a66b25429a89.jpg
+2024-12-12 22:10:59 [INFO]: Detail page image downloaded: /images/events/fabcafe/24e2cf6db7932d2715a0bd5ec4e28f825dfa65a1f6cf4bcb44a4a66b25429a89.jpg
+2024-12-12 22:10:59 [INFO]: Extracted event: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-12 22:10:59 [INFO]: Processing event 2 of 7...
+2024-12-12 22:10:59 [INFO]: Event title extracted: ホワイトノットノイズ
+2024-12-12 22:11:05 [INFO]: Detail page title extracted: ホワイトノットノイズ
+2024-12-12 22:11:05 [INFO]: Detail page description extracted.
+2024-12-12 22:11:05 [INFO]: Detail page dates extracted: 2024-12-10 to 2024-12-27
+2024-12-12 22:11:05 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2020/09/CP_square-920x920.gif
+2024-12-12 22:11:05 [INFO]: Image already exists locally: 0ef048dc6a60a65d420751af13e0de6b8d4d6d88264fecd98c5f0d59ed719865.gif
+2024-12-12 22:11:05 [INFO]: Detail page image downloaded: /images/events/fabcafe/0ef048dc6a60a65d420751af13e0de6b8d4d6d88264fecd98c5f0d59ed719865.gif
+2024-12-12 22:11:05 [INFO]: Extracted event: ホワイトノットノイズ
+2024-12-12 22:11:05 [INFO]: Processing event 3 of 7...
+2024-12-12 22:11:06 [INFO]: Event title extracted: 映像でみるアフリカ・アジア社会とその課題 – 第3回「『ヤングムスリムの窓』映像を通した協働の可能性」
+2024-12-12 22:11:10 [INFO]: Detail page title extracted: 映像でみるアフリカ・アジア社会とその課題 – 第3回「『ヤングムスリムの窓』映像を通した協働の可能性」
+2024-12-12 22:11:10 [INFO]: Detail page description extracted.
+2024-12-12 22:11:10 [INFO]: Detail page single date extracted: 2024-12-13
+2024-12-12 22:11:10 [INFO]: Detail page times extracted: 19:00 to 21:00
+2024-12-12 22:11:10 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web-540x304.jpg
+2024-12-12 22:11:10 [INFO]: Image already exists locally: 345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 22:11:10 [INFO]: Detail page image downloaded: /images/events/fabcafe/345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 22:11:10 [INFO]: Extracted event: 映像でみるアフリカ・アジア社会とその課題 – 第3回「『ヤングムスリムの窓』映像を通した協働の可能性」
+2024-12-12 22:11:10 [INFO]: Processing event 4 of 7...
+2024-12-12 22:11:10 [INFO]: Event title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-12 22:11:15 [INFO]: Detail page title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-12 22:11:15 [INFO]: Detail page description extracted.
+2024-12-12 22:11:15 [INFO]: Detail page single date extracted: 2024-12-14
+2024-12-12 22:11:15 [INFO]: Detail page times extracted: 14:00 to 15:30
+2024-12-12 22:11:15 [INFO]: Detail page price extracted: General - 3500 JPY
+2024-12-12 22:11:15 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web-540x304.jpg
+2024-12-12 22:11:15 [INFO]: Image already exists locally: 345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 22:11:15 [INFO]: Detail page image downloaded: /images/events/fabcafe/345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 22:11:15 [INFO]: Extracted event: 世界薬草キャラバン　アンデス茶会
+2024-12-12 22:11:15 [INFO]: Processing event 5 of 7...
+2024-12-12 22:11:15 [INFO]: Event title extracted: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-12 22:11:19 [INFO]: Detail page title extracted: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-12 22:11:19 [INFO]: Detail page description extracted.
+2024-12-12 22:11:19 [INFO]: Detail page dates extracted: 2024-12-14 to 2024-12-14
+2024-12-12 22:11:19 [INFO]: Detail page price extracted: General - 2200 JPY
+2024-12-12 22:11:19 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web-540x304.jpg
+2024-12-12 22:11:19 [INFO]: Image already exists locally: 345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 22:11:19 [INFO]: Detail page image downloaded: /images/events/fabcafe/345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 22:11:19 [INFO]: Extracted event: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-12 22:11:19 [INFO]: Processing event 6 of 7...
+2024-12-12 22:11:19 [INFO]: Event title extracted: こんばんは寄席 by 桂枝之進
+2024-12-12 22:11:24 [INFO]: Detail page title extracted: こんばんは寄席 by 桂枝之進
+2024-12-12 22:11:24 [INFO]: Detail page description extracted.
+2024-12-12 22:11:24 [INFO]: Detail page single date extracted: 2025-01-08
+2024-12-12 22:11:24 [INFO]: Detail page times extracted: 19:00 to 21:00
+2024-12-12 22:11:24 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/yose_visual-920x920.jpg
+2024-12-12 22:11:24 [INFO]: Image already exists locally: dbdf4d7fd00f34a0c6976ba14500f45c68c627b9fde3b507af8a34962a40320d.jpg
+2024-12-12 22:11:24 [INFO]: Detail page image downloaded: /images/events/fabcafe/dbdf4d7fd00f34a0c6976ba14500f45c68c627b9fde3b507af8a34962a40320d.jpg
+2024-12-12 22:11:24 [INFO]: Extracted event: こんばんは寄席 by 桂枝之進
+2024-12-12 22:11:24 [INFO]: Processing event 7 of 7...
+2024-12-12 22:11:24 [INFO]: Event title extracted: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-12 22:11:29 [INFO]: Detail page title extracted: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-12 22:11:29 [INFO]: Detail page description extracted.
+2024-12-12 22:11:29 [INFO]: Detail page single date extracted: 2025-01-10
+2024-12-12 22:11:29 [INFO]: Detail page times extracted: 17:00 to 19:00
+2024-12-12 22:11:29 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web-540x304.jpg
+2024-12-12 22:11:29 [INFO]: Image already exists locally: 345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 22:11:29 [INFO]: Detail page image downloaded: /images/events/fabcafe/345031bae08e327bae12b600d41e5953bc415104baacfee5ccd0059427f4d246.jpg
+2024-12-12 22:11:29 [INFO]: Extracted event: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-12 22:11:29 [INFO]: Final event data extraction complete.
+2024-12-12 22:11:29 [INFO]: Browser closed.

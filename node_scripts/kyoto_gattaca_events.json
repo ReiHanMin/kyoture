@@ -1,46 +1,5 @@
 [
   {
-    "title": "[JPオルタナティブ]",
-    "date_start": "2024-11-02",
-    "date_end": "2024-11-02",
-    "image_url": "/images/events/kyoto_gattaca/19156807468baa7685f5ef495cc78607509392b407648bc5d472faf39548d492.jpg",
-    "schedule": [
-      {
-        "date": "2024-11-02",
-        "time_start": "18:30",
-        "time_end": "19:00",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "DOOR",
-        "amount": 2400,
-        "currency": "JPY",
-        "discount_info": null
-      },
-      {
-        "price_tier": "General",
-        "amount": 2900,
-        "currency": "JPY",
-        "discount_info": null
-      },
-      {
-        "price_tier": "General",
-        "amount": 500,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2024/11.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
     "title": "[BLUE EXPLOSION]",
     "date_start": "2024-11-01",
     "date_end": "2024-11-01",
@@ -63,6 +22,70 @@
       {
         "price_tier": "General",
         "amount": 2500,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2024/11.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
+    "title": "[FLAT♭バンドライブ]",
+    "date_start": "2024-11-03",
+    "date_end": "2024-11-03",
+    "image_url": "/images/events/kyoto_gattaca/60cb43c57c3c89b63a47dea60edcdc045626c0fe319439baaedabffc5f8e38be.jpg",
+    "schedule": [
+      {
+        "date": "2024-11-03",
+        "time_start": "18:00",
+        "time_end": "18:30",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "General",
+        "amount": 4000,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+2Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2024/11.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
+    "title": "[開国ナイト!!-kaikoku night!!-] -Ōra Japan Tour 2024-",
+    "date_start": "2024-11-05",
+    "date_end": "2024-11-05",
+    "image_url": "/images/events/kyoto_gattaca/7b153339ebcb761eb2eab491655bc609b9968956521c961278f567b407a360c8.jpg",
+    "schedule": [
+      {
+        "date": "2024-11-05",
+        "time_start": "18:30",
+        "time_end": "19:00",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "STUDENT",
+        "amount": 2400,
+        "currency": "JPY",
+        "discount_info": null
+      },
+      {
+        "price_tier": "General",
+        "amount": 1900,
         "currency": "JPY",
         "discount_info": null
       }
@@ -111,13 +134,13 @@
     "site": "kyoto_gattaca"
   },
   {
-    "title": "[開国ナイト!!-kaikoku night!!-] -Ōra Japan Tour 2024-",
-    "date_start": "2024-11-05",
-    "date_end": "2024-11-05",
-    "image_url": "/images/events/kyoto_gattaca/7b153339ebcb761eb2eab491655bc609b9968956521c961278f567b407a360c8.jpg",
+    "title": "[JPオルタナティブ]",
+    "date_start": "2024-11-02",
+    "date_end": "2024-11-02",
+    "image_url": "/images/events/kyoto_gattaca/19156807468baa7685f5ef495cc78607509392b407648bc5d472faf39548d492.jpg",
     "schedule": [
       {
-        "date": "2024-11-05",
+        "date": "2024-11-02",
         "time_start": "18:30",
         "time_end": "19:00",
         "special_notes": null
@@ -125,14 +148,20 @@
     ],
     "prices": [
       {
-        "price_tier": "STUDENT",
+        "price_tier": "DOOR",
         "amount": 2400,
         "currency": "JPY",
         "discount_info": null
       },
       {
         "price_tier": "General",
-        "amount": 1900,
+        "amount": 2900,
+        "currency": "JPY",
+        "discount_info": null
+      },
+      {
+        "price_tier": "General",
+        "amount": 500,
         "currency": "JPY",
         "discount_info": null
       }
@@ -140,35 +169,6 @@
     "venue": "Kyoto Gattaca",
     "organization": "Kyoto Gattaca",
     "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2024/11.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
-    "title": "[FLAT♭バンドライブ]",
-    "date_start": "2024-11-03",
-    "date_end": "2024-11-03",
-    "image_url": "/images/events/kyoto_gattaca/60cb43c57c3c89b63a47dea60edcdc045626c0fe319439baaedabffc5f8e38be.jpg",
-    "schedule": [
-      {
-        "date": "2024-11-03",
-        "time_start": "18:00",
-        "time_end": "18:30",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "General",
-        "amount": 4000,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+2Drink",
     "event_link": "http://kyoto-gattaca.jp/schedule/2024/11.html",
     "categories": [],
     "tags": [],
@@ -182,41 +182,6 @@
     "schedule": [
       {
         "date": "2024-11-08",
-        "time_start": "18:30",
-        "time_end": "19:00",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "STUDENT",
-        "amount": 2400,
-        "currency": "JPY",
-        "discount_info": null
-      },
-      {
-        "price_tier": "General",
-        "amount": 1900,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2024/11.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
-    "title": "[JPオルタナティブ]",
-    "date_start": "2024-11-15",
-    "date_end": "2024-11-15",
-    "image_url": "/images/events/kyoto_gattaca/39519800cc1c7703b6b23fcb71fd3f054fe578e9592b2fcf89e8ad8854117335.jpg",
-    "schedule": [
-      {
-        "date": "2024-11-15",
         "time_start": "18:30",
         "time_end": "19:00",
         "special_notes": null
@@ -267,6 +232,41 @@
       {
         "price_tier": "General",
         "amount": 3500,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2024/11.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
+    "title": "[JPオルタナティブ]",
+    "date_start": "2024-11-15",
+    "date_end": "2024-11-15",
+    "image_url": "/images/events/kyoto_gattaca/39519800cc1c7703b6b23fcb71fd3f054fe578e9592b2fcf89e8ad8854117335.jpg",
+    "schedule": [
+      {
+        "date": "2024-11-15",
+        "time_start": "18:30",
+        "time_end": "19:00",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "STUDENT",
+        "amount": 2400,
+        "currency": "JPY",
+        "discount_info": null
+      },
+      {
+        "price_tier": "General",
+        "amount": 1900,
         "currency": "JPY",
         "discount_info": null
       }
@@ -478,6 +478,41 @@
     "site": "kyoto_gattaca"
   },
   {
+    "title": "Piacere",
+    "date_start": "2024-11-26",
+    "date_end": "2024-11-26",
+    "image_url": "/images/events/kyoto_gattaca/40bc90d0e22e7d4947536b938d9bf2a480e0cd0fd91428aeade9b75de4217146.png",
+    "schedule": [
+      {
+        "date": "2024-11-26",
+        "time_start": "18:30",
+        "time_end": "19:00",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "STUDENT",
+        "amount": 2000,
+        "currency": "JPY",
+        "discount_info": null
+      },
+      {
+        "price_tier": "General",
+        "amount": 1000,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2024/11.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
     "title": "[ニューオーセンティック]",
     "date_start": "2024-11-27",
     "date_end": "2024-11-27",
@@ -535,41 +570,6 @@
       {
         "price_tier": "General",
         "amount": 1900,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2024/11.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
-    "title": "Piacere",
-    "date_start": "2024-11-26",
-    "date_end": "2024-11-26",
-    "image_url": "/images/events/kyoto_gattaca/40bc90d0e22e7d4947536b938d9bf2a480e0cd0fd91428aeade9b75de4217146.png",
-    "schedule": [
-      {
-        "date": "2024-11-26",
-        "time_start": "18:30",
-        "time_end": "19:00",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "STUDENT",
-        "amount": 2000,
-        "currency": "JPY",
-        "discount_info": null
-      },
-      {
-        "price_tier": "General",
-        "amount": 1000,
         "currency": "JPY",
         "discount_info": null
       }
@@ -723,41 +723,6 @@
     "site": "kyoto_gattaca"
   },
   {
-    "title": "MORFEM -TEREPOOTETHION-",
-    "date_start": "2024-12-05",
-    "date_end": "2024-12-05",
-    "image_url": "/images/events/kyoto_gattaca/ede614f351c105b6d7a1e429f87dec41e76d7b91a44c7386918deeda2473b699.jpg",
-    "schedule": [
-      {
-        "date": "2024-12-05",
-        "time_start": "18:30",
-        "time_end": "19:00",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "DOOR",
-        "amount": 2400,
-        "currency": "JPY",
-        "discount_info": null
-      },
-      {
-        "price_tier": "General",
-        "amount": 2900,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2024/12.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
     "title": "「JPオルタナティブ飲み会」",
     "date_start": "2024-12-04",
     "date_end": "2024-12-04",
@@ -787,28 +752,28 @@
     "site": "kyoto_gattaca"
   },
   {
-    "title": "[Road Of Unity]",
-    "date_start": "2024-12-06",
-    "date_end": "2024-12-06",
-    "image_url": "/images/events/kyoto_gattaca/8e9778d25168d152413d4bdd77b68db926aad12bb66ada5b53a3ea93541d0e65.jpg",
+    "title": "OwL pre. \"Overwhelming TOUR 2024\"",
+    "date_start": "2024-12-07",
+    "date_end": "2024-12-07",
+    "image_url": "/images/events/kyoto_gattaca/a0f3d38f6b502cc80af9fa3432710de2cd0fe1127cdb76a58345da9c2249a286.jpeg",
     "schedule": [
       {
-        "date": "2024-12-06",
-        "time_start": "18:30",
-        "time_end": "19:00",
+        "date": "2024-12-07",
+        "time_start": "TBA",
+        "time_end": "TBA",
         "special_notes": null
       }
     ],
     "prices": [
       {
         "price_tier": "DOOR",
-        "amount": 2400,
+        "amount": 3000,
         "currency": "JPY",
         "discount_info": null
       },
       {
         "price_tier": "General",
-        "amount": 2900,
+        "amount": 3500,
         "currency": "JPY",
         "discount_info": null
       }
@@ -844,6 +809,76 @@
       {
         "price_tier": "General",
         "amount": 3900,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2024/12.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
+    "title": "MORFEM -TEREPOOTETHION-",
+    "date_start": "2024-12-05",
+    "date_end": "2024-12-05",
+    "image_url": "/images/events/kyoto_gattaca/ede614f351c105b6d7a1e429f87dec41e76d7b91a44c7386918deeda2473b699.jpg",
+    "schedule": [
+      {
+        "date": "2024-12-05",
+        "time_start": "18:30",
+        "time_end": "19:00",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "DOOR",
+        "amount": 2400,
+        "currency": "JPY",
+        "discount_info": null
+      },
+      {
+        "price_tier": "General",
+        "amount": 2900,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2024/12.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
+    "title": "[Road Of Unity]",
+    "date_start": "2024-12-06",
+    "date_end": "2024-12-06",
+    "image_url": "/images/events/kyoto_gattaca/8e9778d25168d152413d4bdd77b68db926aad12bb66ada5b53a3ea93541d0e65.jpg",
+    "schedule": [
+      {
+        "date": "2024-12-06",
+        "time_start": "18:30",
+        "time_end": "19:00",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "DOOR",
+        "amount": 2400,
+        "currency": "JPY",
+        "discount_info": null
+      },
+      {
+        "price_tier": "General",
+        "amount": 2900,
         "currency": "JPY",
         "discount_info": null
       }
@@ -1203,6 +1238,35 @@
     "site": "kyoto_gattaca"
   },
   {
+    "title": "GUMX New EP \"Spam Buddy\" Tour2024-2025",
+    "date_start": "2024-12-20",
+    "date_end": "2024-12-20",
+    "image_url": "/images/events/kyoto_gattaca/d0d5f2cdefb1915be6749641f141933901f844131e00e7658a1a3cc41ccc0d52.jpg",
+    "schedule": [
+      {
+        "date": "2024-12-20",
+        "time_start": "18:00",
+        "time_end": "18:30",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "General",
+        "amount": 3500,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2024/12.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
     "title": "OLD CITY BRAND 12",
     "date_start": "2024-12-21",
     "date_end": "2024-12-21",
@@ -1267,70 +1331,6 @@
     "site": "kyoto_gattaca"
   },
   {
-    "title": "OwL pre. \"Overwhelming TOUR 2024\"",
-    "date_start": "2024-12-07",
-    "date_end": "2024-12-07",
-    "image_url": "/images/events/kyoto_gattaca/a0f3d38f6b502cc80af9fa3432710de2cd0fe1127cdb76a58345da9c2249a286.jpeg",
-    "schedule": [
-      {
-        "date": "2024-12-07",
-        "time_start": "TBA",
-        "time_end": "TBA",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "DOOR",
-        "amount": 3000,
-        "currency": "JPY",
-        "discount_info": null
-      },
-      {
-        "price_tier": "General",
-        "amount": 3500,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2024/12.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
-    "title": "GUMX New EP \"Spam Buddy\" Tour2024-2025",
-    "date_start": "2024-12-20",
-    "date_end": "2024-12-20",
-    "image_url": "/images/events/kyoto_gattaca/d0d5f2cdefb1915be6749641f141933901f844131e00e7658a1a3cc41ccc0d52.jpg",
-    "schedule": [
-      {
-        "date": "2024-12-20",
-        "time_start": "18:00",
-        "time_end": "18:30",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "General",
-        "amount": 3500,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2024/12.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
     "title": "Piacere",
     "date_start": "2024-12-09",
     "date_end": "2024-12-09",
@@ -1361,6 +1361,94 @@
     "organization": "Kyoto Gattaca",
     "description": "+1Drink",
     "event_link": "http://kyoto-gattaca.jp/schedule/2024/12.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
+    "title": "RIVAL SCHOOLS JAPAN TOUR 2025",
+    "date_start": "2025-01-16",
+    "date_end": "2025-01-16",
+    "image_url": "/images/events/kyoto_gattaca/b1946dd510804e193d5dc1fbbd2eb96e1c6aec9e3baa37391ac62ee41d2b70fb.jpg",
+    "schedule": [
+      {
+        "date": "2025-01-16",
+        "time_start": "TBA",
+        "time_end": "TBA",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "General",
+        "amount": 6000,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2025/1.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
+    "title": "MAX'N ALTERNATIVE NEW POP SHOW TOUR",
+    "date_start": "2025-01-21",
+    "date_end": "2025-01-21",
+    "image_url": "/images/events/kyoto_gattaca/0fa5dcef32e31168b87bd08b864638925601bd9ce53934f1863287f35dac9d46.jpg",
+    "schedule": [
+      {
+        "date": "2025-01-21",
+        "time_start": "TBA",
+        "time_end": "TBA",
+        "special_notes": null
+      }
+    ],
+    "prices": [],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2025/1.html",
+    "categories": [],
+    "tags": [
+      "Rock"
+    ],
+    "site": "kyoto_gattaca"
+  },
+  {
+    "title": "LABRET presents 皆殺しのメロディ Vol.13 Milestone for 10 years \"DON'T LOOK BACK\" Release Tour",
+    "date_start": "2025-01-25",
+    "date_end": "2025-01-25",
+    "image_url": "/images/events/kyoto_gattaca/2c0ea22a8d8e498a35c802ac262896f0ae525b7469955baedcf2ae18390621d8.jpg",
+    "schedule": [
+      {
+        "date": "2025-01-25",
+        "time_start": "18:00",
+        "time_end": "18:30",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "DOOR",
+        "amount": 3000,
+        "currency": "JPY",
+        "discount_info": null
+      },
+      {
+        "price_tier": "General",
+        "amount": 3500,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2025/1.html",
     "categories": [],
     "tags": [],
     "site": "kyoto_gattaca"
@@ -1436,94 +1524,6 @@
     "site": "kyoto_gattaca"
   },
   {
-    "title": "LABRET presents 皆殺しのメロディ Vol.13 Milestone for 10 years \"DON'T LOOK BACK\" Release Tour",
-    "date_start": "2025-01-25",
-    "date_end": "2025-01-25",
-    "image_url": "/images/events/kyoto_gattaca/2c0ea22a8d8e498a35c802ac262896f0ae525b7469955baedcf2ae18390621d8.jpg",
-    "schedule": [
-      {
-        "date": "2025-01-25",
-        "time_start": "18:00",
-        "time_end": "18:30",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "DOOR",
-        "amount": 3000,
-        "currency": "JPY",
-        "discount_info": null
-      },
-      {
-        "price_tier": "General",
-        "amount": 3500,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2025/1.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
-    "title": "RIVAL SCHOOLS JAPAN TOUR 2025",
-    "date_start": "2025-01-16",
-    "date_end": "2025-01-16",
-    "image_url": "/images/events/kyoto_gattaca/b1946dd510804e193d5dc1fbbd2eb96e1c6aec9e3baa37391ac62ee41d2b70fb.jpg",
-    "schedule": [
-      {
-        "date": "2025-01-16",
-        "time_start": "TBA",
-        "time_end": "TBA",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "General",
-        "amount": 6000,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2025/1.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
-    "title": "MAX'N ALTERNATIVE NEW POP SHOW TOUR",
-    "date_start": "2025-01-21",
-    "date_end": "2025-01-21",
-    "image_url": "/images/events/kyoto_gattaca/0fa5dcef32e31168b87bd08b864638925601bd9ce53934f1863287f35dac9d46.jpg",
-    "schedule": [
-      {
-        "date": "2025-01-21",
-        "time_start": "TBA",
-        "time_end": "TBA",
-        "special_notes": null
-      }
-    ],
-    "prices": [],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2025/1.html",
-    "categories": [],
-    "tags": [
-      "Rock"
-    ],
-    "site": "kyoto_gattaca"
-  },
-  {
     "title": "Dear Chambers 2nd Full Album「NEW OLDIES」RELEASE TOUR 2024-2025",
     "date_start": "2025-01-26",
     "date_end": "2025-01-26",
@@ -1559,41 +1559,6 @@
     "site": "kyoto_gattaca"
   },
   {
-    "title": "[ミタケオアシン]",
-    "date_start": "2025-02-07",
-    "date_end": "2025-02-07",
-    "image_url": "/images/events/kyoto_gattaca/846aca11d66f3e14e7d2ab032040e04864f81d866711c95c347c415a85575caa.jpg",
-    "schedule": [
-      {
-        "date": "2025-02-07",
-        "time_start": "18:00",
-        "time_end": "18:30",
-        "special_notes": null
-      }
-    ],
-    "prices": [
-      {
-        "price_tier": "DOOR",
-        "amount": 2400,
-        "currency": "JPY",
-        "discount_info": null
-      },
-      {
-        "price_tier": "General",
-        "amount": 2900,
-        "currency": "JPY",
-        "discount_info": null
-      }
-    ],
-    "venue": "Kyoto Gattaca",
-    "organization": "Kyoto Gattaca",
-    "description": "+1Drink",
-    "event_link": "http://kyoto-gattaca.jp/schedule/2025/2.html",
-    "categories": [],
-    "tags": [],
-    "site": "kyoto_gattaca"
-  },
-  {
     "title": "FUNKIST 25th Pride of Lions tour 2000-2025",
     "date_start": "2025-02-01",
     "date_end": "2025-02-01",
@@ -1616,6 +1581,41 @@
       {
         "price_tier": "General",
         "amount": 3700,
+        "currency": "JPY",
+        "discount_info": null
+      }
+    ],
+    "venue": "Kyoto Gattaca",
+    "organization": "Kyoto Gattaca",
+    "description": "+1Drink",
+    "event_link": "http://kyoto-gattaca.jp/schedule/2025/2.html",
+    "categories": [],
+    "tags": [],
+    "site": "kyoto_gattaca"
+  },
+  {
+    "title": "[ミタケオアシン]",
+    "date_start": "2025-02-07",
+    "date_end": "2025-02-07",
+    "image_url": "/images/events/kyoto_gattaca/846aca11d66f3e14e7d2ab032040e04864f81d866711c95c347c415a85575caa.jpg",
+    "schedule": [
+      {
+        "date": "2025-02-07",
+        "time_start": "18:00",
+        "time_end": "18:30",
+        "special_notes": null
+      }
+    ],
+    "prices": [
+      {
+        "price_tier": "DOOR",
+        "amount": 2400,
+        "currency": "JPY",
+        "discount_info": null
+      },
+      {
+        "price_tier": "General",
+        "amount": 2900,
         "currency": "JPY",
         "discount_info": null
       }

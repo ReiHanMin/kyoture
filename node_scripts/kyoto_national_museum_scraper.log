@@ -3588,3 +3588,285 @@ Rediscovered Swords: Masterful Blades That Transcend the Ages
 2024-12-12 04:44:52 [INFO]: Date Text: February 11–March 23, 2025
 2024-12-12 04:44:52 [INFO]: Final event data extraction complete.
 2024-12-12 04:44:52 [INFO]: Browser closed.
+2024-12-12 13:29:53 [INFO]: Browser launched.
+2024-12-12 13:29:53 [INFO]: New page opened.
+2024-12-12 13:29:53 [INFO]: Navigating to Kyoto National Museum exhibitions page...
+2024-12-12 13:29:54 [INFO]: Page loaded.
+2024-12-12 13:29:54 [INFO]: Found 21 event items.
+2024-12-12 13:29:54 [INFO]: Processing event 1 of 21...
+2024-12-12 13:29:54 [INFO]: Event Title: Special Exhibition Commemorating Expo 2025 Osaka, Kansai    
+Japan, an Artistic Melting Pot
+2024-12-12 13:29:54 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/special/2025_rutsubo/
+2024-12-12 13:29:54 [INFO]: Date Text: April 19–June 15, 2025
+2024-12-12 13:29:55 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/special/2025_rutsubo/
+2024-12-12 13:29:57 [INFO]: Cookie consent accepted.
+2024-12-12 13:29:58 [INFO]: General Information: {"Exhibition Title":"Special Exhibition Commemorating Expo 2025 Osaka, Kansai\nJapan, an Artistic Melting Pot","Period":"April 19–June 15, 2025\nThe exhibition has two installations:\nPart I: April 19–May 18, 2025\nPart II: May 20–June 15, 2025\nSome artworks may be rotated during the exhibition period.","Venue":"Kyoto National Museum, Heisei Chishinkan Wing","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus","Closed":"Mondays\n*The museum will be open on Monday, May 5, and closed on Wednesday, May 7, 2025.","Special Exhibition Hours":"9:00 a.m.–5:30 p.m. (entrance until 5:00 p.m.)\nFridays, 9:00 a.m.–8:00 p.m. (Entrance until 7:30 p.m.)","Organized by":"Kyoto National Museum; The Asahi Shimbun Company; NHK Kyoto Station; NHK Enterprises, Inc., Osaka Branch Office","In conjunction with":"Japan Association for the 2025 World Exposition","Special Exhibition Official Website":"https://rutsubo2025.jp/ (Japanese only)"}
+2024-12-12 13:29:58 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/special/2025_rutsubo/img_top-1200_20250419.jpg
+2024-12-12 13:29:58 [INFO]: Image already exists locally: 2a4e15bdc7561987eb544ea8a38b9f329baef76351a437f9c91d86ede0b799f6.jpg
+2024-12-12 13:29:58 [INFO]: Assigned local image URL for event 1: /images/events/kyoto_national_museum/2a4e15bdc7561987eb544ea8a38b9f329baef76351a437f9c91d86ede0b799f6.jpg
+2024-12-12 13:29:58 [INFO]: Extracted structured event data: {"title":"Special Exhibition Commemorating Expo 2025 Osaka, Kansai    \nJapan, an Artistic Melting Pot","date_start":"2025-04-19","date_end":"2025-06-15","venue":"Kyoto National Museum, Heisei Chishinkan Wing","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/2a4e15bdc7561987eb544ea8a38b9f329baef76351a437f9c91d86ede0b799f6.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/special/2025_rutsubo/","schedule":[{"date":"2025-04-19","time_start":"09:00:00","time_end":"17:30:00","special_notes":null}],"categories":["Art","Exhibition"],"tags":["Exhibition"],"prices":[],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_special_2025_rutsubo","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 13:29:58 [INFO]: Processing event 2 of 21...
+2024-12-12 13:29:58 [INFO]: Event Title: Special Exhibition    
+Song and Yuan Buddhist Painting: Early Chinese Masterpieces in Japan
+2024-12-12 13:29:58 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/special/2025_song-yuan/
+2024-12-12 13:29:58 [INFO]: Date Text: September 20–November 16, 2025
+2024-12-12 13:29:58 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/special/2025_song-yuan/
+2024-12-12 13:30:01 [INFO]: No cookie consent prompt found.
+2024-12-12 13:30:01 [INFO]: General Information: {"Exhibition Title":"Special Exhibition\nSong and Yuan Buddhist Painting: Early Chinese Masterpieces in Japan","Period":"September 20–November 16, 2025\nThe exhibition has two installations:\nPart I: September 20–October 19, 2025\nPart II: October 21–November 16, 2025\nSome artworks may be rotated within these installation periods.","Venue":"Kyoto National Museum, Heisei Chishinkan Wing","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus","Organized by":"Kyoto National Museum; The Mainichi Newspapers; The Kyoto Shimbun","With the support of":"Dai Nippon Printing Co., Ltd."}
+2024-12-12 13:30:01 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/special/2025_song-yuan/img_top-1200_20250920.jpg
+2024-12-12 13:30:01 [INFO]: Image already exists locally: d5f35bd3c6d0f8d3434af7f73ef0813d8789286a1a63f2ac8f856de4a8de403b.jpg
+2024-12-12 13:30:01 [INFO]: Assigned local image URL for event 2: /images/events/kyoto_national_museum/d5f35bd3c6d0f8d3434af7f73ef0813d8789286a1a63f2ac8f856de4a8de403b.jpg
+2024-12-12 13:30:01 [INFO]: Extracted structured event data: {"title":"Special Exhibition    \nSong and Yuan Buddhist Painting: Early Chinese Masterpieces in Japan","date_start":"2025-09-20","date_end":"2025-11-16","venue":"Kyoto National Museum, Heisei Chishinkan Wing","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/d5f35bd3c6d0f8d3434af7f73ef0813d8789286a1a63f2ac8f856de4a8de403b.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/special/2025_song-yuan/","schedule":[{"date":"2025-09-20","time_start":null,"time_end":null,"special_notes":null}],"categories":["Exhibition"],"tags":["Painting","Exhibition"],"prices":[],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_special_2025_song-yuan","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 13:30:01 [INFO]: Processing event 3 of 21...
+2024-12-12 13:30:01 [INFO]: Event Title: Feature Exhibition  
+Serpentine Delights: Celebrating the Year of the Snake
+2024-12-12 13:30:01 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/mi_2025/
+2024-12-12 13:30:01 [INFO]: Date Text: January 2–February 2, 2025
+2024-12-12 13:30:01 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/mi_2025/
+2024-12-12 13:30:03 [INFO]: No cookie consent prompt found.
+2024-12-12 13:30:03 [INFO]: General Information: {"Exhibition Title":"Feature Exhibition  \nSerpentine Delights: Celebrating the Year of the Snake","Period":"January 2–February 2, 2025","Venue":"Heisei Chishinkan Wing, Gallery 1F-2","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus / Map","Closed":"Mondays\n*The museum will be open on Monday, January 13, and closed on Tuesday, January 14, 2025.","Museum Hours":"9:30 a.m.–5:00 p.m. (Entrance until 4:30 p.m.)\nOpen until 8:00 p.m. on Fridays (Entrance until 7:30 p.m.)","Admission":"Adult\t700 yen\nUniversity Student (ID required)\t350 yen\nAdmission fee includes admission to all galleries in the Heisei Chishinkan Wing.\nAdmission is free for high school students and other youths age 0 – 17, seniors over 70, visitors with disabilities and one caretaker, and for Campus Members (including faculty). Please show ID.\nAdmission for school groups: Admission to the Collection Galleries is free for elementary school, middle school, and high school students on school fieldtrips as well as teachers serving as their guides."}
+2024-12-12 13:30:03 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/feature/mi_2025/img_top-1200_20250102.jpg
+2024-12-12 13:30:03 [INFO]: Image already exists locally: e399547b0a0b805dd1b0918025a7fd940366d9dd281007f335d4bc08d732b1b0.jpg
+2024-12-12 13:30:03 [INFO]: Assigned local image URL for event 3: /images/events/kyoto_national_museum/e399547b0a0b805dd1b0918025a7fd940366d9dd281007f335d4bc08d732b1b0.jpg
+2024-12-12 13:30:03 [INFO]: Extracted structured event data: {"title":"Feature Exhibition  \nSerpentine Delights: Celebrating the Year of the Snake","date_start":"2025-01-02","date_end":"2025-02-02","venue":"Heisei Chishinkan Wing, Gallery 1F-2","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/e399547b0a0b805dd1b0918025a7fd940366d9dd281007f335d4bc08d732b1b0.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/feature/b/mi_2025/","schedule":[{"date":"2025-01-02","time_start":"09:30:00","time_end":"17:00:00","special_notes":null}],"categories":["Exhibition"],"tags":["Exhibition"],"prices":[{"price_tier":"Adult","amount":"700","currency":"JPY","discount_info":null},{"price_tier":"University Student (ID required)","amount":"350","currency":"JPY","discount_info":null}],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_b_mi_2025","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 13:30:03 [INFO]: Processing event 4 of 21...
+2024-12-12 13:30:04 [INFO]: Event Title: Feature Exhibition  
+Yamashiro Smiths of the New Era: Blades of the Mishina and Horikawa Schools
+2024-12-12 13:30:04 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/2025_yamashiro/
+2024-12-12 13:30:04 [INFO]: Date Text: January 2–March 23, 2025
+2024-12-12 13:30:04 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/2025_yamashiro/
+2024-12-12 13:30:06 [INFO]: No cookie consent prompt found.
+2024-12-12 13:30:06 [INFO]: General Information: {"Exhibition Title":"Feature Exhibition  \nYamashiro Smiths of the New Era: Blades of the Mishina and Horikawa Schools","Period":"January 2–March 23, 2025","Venue":"Heisei Chishinkan Wing, Galleries 1F-4, 6","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus / Map","Closed":"Mondays\n*The museum will be open on Monday, January 13 and Monday, February 24, 2025; the museum will be closed Tuesday, January 14 and Tuesday, February 25, 2025.","Museum Hours":"9:30 a.m.–5:00 p.m. (Entrance until 4:30 p.m.)\nOpen until 8:00 p.m. on Fridays (Entrance until 7:30 p.m.)","Admission":"Adult\t700 yen\nUniversity Student (ID required)\t350 yen\nAdmission fee includes admission to all galleries in the Heisei Chishinkan Wing.\nAdmission is free for high school students and other youths age 0 – 17, seniors over 70, visitors with disabilities and one caretaker, and for Campus Members (including faculty). Please show ID.\nAdmission for school groups: Admission to the Collection Galleries is free for elementary school, middle school, and high school students on school fieldtrips as well as teachers serving as their guides."}
+2024-12-12 13:30:06 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/feature/2025_yamashirokaji/img_top-1200_20250102.jpg
+2024-12-12 13:30:06 [INFO]: Image already exists locally: 344d1df2dd46e4e09518b715bf96e29d811bc6f7674ff3c1c24750281c641c93.jpg
+2024-12-12 13:30:06 [INFO]: Assigned local image URL for event 4: /images/events/kyoto_national_museum/344d1df2dd46e4e09518b715bf96e29d811bc6f7674ff3c1c24750281c641c93.jpg
+2024-12-12 13:30:06 [INFO]: Extracted structured event data: {"title":"Feature Exhibition  \nYamashiro Smiths of the New Era: Blades of the Mishina and Horikawa Schools","date_start":"2025-01-02","date_end":"2025-03-23","venue":"Heisei Chishinkan Wing, Galleries 1F-4, 6","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/344d1df2dd46e4e09518b715bf96e29d811bc6f7674ff3c1c24750281c641c93.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/feature/b/2025_yamashiro/","schedule":[{"date":"2025-01-02","time_start":"09:30:00","time_end":"17:00:00","special_notes":null}],"categories":["Exhibition"],"tags":["Exhibition"],"prices":[{"price_tier":"Adult","amount":"700","currency":"JPY","discount_info":null},{"price_tier":"University Student (ID required)","amount":"350","currency":"JPY","discount_info":null}],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_b_2025_yamashiro","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 13:30:06 [INFO]: Processing event 5 of 21...
+2024-12-12 13:30:06 [INFO]: Event Title: Feature Exhibition  
+Celebrating the Japanese Doll Festival
+2024-12-12 13:30:06 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/hina_2025/
+2024-12-12 13:30:06 [INFO]: Date Text: February 15–March 23, 2025
+2024-12-12 13:30:06 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/hina_2025/
+2024-12-12 13:30:09 [INFO]: No cookie consent prompt found.
+2024-12-12 13:30:09 [INFO]: General Information: {"Exhibition Title":"Feature Exhibition: Celebrating the Japanese Doll Festival","Period":"February 15–March 23, 2025","Venue":"Heisei Chishinkan Wing, Gallery 1F-2","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus / Map","Closed":"Mondays\n*The museum will be open on Monday, February 24, and closed on Tuesday, February 25, 2025.","Museum Hours":"9:30 a.m.–5:00 p.m. (Entrance until 4:30 p.m.)\nOpen until 8:00 p.m. on Fridays (Entrance until 7:30 p.m.)","Admission":"Adult\t700 yen\nUniversity Student (ID required)\t350 yen\nAdmission fee includes admission to all galleries in the Heisei Chishinkan Wing.\nAdmission is free for high school students and other youths age 0 – 17, seniors over 70, visitors with disabilities and one caretaker, and for Campus Members (including faculty). Please show ID.\nAdmission for school groups: Admission to the Collection Galleries is free for elementary school, middle school, and high school students on school fieldtrips as well as teachers serving as their guides."}
+2024-12-12 13:30:09 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/1F-2_20230204_tmb.png
+2024-12-12 13:30:09 [INFO]: Image already exists locally: c046270d24a47fc1fb53b25552388b168b2db9b70fbf988a62ec3780e2e63f52.png
+2024-12-12 13:30:09 [INFO]: Assigned local image URL for event 5: /images/events/kyoto_national_museum/c046270d24a47fc1fb53b25552388b168b2db9b70fbf988a62ec3780e2e63f52.png
+2024-12-12 13:30:09 [INFO]: Extracted structured event data: {"title":"Feature Exhibition  \nCelebrating the Japanese Doll Festival","date_start":"2025-02-15","date_end":"2025-03-23","venue":"Heisei Chishinkan Wing, Gallery 1F-2","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/c046270d24a47fc1fb53b25552388b168b2db9b70fbf988a62ec3780e2e63f52.png","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/feature/b/hina_2025/","schedule":[{"date":"2025-02-15","time_start":"09:30:00","time_end":"17:00:00","special_notes":null}],"categories":["Festival","Exhibition"],"tags":["Exhibition"],"prices":[{"price_tier":"Adult","amount":"700","currency":"JPY","discount_info":null},{"price_tier":"University Student (ID required)","amount":"350","currency":"JPY","discount_info":null}],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_b_hina_2025","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 13:30:09 [INFO]: Processing event 6 of 21...
+2024-12-12 13:30:09 [INFO]: Event Title: Illustrated Handscrolls Shrines of Hachiman and Itsukushima
+2024-12-12 13:30:09 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6044-02
+2024-12-12 13:30:09 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 13:30:09 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6044-02
+2024-12-12 13:30:11 [INFO]: No cookie consent prompt found.
+2024-12-12 13:30:11 [INFO]: General Information: {}
+2024-12-12 13:30:11 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/collection/2025/01/2f-1_20250102_tmb_y.jpg
+2024-12-12 13:30:11 [INFO]: Image already exists locally: cce9a4d308ca18ee388be64281a0d604987f7371577ae7075fa82189b8061701.jpg
+2024-12-12 13:30:11 [INFO]: Assigned local image URL for event 6: /images/events/kyoto_national_museum/cce9a4d308ca18ee388be64281a0d604987f7371577ae7075fa82189b8061701.jpg
+2024-12-12 13:30:11 [INFO]: Extracted structured event data: {"title":"Illustrated Handscrolls Shrines of Hachiman and Itsukushima","date_start":"2025-01-02","date_end":"2025-02-09","venue":"Kyoto National Museum","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/cce9a4d308ca18ee388be64281a0d604987f7371577ae7075fa82189b8061701.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6044-02","schedule":[{"date":"2025-01-02","time_start":null,"time_end":null,"special_notes":null}],"categories":["Exhibition"],"tags":[],"prices":[],"description":"To facilitate a convenient browsing experience for our users, this website uses cookies. If you agree to the use of cookies on this website, click “Accept.” If you select “Decline,” only the required cookies will be used. For further details on required cookies and other information, please review our Website Policy","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_01_?date=02#Theme6044-02","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 13:30:11 [INFO]: Processing event 7 of 21...
+2024-12-12 13:30:11 [INFO]: Event Title: Buddhist Paintings Twelve Devas Screens and the World of Esoteric Buddhist Ritual
+2024-12-12 13:30:11 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6045-02
+2024-12-12 13:30:11 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 13:30:11 [INFO]: Processing event 8 of 21...
+2024-12-12 13:30:11 [INFO]: Event Title: Medieval Paintings The Beauty of Pine, Bamboo, and Plum
+2024-12-12 13:30:11 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6046-02
+2024-12-12 13:30:11 [INFO]: Date Text: January 2–February 9, 202
+2024-12-12 13:30:11 [WARN]: Incomplete year in date string. Assuming year as 2024.
+2024-12-12 13:30:11 [INFO]: Processing event 9 of 21...
+2024-12-12 13:30:11 [INFO]: Event Title: Momoyama-Edo Paintings Japan’s Women Painters
+2024-12-12 13:30:11 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6047-02
+2024-12-12 13:30:11 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 13:30:11 [INFO]: Processing event 10 of 21...
+2024-12-12 13:30:11 [INFO]: Event Title: Chinese Paintings The Prosperity and Paintings of Yangzhou, the “Salt City”
+Landscape with Pavilions by Yuan Jiang and Wang Yun
+2024-12-12 13:30:11 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6048-02
+2024-12-12 13:30:11 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 13:30:11 [INFO]: Processing event 11 of 21...
+2024-12-12 13:30:11 [INFO]: Event Title: Calligraphy Ink Traces: Calligraphy by Zen Priests
+2024-12-12 13:30:11 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6050-02
+2024-12-12 13:30:11 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 13:30:11 [INFO]: Processing event 12 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Ceramics Ninsei and Kyoto Ware: Ceramics Techniques of Omuro Kiln Fragments
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6041-02
+2024-12-12 13:30:12 [INFO]: Date Text: January 2–March 16, 2025
+2024-12-12 13:30:12 [INFO]: Processing event 13 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Archaeological Relics Japanese Sue Ware and Korean Ceramics
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6042-02
+2024-12-12 13:30:12 [INFO]: Date Text: January 2–March 16, 2025
+2024-12-12 13:30:12 [INFO]: Processing event 14 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Sculpture Kyoto’s Sculptures of Buddhist and Shinto Deities
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6049-02
+2024-12-12 13:30:12 [INFO]: Date Text: January 2–March 23, 2025
+2024-12-12 13:30:12 [INFO]: Processing event 15 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Metalwork Special Viewing   
+Rediscovered Swords: Masterful Blades That Transcend the Ages
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6051-02
+2024-12-12 13:30:12 [INFO]: Date Text: January 2–March 23, 2025
+2024-12-12 13:30:12 [INFO]: Processing event 16 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Illustrated Handscrolls Illustrated Handscrolls
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6107-11
+2024-12-12 13:30:12 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 13:30:12 [INFO]: Processing event 17 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Buddhist Paintings Parinirvana: Picturing the Death of the Buddha
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6108-11
+2024-12-12 13:30:12 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 13:30:12 [INFO]: Processing event 18 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Medieval Paintings Medieval Painting
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6109-11
+2024-12-12 13:30:12 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 13:30:12 [INFO]: Processing event 19 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Momoyama-Edo Paintings Artists’ Sketches
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6110-11
+2024-12-12 13:30:12 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 13:30:12 [INFO]: Processing event 20 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Chinese Paintings Chinese Painting
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6111-11
+2024-12-12 13:30:12 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 13:30:12 [INFO]: Processing event 21 of 21...
+2024-12-12 13:30:12 [INFO]: Event Title: Calligraphy Indigo Blue Sutra Manuscripts: Ornamenting the Buddha's Sacred Words
+2024-12-12 13:30:12 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6112-11
+2024-12-12 13:30:12 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 13:30:12 [INFO]: Final event data extraction complete.
+2024-12-12 13:30:12 [INFO]: Browser closed.
+2024-12-12 22:17:59 [INFO]: Browser launched.
+2024-12-12 22:18:00 [INFO]: New page opened.
+2024-12-12 22:18:00 [INFO]: Navigating to Kyoto National Museum exhibitions page...
+2024-12-12 22:18:04 [INFO]: Page loaded.
+2024-12-12 22:18:04 [INFO]: Found 21 event items.
+2024-12-12 22:18:04 [INFO]: Processing event 1 of 21...
+2024-12-12 22:18:04 [INFO]: Event Title: Special Exhibition Commemorating Expo 2025 Osaka, Kansai    
+Japan, an Artistic Melting Pot
+2024-12-12 22:18:04 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/special/2025_rutsubo/
+2024-12-12 22:18:04 [INFO]: Date Text: April 19–June 15, 2025
+2024-12-12 22:18:04 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/special/2025_rutsubo/
+2024-12-12 22:18:07 [INFO]: Cookie consent accepted.
+2024-12-12 22:18:08 [INFO]: General Information: {"Exhibition Title":"Special Exhibition Commemorating Expo 2025 Osaka, Kansai\nJapan, an Artistic Melting Pot","Period":"April 19–June 15, 2025\nThe exhibition has two installations:\nPart I: April 19–May 18, 2025\nPart II: May 20–June 15, 2025\nSome artworks may be rotated during the exhibition period.","Venue":"Kyoto National Museum, Heisei Chishinkan Wing","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus","Closed":"Mondays\n*The museum will be open on Monday, May 5, and closed on Wednesday, May 7, 2025.","Special Exhibition Hours":"9:00 a.m.–5:30 p.m. (entrance until 5:00 p.m.)\nFridays, 9:00 a.m.–8:00 p.m. (Entrance until 7:30 p.m.)","Organized by":"Kyoto National Museum; The Asahi Shimbun Company; NHK Kyoto Station; NHK Enterprises, Inc., Osaka Branch Office","In conjunction with":"Japan Association for the 2025 World Exposition","Special Exhibition Official Website":"https://rutsubo2025.jp/ (Japanese only)"}
+2024-12-12 22:18:08 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/special/2025_rutsubo/img_top-1200_20250419.jpg
+2024-12-12 22:18:08 [INFO]: Image already exists locally: 2a4e15bdc7561987eb544ea8a38b9f329baef76351a437f9c91d86ede0b799f6.jpg
+2024-12-12 22:18:08 [INFO]: Assigned local image URL for event 1: /images/events/kyoto_national_museum/2a4e15bdc7561987eb544ea8a38b9f329baef76351a437f9c91d86ede0b799f6.jpg
+2024-12-12 22:18:08 [INFO]: Extracted structured event data: {"title":"Special Exhibition Commemorating Expo 2025 Osaka, Kansai    \nJapan, an Artistic Melting Pot","date_start":"2025-04-19","date_end":"2025-06-15","venue":"Kyoto National Museum, Heisei Chishinkan Wing","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/2a4e15bdc7561987eb544ea8a38b9f329baef76351a437f9c91d86ede0b799f6.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/special/2025_rutsubo/","schedule":[{"date":"2025-04-19","time_start":"09:00:00","time_end":"17:30:00","special_notes":null}],"categories":["Art","Exhibition"],"tags":["Exhibition"],"prices":[],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_special_2025_rutsubo","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 22:18:08 [INFO]: Processing event 2 of 21...
+2024-12-12 22:18:08 [INFO]: Event Title: Special Exhibition    
+Song and Yuan Buddhist Painting: Early Chinese Masterpieces in Japan
+2024-12-12 22:18:08 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/special/2025_song-yuan/
+2024-12-12 22:18:08 [INFO]: Date Text: September 20–November 16, 2025
+2024-12-12 22:18:08 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/special/2025_song-yuan/
+2024-12-12 22:18:11 [INFO]: No cookie consent prompt found.
+2024-12-12 22:18:11 [INFO]: General Information: {"Exhibition Title":"Special Exhibition\nSong and Yuan Buddhist Painting: Early Chinese Masterpieces in Japan","Period":"September 20–November 16, 2025\nThe exhibition has two installations:\nPart I: September 20–October 19, 2025\nPart II: October 21–November 16, 2025\nSome artworks may be rotated within these installation periods.","Venue":"Kyoto National Museum, Heisei Chishinkan Wing","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus","Organized by":"Kyoto National Museum; The Mainichi Newspapers; The Kyoto Shimbun","With the support of":"Dai Nippon Printing Co., Ltd."}
+2024-12-12 22:18:11 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/special/2025_song-yuan/img_top-1200_20250920.jpg
+2024-12-12 22:18:11 [INFO]: Image already exists locally: d5f35bd3c6d0f8d3434af7f73ef0813d8789286a1a63f2ac8f856de4a8de403b.jpg
+2024-12-12 22:18:11 [INFO]: Assigned local image URL for event 2: /images/events/kyoto_national_museum/d5f35bd3c6d0f8d3434af7f73ef0813d8789286a1a63f2ac8f856de4a8de403b.jpg
+2024-12-12 22:18:11 [INFO]: Extracted structured event data: {"title":"Special Exhibition    \nSong and Yuan Buddhist Painting: Early Chinese Masterpieces in Japan","date_start":"2025-09-20","date_end":"2025-11-16","venue":"Kyoto National Museum, Heisei Chishinkan Wing","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/d5f35bd3c6d0f8d3434af7f73ef0813d8789286a1a63f2ac8f856de4a8de403b.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/special/2025_song-yuan/","schedule":[{"date":"2025-09-20","time_start":null,"time_end":null,"special_notes":null}],"categories":["Exhibition"],"tags":["Painting","Exhibition"],"prices":[],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_special_2025_song-yuan","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 22:18:11 [INFO]: Processing event 3 of 21...
+2024-12-12 22:18:11 [INFO]: Event Title: Feature Exhibition  
+Serpentine Delights: Celebrating the Year of the Snake
+2024-12-12 22:18:11 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/mi_2025/
+2024-12-12 22:18:11 [INFO]: Date Text: January 2–February 2, 2025
+2024-12-12 22:18:11 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/mi_2025/
+2024-12-12 22:18:13 [INFO]: No cookie consent prompt found.
+2024-12-12 22:18:13 [INFO]: General Information: {"Exhibition Title":"Feature Exhibition  \nSerpentine Delights: Celebrating the Year of the Snake","Period":"January 2–February 2, 2025","Venue":"Heisei Chishinkan Wing, Gallery 1F-2","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus / Map","Closed":"Mondays\n*The museum will be open on Monday, January 13, and closed on Tuesday, January 14, 2025.","Museum Hours":"9:30 a.m.–5:00 p.m. (Entrance until 4:30 p.m.)\nOpen until 8:00 p.m. on Fridays (Entrance until 7:30 p.m.)","Admission":"Adult\t700 yen\nUniversity Student (ID required)\t350 yen\nAdmission fee includes admission to all galleries in the Heisei Chishinkan Wing.\nAdmission is free for high school students and other youths age 0 – 17, seniors over 70, visitors with disabilities and one caretaker, and for Campus Members (including faculty). Please show ID.\nAdmission for school groups: Admission to the Collection Galleries is free for elementary school, middle school, and high school students on school fieldtrips as well as teachers serving as their guides."}
+2024-12-12 22:18:13 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/feature/mi_2025/img_top-1200_20250102.jpg
+2024-12-12 22:18:13 [INFO]: Image already exists locally: e399547b0a0b805dd1b0918025a7fd940366d9dd281007f335d4bc08d732b1b0.jpg
+2024-12-12 22:18:13 [INFO]: Assigned local image URL for event 3: /images/events/kyoto_national_museum/e399547b0a0b805dd1b0918025a7fd940366d9dd281007f335d4bc08d732b1b0.jpg
+2024-12-12 22:18:13 [INFO]: Extracted structured event data: {"title":"Feature Exhibition  \nSerpentine Delights: Celebrating the Year of the Snake","date_start":"2025-01-02","date_end":"2025-02-02","venue":"Heisei Chishinkan Wing, Gallery 1F-2","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/e399547b0a0b805dd1b0918025a7fd940366d9dd281007f335d4bc08d732b1b0.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/feature/b/mi_2025/","schedule":[{"date":"2025-01-02","time_start":"09:30:00","time_end":"17:00:00","special_notes":null}],"categories":["Exhibition"],"tags":["Exhibition"],"prices":[{"price_tier":"Adult","amount":"700","currency":"JPY","discount_info":null},{"price_tier":"University Student (ID required)","amount":"350","currency":"JPY","discount_info":null}],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_b_mi_2025","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 22:18:14 [INFO]: Processing event 4 of 21...
+2024-12-12 22:18:14 [INFO]: Event Title: Feature Exhibition  
+Yamashiro Smiths of the New Era: Blades of the Mishina and Horikawa Schools
+2024-12-12 22:18:14 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/2025_yamashiro/
+2024-12-12 22:18:14 [INFO]: Date Text: January 2–March 23, 2025
+2024-12-12 22:18:14 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/2025_yamashiro/
+2024-12-12 22:18:16 [INFO]: No cookie consent prompt found.
+2024-12-12 22:18:16 [INFO]: General Information: {"Exhibition Title":"Feature Exhibition  \nYamashiro Smiths of the New Era: Blades of the Mishina and Horikawa Schools","Period":"January 2–March 23, 2025","Venue":"Heisei Chishinkan Wing, Galleries 1F-4, 6","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus / Map","Closed":"Mondays\n*The museum will be open on Monday, January 13 and Monday, February 24, 2025; the museum will be closed Tuesday, January 14 and Tuesday, February 25, 2025.","Museum Hours":"9:30 a.m.–5:00 p.m. (Entrance until 4:30 p.m.)\nOpen until 8:00 p.m. on Fridays (Entrance until 7:30 p.m.)","Admission":"Adult\t700 yen\nUniversity Student (ID required)\t350 yen\nAdmission fee includes admission to all galleries in the Heisei Chishinkan Wing.\nAdmission is free for high school students and other youths age 0 – 17, seniors over 70, visitors with disabilities and one caretaker, and for Campus Members (including faculty). Please show ID.\nAdmission for school groups: Admission to the Collection Galleries is free for elementary school, middle school, and high school students on school fieldtrips as well as teachers serving as their guides."}
+2024-12-12 22:18:16 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/feature/2025_yamashirokaji/img_top-1200_20250102.jpg
+2024-12-12 22:18:16 [INFO]: Image already exists locally: 344d1df2dd46e4e09518b715bf96e29d811bc6f7674ff3c1c24750281c641c93.jpg
+2024-12-12 22:18:16 [INFO]: Assigned local image URL for event 4: /images/events/kyoto_national_museum/344d1df2dd46e4e09518b715bf96e29d811bc6f7674ff3c1c24750281c641c93.jpg
+2024-12-12 22:18:16 [INFO]: Extracted structured event data: {"title":"Feature Exhibition  \nYamashiro Smiths of the New Era: Blades of the Mishina and Horikawa Schools","date_start":"2025-01-02","date_end":"2025-03-23","venue":"Heisei Chishinkan Wing, Galleries 1F-4, 6","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/344d1df2dd46e4e09518b715bf96e29d811bc6f7674ff3c1c24750281c641c93.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/feature/b/2025_yamashiro/","schedule":[{"date":"2025-01-02","time_start":"09:30:00","time_end":"17:00:00","special_notes":null}],"categories":["Exhibition"],"tags":["Exhibition"],"prices":[{"price_tier":"Adult","amount":"700","currency":"JPY","discount_info":null},{"price_tier":"University Student (ID required)","amount":"350","currency":"JPY","discount_info":null}],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_b_2025_yamashiro","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 22:18:16 [INFO]: Processing event 5 of 21...
+2024-12-12 22:18:16 [INFO]: Event Title: Feature Exhibition  
+Celebrating the Japanese Doll Festival
+2024-12-12 22:18:16 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/hina_2025/
+2024-12-12 22:18:16 [INFO]: Date Text: February 15–March 23, 2025
+2024-12-12 22:18:16 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/feature/b/hina_2025/
+2024-12-12 22:18:19 [INFO]: No cookie consent prompt found.
+2024-12-12 22:18:19 [INFO]: General Information: {"Exhibition Title":"Feature Exhibition: Celebrating the Japanese Doll Festival","Period":"February 15–March 23, 2025","Venue":"Heisei Chishinkan Wing, Gallery 1F-2","Transportation":"JR, Kintetsu Railway, Keihan Railway, Hankyu Railway, City Bus / Map","Closed":"Mondays\n*The museum will be open on Monday, February 24, and closed on Tuesday, February 25, 2025.","Museum Hours":"9:30 a.m.–5:00 p.m. (Entrance until 4:30 p.m.)\nOpen until 8:00 p.m. on Fridays (Entrance until 7:30 p.m.)","Admission":"Adult\t700 yen\nUniversity Student (ID required)\t350 yen\nAdmission fee includes admission to all galleries in the Heisei Chishinkan Wing.\nAdmission is free for high school students and other youths age 0 – 17, seniors over 70, visitors with disabilities and one caretaker, and for Campus Members (including faculty). Please show ID.\nAdmission for school groups: Admission to the Collection Galleries is free for elementary school, middle school, and high school students on school fieldtrips as well as teachers serving as their guides."}
+2024-12-12 22:18:19 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/1F-2_20230204_tmb.png
+2024-12-12 22:18:19 [INFO]: Image already exists locally: c046270d24a47fc1fb53b25552388b168b2db9b70fbf988a62ec3780e2e63f52.png
+2024-12-12 22:18:19 [INFO]: Assigned local image URL for event 5: /images/events/kyoto_national_museum/c046270d24a47fc1fb53b25552388b168b2db9b70fbf988a62ec3780e2e63f52.png
+2024-12-12 22:18:19 [INFO]: Extracted structured event data: {"title":"Feature Exhibition  \nCelebrating the Japanese Doll Festival","date_start":"2025-02-15","date_end":"2025-03-23","venue":"Heisei Chishinkan Wing, Gallery 1F-2","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/c046270d24a47fc1fb53b25552388b168b2db9b70fbf988a62ec3780e2e63f52.png","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/feature/b/hina_2025/","schedule":[{"date":"2025-02-15","time_start":"09:30:00","time_end":"17:00:00","special_notes":null}],"categories":["Festival","Exhibition"],"tags":["Exhibition"],"prices":[{"price_tier":"Adult","amount":"700","currency":"JPY","discount_info":null},{"price_tier":"University Student (ID required)","amount":"350","currency":"JPY","discount_info":null}],"description":"","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_b_hina_2025","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 22:18:19 [INFO]: Processing event 6 of 21...
+2024-12-12 22:18:19 [INFO]: Event Title: Illustrated Handscrolls Shrines of Hachiman and Itsukushima
+2024-12-12 22:18:19 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6044-02
+2024-12-12 22:18:19 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 22:18:19 [INFO]: Navigating to event detail page: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6044-02
+2024-12-12 22:18:22 [INFO]: No cookie consent prompt found.
+2024-12-12 22:18:22 [INFO]: General Information: {}
+2024-12-12 22:18:22 [INFO]: Downloading image: https://www.kyohaku.go.jp/eng/exhibitions/assets/collection/2025/01/2f-1_20250102_tmb_y.jpg
+2024-12-12 22:18:22 [INFO]: Image already exists locally: cce9a4d308ca18ee388be64281a0d604987f7371577ae7075fa82189b8061701.jpg
+2024-12-12 22:18:22 [INFO]: Assigned local image URL for event 6: /images/events/kyoto_national_museum/cce9a4d308ca18ee388be64281a0d604987f7371577ae7075fa82189b8061701.jpg
+2024-12-12 22:18:22 [INFO]: Extracted structured event data: {"title":"Illustrated Handscrolls Shrines of Hachiman and Itsukushima","date_start":"2025-01-02","date_end":"2025-02-09","venue":"Kyoto National Museum","organization":"Kyoto National Museum","image_url":"/images/events/kyoto_national_museum/cce9a4d308ca18ee388be64281a0d604987f7371577ae7075fa82189b8061701.jpg","event_link":"https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6044-02","schedule":[{"date":"2025-01-02","time_start":null,"time_end":null,"special_notes":null}],"categories":["Exhibition"],"tags":[],"prices":[],"description":"To facilitate a convenient browsing experience for our users, this website uses cookies. If you agree to the use of cookies on this website, click “Accept.” If you select “Decline,” only the required cookies will be used. For further details on required cookies and other information, please review our Website Policy","host":"Kyoto National Museum","ended":false,"free":false,"external_id":"kyoto_national_museum_01_?date=02#Theme6044-02","site":"kyoto_national_museum","address":"527 Chayamachi, Higashiyama Ward, Kyoto, 605-0931, Japan"}
+2024-12-12 22:18:22 [INFO]: Processing event 7 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Buddhist Paintings Twelve Devas Screens and the World of Esoteric Buddhist Ritual
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6045-02
+2024-12-12 22:18:22 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 8 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Medieval Paintings The Beauty of Pine, Bamboo, and Plum
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6046-02
+2024-12-12 22:18:22 [INFO]: Date Text: January 2–February 9, 202
+2024-12-12 22:18:22 [WARN]: Incomplete year in date string. Assuming year as 2024.
+2024-12-12 22:18:22 [INFO]: Processing event 9 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Momoyama-Edo Paintings Japan’s Women Painters
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6047-02
+2024-12-12 22:18:22 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 10 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Chinese Paintings The Prosperity and Paintings of Yangzhou, the “Salt City”
+Landscape with Pavilions by Yuan Jiang and Wang Yun
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6048-02
+2024-12-12 22:18:22 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 11 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Calligraphy Ink Traces: Calligraphy by Zen Priests
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6050-02
+2024-12-12 22:18:22 [INFO]: Date Text: January 2–February 9, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 12 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Ceramics Ninsei and Kyoto Ware: Ceramics Techniques of Omuro Kiln Fragments
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6041-02
+2024-12-12 22:18:22 [INFO]: Date Text: January 2–March 16, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 13 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Archaeological Relics Japanese Sue Ware and Korean Ceramics
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6042-02
+2024-12-12 22:18:22 [INFO]: Date Text: January 2–March 16, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 14 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Sculpture Kyoto’s Sculptures of Buddhist and Shinto Deities
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6049-02
+2024-12-12 22:18:22 [INFO]: Date Text: January 2–March 23, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 15 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Metalwork Special Viewing   
+Rediscovered Swords: Masterful Blades That Transcend the Ages
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/01/?date=02#Theme6051-02
+2024-12-12 22:18:22 [INFO]: Date Text: January 2–March 23, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 16 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Illustrated Handscrolls Illustrated Handscrolls
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6107-11
+2024-12-12 22:18:22 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 17 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Buddhist Paintings Parinirvana: Picturing the Death of the Buddha
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6108-11
+2024-12-12 22:18:22 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 18 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Medieval Paintings Medieval Painting
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6109-11
+2024-12-12 22:18:22 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 19 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Momoyama-Edo Paintings Artists’ Sketches
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6110-11
+2024-12-12 22:18:22 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 20 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Chinese Paintings Chinese Painting
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6111-11
+2024-12-12 22:18:22 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 22:18:22 [INFO]: Processing event 21 of 21...
+2024-12-12 22:18:22 [INFO]: Event Title: Calligraphy Indigo Blue Sutra Manuscripts: Ornamenting the Buddha's Sacred Words
+2024-12-12 22:18:22 [INFO]: Event Link: https://www.kyohaku.go.jp/eng/exhibitions/collection/2025/02/?date=11#Theme6112-11
+2024-12-12 22:18:22 [INFO]: Date Text: February 11–March 23, 2025
+2024-12-12 22:18:22 [INFO]: Final event data extraction complete.
+2024-12-12 22:18:22 [INFO]: Browser closed.

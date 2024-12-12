@@ -75,7 +75,9 @@ function makeAbsoluteUrl(url, base) {
 
 /**
  * Downloads an image from the given URL and saves it locally.
- * Checks if the image already exists to avoid redundant downloads.
+ * Ensures that images are saved with unique filenames based on their URL hashes.
+ * Prevents duplicate downloads by checking existing files.
+ * 
  * @param {string} imageUrl - The URL of the image to download.
  * @param {string} site - The site identifier (e.g., 'kyoto_kanze').
  * @returns {Promise<string>} - The relative URL of the saved image.
@@ -107,8 +109,8 @@ const downloadAndSaveImage = async (imageUrl, site) => {
             relativeImagePath = path.basename(imagePath);
         }
 
-        // Use relativeImagePath as the hash input
-        const hash = generateHash(relativeImagePath);
+        // **Use absoluteImageUrl as the hash input to ensure uniqueness**
+        const hash = generateHash(absoluteImageUrl);
         const extension = path.extname(relativeImagePath) || '.jpg';
         const filename = `${hash}${extension}`;
         const filepath = path.join(__dirname, '..', 'public', 'images', 'events', site, filename);
@@ -213,19 +215,26 @@ function parsePrices(text) {
 
     // Define a mapping for common price tiers (can be expanded as needed)
     const priceTierMapping = {
-        '一般前売指定席券': 'General Advance Reserved Seat',
+        '一般前売指定席券※WEB': 'General Advance Reserved Seat',
         '一般前売自由席券': 'General Advance Free Seat',
-        '一般当日券': 'General Day Ticket',
+        '学生券２階自由席のみ': 'Student Ticket (Second Floor Free Seat)',
+        '一般前売指定席券': 'General Advance Reserved Seat',
+        '脇中正面指定席': 'Side Center Reserved Seat',
+        '次世代応援シト': 'Next Generation Support Seat',
+        '学生席２階自由席のみ': 'Student Seat (Second Floor Free Seat)',
+        '前売券': 'Advance Ticket',
+        '当日券': 'Day Ticket',
         '学生券': 'Student Ticket',
-        'S席': 'S Seat',
-        'A席': 'A Seat',
-        '１階席': 'First Floor Seat',
-        '２階席': 'Second Floor Seat',
-        'ﾃﾞｲﾀｲﾑ･ﾄﾜｲﾗｲﾄ席': 'Timed & Twilight Seat',
-        '金': 'Friday',
-        '回数券５枚綴': 'Multi-Use Ticket (5-Pack)',
-        '特別会員会員券10枚': 'Special Member Ticket (10-Pack)',
-        '普通会員会員券10枚': 'Regular Member Ticket (10-Pack)',
+        '＜指定席＞正面席': 'Reserved Front Seat',
+        '中正面席脇正面席': 'Center Front and Side Front Seat',
+        '２階１列目': 'Second Floor, First Row',
+        '＜自由席＞２階自由席': 'Free Seat, Second Floor Free Seat',
+        '一般前売': 'General Advance',
+        'Ａ席': 'A Seat',
+        'Ｂ席': 'B Seat',
+        '高校生以下Ａ席': 'High School Student and Below A Seat',
+        '料金': 'Fee',
+        'Free': 'Free',
         // Add more mappings as necessary
     };
 
@@ -457,7 +466,7 @@ const scrapeKyotoKanze = async () => {
         const match = yearMonthText.match(/(\d{4})年\s*?(\d{1,2})月/);
         if (match) {
             year = match[1]; // e.g., '2024'
-            month = match[2].padStart(2, '0'); // e.g., '11'
+            month = match[2].padStart(2, '0'); // e.g., '12'
             console.log(`Processing events for ${year}-${month}`);
         } else {
             console.warn('Year and month not found in text:', yearMonthText);
