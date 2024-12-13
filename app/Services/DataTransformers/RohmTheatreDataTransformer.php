@@ -208,7 +208,7 @@ EOT;
                 'Authorization' => 'Bearer ' . $apiKey,
                 'Content-Type' => 'application/json',
             ])->post('https://api.openai.com/v1/chat/completions', [
-                'model' => 'gpt-4', // Ensure you have access to GPT-4
+                'model' => 'gpt-4o-mini', // Ensure you have access to GPT-4
                 'messages' => [
                     ['role' => 'user', 'content' => $prompt],
                 ],

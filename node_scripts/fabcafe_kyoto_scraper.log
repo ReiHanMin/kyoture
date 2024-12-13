@@ -270,3 +270,160 @@
 2024-12-12 22:11:29 [INFO]: Extracted event: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
 2024-12-12 22:11:29 [INFO]: Final event data extraction complete.
 2024-12-12 22:11:29 [INFO]: Browser closed.
+2024-12-14 08:19:26 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-14 08:19:26 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/fabcafe
+2024-12-14 08:19:31 [INFO]: Browser launched.
+2024-12-14 08:19:31 [INFO]: New page opened.
+2024-12-14 08:19:31 [INFO]: Navigating to FabCafe Kyoto events page...
+2024-12-14 08:19:46 [INFO]: Page loaded.
+2024-12-14 08:19:46 [INFO]: Found 1 events on the listing page.
+2024-12-14 08:19:46 [INFO]: Processing event 1 of 1...
+2024-12-14 08:19:47 [INFO]: Event title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:19:47 [INFO]: Event 1 Listing Image URL: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817-960x540.jpg
+2024-12-14 08:19:51 [INFO]: Detail page title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:19:51 [INFO]: Detail page description extracted.
+2024-12-14 08:19:51 [INFO]: Detail page single date extracted: 2024-12-14
+2024-12-14 08:19:51 [INFO]: Detail page times extracted: 14:00 to 15:30
+2024-12-14 08:19:51 [INFO]: Detail page price extracted: General - 3500 JPY
+2024-12-14 08:19:51 [INFO]: Detail Page Image URL for Event "世界薬草キャラバン　アンデス茶会": https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817.jpg
+2024-12-14 08:19:51 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817.jpg
+2024-12-14 08:19:51 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/c144e879a1d7e395f3dfc64b682de87a2a0e5dc80d768244fd73b48a8c35ab14.jpg
+2024-12-14 08:19:51 [INFO]: Detail Page Local Image URL for Event "世界薬草キャラバン　アンデス茶会": /images/events/fabcafe/c144e879a1d7e395f3dfc64b682de87a2a0e5dc80d768244fd73b48a8c35ab14.jpg
+2024-12-14 08:19:52 [INFO]: Extracted event: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:19:52 [INFO]: Final event data extraction complete.
+2024-12-14 08:19:52 [INFO]: Browser closed.
+2024-12-14 08:26:52 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-14 08:26:52 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/fabcafe
+2024-12-14 08:26:55 [INFO]: Browser launched.
+2024-12-14 08:26:56 [INFO]: New page opened.
+2024-12-14 08:26:56 [INFO]: Navigating to FabCafe Kyoto events page...
+2024-12-14 08:27:09 [INFO]: Page loaded.
+2024-12-14 08:27:09 [INFO]: Found 1 events on the listing page.
+2024-12-14 08:27:09 [INFO]: Event 1 Title: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:27:09 [INFO]: Processing event 1 of 1...
+2024-12-14 08:27:09 [INFO]: Event title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:27:09 [INFO]: Event 1 Listing Image URL: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817-960x540.jpg
+2024-12-14 08:27:13 [INFO]: Detail page title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:27:13 [INFO]: Detail page description extracted.
+2024-12-14 08:27:13 [INFO]: Detail page single date extracted: 2024-12-14
+2024-12-14 08:27:13 [INFO]: Detail page times extracted: 14:00 to 15:30
+2024-12-14 08:27:13 [INFO]: Detail page price extracted: General - 3500 JPY
+2024-12-14 08:27:13 [INFO]: Detail Page Image URL for Event "世界薬草キャラバン　アンデス茶会": https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817.jpg
+2024-12-14 08:27:13 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817.jpg
+2024-12-14 08:27:13 [INFO]: Image already exists locally: c144e879a1d7e395f3dfc64b682de87a2a0e5dc80d768244fd73b48a8c35ab14.jpg
+2024-12-14 08:27:13 [INFO]: Detail Page Local Image URL for Event "世界薬草キャラバン　アンデス茶会": /images/events/fabcafe/c144e879a1d7e395f3dfc64b682de87a2a0e5dc80d768244fd73b48a8c35ab14.jpg
+2024-12-14 08:27:13 [INFO]: Extracted event: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:27:13 [INFO]: Final event data extraction complete.
+2024-12-14 08:27:13 [INFO]: Browser closed.
+2024-12-14 08:27:46 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-14 08:27:46 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/fabcafe
+2024-12-14 08:27:48 [INFO]: Browser launched.
+2024-12-14 08:27:49 [INFO]: New page opened.
+2024-12-14 08:27:49 [INFO]: Navigating to FabCafe Kyoto events page...
+2024-12-14 08:28:01 [INFO]: Page loaded.
+2024-12-14 08:28:01 [INFO]: Found 1 events on the listing page.
+2024-12-14 08:28:01 [INFO]: Event 1 Title: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:28:01 [INFO]: Processing event 1 of 1...
+2024-12-14 08:28:01 [INFO]: Event title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:28:01 [INFO]: Event 1 Listing Image URL: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817-960x540.jpg
+2024-12-14 08:28:06 [INFO]: Detail page title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:28:06 [INFO]: Detail page description extracted.
+2024-12-14 08:28:06 [INFO]: Detail page single date extracted: 2024-12-14
+2024-12-14 08:28:06 [INFO]: Detail page times extracted: 14:00 to 15:30
+2024-12-14 08:28:06 [INFO]: Detail page price extracted: General - 3500 JPY
+2024-12-14 08:28:06 [INFO]: Detail Page Image URL for Event "世界薬草キャラバン　アンデス茶会": https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817.jpg
+2024-12-14 08:28:06 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817.jpg
+2024-12-14 08:28:06 [INFO]: Image already exists locally: c144e879a1d7e395f3dfc64b682de87a2a0e5dc80d768244fd73b48a8c35ab14.jpg
+2024-12-14 08:28:06 [INFO]: Detail Page Local Image URL for Event "世界薬草キャラバン　アンデス茶会": /images/events/fabcafe/c144e879a1d7e395f3dfc64b682de87a2a0e5dc80d768244fd73b48a8c35ab14.jpg
+2024-12-14 08:28:06 [INFO]: Extracted event: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:28:06 [INFO]: Final event data extraction complete.
+2024-12-14 08:28:06 [INFO]: Browser closed.
+2024-12-14 08:29:43 [INFO]: Screenshots directory already exists at /Users/liban/Documents/kyoture/node_scripts/screenshots
+2024-12-14 08:29:44 [INFO]: Image directory already exists: /Users/liban/Documents/kyoture/public/images/events/fabcafe
+2024-12-14 08:29:46 [INFO]: Browser launched.
+2024-12-14 08:29:47 [INFO]: New page opened.
+2024-12-14 08:29:47 [INFO]: Navigating to FabCafe Kyoto events page...
+2024-12-14 08:30:00 [INFO]: Page loaded.
+2024-12-14 08:30:06 [INFO]: Screenshot of the listing page saved as fabcafe_listing_page.png
+2024-12-14 08:30:06 [INFO]: Found 6 events on the listing page.
+2024-12-14 08:30:06 [INFO]: Event 1 Title: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:30:06 [INFO]: Event 2 Title: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-14 08:30:06 [INFO]: Event 3 Title: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-14 08:30:06 [INFO]: Event 4 Title: ホワイトノットノイズ
+2024-12-14 08:30:06 [INFO]: Event 5 Title: こんばんは寄席 by 桂枝之進
+2024-12-14 08:30:06 [INFO]: Event 6 Title: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-14 08:30:06 [INFO]: Processing event 1 of 6...
+2024-12-14 08:30:06 [INFO]: Event title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:30:06 [INFO]: Event 1 Listing Image URL: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817-960x540.jpg
+2024-12-14 08:30:10 [INFO]: Detail page title extracted: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:30:10 [INFO]: Detail page description extracted.
+2024-12-14 08:30:10 [INFO]: Detail page single date extracted: 2024-12-14
+2024-12-14 08:30:10 [INFO]: Detail page times extracted: 14:00 to 15:30
+2024-12-14 08:30:10 [INFO]: Detail page price extracted: General - 3500 JPY
+2024-12-14 08:30:10 [INFO]: Detail Page Image URL for Event "世界薬草キャラバン　アンデス茶会": https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817.jpg
+2024-12-14 08:30:10 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/72ea58f3ccebb1dee0ebbe46790c9817.jpg
+2024-12-14 08:30:10 [INFO]: Image already exists locally: c144e879a1d7e395f3dfc64b682de87a2a0e5dc80d768244fd73b48a8c35ab14.jpg
+2024-12-14 08:30:10 [INFO]: Detail Page Local Image URL for Event "世界薬草キャラバン　アンデス茶会": /images/events/fabcafe/c144e879a1d7e395f3dfc64b682de87a2a0e5dc80d768244fd73b48a8c35ab14.jpg
+2024-12-14 08:30:11 [INFO]: Extracted event: 世界薬草キャラバン　アンデス茶会
+2024-12-14 08:30:11 [INFO]: Processing event 2 of 6...
+2024-12-14 08:30:11 [INFO]: Event title extracted: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-14 08:30:11 [INFO]: Event 2 Listing Image URL: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/241214_atelierrikka_7-960x540.jpg
+2024-12-14 08:30:15 [INFO]: Detail page title extracted: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-14 08:30:15 [INFO]: Detail page description extracted.
+2024-12-14 08:30:15 [INFO]: Detail page dates extracted: 2024-12-14 to 2024-12-14
+2024-12-14 08:30:15 [INFO]: Detail page price extracted: General - 2200 JPY
+2024-12-14 08:30:15 [INFO]: Detail Page Image URL for Event "【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう": https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/241214_atelierrikka_7.jpg
+2024-12-14 08:30:15 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/241214_atelierrikka_7.jpg
+2024-12-14 08:30:15 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/7d757b9ce490e331950e37dabaa88b445bfdf8c96d710a70f5e237fe13a3fd4f.jpg
+2024-12-14 08:30:15 [INFO]: Detail Page Local Image URL for Event "【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう": /images/events/fabcafe/7d757b9ce490e331950e37dabaa88b445bfdf8c96d710a70f5e237fe13a3fd4f.jpg
+2024-12-14 08:30:15 [INFO]: Extracted event: 【満席】絹糸×レーザーカッターワークショップ｜季節の置き飾りをつくろう
+2024-12-14 08:30:15 [INFO]: Processing event 3 of 6...
+2024-12-14 08:30:15 [INFO]: Event title extracted: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-14 08:30:15 [INFO]: Event 3 Listing Image URL: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web-960x540.jpg
+2024-12-14 08:30:20 [INFO]: Detail page title extracted: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-14 08:30:20 [INFO]: Detail page description extracted.
+2024-12-14 08:30:20 [INFO]: Detail page dates extracted: 2024-12-04 to 2024-12-21
+2024-12-14 08:30:20 [INFO]: Detail page times extracted: 11:00 to 19:00
+2024-12-14 08:30:20 [INFO]: Detail page price extracted: General - 4000 JPY
+2024-12-14 08:30:20 [INFO]: Detail Page Image URL for Event "【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）": https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web.jpg
+2024-12-14 08:30:20 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/11/fckfab2412_1_web.jpg
+2024-12-14 08:30:20 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/7365cfed4921f2598a3797b4fcf14a9a20f4a17b1e6840eaac5999b7788b512d.jpg
+2024-12-14 08:30:20 [INFO]: Detail Page Local Image URL for Event "【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）": /images/events/fabcafe/7365cfed4921f2598a3797b4fcf14a9a20f4a17b1e6840eaac5999b7788b512d.jpg
+2024-12-14 08:30:20 [INFO]: Extracted event: 【Kyoto】12月Fabツール講習会（レーザーカッター・デジタル刺繍ミシン・デジタル製版機）
+2024-12-14 08:30:20 [INFO]: Processing event 4 of 6...
+2024-12-14 08:30:20 [INFO]: Event title extracted: ホワイトノットノイズ
+2024-12-14 08:30:20 [INFO]: Event 4 Listing Image URL: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/8d8b9da646908db566c43e3c1b1bb3b1-960x540.jpg
+2024-12-14 08:30:25 [INFO]: Detail page title extracted: ホワイトノットノイズ
+2024-12-14 08:30:25 [INFO]: Detail page description extracted.
+2024-12-14 08:30:25 [INFO]: Detail page dates extracted: 2024-12-10 to 2024-12-27
+2024-12-14 08:30:25 [INFO]: Detail Page Image URL for Event "ホワイトノットノイズ": https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/8d8b9da646908db566c43e3c1b1bb3b1.jpg
+2024-12-14 08:30:25 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/8d8b9da646908db566c43e3c1b1bb3b1.jpg
+2024-12-14 08:30:26 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/ce0f402274541499628c0719e369cde245d3115a8109a94d9483b98447250309.jpg
+2024-12-14 08:30:26 [INFO]: Detail Page Local Image URL for Event "ホワイトノットノイズ": /images/events/fabcafe/ce0f402274541499628c0719e369cde245d3115a8109a94d9483b98447250309.jpg
+2024-12-14 08:30:26 [INFO]: Extracted event: ホワイトノットノイズ
+2024-12-14 08:30:26 [INFO]: Processing event 5 of 6...
+2024-12-14 08:30:26 [INFO]: Event title extracted: こんばんは寄席 by 桂枝之進
+2024-12-14 08:30:26 [INFO]: Event 5 Listing Image URL: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/2025_yose_visual-960x540.jpg
+2024-12-14 08:30:30 [INFO]: Detail page title extracted: こんばんは寄席 by 桂枝之進
+2024-12-14 08:30:30 [INFO]: Detail page description extracted.
+2024-12-14 08:30:30 [INFO]: Detail page single date extracted: 2025-01-08
+2024-12-14 08:30:30 [INFO]: Detail page times extracted: 19:00 to 21:00
+2024-12-14 08:30:30 [INFO]: Detail Page Image URL for Event "こんばんは寄席 by 桂枝之進": https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/2025_yose_visual-1920x1080.jpg
+2024-12-14 08:30:30 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/2025_yose_visual-1920x1080.jpg
+2024-12-14 08:30:31 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/3ce394f35dde58754382721147e94874e2f8a982589434329deef4212de5edc1.jpg
+2024-12-14 08:30:31 [INFO]: Detail Page Local Image URL for Event "こんばんは寄席 by 桂枝之進": /images/events/fabcafe/3ce394f35dde58754382721147e94874e2f8a982589434329deef4212de5edc1.jpg
+2024-12-14 08:30:31 [INFO]: Extracted event: こんばんは寄席 by 桂枝之進
+2024-12-14 08:30:31 [INFO]: Processing event 6 of 6...
+2024-12-14 08:30:31 [INFO]: Event title extracted: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-14 08:30:31 [INFO]: Event 6 Listing Image URL: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/250110_fck_banner1_speakers-wh-960x540.jpg
+2024-12-14 08:30:36 [INFO]: Detail page title extracted: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-14 08:30:36 [INFO]: Detail page description extracted.
+2024-12-14 08:30:36 [INFO]: Detail page single date extracted: 2025-01-10
+2024-12-14 08:30:36 [INFO]: Detail page times extracted: 17:00 to 19:00
+2024-12-14 08:30:36 [INFO]: Detail Page Image URL for Event "トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」": https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/250110_fck_banner1_speakers-wh.jpg
+2024-12-14 08:30:36 [INFO]: Downloading image: https://d1lbosgzcsxxia.cloudfront.net/wp-content/uploads/sites/3/2024/12/250110_fck_banner1_speakers-wh.jpg
+2024-12-14 08:30:36 [INFO]: Image downloaded and saved to: /Users/liban/Documents/kyoture/public/images/events/fabcafe/a3e2e6cee49d463501d03184d0ad4f75ec7343780b14ad24a5c04477eb17a928.jpg
+2024-12-14 08:30:36 [INFO]: Detail Page Local Image URL for Event "トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」": /images/events/fabcafe/a3e2e6cee49d463501d03184d0ad4f75ec7343780b14ad24a5c04477eb17a928.jpg
+2024-12-14 08:30:36 [INFO]: Extracted event: トーク / ラウンドテーブル「自然と都市と文化遺産：文化を遺す＋産み出す」
+2024-12-14 08:30:36 [INFO]: Final event data extraction complete.
+2024-12-14 08:30:37 [INFO]: Browser closed.

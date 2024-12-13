@@ -18,15 +18,9 @@ use App\Jobs\ProcessEventData;
 
 class KyotoGattacaDataTransformer implements DataTransformerInterface
 {
-    /**
-     * Dispatches the event data processing job.
-     *
-     * @param array $eventData
-     * @return array|null
-     */
     public function transform(array $eventData): ?array
     {
-        Log::info('Dispatching job for Kyoto Gattaca event data', ['event_data' => $eventData]);
+        Log::info('Starting transformation process for Kyoto Gattaca event data', ['event_data' => $eventData]);
 
         // Dispatch the job for async processing, passing the transformer class and event data
         ProcessEventData::dispatch(static::class, $eventData);
@@ -35,12 +29,6 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         return null;
     }
 
-    /**
-     * Processes the event data by transforming and saving it.
-     *
-     * @param array $eventData
-     * @return void
-     */
     public function processEvent(array $eventData): void
     {
         Log::info('Processing event data for Kyoto Gattaca', ['event_data' => $eventData]);
@@ -53,11 +41,8 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         Log::info('Generated external ID', ['external_id' => $eventData['external_id']]);
 
         // Save or get the venue ID
-        $eventData['venue_id'] = $this->saveVenue($eventData['venue'] ?? null);
+        $eventData['venue_id'] = $this->saveVenue($eventData['venue']) ?? null;
         Log::info('Venue ID', ['venue_id' => $eventData['venue_id']]);
-
-        // Determine if the event is free based on prices
-        $eventData['free'] = empty($eventData['prices']);
 
         if ($this->isValidEventData($eventData)) {
             $existingEvent = Event::where('external_id', $eventData['external_id'])->first();
@@ -73,27 +58,14 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
             }
 
             if ($event) {
-                $this->saveEventLink($event->id, $eventData['event_link'] ?? null);
-                Log::info('Event link saved', ['event_id' => $event->id, 'event_link' => $eventData['event_link'] ?? null]);
-
-                // Save related data
-                $this->saveSchedules($event->id, $eventData['schedule'] ?? []);
-                $this->saveCategories($event, $eventData['categories'] ?? []);
-                $this->saveTags($event, $eventData['tags'] ?? []);
-                $this->saveImages($event, $eventData['image_url'] ?? null, [], $eventData['event_link'] ?? null);
-                $this->savePrices($event->id, $eventData['prices'] ?? []);
+                $this->saveEventLink($event->id, $eventData['event_link']);
+                Log::info('Event link saved', ['event_id' => $event->id, 'event_link' => $eventData['event_link']]);
             }
         } else {
             Log::warning('Invalid event data', ['event_data' => $eventData]);
         }
     }
 
-    /**
-     * Validates the event data.
-     *
-     * @param array $eventData
-     * @return bool
-     */
     public function isValidEventData(array $eventData): bool
     {
         $validator = Validator::make($eventData, [
@@ -102,7 +74,6 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
             'date_end' => 'required|date',
             'external_id' => 'required|string',
             'event_link' => 'required|string',
-            'venue_id' => 'nullable|integer',
         ]);
 
         if ($validator->fails()) {
@@ -113,12 +84,6 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         return true;
     }
 
-    /**
-     * Saves a new Kyoto Gattaca event to the database.
-     *
-     * @param array $eventData
-     * @return Event|null
-     */
     public function saveEvent(array $eventData): ?Event
     {
         try {
@@ -132,8 +97,6 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
                 'date_end' => $eventData['date_end'],
                 'venue_id' => $eventData['venue_id'] ?? null,
                 'external_id' => $eventData['external_id'],
-                'free' => $eventData['free'] ?? false,
-                'ended' => false, // Assuming events are ongoing; adjust as needed
             ]);
 
             Log::info('Kyoto Gattaca event saved successfully', ['event_id' => $event->id]);
@@ -163,13 +126,6 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         return null;
     }
 
-    /**
-     * Updates an existing Kyoto Gattaca event in the database.
-     *
-     * @param int $eventId
-     * @param array $eventData
-     * @return Event|null
-     */
     public function updateEvent(int $eventId, array $eventData): ?Event
     {
         try {
@@ -184,12 +140,11 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
                     'date_start' => $eventData['date_start'],
                     'date_end' => $eventData['date_end'],
                     'venue_id' => $eventData['venue_id'],
-                    'free' => $eventData['free'] ?? false,
-                    // 'external_id' remains unchanged
-                    'ended' => $eventData['ended'] ?? $event->ended,
+                    'program' => $eventData['program'] ?? null,
+                    'sold_out' => $eventData['sold_out'] ?? false,
                 ]);
 
-                $this->saveSchedules($event, $eventData['schedule'] ?? []);
+                $this->saveSchedules($event->id, $eventData['schedule'] ?? []);
                 $this->saveCategories($event, $eventData['categories'] ?? []);
                 $this->saveTags($event, $eventData['tags'] ?? []);
                 $this->saveImages($event, $eventData['image_url'] ?? null, [], $eventData['event_link'] ?? null);
@@ -211,92 +166,226 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         return null;
     }
 
-    /**
-     * Saves or retrieves a venue based on the provided name.
-     *
-     * @param string|null $venueName
-     * @return int|null
-     */
-    public function saveVenue(?string $venueName): ?int
+    public function constructPrompt(array $eventData): string
+    {
+        // Customize the prompt for Kyoto Gattaca events
+        $eventJson = json_encode($eventData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+        $prompt = <<<EOT
+        Given the following JSON data extracted from Kyoto Gattaca's event page, parse and transform it into the specified JSON format. Return only the extracted data in **valid JSON format**. Do not include any comments, explanations, or additional text outside the JSON structure.
+
+        Event Data:
+        {$eventJson}
+
+        **Extraction Requirements**:
+
+        1. **Date Parsing**:
+            - Extract 'date_start' and 'date_end' from the event data.
+            - If only a single date is found, set both 'date_start' and 'date_end' to this value.
+            - Format dates as 'YYYY-MM-DD'.
+
+        2.  **Schedule Parsing**:
+            - Identify any schedule details, including times if available.
+            - If the time is 'TBA' or not specified, set `time_start` and `time_end` to null.
+            - Construct a 'schedule' array with 'date', 'time_start', 'time_end', and 'special_notes' fields.
+
+        3. **Category Assignment**:
+            - Assign one or more of the following predefined categories based on keywords in the 'title' and 'description':
+                ['Music', 'Theatre', 'Dance', 'Art', 'Workshop', 'Festival', 'Family', 'Wellness', 'Sports'].
+            
+        4. **Tag Assignment**:
+            - Assign one or more of the following predefined tags based on keywords in the 'title' and 'description':
+                ['Classical Music', 'Contemporary Music', 'Jazz', 'Opera', 'Ballet', 'Modern Dance', 'Experimental Theatre', 'Drama', 'Stand-Up Comedy', 'Art Exhibition', 'Photography', 'Painting', 'Sculpture', 'Creative Workshop', 'Cooking Class', 'Wine Tasting', 'Wellness Retreat', 'Meditation', 'Yoga', 'Marathon', 'Kids Activities', 'Outdoor Adventure', 'Walking Tour', 'Historical Tour', 'Book Reading', 'Poetry Slam', 'Cultural Festival', 'Film Screening', 'Anime', 'Networking Event', 'Startup Event', 'Tech Conference', 'Fashion Show', 'Food Festival', 'Pop-up Market', 'Charity Event', 'Community Event', 'Traditional Arts', 'Ritual/Ceremony', 'Virtual Event'].
+
+        5. **Price Parsing**:
+            - Locate any price information and generate an array of price objects.
+            - Each price object should include 'price_tier', 'amount', 'currency' as 'JPY', and 'discount_info' if available.¥
+            - If there is an advanced price and a door price, then separate these into different price tiers.
+            - If price is set to 'TBA', return this as null.
+            - If the event is free, set 'amount' to '0' and 'price_tier' to 'Free'.
+
+        6. **Output Format**:
+            - Return the extracted data in this JSON format, with an 'events' array containing one event object:
+            {
+                "events": [
+                    {
+                        "title": "Event Title",
+                        "date_start": "YYYY-MM-DD",
+                        "date_end": "YYYY-MM-DD",
+                        "venue": "Kyoto Gattaca",
+                        "organization": "Kyoto Gattaca",
+                        "event_link": "Event link",
+                        "image_url": "Image URL if available",
+                        "schedule": [
+                            {
+                                "date": "YYYY-MM-DD",
+                                "time_start": "HH:mm",
+                                "time_end": "HH:mm",
+                                "special_notes": "Any available notes"
+                            }
+                        ],
+                        "categories": ["Category1", "Category2"],
+                        "tags": ["Tag1", "Tag2"],
+                        "prices": [
+                            {
+                                "price_tier": "Advance",
+                                "amount": "2400",
+                                "currency": "JPY",
+                                "discount_info": "Student discount ¥500 off"
+                            },
+                            {
+                                "price_tier": "Door",
+                                "amount": "2900",
+                                "currency": "JPY",
+                                "discount_info": null
+                            }
+                        ],
+                        "host": "Event organizer's name if available",
+                        "ended": false,
+                        "free": false
+                    }
+                ]
+            }
+
+        Parse the event data and structure it as instructed.
+
+        EOT;
+
+        Log::info('Constructed prompt for Kyoto Gattaca', ['prompt' => $prompt]);
+        return $prompt;
+    }
+
+    public function callOpenAI(string $prompt): ?array
+    {
+        $apiKey = env('OPENAI_API_KEY');
+        Log::info('Calling OpenAI API', ['prompt' => $prompt]);
+
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $apiKey,
+            ])->post('https://api.openai.com/v1/chat/completions', [
+                'model' => 'gpt-4o-mini', // Ensure you have access to GPT-4
+                'messages' => [
+                    ['role' => 'user', 'content' => $prompt],
+                ],
+                'max_tokens' => 2000,
+                'temperature' => 0.2,
+            ]);
+
+            Log::info('OpenAI API response status', ['status' => $response->status()]);
+
+            if ($response->status() == 429) {
+                Log::warning('Rate limit hit. Retrying after delay.');
+                sleep(5); // Wait before retrying
+                return $this->callOpenAI($prompt); // Recursive retry
+            }
+
+            $responseArray = $response->json();
+
+            Log::info('OpenAI API response', ['response' => $responseArray]);
+
+            if (isset($responseArray['choices'][0]['message']['content'])) {
+                // Get the content
+                $parsedData = $responseArray['choices'][0]['message']['content'];
+
+                Log::info('OpenAI API returned content', ['content' => $parsedData]);
+
+                // Use regex to extract JSON between braces
+                if (preg_match('/\{(?:[^{}]|(?R))*\}/s', $parsedData, $matches)) {
+                    $jsonContent = $matches[0]; // Extracted JSON string
+                    Log::info('Extracted JSON from OpenAI response', ['json_content' => $jsonContent]);
+
+                    // Decode the JSON
+                    $decodedData = json_decode($jsonContent, true);
+                    if (json_last_error() === JSON_ERROR_NONE) {
+                        return $decodedData;
+                    } else {
+                        Log::error('JSON decoding error', ['error' => json_last_error_msg()]);
+                    }
+                } else {
+                    Log::warning('No JSON found in OpenAI response', ['response' => $parsedData]);
+                }
+            } else {
+                Log::warning('No content in OpenAI response', ['response' => $responseArray]);
+            }
+        } catch (\Exception $e) {
+            Log::error('Error calling OpenAI API', ['error' => $e->getMessage()]);
+        }
+
+        return null;
+    }
+
+    public function saveSchedules(int $eventId, array $schedules): void
+    {
+        foreach ($schedules as $scheduleData) {
+            // Convert 'TBA' or empty strings to null
+            $timeStart = $this->nullIfEmpty($scheduleData['time_start']);
+            $timeEnd = $this->nullIfEmpty($scheduleData['time_end']);
+
+            if (strtoupper($timeStart) === 'TBA') {
+                $timeStart = null;
+            }
+            if (strtoupper($timeEnd) === 'TBA') {
+                $timeEnd = null;
+            }
+
+            Schedule::updateOrCreate(
+                [
+                    'event_id' => $eventId,
+                    'date' => $scheduleData['date'],
+                ],
+                [
+                    'time_start' => $timeStart,
+                    'time_end' => $timeEnd,
+                    'special_notes' => $this->nullIfEmpty($scheduleData['special_notes']),
+                ]
+            );
+        }
+    }
+
+    public function saveVenue(string $venueName): ?int
     {
         if (empty($venueName)) {
-            Log::warning('Venue name is missing; venue data was not saved.');
             return null;
         }
 
-        $venue = Venue::firstOrCreate(['name' => trim($venueName)]);
-        Log::info('Venue saved or retrieved', ['venue_id' => $venue->id]);
-
+        $venue = Venue::firstOrCreate(['name' => $venueName]);
         return $venue->id;
     }
 
-    /**
-     * Saves the event link.
-     *
-     * @param int $eventId
-     * @param string|null $eventLink
-     * @return void
-     */
-    public function saveEventLink(int $eventId, ?string $eventLink): void
+    public function saveEventLink(int $eventId, string $eventLink): void
     {
-        if ($eventLink) {
-            EventLink::updateOrCreate(
-                [
-                    'event_id' => $eventId,
-                    'url' => $eventLink,
-                ],
-                [
-                    'link_type' => 'primary' // Set link type as needed
-                ]
-            );
-        } else {
-            Log::warning('Event link is missing; skipping EventLink save.', ['event_id' => $eventId]);
-        }
+        EventLink::updateOrCreate(
+            [
+                'event_id' => $eventId,
+                'url' => $eventLink,
+            ],
+            [
+                'link_type' => 'primary' // Set link type as needed
+            ]
+        );
     }
 
-    /**
-     * Saves categories related to an event.
-     *
-     * @param Event $event
-     * @param array $categories
-     * @return void
-     */
     public function saveCategories(Event $event, array $categories): void
     {
         foreach ($categories as $categoryName) {
-            $category = Category::firstOrCreate(['name' => trim($categoryName)]);
+            $category = Category::firstOrCreate(['name' => $categoryName]);
             $event->categories()->syncWithoutDetaching([$category->id]);
         }
     }
 
-    /**
-     * Saves tags related to an event.
-     *
-     * @param Event $event
-     * @param array $tags
-     * @return void
-     */
     public function saveTags(Event $event, array $tags): void
     {
         foreach ($tags as $tagName) {
-            $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
             $event->tags()->syncWithoutDetaching([$tag->id]);
         }
     }
 
-    /**
-     * Saves images related to an event.
-     *
-     * @param Event $event
-     * @param string|null $primaryImageUrl
-     * @param array $images
-     * @param string|null $eventLink
-     * @return void
-     */
     public function saveImages(Event $event, ?string $primaryImageUrl, array $images = [], ?string $eventLink = null): void
     {
-        // Use a default placeholder image if no primary image URL is provided
-        $defaultImageUrl = '/images/events/placeholder.jpg'; // Ensure this placeholder exists
+        // Use a default image URL if no primary image URL is provided or if it's empty
+        $defaultImageUrl = 'https://example.com/default-event-image.jpg'; // Replace with an appropriate default image URL
 
         $primaryImageUrl = $primaryImageUrl ?: $defaultImageUrl;
 
@@ -329,13 +418,6 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         }
     }
 
-    /**
-     * Saves prices related to an event.
-     *
-     * @param int $eventId
-     * @param array $prices
-     * @return void
-     */
     public function savePrices(int $eventId, array $prices): void
     {
         foreach ($prices as $priceData) {
@@ -356,47 +438,6 @@ class KyotoGattacaDataTransformer implements DataTransformerInterface
         }
     }
 
-    /**
-     * Saves schedules related to an event.
-     *
-     * @param int $eventId
-     * @param array $schedules
-     * @return void
-     */
-    public function saveSchedules(int $eventId, array $schedules): void
-    {
-        foreach ($schedules as $scheduleData) {
-            // Convert 'TBA' or empty strings to null
-            $timeStart = $this->nullIfEmpty($scheduleData['time_start']);
-            $timeEnd = $this->nullIfEmpty($scheduleData['time_end']);
-
-            if (strtoupper($timeStart) === 'TBA') {
-                $timeStart = null;
-            }
-            if (strtoupper($timeEnd) === 'TBA') {
-                $timeEnd = null;
-            }
-
-            Schedule::updateOrCreate(
-                [
-                    'event_id' => $eventId,
-                    'date' => $scheduleData['date'],
-                ],
-                [
-                    'time_start' => $timeStart,
-                    'time_end' => $timeEnd,
-                    'special_notes' => $this->nullIfEmpty($scheduleData['special_notes']),
-                ]
-            );
-        }
-    }
-
-    /**
-     * Converts empty values to null.
-     *
-     * @param mixed $value
-     * @return mixed|null
-     */
     public function nullIfEmpty($value)
     {
         $value = trim($value);

@@ -4,14 +4,13 @@ import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
-import path from 'path'; // Import the entire 'path' module
+import path from 'path';
 import fs from 'fs';
 import dotenv from 'dotenv';
 import winston from 'winston';
 import crypto from 'crypto';
 import axios from 'axios';
-// If you intend to use p-limit for concurrency, ensure it's installed and uncomment the line below
-// import pLimit from 'p-limit';
+import pLimit from 'p-limit'; // Ensure p-limit is installed
 
 // Load environment variables from .env file if present
 dotenv.config();
@@ -79,7 +78,25 @@ const downloadImage = async (imageUrl, site, imagesDir, retries = 3) => {
   try {
     if (!imageUrl || imageUrl === 'No image available') {
       logger.warn('No valid image URL provided. Using placeholder.');
-      return '/images/events/fabcafe/placeholder.jpg'; // Ensure this placeholder exists
+      // Assign a unique placeholder based on the event's imageUrl
+      const placeholderFilename = `placeholder_${generateHash(imageUrl || 'default')}.jpg`;
+      const placeholderPath = `/images/events/${site}/${placeholderFilename}`;
+      const fullPlaceholderPath = resolve(imagesDir, placeholderFilename);
+
+      // Check if the unique placeholder already exists
+      if (!fs.existsSync(fullPlaceholderPath)) {
+        // Copy a default placeholder image if it exists
+        const defaultPlaceholder = resolve(imagesDir, 'placeholder.jpg');
+        if (fs.existsSync(defaultPlaceholder)) {
+          fs.copyFileSync(defaultPlaceholder, fullPlaceholderPath);
+          logger.info(`Copied unique placeholder for image: ${placeholderFilename}`);
+        } else {
+          logger.error(`Default placeholder not found at ${defaultPlaceholder}. Please ensure it exists.`);
+          return '/images/events/fabcafe/default_placeholder.jpg'; // Fallback to a general placeholder
+        }
+      }
+
+      return placeholderPath;
     }
 
     // Ensure the image URL is absolute
@@ -91,7 +108,7 @@ const downloadImage = async (imageUrl, site, imagesDir, retries = 3) => {
 
     // Parse the URL to remove query parameters for consistent hashing
     const parsedUrl = new URL(absoluteImageUrl);
-    const normalizedUrl = `${parsedUrl.origin}${parsedUrl.pathname}`; // Excludes query params
+    const normalizedUrl = `${parsedUrl.origin}${parsedUrl.pathname}${parsedUrl.search}`; // Includes query params
 
     // Generate a unique filename using SHA256 hash of the normalized image URL
     const imageHash = generateHash(normalizedUrl);
@@ -99,17 +116,22 @@ const downloadImage = async (imageUrl, site, imagesDir, retries = 3) => {
 
     // If extension is not valid, attempt to get it from Content-Type
     if (!['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'].includes(extension.toLowerCase())) {
-      const headResponse = await axios.head(absoluteImageUrl);
-      const contentType = headResponse.headers['content-type'];
-      if (contentType) {
-        const matches = /image\/(jpeg|png|gif|bmp|webp)/.exec(contentType);
-        if (matches && matches[1]) {
-          extension = `.${matches[1]}`;
+      try {
+        const headResponse = await axios.head(absoluteImageUrl);
+        const contentType = headResponse.headers['content-type'];
+        if (contentType) {
+          const matches = /image\/(jpeg|png|gif|bmp|webp)/.exec(contentType);
+          if (matches && matches[1]) {
+            extension = `.${matches[1]}`;
+          } else {
+            extension = '.jpg'; // Default extension
+          }
         } else {
           extension = '.jpg'; // Default extension
         }
-      } else {
-        extension = '.jpg'; // Default extension
+      } catch (headError) {
+        logger.warn(`Failed to fetch HEAD for image: ${absoluteImageUrl}. Using default extension.`);
+        extension = '.jpg';
       }
     }
 
@@ -149,8 +171,23 @@ const downloadImage = async (imageUrl, site, imagesDir, retries = 3) => {
       return downloadImage(imageUrl, site, imagesDir, retries - 1);
     }
     logger.error(`Failed to download image after retries: ${imageUrl}. Error: ${error.message}`);
-    // Return path to a placeholder image
-    return '/images/events/fabcafe/placeholder.jpg'; // Ensure this placeholder exists
+    // Assign a unique placeholder for failed downloads
+    const uniquePlaceholder = `/images/events/${site}/placeholder_${generateHash(imageUrl)}.jpg`;
+    const fullPlaceholderPath = resolve(imagesDir, path.basename(uniquePlaceholder));
+
+    if (!fs.existsSync(fullPlaceholderPath)) {
+      // Copy a default placeholder image if it exists
+      const defaultPlaceholder = resolve(imagesDir, 'placeholder.jpg');
+      if (fs.existsSync(defaultPlaceholder)) {
+        fs.copyFileSync(defaultPlaceholder, fullPlaceholderPath);
+        logger.info(`Assigned unique placeholder for failed image: ${uniquePlaceholder}`);
+      } else {
+        logger.error(`Default placeholder not found at ${defaultPlaceholder}. Please ensure it exists.`);
+        return '/images/events/fabcafe/default_placeholder.jpg'; // Fallback to a general placeholder
+      }
+    }
+
+    return uniquePlaceholder;
   }
 };
 
@@ -162,6 +199,9 @@ if (!fs.existsSync(screenshotDir)) {
 } else {
   logger.info(`Screenshots directory already exists at ${screenshotDir}`);
 }
+
+// Define concurrency limit for image downloads
+const limit = pLimit(5); // Adjust based on system capabilities
 
 // Main scraping function for FabCafe Kyoto Events
 const scrapeFabCafe = async () => {
@@ -204,16 +244,27 @@ const scrapeFabCafe = async () => {
     });
     logger.info('Page loaded.');
 
+    // Capture a screenshot to verify loaded content
+    await page.screenshot({ path: 'fabcafe_listing_page.png', fullPage: true });
+    logger.info('Screenshot of the listing page saved as fabcafe_listing_page.png');
+
     // Wait for the main events container to load
     await page.waitForSelector('.event-slide-col1-list', { timeout: 30000 }).catch(() => {
       logger.warn('Timeout waiting for .event-slide-col1-list selector.');
     });
 
-    // Extract all event containers
+    // **Adjusted Event Selection Selector**
     const eventElements = await page.$$(
-      'div.event-slide-col1-list > div.event-slide-elm.animate'
+      'div.event-slide-col1-list a.block.hv-scale'
     );
+
     logger.info(`Found ${eventElements.length} events on the listing page.`);
+
+    // Optional: Log titles of found events for verification
+    for (const [index, eventElement] of eventElements.entries()) {
+      const eventTitle = await eventElement.$eval('div.top-info > .ttl', el => el.innerText.trim()).catch(() => 'No Title');
+      logger.info(`Event ${index + 1} Title: ${eventTitle}`);
+    }
 
     const eventsData = [];
 
@@ -222,14 +273,14 @@ const scrapeFabCafe = async () => {
         logger.info(`Processing event ${index + 1} of ${eventElements.length}...`);
 
         // Extract the event URL from the <a> tag
-        const eventUrl = await eventElement.$eval('a', (el) => el.href.trim()).catch(() => null);
+        const eventUrl = await eventElement.evaluate(el => el.href.trim()).catch(() => null);
 
         if (!eventUrl) {
           logger.warn(`Missing event URL for event ${index + 1}. Skipping.`);
           continue;
         }
 
-        // Extract event title (using universal selector)
+        // Extract event title
         const eventTitle = await eventElement.$eval('div.top-info > .ttl', (el) =>
           el.innerText.trim()
         ).catch(() => null);
@@ -249,11 +300,13 @@ const scrapeFabCafe = async () => {
           el.innerText.trim()
         ).catch(() => null);
 
-        // Extract image URL
+        // Extract image URL from listing page
         let imageUrl = await eventElement.$eval(
           'div.img-box > div.img > div.posi-full.bg-style',
           (el) => el.getAttribute('data-bg')
         ).catch(() => null);
+
+        logger.info(`Event ${index + 1} Listing Image URL: ${imageUrl}`);
 
         if (imageUrl && !imageUrl.startsWith('http')) {
           // Handle relative URLs
@@ -325,7 +378,7 @@ const scrapeFabCafe = async () => {
         }
 
         eventsData.push(detailedEventData);
-        logger.info(`Extracted event: ${eventTitle}`);
+        logger.info(`Extracted event: ${detailedEventData.title}`);
       } catch (error) {
         logger.error(`Error processing event ${index + 1}: ${error.message}`);
         logger.error(`Stack Trace: ${error.stack}`);
@@ -500,11 +553,13 @@ const extractEventDetails = async (eventPage, eventData, imagesDir, siteIdentifi
 
     eventData.alt_text = alt_text || null;
 
-    // Extract image URL from the detail page
+    // **Updated Image Extraction Logic for Detail Pages**
     const detailImageUrl = await eventPage.$eval(
-      'div.img-box > div.img > div.posi-full.bg-style',
-      (el) => el.getAttribute('data-bg')
+      'p.event-single-main-img > img',
+      (el) => el.getAttribute('src') || el.getAttribute('data-src')
     ).catch(() => null);
+
+    logger.info(`Detail Page Image URL for Event "${eventData.title}": ${detailImageUrl}`);
 
     if (detailImageUrl) {
       // Download the detailed image
@@ -512,18 +567,33 @@ const extractEventDetails = async (eventPage, eventData, imagesDir, siteIdentifi
         ? detailImageUrl
         : new URL(detailImageUrl, eventData.event_link).href;
 
-      const localImageUrl = await downloadImage(detailedImageUrl, siteIdentifier, imagesDir);
+      const localImageUrl = await limit(() => downloadImage(detailedImageUrl, siteIdentifier, imagesDir));
       eventData.image_url = localImageUrl;
-      logger.info(`Detail page image downloaded: ${localImageUrl}`);
+      logger.info(`Detail Page Local Image URL for Event "${eventData.title}": ${localImageUrl}`);
     } else if (eventData.image_url) {
       // Download the image from the listing page
-      const localImageUrl = await downloadImage(eventData.image_url, siteIdentifier, imagesDir);
+      const localImageUrl = await limit(() => downloadImage(eventData.image_url, siteIdentifier, imagesDir));
       eventData.image_url = localImageUrl;
-      logger.info(`Listing page image downloaded: ${localImageUrl}`);
+      logger.info(`Listing Page Local Image URL for Event "${eventData.title}": ${localImageUrl}`);
     } else {
-      // Assign placeholder if no image is available
-      eventData.image_url = '/images/events/fabcafe/placeholder.jpg';
-      logger.warn(`No image available for event "${eventData.title}". Assigned placeholder.`);
+      // Assign unique placeholder if no image is available
+      const uniquePlaceholder = `/images/events/${siteIdentifier}/placeholder_${generateHash(eventData.title)}.jpg`;
+      const fullPlaceholderPath = resolve(imagesDir, path.basename(uniquePlaceholder));
+
+      if (!fs.existsSync(fullPlaceholderPath)) {
+        // Copy a default placeholder image if it exists
+        const defaultPlaceholder = resolve(imagesDir, 'placeholder.jpg');
+        if (fs.existsSync(defaultPlaceholder)) {
+          fs.copyFileSync(defaultPlaceholder, fullPlaceholderPath);
+          logger.info(`Assigned unique placeholder for Event "${eventData.title}": ${uniquePlaceholder}`);
+        } else {
+          logger.error(`Default placeholder not found at ${defaultPlaceholder}. Please ensure it exists.`);
+          eventData.image_url = '/images/events/fabcafe/default_placeholder.jpg'; // Fallback to a general placeholder
+        }
+      } else {
+        eventData.image_url = uniquePlaceholder;
+        logger.info(`Assigned existing unique placeholder for Event "${eventData.title}": ${uniquePlaceholder}`);
+      }
     }
 
     return eventData;
@@ -568,8 +638,6 @@ const convertMonthToNumber = (monthAbbreviation) => {
   return months[monthAbbreviation] || '01';
 };
 
-export default scrapeFabCafe;
-
 // Execute the scraper if the script is run directly
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   (async () => {
@@ -590,3 +658,5 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     }
   })();
 }
+
+export default scrapeFabCafe;

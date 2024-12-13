@@ -242,31 +242,91 @@ export default {
       const day = String(today.getDate()).padStart(2, '0');
       return `${year}-${month}-${day}`;
     },
-    fetchEvents() {
-      this.loadingMore = true;
-      axios.get('/api/events')
-        .then(response => {
-          const currentDate = new Date(this.getCurrentDate());
+    
+    parseDate(dateStr) {
+    const [year, month, day] = dateStr.split('-').map(Number);
+    return new Date(year, month - 1, day); // Months are 0-indexed
+  },
 
-          // Filter out past events for current events list
-          this.events = response.data
-            .filter(event => {
-              const eventStartDate = new Date(event.date_start);
-              return eventStartDate >= currentDate;
-            })
-            .sort((a, b) => {
-              const dateA = new Date(a.date_start);
-              const dateB = new Date(b.date_start);
-              return dateA - dateB;
-            });
+  /**
+   * Generates the current date in "YYYY-MM-DD" format.
+   * @returns {string} - The current date as a string.
+   */
+  getCurrentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  },
 
-          this.loadingMore = false;
-        })
-        .catch(error => {
-          console.error('Error fetching events:', error);
-          this.loadingMore = false;
-        });
-    },
+  /**
+   * Fetches events from the API and categorizes them into current and past events.
+   */
+  fetchEvents() {
+    this.loadingMore = true;
+    axios.get('/api/events')
+      .then(response => {
+        const currentDateStr = this.getCurrentDate(); // e.g., "2024-12-14"
+        const currentDate = this.parseDate(currentDateStr);
+        currentDate.setHours(0, 0, 0, 0); // Normalize to start of the day
+        console.log(`Current Date: ${currentDateStr}`);
+
+        // Preprocess events to handle missing date_end by assigning date_start to date_end
+        const processedEvents = response.data.map(event => {
+          if (!event.date_end || event.date_end === 'NULL') { // Handle 'NULL' as well
+            console.warn(`Missing date_end for event: "${event.title}". Setting date_end to date_start.`);
+            return { ...event, date_end: event.date_start };
+          }
+          return event;
+        }).filter(event => event !== null); // Exclude any null events if necessary
+
+        // Log processed events for debugging
+        console.log('Processed Events:', processedEvents);
+
+        // Filter events to include all ongoing and upcoming events
+        this.events = processedEvents
+          .filter(event => {
+            const eventEndDate = this.parseDate(event.date_end);
+            eventEndDate.setHours(0, 0, 0, 0); // Normalize to start of the day
+
+            if (isNaN(eventEndDate)) {
+              console.warn(`Invalid date_end for event: "${event.title}". Excluding from current events.`);
+              return false; // Exclude events with invalid date_end
+            }
+
+            const isIncluded = eventEndDate >= currentDate;
+            console.log(`Event: "${event.title}", End Date: ${event.date_end}, Included: ${isIncluded}`);
+            return isIncluded;
+          })
+          .sort((a, b) => {
+            const dateA = this.parseDate(a.date_start);
+            const dateB = this.parseDate(b.date_start);
+            return dateA - dateB;
+          });
+
+        // Separate past events for the past events page
+        this.pastEvents = processedEvents
+          .filter(event => {
+            const eventEndDate = this.parseDate(event.date_end);
+            eventEndDate.setHours(0, 0, 0, 0); // Normalize to start of the day
+            return eventEndDate < currentDate;
+          })
+          .sort((a, b) => {
+            const dateA = this.parseDate(a.date_end);
+            const dateB = this.parseDate(b.date_end);
+            return dateB - dateA; // Sort past events by most recent first
+          });
+
+        this.loadingMore = false;
+      })
+      .catch(error => {
+        console.error('Error fetching events:', error);
+        this.loadingMore = false;
+      });
+  },
+
+
     setCategories(filters) {
       console.log(`setCategories method called with: `, filters);
       this.selectedFilters = filters;
