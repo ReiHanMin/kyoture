@@ -21,6 +21,7 @@
         >
           <div class="event-image">
             <img
+              loading="lazy"
               :src="event.images?.[0]?.image_url || 'placeholder.jpg'"
               :alt="event.title"
               class="w-full h-full object-cover"
@@ -44,6 +45,7 @@
         >
           <div class="event-image">
             <img
+              loading="lazy"
               :src="event.images?.[0]?.image_url || 'placeholder.jpg'"
               :alt="event.title"
               class="w-full h-full object-cover"
@@ -108,6 +110,7 @@
           <strong>Additional Images:</strong>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <img
+              loading="lazy"
               v-for="image in selectedEvent.images.slice(1)"
               :src="image.image_url"
               :alt="image.alt_text || 'Event Image'"
@@ -140,7 +143,7 @@ export default {
   components: {
     Navbar,
     Spinner,
-    PastEvents, // Register PastEvents component
+    PastEvents,
   },
   data() {
     return {
@@ -161,7 +164,7 @@ export default {
   },
   computed: {
     filteredEvents() {
-      const currentDate = this.getCurrentDate(); // Get the current date
+      const currentDate = this.getCurrentDate();
       const currentDateObj = new Date(currentDate);
 
       return this.events.filter(event => {
@@ -177,7 +180,6 @@ export default {
         const matchesPrice = Array.isArray(this.selectedFilters.price) && this.selectedFilters.price.length
           ? this.selectedFilters.price.some(selectedPrice => {
               if (selectedPrice === 'Free') {
-                // Check if all price tiers are zero or there is only a free ticket available
                 return event.prices.every(price => parseFloat(price.amount) === 0);
               } else if (selectedPrice === 'Under 1000 Yen') {
                 return event.prices.some(price => parseFloat(price.amount) < 1000);
@@ -235,6 +237,10 @@ export default {
     togglePastEvents() {
       this.showPastEvents = !this.showPastEvents;
     },
+    parseDate(dateStr) {
+      const [year, month, day] = dateStr.split('-').map(Number);
+      return new Date(year, month - 1, day);
+    },
     getCurrentDate() {
       const today = new Date();
       const year = today.getFullYear();
@@ -242,91 +248,53 @@ export default {
       const day = String(today.getDate()).padStart(2, '0');
       return `${year}-${month}-${day}`;
     },
-    
-    parseDate(dateStr) {
-    const [year, month, day] = dateStr.split('-').map(Number);
-    return new Date(year, month - 1, day); // Months are 0-indexed
-  },
+    fetchEvents() {
+      this.loadingMore = true;
+      axios.get('/api/events')
+        .then(response => {
+          const currentDateStr = this.getCurrentDate();
+          const currentDate = this.parseDate(currentDateStr);
+          currentDate.setHours(0, 0, 0, 0);
 
-  /**
-   * Generates the current date in "YYYY-MM-DD" format.
-   * @returns {string} - The current date as a string.
-   */
-  getCurrentDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  },
-
-  /**
-   * Fetches events from the API and categorizes them into current and past events.
-   */
-  fetchEvents() {
-    this.loadingMore = true;
-    axios.get('/api/events')
-      .then(response => {
-        const currentDateStr = this.getCurrentDate(); // e.g., "2024-12-14"
-        const currentDate = this.parseDate(currentDateStr);
-        currentDate.setHours(0, 0, 0, 0); // Normalize to start of the day
-        console.log(`Current Date: ${currentDateStr}`);
-
-        // Preprocess events to handle missing date_end by assigning date_start to date_end
-        const processedEvents = response.data.map(event => {
-          if (!event.date_end || event.date_end === 'NULL') { // Handle 'NULL' as well
-            console.warn(`Missing date_end for event: "${event.title}". Setting date_end to date_start.`);
-            return { ...event, date_end: event.date_start };
-          }
-          return event;
-        }).filter(event => event !== null); // Exclude any null events if necessary
-
-        // Log processed events for debugging
-        console.log('Processed Events:', processedEvents);
-
-        // Filter events to include all ongoing and upcoming events
-        this.events = processedEvents
-          .filter(event => {
-            const eventEndDate = this.parseDate(event.date_end);
-            eventEndDate.setHours(0, 0, 0, 0); // Normalize to start of the day
-
-            if (isNaN(eventEndDate)) {
-              console.warn(`Invalid date_end for event: "${event.title}". Excluding from current events.`);
-              return false; // Exclude events with invalid date_end
+          const processedEvents = response.data.map(event => {
+            if (!event.date_end || event.date_end === 'NULL') {
+              console.warn(`Missing date_end for event: "${event.title}". Setting date_end to date_start.`);
+              return { ...event, date_end: event.date_start };
             }
+            return event;
+          }).filter(event => event !== null);
 
-            const isIncluded = eventEndDate >= currentDate;
-            console.log(`Event: "${event.title}", End Date: ${event.date_end}, Included: ${isIncluded}`);
-            return isIncluded;
-          })
-          .sort((a, b) => {
-            const dateA = this.parseDate(a.date_start);
-            const dateB = this.parseDate(b.date_start);
-            return dateA - dateB;
-          });
+          this.events = processedEvents
+            .filter(event => {
+              const eventEndDate = this.parseDate(event.date_end);
+              eventEndDate.setHours(0, 0, 0, 0);
+              return eventEndDate >= currentDate;
+            })
+            .sort((a, b) => {
+              const dateA = this.parseDate(a.date_start);
+              const dateB = this.parseDate(b.date_start);
+              return dateA - dateB;
+            });
 
-        // Separate past events for the past events page
-        this.pastEvents = processedEvents
-          .filter(event => {
-            const eventEndDate = this.parseDate(event.date_end);
-            eventEndDate.setHours(0, 0, 0, 0); // Normalize to start of the day
-            return eventEndDate < currentDate;
-          })
-          .sort((a, b) => {
-            const dateA = this.parseDate(a.date_end);
-            const dateB = this.parseDate(b.date_end);
-            return dateB - dateA; // Sort past events by most recent first
-          });
+          this.pastEvents = processedEvents
+            .filter(event => {
+              const eventEndDate = this.parseDate(event.date_end);
+              eventEndDate.setHours(0, 0, 0, 0);
+              return eventEndDate < currentDate;
+            })
+            .sort((a, b) => {
+              const dateA = this.parseDate(a.date_end);
+              const dateB = this.parseDate(b.date_end);
+              return dateB - dateA;
+            });
 
-        this.loadingMore = false;
-      })
-      .catch(error => {
-        console.error('Error fetching events:', error);
-        this.loadingMore = false;
-      });
-  },
-
-
+          this.loadingMore = false;
+        })
+        .catch(error => {
+          console.error('Error fetching events:', error);
+          this.loadingMore = false;
+        });
+    },
     setCategories(filters) {
       console.log(`setCategories method called with: `, filters);
       this.selectedFilters = filters;
@@ -357,17 +325,13 @@ export default {
       const endDate = new Date(end);
 
       if (startDate.getTime() === endDate.getTime()) {
-        // Single-day event
         return startDate.toLocaleDateString('en-GB', {
           year: 'numeric',
           month: 'long',
           day: 'numeric'
-        }); // e.g., "15 November 2024"
+        });
       } else {
-        // Multi-day event
         const options = { day: 'numeric' };
-
-        // Check if start and end dates are in the same month/year
         if (
           startDate.getFullYear() === endDate.getFullYear() &&
           startDate.getMonth() === endDate.getMonth()
@@ -376,7 +340,7 @@ export default {
             month: 'long',
             day: 'numeric',
             year: 'numeric'
-          })}`; // e.g., "15 - 16 November, 2024"
+          })}`;
         } else {
           return `${startDate.toLocaleDateString('en-GB', {
             day: 'numeric',
@@ -385,7 +349,7 @@ export default {
             day: 'numeric',
             month: 'long',
             year: 'numeric'
-          })}`; // e.g., "30 November - 3 December, 2024"
+          })}`;
         }
       }
     }
@@ -471,25 +435,24 @@ img {
   .event-card {
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    height: 120px; /* Adjust the height as needed */
+    height: 120px; 
     overflow: hidden;
   }
 
-  /* Apply flex to both <a> and <div> wrappers inside .event-card */
   .event-wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 100%;
-    text-decoration: none; /* Remove underline for <a> */
+    text-decoration: none; 
     width: 100%;
   }
 
   .event-image {
-    flex: 0 0 33%; /* Ensures the image takes one-third of the width */
-    max-width: 33%; /* Reinforces the width constraint */
-    height: 100%; /* Matches the card's height */
-    border-radius: 0.5rem 0 0 0.5rem; /* Rounded corners on the left */
+    flex: 0 0 33%;
+    max-width: 33%;
+    height: 100%;
+    border-radius: 0.5rem 0 0 0.5rem;
     overflow: hidden;
   }
 
@@ -500,23 +463,23 @@ img {
   }
 
   .event-details {
-    flex: 1; /* Ensures the text section takes up the remaining space */
+    flex: 1;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: hidden; /* Prevents text overflow */
-    min-width: 0; /* Allows the flex item to shrink properly */
+    overflow: hidden; 
+    min-width: 0; 
   }
 
   .caption-container {
-    position: static; /* Remove absolute positioning */
+    position: static; 
     background-color: transparent;
     margin: 0;
-    white-space: nowrap; /* Prevents text from wrapping */
-    overflow: hidden; /* Hides overflowing text */
-    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
-    padding: 0; /* Remove padding */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    padding: 0; 
   }
 
   .caption-type { 
